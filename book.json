@@ -1,0 +1,39 @@
+{
+    "title": "日常笔记",
+    "author": "liufeihua",
+    "description": "日常笔记",
+    "language": "zh-hans",
+    "plugins": [
+        "chapter-fold",
+        "theme-comscore",
+        "back-to-top-button",
+        "code",
+        "tbfed-pagefooter",
+        "page-treeview",
+        "pageview-count",
+        "popup",
+        "prism",
+        "-highlight",
+        "hide-element",
+		"-lunr",
+		"-search", 
+		"search-pro"
+    ],
+    "pluginsConfig": {
+        "tbfed-pagefooter": {
+            "copyright": "Copyright &copy liufeihua.com 2021",
+            "modify_label": "该文件修订时间：",
+            "modify_format": "YYYY-MM-DD HH:mm:ss"
+        },
+        "prism": {
+            "css": [
+                "prismjs/themes/prism-okaidia.css"
+            ]
+        },
+        "hide-element": {
+            "elements": [
+                ".gitbook-link"
+            ]
+        }
+    }
+}
