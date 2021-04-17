@@ -1,0 +1,2121 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>3.Dubbo企业级应用进阶 · 日常笔记</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="liufeihua">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-page-treeview/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-pageview-count/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism-okaidia.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-theme-comscore/test.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="dubbo-module-detail.html" />
+    
+    
+    <link rel="prev" href="dubbo-base-use.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../源码框架专题/">
+            
+                <a href="../../源码框架专题/">
+            
+                    
+                    一、源码框架专题
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../../源码框架专题/spring/">
+            
+                <a href="../../源码框架专题/spring/">
+            
+                    
+                    spring
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.1" data-path="../../源码框架专题/spring/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.2" data-path="../../源码框架专题/spring/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3" data-path="../../源码框架专题/spring/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../../源码框架专题/mybatis/">
+            
+                <a href="../../源码框架专题/mybatis/">
+            
+                    
+                    mybatis
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.2.1" data-path="../../源码框架专题/mybatis/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.2" data-path="../../源码框架专题/mybatis/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.3" data-path="../../源码框架专题/mybatis/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../并发编程专题/">
+            
+                <a href="../../并发编程专题/">
+            
+                    
+                    二、并发编程专题
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../../并发编程专题/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../../并发编程专题/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../../并发编程专题/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../../performance/">
+            
+                <a href="../../performance/">
+            
+                    
+                    三、性能调优专题
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../../performance/mysql/">
+            
+                <a href="../../performance/mysql/">
+            
+                    
+                    mysql
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1.1" data-path="../../performance/mysql/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.2" data-path="../../performance/mysql/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.3" data-path="../../performance/mysql/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../../performance/nginx/">
+            
+                <a href="../../performance/nginx/">
+            
+                    
+                    nginx
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.2.1" data-path="../../performance/nginx/Nginx-config.html">
+            
+                <a href="../../performance/nginx/Nginx-config.html">
+            
+                    
+                    1.Nginx核心模块与配置实践
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.2" data-path="../../performance/nginx/Nginx-In-actual-combat.html">
+            
+                <a href="../../performance/nginx/Nginx-In-actual-combat.html">
+            
+                    
+                    2.Nginx 性能优化实践
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../../performance/tomcat/">
+            
+                <a href="../../performance/tomcat/">
+            
+                    
+                    tomcat
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.3.1" data-path="../../performance/tomcat/Tomcat-pro-use.html">
+            
+                <a href="../../performance/tomcat/Tomcat-pro-use.html">
+            
+                    
+                    1.Tomcat生产环境应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    四、分布式框架专题
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../zookeeper/">
+            
+                <a href="../zookeeper/">
+            
+                    
+                    zookeeper
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1.1" data-path="../zookeeper/zookeeper-base-use.html">
+            
+                <a href="../zookeeper/zookeeper-base-use.html">
+            
+                    
+                    1.特性与节点说明
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.2" data-path="../zookeeper/zookeeper-client-use.html">
+            
+                <a href="../zookeeper/zookeeper-client-use.html">
+            
+                    
+                    2.客户端使用与集群特性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.3" data-path="../zookeeper/zookeeper-sence-use.html">
+            
+                <a href="../zookeeper/zookeeper-sence-use.html">
+            
+                    
+                    3.典型使用场景实践
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.4" data-path="../zookeeper/zookeeper-zab.html">
+            
+                <a href="../zookeeper/zookeeper-zab.html">
+            
+                    
+                    4.ZAB协议实现源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../netty/">
+            
+                <a href="../netty/">
+            
+                    
+                    netty
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.2.1" data-path="../netty/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.2" data-path="../netty/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.3" data-path="../netty/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    dubbo
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.3.1" data-path="dubbo-introduce.html">
+            
+                <a href="dubbo-introduce.html">
+            
+                    
+                    1.从0到1整体认知分布式系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3.2" data-path="dubbo-base-use.html">
+            
+                <a href="dubbo-base-use.html">
+            
+                    
+                    2.快速掌握Dubbo常规应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5.3.3" data-path="dubbo-high-use.html">
+            
+                <a href="dubbo-high-use.html">
+            
+                    
+                    3.Dubbo企业级应用进阶
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3.4" data-path="dubbo-module-detail.html">
+            
+                <a href="dubbo-module-detail.html">
+            
+                    
+                    2.Dubb调用模块详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3.5" data-path="dubbo-proto-detail.html">
+            
+                <a href="dubbo-proto-detail.html">
+            
+                    
+                    3.Dubbo协议模块源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../rocketmq/">
+            
+                <a href="../rocketmq/">
+            
+                    
+                    rocketmq
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.4.1" data-path="../rocketmq/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4.2" data-path="../rocketmq/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4.3" data-path="../rocketmq/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../rabbitmq/">
+            
+                <a href="../rabbitmq/">
+            
+                    
+                    rabbitmq
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.5.1" data-path="../rabbitmq/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5.2" data-path="../rabbitmq/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5.3" data-path="../rabbitmq/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../kafka/">
+            
+                <a href="../kafka/">
+            
+                    
+                    kafka
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.6.1" data-path="../kafka/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6.2" data-path="../kafka/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6.3" data-path="../kafka/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="../mysql/">
+            
+                <a href="../mysql/">
+            
+                    
+                    mysql
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.7.1" data-path="../mysql/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.2" data-path="../mysql/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.3" data-path="../mysql/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="../mongo/">
+            
+                <a href="../mongo/">
+            
+                    
+                    mongo
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.8.1" data-path="../mongo/mongoDb-data.html">
+            
+                <a href="../mongo/mongoDb-data.html">
+            
+                    
+                    1.准备数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8.2" data-path="../mongo/mongoDb-quick-start.html">
+            
+                <a href="../mongo/mongoDb-quick-start.html">
+            
+                    
+                    2.快速上手
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8.3" data-path="../mongo/mongoDb-enterprise.html">
+            
+                <a href="../mongo/mongoDb-enterprise.html">
+            
+                    
+                    3.企业应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="../redis/">
+            
+                <a href="../redis/">
+            
+                    
+                    redis
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.9.1" data-path="../redis/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9.2" data-path="../redis/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9.3" data-path="../redis/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="../shardingsphere/">
+            
+                <a href="../shardingsphere/">
+            
+                    
+                    shardingsphere
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.10.1" data-path="../shardingsphere/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10.2" data-path="../shardingsphere/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10.3" data-path="../shardingsphere/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.11" data-path="../elk/">
+            
+                <a href="../elk/">
+            
+                    
+                    elk
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.11.1" data-path="../elk/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.11.2" data-path="../elk/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.11.3" data-path="../elk/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../../微服务专题/">
+            
+                <a href="../../微服务专题/">
+            
+                    
+                    五、微服务框架专题
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../../微服务专题/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../../微服务专题/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../../微服务专题/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../../微服务专题/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../../微服务专题/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../../微服务专题/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../../微服务专题/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../../微服务专题/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="../../微服务专题/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10" data-path="../../微服务专题/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.11" data-path="../../微服务专题/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.12" data-path="../../微服务专题/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../../项目实战专题/">
+            
+                <a href="../../项目实战专题/">
+            
+                    
+                    六、项目实战专题
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../../项目实战专题/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../../项目实战专题/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../../项目实战专题/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../../项目实战专题/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../../项目实战专题/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../../项目实战专题/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" data-path="../../项目实战专题/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8" data-path="../../项目实战专题/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9" data-path="../../项目实战专题/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.10" data-path="../../项目实战专题/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.11" data-path="../../项目实战专题/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.12" data-path="../../项目实战专题/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../../自动化运维专题/">
+            
+                <a href="../../自动化运维专题/">
+            
+                    
+                    七、自动化运维专题
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../../自动化运维专题/git/">
+            
+                <a href="../../自动化运维专题/git/">
+            
+                    
+                    git
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1.1" data-path="../../自动化运维专题/git/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.1.2" data-path="../../自动化运维专题/git/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.1.3" data-path="../../自动化运维专题/git/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../../自动化运维专题/maven/">
+            
+                <a href="../../自动化运维专题/maven/">
+            
+                    
+                    maven
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.2.1" data-path="../../自动化运维专题/maven/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.2" data-path="../../自动化运维专题/maven/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2.3" data-path="../../自动化运维专题/maven/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../../自动化运维专题/jenkins/">
+            
+                <a href="../../自动化运维专题/jenkins/">
+            
+                    
+                    jenkins
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.3.1" data-path="../../自动化运维专题/jenkins/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3.2" data-path="../../自动化运维专题/jenkins/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3.3" data-path="../../自动化运维专题/jenkins/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="../../自动化运维专题/k8s/">
+            
+                <a href="../../自动化运维专题/k8s/">
+            
+                    
+                    k8s
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.4.1" data-path="../../自动化运维专题/k8s/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.2" data-path="../../自动化运维专题/k8s/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.3" data-path="../../自动化运维专题/k8s/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >3.Dubbo企业级应用进阶</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div class="treeview__container"><div class="treeview__container-title"><span class="treeview__main-title">Treeview</span><span class="treeview__copyright">Copyright &#xA9; aleen42 all right reserved, powered by <a href="https://github.com/aleen42" target="_blank">aleen42</a></span></div><ul>
+<li><div><a href="#&#x4E00;&#x3001;&#x5206;&#x5E03;&#x5F0F;&#x9879;&#x76EE;&#x5F00;&#x53D1;&#x4E0E;&#x8054;&#x8C03;">&#x4E00;&#x3001;&#x5206;&#x5E03;&#x5F0F;&#x9879;&#x76EE;&#x5F00;&#x53D1;&#x4E0E;&#x8054;&#x8C03;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#&#x63A5;&#x53E3;&#x66B4;&#x9732;&#x4E0E;&#x5F15;&#x7528;">&#x63A5;&#x53E3;&#x66B4;&#x9732;&#x4E0E;&#x5F15;&#x7528;</a><i></i></div></li>
+<li><div><a href="#&#x81EA;&#x52A8;&#x5316;&#x6784;&#x5EFA;&#x4E0E;&#x534F;&#x4F5C;">&#x81EA;&#x52A8;&#x5316;&#x6784;&#x5EFA;&#x4E0E;&#x534F;&#x4F5C;</a><i></i></div></li>
+<li><div><a href="#&#x63A5;&#x53E3;&#x5E73;&#x6ED1;&#x5347;&#x7EA7;&#xFF1A;">&#x63A5;&#x53E3;&#x5E73;&#x6ED1;&#x5347;&#x7EA7;&#xFF1A;</a><i></i></div></li>
+<li><div><a href="#&#x5F00;&#x53D1;&#x8054;&#x8C03;&#xFF1A;">&#x5F00;&#x53D1;&#x8054;&#x8C03;&#xFF1A;</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#&#x4E8C;&#x3001;dubbo&#x63A7;&#x5236;&#x7BA1;&#x7406;&#x540E;&#x53F0;&#x4F7F;&#x7528;">&#x4E8C;&#x3001;Dubbo&#x63A7;&#x5236;&#x7BA1;&#x7406;&#x540E;&#x53F0;&#x4F7F;&#x7528;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#dubbo-&#x63A7;&#x5236;&#x540E;&#x53F0;&#x7248;&#x672C;&#x8BF4;&#x660E;&#xFF1A;">Dubbo &#x63A7;&#x5236;&#x540E;&#x53F0;&#x7248;&#x672C;&#x8BF4;&#x660E;&#xFF1A;</a><i></i></div></li>
+<li><div><a href="#dubbo-&#x63A7;&#x5236;&#x540E;&#x53F0;&#x7684;&#x5B89;&#x88C5;&#xFF1A;">Dubbo &#x63A7;&#x5236;&#x540E;&#x53F0;&#x7684;&#x5B89;&#x88C5;&#xFF1A;</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#&#x4E09;&#x3001;dubbo&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#x8BE6;&#x89E3;">&#x4E09;&#x3001;Dubbo&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#x8BE6;&#x89E3;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#x7684;&#x4F5C;&#x7528;">&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#x7684;&#x4F5C;&#x7528;</a><i></i></div></li>
+<li><div><a href="#dubbo&#x6240;&#x652F;&#x6301;&#x7684;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;">Dubbo&#x6240;&#x652F;&#x6301;&#x7684;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;</a><i></i></div></li>
+<li><div><a href="#redis-&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;">Redis &#x6CE8;&#x518C;&#x4E2D;&#x5FC3;</a><i></i></div></li>
+<li><div><a href="#zookeeper-&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;">Zookeeper &#x6CE8;&#x518C;&#x4E2D;&#x5FC3;</a><i></i></div></li>
+</ul></li>
+</ul>
+</div>
+
+<p><strong>&#x8BFE;&#x7A0B;&#x6982;&#x8981;&#xFF1A;</strong></p>
+<ol>
+<li>&#x5206;&#x5E03;&#x5F0F;&#x9879;&#x76EE;&#x5F00;&#x53D1;&#x4E0E;&#x8054;&#x8C03;</li>
+<li>&#x63A7;&#x5236;&#x7BA1;&#x7406;&#x540E;&#x53F0;&#x4F7F;&#x7528;</li>
+<li>Dubbo&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#x8BE6;&#x89E3;</li>
+</ol>
+<h2 id="&#x4E00;&#x3001;&#x5206;&#x5E03;&#x5F0F;&#x9879;&#x76EE;&#x5F00;&#x53D1;&#x4E0E;&#x8054;&#x8C03;">&#x4E00;&#x3001;&#x5206;&#x5E03;&#x5F0F;&#x9879;&#x76EE;&#x5F00;&#x53D1;&#x4E0E;&#x8054;&#x8C03;</h2>
+<hr>
+<h3 id="&#x63A5;&#x53E3;&#x66B4;&#x9732;&#x4E0E;&#x5F15;&#x7528;"><strong>&#x63A5;&#x53E3;&#x66B4;&#x9732;&#x4E0E;&#x5F15;&#x7528;</strong></h3>
+<p>&#x5728;&#x4E00;&#x4E2A;RPC&#x573A;&#x666F;&#x4E2D; &#xFF0C;&#x8C03;&#x7528;&#x65B9;&#x662F;&#x901A;&#x8FC7;&#x63A5;&#x53E3;&#x6765;&#x8C03;&#x7528;&#x670D;&#x52A1;&#x7AEF;&#xFF0C;&#x4F20;&#x5165;&#x53C2;&#x6570;&#x5E76;&#x83B7;&#x5F97;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#x3002;&#x8FD9;&#x6837;&#x670D;&#x52A1;&#x7AEF;&#x7684;&#x63A5;&#x53E3;&#x548C;&#x6A21;&#x578B;&#x5FC5;&#x987B;&#x66B4;&#x9732;&#x7ED9;&#x8C03;&#x7528;&#x65B9;&#x9879;&#x76EE;&#x3002;&#x670D;&#x52A1;&#x7AEF;&#x5982;&#x4F55;&#x66B4;&#x9732;&#x5462;&#xFF1F;&#x5BA2;&#x6237;&#x7AEF;&#x5982;&#x4F55;&#x5F15;&#x7528;&#x5462;&#xFF1F;
+<strong>&#x63A5;&#x53E3;&#x4FE1;&#x606F;</strong>
+<strong>&#x3001;&#x6A21;&#x578B;&#x4FE1;&#x606F;</strong>
+<strong>&#x3001;&#x5F02;&#x5E38;</strong></p>
+<p><img src="https://images-cdn.shimo.im/nsvICKNyq687hiNs/image.png!thumbnail" alt="&#x56FE;&#x7247;">
+&#x66B4;&#x9732;&#x63A5;&#x53E3;&#x7684;&#x901A;&#x5E38;&#x505A;&#x6CD5;&#x662F; &#x63A5;&#x53E3;&#x4E0E;&#x5B9E;&#x73B0;&#x5206;&#x79BB;&#xFF0C;&#x670D;&#x52A1;&#x7AEF;&#x5C06; &#x63A5;&#x53E3;&#x3001;&#x6A21;&#x578B;&#x3001;&#x5F02;&#x5E38; &#x7B49;&#x7EDF;&#x4E00;&#x653E;&#x7F6E;&#x4E8E;&#x4E00;&#x4E2A;&#x6A21;&#x5757;&#xFF0C;&#x5B9E;&#x73B0;&#x7F6E;&#x4E8E;&#x53E6;&#x4E00;&#x4E2A;&#x6A21;&#x5757;&#x3002;&#x8C03;&#x7528;&#x65B9;&#x901A;&#x8FC7;Maven&#x8FDB;&#x884C;&#x5F15;&#x7528;&#x3002;
+<img src="https://images-cdn.shimo.im/JIxwaSLRiJ4NLuSQ/image.png!thumbnail" alt="&#x56FE;&#x7247;"></p>
+<h3 id="&#x81EA;&#x52A8;&#x5316;&#x6784;&#x5EFA;&#x4E0E;&#x534F;&#x4F5C;"><strong>&#x81EA;&#x52A8;&#x5316;&#x6784;&#x5EFA;&#x4E0E;&#x534F;&#x4F5C;</strong></h3>
+<p>&#x5F53;&#x9879;&#x76EE;&#x8D8A;&#x6765;&#x8D8A;&#x591A;&#xFF0C;&#x670D;&#x52A1;&#x4F9D;&#x61D2;&#x5173;&#x7CFB;&#x8D8A;&#x53D1;&#x590D;&#x6742;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4E3A;&#x4E86;&#x63D0;&#x9AD8;&#x534F;&#x4F5C;&#x6548;&#x7387;&#xFF0C;&#x5FC5;&#x987B;&#x91C7;&#x7528;&#x81EA;&#x52A8;&#x5316;&#x5DE5;&#x5177; &#x5B8C;&#x6210; &#x63A5;&#x53E3;&#x4ECE;&#x7F16;&#x5199;&#x5230;&#x6784;&#x5EFA;&#x6210;JAR&#x5305;&#xFF0C;&#x6700;&#x540E;&#x5230;&#x5F15;&#x7528;&#x7684;&#x6574;&#x4E2A;&#x8FC7;&#x7A0B;&#x3002;</p>
+<p><img src="https://images-cdn.shimo.im/0DHl4ab1PgopzJGV/image.png!thumbnail" alt="&#x56FE;&#x7247;"></p>
+<p>&#x6D41;&#x7A0B;&#x63CF;&#x8FF0;&#xFF1A;</p>
+<ol>
+<li>&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x8005;&#x9879;&#x76EE;&#x53D1;&#x4EBA;&#x5458;&#x7F16;&#x5199;Client &#x63A5;&#x53E3;</li>
+<li>push &#x81F3;&#x8FDC;&#x7A0B;&#x4ED3;&#x5E93;</li>
+<li>jenkins &#x6784;&#x5EFA;&#x6307;&#x5B9A;&#x7248;&#x672C;</li>
+<li>jenkins Deploye &#x81F3;&#x79C1;&#x670D;&#x4ED3;&#x5E93; nexus</li>
+<li>&#x670D;&#x52A1;&#x6D88;&#x8D39;&#x8005;&#x9879;&#x76EE;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x57FA;&#x4E8E;maven &#x4ECE;&#x79C1;&#x670D;&#x52A1;&#x4ED3;&#x5E93;&#x4E0B;&#x8F7D;<h3 id="&#x63A5;&#x53E3;&#x5E73;&#x6ED1;&#x5347;&#x7EA7;&#xFF1A;"><strong>&#x63A5;&#x53E3;&#x5E73;&#x6ED1;&#x5347;&#x7EA7;&#xFF1A;</strong></h3>
+&#x5728;&#x9879;&#x76EE;&#x8FED;&#x4EE3;&#x8FC7;&#x7A0B;&#x5F53;&#x4E2D;&#xFF0C; &#x7ECF;&#x5E38;&#x4F1A;&#x6709;&#x591A;&#x4E2A;&#x9879;&#x76EE;&#x4F9D;&#x61D2;&#x540C;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#xFF0C;&#x5982;&#x4E0B;&#x56FE; &#x9879;&#x76EE;B&#x3001;C&#x90FD;&#x4F9D;&#x61D2;&#x4E86;&#x9879;&#x76EE;A&#x5F53;&#x4E2D;&#x7684;&#x63A5;&#x53E3;1&#xFF0C;&#x6B64;&#x65F6;&#x9879;&#x76EE;B&#x4E1A;&#x52A1;&#x9700;&#x8981;&#xFF0C;&#x9700;&#x8981;&#x63A5;&#x53E3;1&#x591A;&#x589E;&#x52A0;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x5347;&#x7EA7;&#x5B8C;&#x6210;&#x540E;&#x3002;&#x9879;&#x76EE;B&#x80FD;&#x6B63;&#x786E;&#x6784;&#x5EFA;&#x4E0A;&#x7EBF;&#xFF0C;&#x9879;&#x76EE;C&#x5374;&#x4E0D;&#x884C;&#x3002;</li>
+</ol>
+<p><img src="https://images-cdn.shimo.im/dK7PhemwltoIHlkY/image.png!thumbnail" alt="&#x56FE;&#x7247;"></p>
+<p>&#x89E3;&#x51B3;&#x529E;&#x6CD5;&#x4E0E;&#x539F;&#x5219;&#xFF1A;</p>
+<ol>
+<li>&#x63A5;&#x53E3;&#x8981;&#x505A;&#x5230;&#x5411;&#x4E0B;&#x517C;&#x5BB9;&#xFF1A;&#x63A5;&#x53E3;&#x53C2;&#x6570;&#x5C3D;&#x91CF;&#x4EE5;&#x5BF9;&#x8C61;&#x5F62;&#x5F0F;&#x8FDB;&#x884C;&#x5C01;&#x88C5;&#x3002;Model&#x5C5E;&#x6027;&#x53EA;&#x589E;&#x4E0D;&#x5220;&#xFF0C;&#x5982;&#x679C;&#x9700;&#x8981;&#x4F5C;&#x5E9F;&#xFF0C;&#x53EF;&#x4EE5;&#x6DFB;&#x52A0;@Deprecated  &#x6807;&#x8BC6;&#x3002;</li>
+<li>&#x5982;&#x679C;&#x51FA;&#x73B0;&#x4E86;&#x4E0D;&#x53EF;&#x517C;&#x5BB9;&#x7684;&#x53D8;&#x66F4;&#xFF0C;&#x5219;&#x5FC5;&#x987B;&#x901A;&#x77E5;&#x8C03;&#x7528;&#x65B9;&#x6574;&#x6539;&#xFF0C;&#x5E76;&#x5236;&#x5B9A;&#x4E0A;&#x7EBF;&#x8BA1;&#x5212;&#x3002;</li>
+</ol>
+<h3 id="&#x5F00;&#x53D1;&#x8054;&#x8C03;&#xFF1A;"><strong>&#x5F00;&#x53D1;&#x8054;&#x8C03;&#xFF1A;</strong></h3>
+<p>&#x5728;&#x9879;&#x76EE;&#x5F00;&#x53D1;&#x8FC7;&#x7A0B;&#x5F53;&#x4E2D;&#xFF0C;&#x4E00;&#x4E2A;&#x5F00;&#x53D1;&#x6216;&#x6D4B;&#x8BD5;&#x73AF;&#x5883;&#x7684;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#x5F88;&#x6709;&#x53EF;&#x80FD;&#x4F1A;&#x540C;&#x65F6;&#x627F;&#x8F7D;&#x7740;&#x591A;&#x4E2A;&#x670D;&#x52A1;&#xFF0C;&#x5982;&#x679C;&#x4E24;&#x7EC4;&#x670D;&#x52A1;&#x6B63;&#x5728;&#x8054;&#x8C03;&#xFF0C;&#x5982;&#x4F55;&#x4FDD;&#x8BC1;&#x8C03;&#x7528;&#x7684;&#x662F;&#x76EE;&#x6807;&#x670D;&#x52A1;&#x5462;&#xFF1F;</p>
+<p><strong>1&#x3001;&#x57FA;&#x4E8E;&#x4E34;&#x65F6;&#x5206;&#x7EC4;&#x8054;&#x8C03;</strong>
+group &#x5206;&#x7EC4;
+ &#x5728;reference &#x548C;server &#x5F53;&#x4E2D;&#x91C7;&#x7528;&#x76F8;&#x540C;&#x7684;&#x4E34;&#x65F6;&#x7EC4; ,&#x901A;&#x8FC7;group &#x8FDB;&#x884C;&#x8BBE;&#x7F6E;
+<strong>2&#x3001;&#x76F4;&#x8FDE;&#x63D0;&#x4F9B;&#x8005;&#xFF1A;</strong>
+&#x5728;reference &#x4E2D;&#x6307;&#x5B9A;&#x63D0;&#x4F9B;&#x8005;&#x7684;url&#x5373;&#x53EF;&#x505A;&#x5230;&#x76F4;&#x8FDE; </p>
+<pre class="language-"><code class="lang-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">dubbo:</span>reference</span>  <span class="token attr-name">url</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>dubbo://127.0.0.1:20880<span class="token punctuation">&quot;</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>demoService<span class="token punctuation">&quot;</span></span>
+                  <span class="token attr-name">timeout</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>2000<span class="token punctuation">&quot;</span></span>
+                  <span class="token attr-name">interface</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>com.tuling.teach.service.DemoService<span class="token punctuation">&quot;</span></span> <span class="token attr-name">check</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>false<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+</code></pre>
+<p><strong>3&#x3001;&#x53EA;&#x6CE8;&#x518C;&#xFF1A;</strong>
+&#x4E00;&#x4E2A;&#x9879;&#x76EE;&#x6709;&#x53EF;&#x80FD;&#x540C;&#x662F;&#x4E3A;&#x5373;&#x662F;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x8005;&#x53C8;&#x6D88;&#x8D39;&#x8005;&#xFF0C;&#x5728;&#x6D4B;&#x8BD5;&#x65F6;&#x9700;&#x8981;&#x8C03;&#x7528;&#x67D0;&#x4E00;&#x670D;&#x52A1;&#x540C;&#x65F6;&#x53C8;&#x4E0D;&#x5E0C;&#x671B;&#x6B63;&#x5728;&#x5F00;&#x53D1;&#x7684;&#x670D;&#x52A1;&#x5F71;&#x54CD;&#x5230;&#x5176;&#x5B83;&#x8BA2;&#x9605;&#x8005;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#xFF1F;
+&#x901A;&#x8FC7;&#x4FEE;&#x6539; register=false &#x5373;&#x53EF;&#x5B9E;&#x73B0;</p>
+<pre class="language-"><code class="lang-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">dubbo:</span>registry</span> <span class="token attr-name">address</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>multicast://224.5.6.7:1234<span class="token punctuation">&quot;</span></span> <span class="token attr-name">register</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>false<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+</code></pre>
+<h2 id=""> </h2>
+<h2 id="&#x4E8C;&#x3001;dubbo&#x63A7;&#x5236;&#x7BA1;&#x7406;&#x540E;&#x53F0;&#x4F7F;&#x7528;">&#x4E8C;&#x3001;Dubbo&#x63A7;&#x5236;&#x7BA1;&#x7406;&#x540E;&#x53F0;&#x4F7F;&#x7528;</h2>
+<hr>
+<h3 id="dubbo-&#x63A7;&#x5236;&#x540E;&#x53F0;&#x7248;&#x672C;&#x8BF4;&#x660E;&#xFF1A;"><strong>Dubbo &#x63A7;&#x5236;&#x540E;&#x53F0;&#x7248;&#x672C;&#x8BF4;&#x660E;&#xFF1A;</strong></h3>
+<p>dubbo &#x5728;2.6.0 &#x4EE5;&#x524D; &#x4F7F;&#x7528;dubbo-admin &#x4F5C;&#x4E3A;&#x7BA1;&#x7406;&#x540E;&#x53F0;&#xFF0C;2.6 &#x4EE5;&#x540E;&#x5DF2;&#x7ECF;&#x53BB;&#x6389;dubbo-admin &#x5E76;&#x91C7;&#x7528; incubator-dubbo-ops  &#x4F5C;&#x4E3A;&#x65B0;&#x7684;&#x7BA1;&#x7406;&#x540E;&#x53F0;&#xFF0C;&#x76EE;&#x524D;&#x8BE5;&#x540E;&#x53F0;&#x8FD8;&#x5728;&#x5F00;&#x53D1;&#x4E2D;&#x8FD8;&#x6CA1;&#x6709;&#x53D1;&#x5E03;&#x6B63;&#x5F0F;&#x7684;&#x7248;&#x672C;  &#xFF0C;&#x6240;&#x4EE5;&#x672C;&#x8282;&#x8BFE;&#x8FD8;&#x662F;&#x91C7;&#x7528;&#x7684;&#x65E7;&#x7248;&#x7684;dubbo-admin &#x6765;&#x6F14;&#x793A;&#x3002; </p>
+<h3 id="dubbo-&#x63A7;&#x5236;&#x540E;&#x53F0;&#x7684;&#x5B89;&#x88C5;&#xFF1A;"><strong>Dubbo &#x63A7;&#x5236;&#x540E;&#x53F0;&#x7684;&#x5B89;&#x88C5;&#xFF1A;</strong></h3>
+<pre class="language-"><code class="lang-powershell"><span class="token comment">#&#x4ECE;github &#x4E2D;&#x4E0B;&#x8F7D;dubbo &#x9879;&#x76EE;</span>
+git clone https:<span class="token operator">/</span><span class="token operator">/</span>github<span class="token punctuation">.</span>com<span class="token operator">/</span>apache<span class="token operator">/</span>incubator<span class="token operator">-</span>dubbo<span class="token punctuation">.</span>git
+<span class="token comment">#&#x66F4;&#x65B0;&#x9879;&#x76EE;</span>
+git fetch
+<span class="token comment">#&#x4E34;&#x65F6;&#x5207;&#x6362;&#x81F3; dubbo-2.5.8 &#x7248;&#x672C;</span>
+git checkout dubbo<span class="token operator">-</span>2<span class="token punctuation">.</span>5<span class="token punctuation">.</span>8
+<span class="token comment">#&#x8FDB;&#x5165; dubbo-admin &#x76EE;&#x5F55;</span>
+cd dubbo<span class="token operator">-</span>admin
+<span class="token comment">#mvn &#x6784;&#x5EFA;admin war &#x5305;</span>
+mvn clean pakcage <span class="token operator">-</span>DskipTests
+<span class="token comment">#&#x5F97;&#x5230; dubbo-admin-2.5.8.war &#x5373;&#x53EF;&#x76F4;&#x63A5;&#x90E8;&#x7F72;&#x81F3;Tomcat</span>
+<span class="token comment">#&#x4FEE;&#x6539; dubbo.properties &#x914D;&#x7F6E;&#x6587;&#x4EF6;</span>
+dubbo<span class="token punctuation">.</span>registry<span class="token punctuation">.</span>address=zookeeper:<span class="token operator">/</span><span class="token operator">/</span>127<span class="token punctuation">.</span>0<span class="token punctuation">.</span>0<span class="token punctuation">.</span>1:2181
+</code></pre>
+<p>&#x6CE8;&#xFF1A;&#x5982;&#x679C;&#x5B9E;&#x5728;&#x61D2;&#x7684;&#x6784;&#x5EFA; &#x53EF;&#x76F4;&#x63A5;&#x4E0B;&#x8F7D;&#x5DF2;&#x6784;&#x5EFA;&#x597D;&#x7684;&#xFF1A;
+&#x94FE;&#x63A5;&#xFF1A;<a href="https://pan.baidu.com/s/1zJFNPgwNVgZZ-xobAfi5eQ" target="_blank">https://pan.baidu.com/s/1zJFNPgwNVgZZ-xobAfi5eQ</a> &#x63D0;&#x53D6;&#x7801;&#xFF1A;gjtv </p>
+<p><strong>&#x63A7;&#x5236;&#x540E;&#x53F0;&#x57FA;&#x672C;&#x529F;&#x80FD;&#x4ECB;&#x7ECD; &#xFF1A;</strong></p>
+<ul>
+<li>&#x670D;&#x52A1;&#x67E5;&#x627E;&#xFF1A;</li>
+<li>&#x670D;&#x52A1;&#x5173;&#x7CFB;&#x67E5;&#x770B;:</li>
+<li>&#x670D;&#x52A1;&#x6743;&#x91CD;&#x8C03;&#x914D;&#xFF1A;</li>
+<li>&#x670D;&#x52A1;&#x8DEF;&#x7531;&#xFF1A;</li>
+<li>&#x670D;&#x52A1;&#x7981;&#x7528;</li>
+</ul>
+<h2 id="&#x4E09;&#x3001;dubbo&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#x8BE6;&#x89E3;">&#x4E09;&#x3001;Dubbo&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#x8BE6;&#x89E3;</h2>
+<hr>
+<h3 id="&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#x7684;&#x4F5C;&#x7528;">&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#x7684;&#x4F5C;&#x7528;</h3>
+<p>&#x4E3A;&#x4E86;&#x5230;&#x8FBE;&#x670D;&#x52A1;&#x96C6;&#x7FA4;&#x52A8;&#x6001;&#x6269;&#x5BB9;&#x7684;&#x76EE;&#x7684;&#xFF0C;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#x5B58;&#x50A8;&#x4E86;&#x670D;&#x52A1;&#x7684;&#x5730;&#x5740;&#x4FE1;&#x606F;&#x4E0E;&#x53EF;&#x7528;&#x72B6;&#x6001;&#x4FE1;&#x606F;&#xFF0C;&#x5E76;&#x5B9E;&#x65F6;&#x63A8;&#x9001;&#x7ED9;&#x8BA2;&#x9605;&#x4E86;&#x76F8;&#x5173;&#x670D;&#x52A1;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x3002;
+<img src="https://images-cdn.shimo.im/bkW47bqX26U4bGHv/image.png!thumbnail" alt="&#x56FE;&#x7247;"></p>
+<p><strong>&#x4E00;&#x4E2A;&#x5B8C;&#x6574;&#x7684;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#x9700;&#x8981;&#x5B9E;&#x73B0;&#x4EE5;&#x4E0B;&#x529F;&#x80FD;&#xFF1A;</strong></p>
+<ol>
+<li>&#x63A5;&#x6536;&#x670D;&#x52A1;&#x7AEF;&#x7684;&#x6CE8;&#x518C;&#x4E0E;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x5F15;&#x7528;&#xFF0C;&#x5373;&#x5C06;&#x5F15;&#x7528;&#x4E0E;&#x6D88;&#x8D39;&#x5EFA;&#x7ACB;&#x5173;&#x8054;&#xFF0C;&#x5E76;&#x652F;&#x6301;&#x591A;&#x5BF9;&#x591A;&#x3002;</li>
+<li>&#x5F53;&#x670D;&#x52A1;&#x975E;&#x6B63;&#x5E38;&#x5173;&#x95ED;&#x65F6;&#x80FD;&#x5373;&#x65F6;&#x6E05;&#x9664;&#x5176;&#x72B6;&#x6001;</li>
+<li>&#x5F53;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#x91CD;&#x542F;&#x65F6;&#xFF0C;&#x80FD;&#x81EA;&#x52A8;&#x6062;&#x590D;&#x6CE8;&#x518C;&#x6570;&#x636E;&#xFF0C;&#x4EE5;&#x53CA;&#x8BA2;&#x9605;&#x8BF7;&#x6C42;</li>
+<li>&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#x672C;&#x8EAB;&#x7684;&#x96C6;&#x7FA4;</li>
+</ol>
+<h3 id="dubbo&#x6240;&#x652F;&#x6301;&#x7684;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;">Dubbo&#x6240;&#x652F;&#x6301;&#x7684;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;</h3>
+<ol>
+<li><strong>Multicast &#x6CE8;&#x518C;&#x4E2D;&#x5FC3;</strong><ol>
+<li>&#x57FA;&#x4E8E;&#x7EC4;&#x7F51;&#x5E7F;&#x64AD;&#x6280;&#x672F;&#xFF0C;&#x53EA;&#x80FD;&#x7528;&#x5728;&#x5C40;&#x57DF;&#x7F51;&#x5185;&#xFF0C;&#x4E00;&#x822C;&#x7528;&#x4E8E;&#x7B80;&#x5355;&#x7684;&#x6D4B;&#x8BD5;&#x670D;&#x52A1;</li>
+</ol>
+</li>
+<li><strong>Zookeeper &#x6CE8;&#x518C;&#x4E2D;&#x5FC3;(**</strong>&#x63A8;&#x8350;<strong>**)</strong><ol>
+<li><a href="http://zookeeper.apache.org/" target="_blank">Zookeeper</a> &#x662F; Apacahe Hadoop &#x7684;&#x5B50;&#x9879;&#x76EE;&#xFF0C;&#x662F;&#x4E00;&#x4E2A;&#x6811;&#x578B;&#x7684;&#x76EE;&#x5F55;&#x670D;&#x52A1;&#xFF0C;&#x652F;&#x6301;&#x53D8;&#x66F4;&#x63A8;&#x9001;&#xFF0C;&#x9002;&#x5408;&#x4F5C;&#x4E3A; Dubbo &#x670D;&#x52A1;&#x7684;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#xFF0C;&#x5DE5;&#x4E1A;&#x5F3A;&#x5EA6;&#x8F83;&#x9AD8;&#xFF0C;&#x53EF;&#x7528;&#x4E8E;&#x751F;&#x4EA7;&#x73AF;&#x5883;&#xFF0C;&#x5E76;&#x63A8;&#x8350;&#x4F7F;&#x7528;</li>
+</ol>
+</li>
+<li><strong>Redis &#x6CE8;&#x518C;&#x4E2D;&#x5FC3;</strong><ol>
+<li>&#x57FA;&#x4E8E;Redis&#x7684;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;</li>
+</ol>
+</li>
+<li><strong>Simple &#x6CE8;&#x518C;&#x4E2D;&#x5FC3;</strong><ol>
+<li>&#x57FA;&#x4E8E;&#x672C;&#x8EAB;&#x7684;Dubbo&#x670D;&#x52A1;&#x5B9E;&#x73B0;&#xFF08;SimpleRegistryService&#xFF09;&#xFF0C;&#x4E0D;&#x652F;&#x6301;&#x96C6;&#x7FA4;&#x53EF;&#x4F5C;&#x4E3A;&#x81EA;&#x5B9A;&#x4E49;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#x7684;&#x53C2;&#x8003;&#xFF0C;&#x4F46;&#x4E0D;&#x9002;&#x5408;&#x76F4;&#x63A5;&#x7528;&#x4E8E;&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x3002; <h3 id="redis-&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;"><strong>Redis &#x6CE8;&#x518C;&#x4E2D;&#x5FC3;</strong></h3>
+&#x5173;&#x4E8E;Redis&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x4E86;&#x89E3;&#x4E24;&#x70B9;&#xFF0C;</li>
+</ol>
+</li>
+<li>&#x5982;&#x4F55;&#x5B58;&#x50A8;&#x670D;&#x52A1;&#x7684;&#x6CE8;&#x518C;&#x4E0E;&#x8BA2;&#x9605;&#x5173;&#x7CFB;</li>
+<li>&#x662F;&#x5F53;&#x670D;&#x52A1;&#x72B6;&#x6001;&#x6539;&#x53D8;&#x65F6;&#x5982;&#x4F55;&#x5373;&#x65F6;&#x66F4;&#x65B0;</li>
+</ol>
+<p>&#x6F14;&#x793A;&#x4F7F;&#x7528;Redis &#x505A;&#x4E3A;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#x7684;&#x4F7F;&#x7528;&#x3002;</p>
+<ul>
+<li>[ ] &#x542F;&#x52A8;Redis&#x670D;&#x52A1;</li>
+<li>[ ] &#x670D;&#x52A1;&#x7AEF;&#x914D;&#x7F6E;&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;</li>
+<li>[ ] &#x542F;&#x52A8;&#x4E24;&#x4E2A;&#x670D;&#x52A1;&#x7AEF;</li>
+<li>[ ] &#x901A;&#x8FC7;RedisClient &#x5BA2;&#x6237;&#x7AEF;&#x89C2;&#x5BDF;Redis&#x4E2D;&#x7684;&#x6570;&#x636E;</li>
+</ul>
+<p>redis &#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#x914D;&#x7F6E;&#xFF1A;</p>
+<pre class="language-"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">dubbo:</span>registry</span> <span class="token attr-name">protocol</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>redis<span class="token punctuation">&quot;</span></span> <span class="token attr-name">address</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>192.168.0.147:6379<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+</code></pre><p>&#x5F53;&#x6211;&#x4EEC;&#x542F;&#x52A8;&#x4E24;&#x4E2A;&#x670D;&#x52A1;&#x7AEF;&#x540E;&#x53D1;&#x73B0;&#xFF0C;Reids&#x4E2D;&#x589E;&#x52A0;&#x4E86;&#x4E00;&#x4E2A;Hash &#x7C7B;&#x578B;&#x7684;&#x8BB0;&#x5F55;&#xFF0C;&#x5176;key&#x4E3A;/dubbo/tuling.dubbo.server.UserService/providers&#x3002;Value&#x4E2D;&#x5206;&#x522B;&#x5B58;&#x50A8;&#x4E86;&#x4E24;&#x4E2A;&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x8005;&#x7684;URL&#x548C;&#x6709;&#x6548;&#x671F;&#x3002;
+<img src="https://images-cdn.shimo.im/68VyXno7jC83jiow/image.png!thumbnail" alt="&#x56FE;&#x7247;"></p>
+<p><strong>&#x540C;&#x6837;&#x6D88;&#x8D39;&#x8005;&#x4E5F;&#x662F;&#x7C7B;&#x4F3C;&#x5176;&#x6574;&#x4F53;&#x7ED3;&#x6784;&#x5982;&#x4E0B;&#xFF1A;</strong></p>
+<pre class="language-"><code class="lang-xml">//&#x670D;&#x52A1;&#x63D0;&#x4F9B;&#x8005;&#x6CE8;&#x518C;&#x4FE1;&#x606F; 
+/dubbbo/com.tuling.teach.service.DemoService/providers
+  dubbo://192.168.246.1:20880/XXX.DemoService=1542619052964 
+  dubbo://192.168.246.2:20880/XXX.DemoService=1542619052964 
+//&#x670D;&#x52A1;&#x6D88;&#x8D39;&#x8BA2;&#x9605;&#x4FE1;&#x606F;
+/dubbbo/com.tuling.teach.service.DemoService/consumers
+  dubbo://192.168.246.1:20880/XXX.DemoService=1542619788641
+</code></pre>
+<ul>
+<li>&#x4E3B; Key &#x4E3A;&#x670D;&#x52A1;&#x540D;&#x548C;&#x7C7B;&#x578B;</li>
+<li>Map &#x4E2D;&#x7684; Key &#x4E3A; URL &#x5730;&#x5740;</li>
+<li>Map &#x4E2D;&#x7684; Value &#x4E3A;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#xFF0C;&#x7528;&#x4E8E;&#x5224;&#x65AD;&#x810F;&#x6570;&#x636E;&#xFF0C;&#x810F;&#x6570;&#x636E;&#x7531;&#x76D1;&#x63A7;&#x4E2D;&#x5FC3;&#x5220;&#x9664;</li>
+</ul>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x56DE;&#x7B54;&#x7B2C;&#x4E8C;&#x4E2A;&#x95EE;&#x9898; <strong>&#x5F53;&#x63D0;&#x4F9B;&#x8005;&#x7A81;&#x7136; &#x5B95;&#x673A;&#x72B6;&#x6001;&#x80FD;&#x5373;&#x91CC;&#x53D8;&#x66F4;&#x5417;</strong>&#xFF1F;
+&#x8FD9;&#x91CC;Dubbo&#x91C7;&#x7528;&#x7684;&#x662F;&#x5B9A;&#x65F6;&#x5FC3;&#x8DF3;&#x7684;&#x673A;&#x5236; &#x6765;&#x7EF4;&#x62A4;&#x670D;&#x52A1;URL&#x7684;&#x6709;&#x6548;&#x671F;&#xFF0C;&#x9ED8;&#x8BA4;&#x6BCF;30&#x79D2;&#x66F4;&#x65B0;&#x4E00;&#x6B21;&#x6709;&#x6548;&#x671F;&#x3002;&#x5373;URL&#x5BF9;&#x5E94;&#x7684;&#x6BEB;&#x79D2;&#x503C;&#x3002;&#x5177;&#x4F53;&#x4EE3;&#x7801;&#x53C2;&#x89C1;&#xFF1A;com.alibaba.dubbo.registry.redis.RedisRegistry#expireExecutor</p>
+<p><img src="https://images-cdn.shimo.im/DtcacPmmUFU66d0P/image.png!thumbnail" alt="&#x56FE;&#x7247;"></p>
+<p>com.alibaba.dubbo.registry.redis.RedisRegistry#deferExpired
+com.alibaba.dubbo.registry.integration.RegistryDirectory
+com.alibaba.dubbo.registry.support.ProviderConsumerRegTable</p>
+<h3 id="zookeeper-&#x6CE8;&#x518C;&#x4E2D;&#x5FC3;"><strong>Zookeeper &#x6CE8;&#x518C;&#x4E2D;&#x5FC3;</strong></h3>
+<p>&#x5173;&#x4E8E;Zookeeper &#x6CE8;&#x518C;&#x4E2D;&#x5FC3;&#x540C;&#x6837;&#x9700;&#x8981;&#x4E86;&#x89E3;&#x5176;&#x5B58;&#x50A8;&#x7ED3;&#x6784;&#x548C;&#x66F4;&#x65B0;&#x673A;&#x5236;&#x3002;
+Zookeper&#x662F;&#x4E00;&#x4E2A;&#x6811;&#x578B;&#x7684;&#x76EE;&#x5F55;&#x670D;&#x52A1;&#xFF0C;&#x672C;&#x8EAB;&#x652F;&#x6301;&#x53D8;&#x66F4;&#x63A8;&#x9001;&#x76F8;&#x6BD4;redis&#x7684;&#x5B9E;&#x73B0;Publish/Subscribe&#x529F;&#x80FD;&#x66F4;&#x7A33;&#x5B9A;&#x3002;
+&#x7ED3;&#x6784;&#xFF1A;
+<img src="http://dubbo.apache.org/docs/zh-cn/user/sources/images/zookeeper.jpg" alt="&#x56FE;&#x7247;"></p>
+<p><strong>&#x5931;&#x8D25;&#x91CD;&#x8FDE;</strong>
+com.alibaba.dubbo.registry.support.FailbackRegistry</p>
+<p><strong>&#x63D0;&#x4F9B;&#x8005;&#x7A81;&#x7136;&#x65AD;&#x5F00;&#xFF1A;</strong>
+&#x57FA;&#x4E8E;Zookeeper &#x4E34;&#x65F6;&#x8282;&#x70B9;&#x673A;&#x5236;&#x5B9E;&#x73B0;&#xFF0C;&#x5728;&#x5BA2;&#x6237;&#x7AEF;&#x4F1A;&#x8BDD;&#x8D85;&#x65F6;&#x540E; Zookeeper&#x4F1A;&#x81EA;&#x52A8;&#x5220;&#x9664;&#x6240;&#x6709;&#x4E34;&#x65F6;&#x8282;&#x70B9;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;40&#x79D2;&#x3002; 
+// &#x521B;&#x5EFA;&#x4E34;&#x65F6;&#x8282;&#x70B9;</p>
+<pre class="language-"><code class="lang-java"><span class="token class-name"><span class="token namespace">com<span class="token punctuation">.</span>alibaba<span class="token punctuation">.</span>dubbo<span class="token punctuation">.</span>remoting<span class="token punctuation">.</span>zookeeper<span class="token punctuation">.</span>curator<span class="token punctuation">.</span></span>CuratorZookeeperClient</span>#createEphemeral
+</code></pre>
+<p>&#x63D0;&#x95EE;&#xFF1A;
+&#x5728;zookeeper &#x65AD;&#x5F00;&#x7684;40&#x79D2;&#x5185; &#x5982;&#x679C; &#x6709;&#x5BA2;&#x6237;&#x7AEF;&#x52A0;&#x5165; &#x4F1A;&#x8C03;&#x7528; &#x5DF2;&#x5931;&#x6548;&#x7684;&#x63D0;&#x4F9B;&#x8005;&#x8FDE;&#x63A5;&#x5417;&#xFF1F;
+&#x7B54;&#xFF1A;&#x4E0D;&#x4F1A;&#xFF0C;&#x63D0;&#x4F9B;&#x8005;&#x5B95;&#x673A;&#x540E; &#xFF0C;&#x5176;&#x4E0E;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x94FE;&#x63A5;&#x4E5F;&#x968F;&#x5373;&#x65AD;&#x5F00;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x5728;&#x8C03;&#x7528;&#x524D;&#x4F1A;&#x68C0;&#x6D4B;&#x957F;&#x8FDE;&#x63A5;&#x72B6;&#x6001;&#x3002;</p>
+<pre class="language-"><code class="lang-java"><span class="token comment">// &#x68C0;&#x6D4B;&#x8FDE;&#x63A5;&#x662F;&#x5426;&#x6709;&#x6548;</span>
+<span class="token class-name"><span class="token namespace">com<span class="token punctuation">.</span>alibaba<span class="token punctuation">.</span>dubbo<span class="token punctuation">.</span>rpc<span class="token punctuation">.</span>protocol<span class="token punctuation">.</span>dubbo<span class="token punctuation">.</span></span>DubboInvoker</span>#isAvailable
+</code></pre>
+<p>&#x521B;&#x5EFA; configurators&#x4E0E;routers  &#x4F1A;&#x521B;&#x5EFA;&#x6301;&#x4E45;&#x8282;&#x70B9;
+// &#x521B;&#x5EFA;&#x6301;&#x4E45;&#x8282;&#x70B9;</p>
+<pre class="language-"><code class="lang-java"><span class="token class-name"><span class="token namespace">com<span class="token punctuation">.</span>alibaba<span class="token punctuation">.</span>dubbo<span class="token punctuation">.</span>remoting<span class="token punctuation">.</span>zookeeper<span class="token punctuation">.</span>curator<span class="token punctuation">.</span></span>CuratorZookeeperClient</span>#createPersistent
+</code></pre>
+<p><strong>&#x670D;&#x52A1;&#x8BA2;&#x9605;&#x673A;&#x5236;&#x5B9E;&#x73B0;&#xFF1A;</strong></p>
+<pre class="language-"><code class="lang-java"><span class="token comment">// &#x6CE8;&#x518C;&#x76EE;&#x5F55;</span>
+<span class="token class-name"><span class="token namespace">com<span class="token punctuation">.</span>alibaba<span class="token punctuation">.</span>dubbo<span class="token punctuation">.</span>registry<span class="token punctuation">.</span>integration<span class="token punctuation">.</span></span>RegistryDirectory</span>
+</code></pre>
+<p>&#x6E90;&#x7801;&#x89E3;&#x6790;&#xFF1A;
+<img src="https://uploader.shimo.im/f/Os5phYmAnloi2v1O.png!thumbnail" alt="&#x56FE;&#x7247;">
+com.alibaba.dubbo.registry.integration.RegistryDirectory</p>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9; ohter.com 2021 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x8BE5;&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
+2021-04-17 08:39:17
+</span></footer>
+<script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="dubbo-base-use.html" class="navigation navigation-prev " aria-label="Previous page: 2.快速掌握Dubbo常规应用">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="dubbo-module-detail.html" class="navigation navigation-next " aria-label="Next page: 2.Dubb调用模块详解">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"3.Dubbo企业级应用进阶","level":"1.5.3.3","depth":3,"next":{"title":"2.Dubb调用模块详解","level":"1.5.3.4","depth":3,"path":"distributed/dubbo/dubbo-module-detail.md","ref":"distributed/dubbo/dubbo-module-detail.md","articles":[]},"previous":{"title":"2.快速掌握Dubbo常规应用","level":"1.5.3.2","depth":3,"path":"distributed/dubbo/dubbo-base-use.md","ref":"distributed/dubbo/dubbo-base-use.md","articles":[]},"dir":"ltr"},"config":{"plugins":["chapter-fold","theme-comscore","back-to-top-button","code","tbfed-pagefooter","page-treeview","pageview-count","popup","prism","-highlight","hide-element","-lunr","-search","search-pro","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy ohter.com 2021","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"page-treeview":{"collapsed":false,"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"livereload":{},"search-pro":{},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"back-to-top-button":{},"pageview-count":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"liufeihua","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"日常笔记","language":"zh-hans","gitbook":"*","description":"日常笔记"},"file":{"path":"distributed/dubbo/dubbo-high-use.md","mtime":"2021-04-17T00:39:17.581Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-17T01:45:01.866Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-hide-element/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
+        
+    
+
+    </body>
+</html>
+
