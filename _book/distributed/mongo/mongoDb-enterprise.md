@@ -1,4 +1,5 @@
 **概要：**
+
 1. mongoDB的聚合操作
 2. mongodb 集群：复制
 3. mongodb 集群：分片
@@ -19,7 +20,7 @@ pipeline相关运算符：
   * $group：统计聚合数据
 
 示例：
-```
+```sql
 # $match 与 $project使用
 db.emp.aggregate(
 {$match:{"dep":{$eq:"客服部"}}},
@@ -49,7 +50,7 @@ db.emp.aggregate(
 ```
 
 二次过滤
-```
+```sql
 db.emp.aggregate(
  {$project:{dep:1,job:1,salary:1}},
  {$group:{"_id":{"dep":"$dep","job":"$job"},total:{$sum:"$salary"}}}，
@@ -72,7 +73,7 @@ mongodb中mapRedurce的使用流程
 4. 查询新的结果集
 
 示例操作
-```
+```sql
 // 创建map 对象 
 var map1=function (){
 	emit(this.job,1);
@@ -88,7 +89,7 @@ db.result.find()
 ```
 
 
-```
+```sql
 # 使用复合对象作为key
  var map2=function (){
 	emit({"job":this.job,"dep":this.dep},1);
@@ -106,7 +107,7 @@ mapRedurce的原理
 ### 3.在聚合中使用索引
 通过$Math内 可以包合对$text 的运算
 示例：
-```
+```sql
 db.project.aggregate(
 			{$match:{$text:{$search:"apache"}}},
 			{$project:{"name":1,"price":1}},
@@ -120,26 +121,27 @@ db.project.aggregate(
 
 示例：
 de 创建单键索引
-```
+
+```sql
 db.emp.createIndex({"dep":1})
 ```
 
 查看基于索引的执行计划
-```
+```sql
 db.emp.find({"dep":"客服部"}).explain()
 ```
 
 除了单键索引外还可以创建联合索引如下：
-```
+```sql
 db.emp.createIndex({"dep":1,"job":-1})
 ```
 查看 复合索引的执行计划
-```
+```sql
 db.emp.find({"dep":"ddd"}).explain()
 ```
 
 查看索引在排序当中的使用
-```
+```sql
 db.emp.find().sort({"job":-1,"dep":1}).explain()
 ```
 
@@ -156,7 +158,7 @@ db.emp.find().sort({"job":-1,"dep":1}).explain()
 
 ### 2.复制集群搭建基础示例
 主节点配置
-```
+```properties
 dbpath=/data/mongo/master
 port=27017
 fork=true
@@ -165,7 +167,7 @@ replSet=tulingCluster
 ```
 
 从节点配置
-```
+```properties
 dbpath=/data/mongo/slave
 port=27018
 fork=true
@@ -174,7 +176,7 @@ replSet=tulingCluster
 ```
 
 #子节点配置2
-```
+```properties
 dbpath=/data/mongo/slave2
 port=27019
 fork=true
@@ -186,13 +188,13 @@ replSet=tulingCluster
 - [ ] 进入其中一个节点
 
 集群复制配置管理
-```
+```sql
 #查看复制集群的帮助方法
 rs.help()
 ```
 
 添加配置
-```
+```properties
 // 声明配置变量
 var cfg ={"_id":"tulingCluster",
 			"members":[
@@ -207,7 +209,7 @@ rs.status()
 ```
 
 变更节点示例：
-```
+```sql
 // 插入新的复制节点
 rs.add("127.0.0.1:27019")
 // 删除slave 节点
@@ -232,7 +234,7 @@ rs.remove("127.0.0.1:27019")
   在mongodb 中通过在 集群配置中的 rs.属性值大小来决定选举谁做为主节点，通时也可以设置arbiterOnly 为true 表示 做为裁判节点用于执行选举操作，该配置下的节点 永远不会被选举为主节点和从节点。
 
 示例：
-```
+```properties
 重新配置节点
 var cfg ={"_id":"tulingCluster",
 		  "protocolVersion" : 1,
@@ -270,7 +272,7 @@ rs.status()
 
 ### 1.mongodb 中的分片架构
  ![图片](https://uploader.shimo.im/f/B1mEW0GFMYwPAS47.png!thumbnail)
- 
+
 **分片中的节点说明：**
 * 路由节点(mongos)：用于分发用户的请求，起到反向代理的作用。
 * 配置节点(config)：用于存储分片的元数据信息，路由节基于元数据信息 决定把请求发给哪个分片。（3.4版本之后，该节点，必须使用复制集。）
@@ -295,7 +297,7 @@ rs.status()
 
 **配置 并启动config 节点集群**
 # 节点1 config1-37017.conf
-```
+```properties
 dbpath=/data/mongo/config1
 port=37017
 fork=true
@@ -305,7 +307,7 @@ configsvr=true
 ```
 
 # 节点2 config2-37018.conf
-```
+```properties
 dbpath=/data/mongo/config2
 port=37018
 fork=true
@@ -315,7 +317,7 @@ configsvr=true
 ```
 
 进入shell 并添加 config 集群配置：
-```
+```properties
 var cfg ={"_id":"configCluster",
 		  "protocolVersion" : 1,
 		  "members":[
@@ -330,7 +332,7 @@ rs.initiate(cfg)
 
 
 # 配置 shard 节点集群==============
-```
+```properties
 # 节点1 shard1-47017.conf
 dbpath=/data/mongo/shard1
 port=47017
@@ -348,7 +350,7 @@ shardsvr=true
 
 配置 路由节点 mongos ==============
 # 节点 route-27017.conf
-```
+```properties
 port=27017
 bind_ip=0.0.0.0
 fork=true
@@ -357,30 +359,30 @@ configdb=configCluster/127.0.0.1:37017,127.0.0.1:37018
 ```
 
 // 添加分片节点
-```
+```sql
 sh.status()
 sh.addShard("127.0.0.1:47017");
 sh.addShard("127.0.0.1:47018");
 ```
 
 为数据库开启分片功能
-```
+```sql
 sh.enableSharding("tuling")
 ```
  为指定集合开启分片功能
-```
+```sql
  sh.shardCollection("tuling.emp",{"_id":1})
 ```
 
 修改分片大小
-```
+```sql
  use config
  db.settings.find()
 db.settings.save({_id:"chunksize",value:1})
 ```
 
  尝试插入1万条数据：
-```
+```sql
  for(var i=1;i<=100000;i++){
 			     db.emp.insert({"_id":i,"name":"copy"+i});
 }
@@ -392,7 +394,7 @@ db.settings.save({_id:"chunksize",value:1})
 ## 四、用户管理与数据集验证
 
 // 创建管理员用户
-```
+```sql
 use admin;
 db.createUser({"user":"admin","pwd":"123456","roles":["root"]})
 #验证用户信息
@@ -405,7 +407,7 @@ db.changeUserPassword("admin","123456")
 
  以auth 方式启动mongod，需要添加auth=true 参数 ，mongdb 的权限体系才会起作用：
 
-```
+```sql
 #以auth 方向启动mongod （也可以在mongo.conf 中添加auth=true 参数）
 ./bin/mongod -f conf/mongo.conf --auth
 # 验证用户
@@ -414,12 +416,12 @@ db.auth("admin","123456")
 ```
 
  创建只读用户
-```
+```sql
 db.createUser({"user":"dev","pwd":"123456","roles":["read"]})
 ```
 
 重新登陆 验证用户权限
-```
+```sql
 use luban  ;
 db.auth("dev","123456")
 ```
