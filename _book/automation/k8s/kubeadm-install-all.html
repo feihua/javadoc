@@ -1,0 +1,2266 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>2搭建高可用的K8s集群 · 日常笔记</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="liufeihua">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-page-treeview/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-pageview-count/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism-okaidia.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-theme-comscore/test.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="kubeadm-install-one.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../源码框架专题/">
+            
+                <a href="../../源码框架专题/">
+            
+                    
+                    一、源码框架专题
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../../源码框架专题/spring/">
+            
+                <a href="../../源码框架专题/spring/">
+            
+                    
+                    spring
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.1" data-path="../../源码框架专题/spring/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.2" data-path="../../源码框架专题/spring/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.1.3" data-path="../../源码框架专题/spring/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../../源码框架专题/mybatis/">
+            
+                <a href="../../源码框架专题/mybatis/">
+            
+                    
+                    mybatis
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.2.1" data-path="../../源码框架专题/mybatis/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.2" data-path="../../源码框架专题/mybatis/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.3" data-path="../../源码框架专题/mybatis/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../并发编程专题/">
+            
+                <a href="../../并发编程专题/">
+            
+                    
+                    二、并发编程专题
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../../并发编程专题/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../../并发编程专题/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../../并发编程专题/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../../performance/">
+            
+                <a href="../../performance/">
+            
+                    
+                    三、性能调优专题
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../../performance/mysql/">
+            
+                <a href="../../performance/mysql/">
+            
+                    
+                    mysql
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1.1" data-path="../../performance/mysql/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.2" data-path="../../performance/mysql/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.1.3" data-path="../../performance/mysql/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../../performance/nginx/">
+            
+                <a href="../../performance/nginx/">
+            
+                    
+                    nginx
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.2.1" data-path="../../performance/nginx/Nginx-config.html">
+            
+                <a href="../../performance/nginx/Nginx-config.html">
+            
+                    
+                    1.Nginx核心模块与配置实践
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.2" data-path="../../performance/nginx/Nginx-In-actual-combat.html">
+            
+                <a href="../../performance/nginx/Nginx-In-actual-combat.html">
+            
+                    
+                    2.Nginx 性能优化实践
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../../performance/tomcat/">
+            
+                <a href="../../performance/tomcat/">
+            
+                    
+                    tomcat
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.3.1" data-path="../../performance/tomcat/Tomcat-pro-use.html">
+            
+                <a href="../../performance/tomcat/Tomcat-pro-use.html">
+            
+                    
+                    1.Tomcat生产环境应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../../distributed/">
+            
+                <a href="../../distributed/">
+            
+                    
+                    四、分布式框架专题
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../../distributed/zookeeper/">
+            
+                <a href="../../distributed/zookeeper/">
+            
+                    
+                    zookeeper
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1.1" data-path="../../distributed/zookeeper/zookeeper-base-use.html">
+            
+                <a href="../../distributed/zookeeper/zookeeper-base-use.html">
+            
+                    
+                    1.特性与节点说明
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.2" data-path="../../distributed/zookeeper/zookeeper-client-use.html">
+            
+                <a href="../../distributed/zookeeper/zookeeper-client-use.html">
+            
+                    
+                    2.客户端使用与集群特性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.3" data-path="../../distributed/zookeeper/zookeeper-sence-use.html">
+            
+                <a href="../../distributed/zookeeper/zookeeper-sence-use.html">
+            
+                    
+                    3.典型使用场景实践
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.4" data-path="../../distributed/zookeeper/zookeeper-zab.html">
+            
+                <a href="../../distributed/zookeeper/zookeeper-zab.html">
+            
+                    
+                    4.ZAB协议实现源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../../distributed/netty/">
+            
+                <a href="../../distributed/netty/">
+            
+                    
+                    netty
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.2.1" data-path="../../distributed/netty/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.2" data-path="../../distributed/netty/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.3" data-path="../../distributed/netty/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../../distributed/dubbo/">
+            
+                <a href="../../distributed/dubbo/">
+            
+                    
+                    dubbo
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.3.1" data-path="../../distributed/dubbo/dubbo-introduce.html">
+            
+                <a href="../../distributed/dubbo/dubbo-introduce.html">
+            
+                    
+                    1.从0到1整体认知分布式系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3.2" data-path="../../distributed/dubbo/dubbo-base-use.html">
+            
+                <a href="../../distributed/dubbo/dubbo-base-use.html">
+            
+                    
+                    2.快速掌握Dubbo常规应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3.3" data-path="../../distributed/dubbo/dubbo-high-use.html">
+            
+                <a href="../../distributed/dubbo/dubbo-high-use.html">
+            
+                    
+                    3.Dubbo企业级应用进阶
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3.4" data-path="../../distributed/dubbo/dubbo-module-detail.html">
+            
+                <a href="../../distributed/dubbo/dubbo-module-detail.html">
+            
+                    
+                    2.Dubb调用模块详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3.5" data-path="../../distributed/dubbo/dubbo-proto-detail.html">
+            
+                <a href="../../distributed/dubbo/dubbo-proto-detail.html">
+            
+                    
+                    3.Dubbo协议模块源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../../distributed/rocketmq/">
+            
+                <a href="../../distributed/rocketmq/">
+            
+                    
+                    rocketmq
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.4.1" data-path="../../distributed/rocketmq/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4.2" data-path="../../distributed/rocketmq/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4.3" data-path="../../distributed/rocketmq/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../../distributed/rabbitmq/">
+            
+                <a href="../../distributed/rabbitmq/">
+            
+                    
+                    rabbitmq
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.5.1" data-path="../../distributed/rabbitmq/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5.2" data-path="../../distributed/rabbitmq/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5.3" data-path="../../distributed/rabbitmq/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../../distributed/kafka/">
+            
+                <a href="../../distributed/kafka/">
+            
+                    
+                    kafka
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.6.1" data-path="../../distributed/kafka/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6.2" data-path="../../distributed/kafka/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6.3" data-path="../../distributed/kafka/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="../../distributed/mysql/">
+            
+                <a href="../../distributed/mysql/">
+            
+                    
+                    mysql
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.7.1" data-path="../../distributed/mysql/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.2" data-path="../../distributed/mysql/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7.3" data-path="../../distributed/mysql/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="../../distributed/mongo/">
+            
+                <a href="../../distributed/mongo/">
+            
+                    
+                    mongo
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.8.1" data-path="../../distributed/mongo/mongoDb-data.html">
+            
+                <a href="../../distributed/mongo/mongoDb-data.html">
+            
+                    
+                    1.准备数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8.2" data-path="../../distributed/mongo/mongoDb-quick-start.html">
+            
+                <a href="../../distributed/mongo/mongoDb-quick-start.html">
+            
+                    
+                    2.快速上手
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8.3" data-path="../../distributed/mongo/mongoDb-enterprise.html">
+            
+                <a href="../../distributed/mongo/mongoDb-enterprise.html">
+            
+                    
+                    3.企业应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="../../distributed/redis/">
+            
+                <a href="../../distributed/redis/">
+            
+                    
+                    redis
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.9.1" data-path="../../distributed/redis/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9.2" data-path="../../distributed/redis/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9.3" data-path="../../distributed/redis/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="../../distributed/shardingsphere/">
+            
+                <a href="../../distributed/shardingsphere/">
+            
+                    
+                    shardingsphere
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.10.1" data-path="../../distributed/shardingsphere/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10.2" data-path="../../distributed/shardingsphere/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10.3" data-path="../../distributed/shardingsphere/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.11" data-path="../../distributed/elk/">
+            
+                <a href="../../distributed/elk/">
+            
+                    
+                    elk
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.11.1" data-path="../../distributed/elk/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.11.2" data-path="../../distributed/elk/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.11.3" data-path="../../distributed/elk/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../../微服务专题/">
+            
+                <a href="../../微服务专题/">
+            
+                    
+                    五、微服务框架专题
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../../微服务专题/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../../微服务专题/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../../微服务专题/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../../微服务专题/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../../微服务专题/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../../微服务专题/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../../微服务专题/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../../微服务专题/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="../../微服务专题/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10" data-path="../../微服务专题/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.11" data-path="../../微服务专题/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.12" data-path="../../微服务专题/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../../项目实战专题/">
+            
+                <a href="../../项目实战专题/">
+            
+                    
+                    六、项目实战专题
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../../项目实战专题/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../../项目实战专题/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../../项目实战专题/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../../项目实战专题/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../../项目实战专题/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../../项目实战专题/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" data-path="../../项目实战专题/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8" data-path="../../项目实战专题/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9" data-path="../../项目实战专题/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.10" data-path="../../项目实战专题/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.11" data-path="../../项目实战专题/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.12" data-path="../../项目实战专题/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    七、自动化运维专题
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../git/">
+            
+                <a href="../git/">
+            
+                    
+                    git
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1.1" data-path="../git/git-base-use.html">
+            
+                <a href="../git/git-base-use.html">
+            
+                    
+                    1.Git基本概念与核心命令掌握
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../maven/">
+            
+                <a href="../maven/">
+            
+                    
+                    maven
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.2.1" data-path="../maven/maven-base-use.html">
+            
+                <a href="../maven/maven-base-use.html">
+            
+                    
+                    1.Maven基本概念与核心配置 
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../jenkins/">
+            
+                <a href="../jenkins/">
+            
+                    
+                    jenkins
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.3.1" data-path="../jenkins/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3.2" data-path="../jenkins/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3.3" data-path="../jenkins/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    k8s
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.4.1" data-path="kubeadm-install-one.html">
+            
+                <a href="kubeadm-install-one.html">
+            
+                    
+                    1.快速部署一个K8s集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.8.4.2" data-path="kubeadm-install-all.html">
+            
+                <a href="kubeadm-install-all.html">
+            
+                    
+                    2搭建高可用的K8s集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >2搭建高可用的K8s集群</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div class="treeview__container"><div class="treeview__container-title"><span class="treeview__main-title">Treeview</span><span class="treeview__copyright">Copyright &#xA9; aleen42 all right reserved, powered by <a href="https://github.com/aleen42" target="_blank">aleen42</a></span></div><ul>
+<li><div><a href="#1-&#x5B89;&#x88C5;&#x8981;&#x6C42;">1. &#x5B89;&#x88C5;&#x8981;&#x6C42;</a><i></i></div></li>
+<li><div><a href="#2-&#x51C6;&#x5907;&#x73AF;&#x5883;">2. &#x51C6;&#x5907;&#x73AF;&#x5883;</a><i></i></div></li>
+<li><div><a href="#3-&#x6240;&#x6709;-master-&#x8282;&#x70B9;&#x90E8;&#x7F72;-keepalived">3. &#x6240;&#x6709; master &#x8282;&#x70B9;&#x90E8;&#x7F72; keepalived</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#31-&#x5B89;&#x88C5;&#x76F8;&#x5173;&#x5305;&#x548C;-keepalived">3.1 &#x5B89;&#x88C5;&#x76F8;&#x5173;&#x5305;&#x548C; keepalived</a><i></i></div></li>
+<li><div><a href="#32-&#x914D;&#x7F6E;-master-&#x8282;&#x70B9;">3.2 &#x914D;&#x7F6E; master &#x8282;&#x70B9;</a><i></i></div></li>
+<li><div><a href="#33-&#x542F;&#x52A8;&#x548C;&#x68C0;&#x67E5;">3.3 &#x542F;&#x52A8;&#x548C;&#x68C0;&#x67E5;</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#4-&#x90E8;&#x7F72;-haproxy">4. &#x90E8;&#x7F72; haproxy</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#41-&#x5B89;&#x88C5;">4.1 &#x5B89;&#x88C5;</a><i></i></div></li>
+<li><div><a href="#42-&#x914D;&#x7F6E;">4.2 &#x914D;&#x7F6E;</a><i></i></div></li>
+<li><div><a href="#43-&#x542F;&#x52A8;&#x548C;&#x68C0;&#x67E5;">4.3 &#x542F;&#x52A8;&#x548C;&#x68C0;&#x67E5;</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#5-&#x6240;&#x6709;&#x8282;&#x70B9;&#x5B89;&#x88C5;-dockerkubeadmkubelet">5. &#x6240;&#x6709;&#x8282;&#x70B9;&#x5B89;&#x88C5; Docker/kubeadm/kubelet</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#51-&#x5B89;&#x88C5;-docker">5.1 &#x5B89;&#x88C5; Docker</a><i></i></div></li>
+<li><div><a href="#52-&#x6DFB;&#x52A0;&#x963F;&#x91CC;&#x4E91;-yum-&#x8F6F;&#x4EF6;&#x6E90;">5.2 &#x6DFB;&#x52A0;&#x963F;&#x91CC;&#x4E91; YUM &#x8F6F;&#x4EF6;&#x6E90;</a><i></i></div></li>
+<li><div><a href="#53-&#x5B89;&#x88C5;-kubeadm&#xFF0C;kubelet-&#x548C;-kubectl">5.3 &#x5B89;&#x88C5; kubeadm&#xFF0C;kubelet &#x548C; kubectl</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#6-&#x90E8;&#x7F72;-kubernetes-master">6. &#x90E8;&#x7F72; Kubernetes Master</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#61-&#x521B;&#x5EFA;-kubeadm-&#x914D;&#x7F6E;&#x6587;&#x4EF6;">6.1 &#x521B;&#x5EFA; kubeadm &#x914D;&#x7F6E;&#x6587;&#x4EF6;</a><i></i></div></li>
+<li><div><a href="#62-&#x5728;-master1-&#x8282;&#x70B9;&#x6267;&#x884C;">6.2 &#x5728; master1 &#x8282;&#x70B9;&#x6267;&#x884C;</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#7&#x5B89;&#x88C5;&#x96C6;&#x7FA4;&#x7F51;&#x7EDC;">7.&#x5B89;&#x88C5;&#x96C6;&#x7FA4;&#x7F51;&#x7EDC;</a><i></i></div></li>
+<li><div><a href="#8&#x3001;master2-&#x8282;&#x70B9;&#x52A0;&#x5165;&#x96C6;&#x7FA4;">8&#x3001;master2 &#x8282;&#x70B9;&#x52A0;&#x5165;&#x96C6;&#x7FA4;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#81-&#x590D;&#x5236;&#x5BC6;&#x94A5;&#x53CA;&#x76F8;&#x5173;&#x6587;&#x4EF6;">8.1 &#x590D;&#x5236;&#x5BC6;&#x94A5;&#x53CA;&#x76F8;&#x5173;&#x6587;&#x4EF6;</a><i></i></div></li>
+<li><div><a href="#82-master2-&#x52A0;&#x5165;&#x96C6;&#x7FA4;">8.2 master2 &#x52A0;&#x5165;&#x96C6;&#x7FA4;</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#5-&#x52A0;&#x5165;-kubernetes-node">5. &#x52A0;&#x5165; Kubernetes Node</a><i></i></div></li>
+<li><div><a href="#7-&#x6D4B;&#x8BD5;-kubernetes-&#x96C6;&#x7FA4;">7. &#x6D4B;&#x8BD5; kubernetes &#x96C6;&#x7FA4;</a><i></i></div></li>
+</ul>
+</div>
+
+<p>kubeadm &#x662F;&#x5B98;&#x65B9;&#x793E;&#x533A;&#x63A8;&#x51FA;&#x7684;&#x4E00;&#x4E2A;&#x7528;&#x4E8E;&#x5FEB;&#x901F;&#x90E8;&#x7F72; kubernetes &#x96C6;&#x7FA4;&#x7684;&#x5DE5;&#x5177;&#x3002;</p>
+<p>&#x8FD9;&#x4E2A;&#x5DE5;&#x5177;&#x80FD;&#x901A;&#x8FC7;&#x4E24;&#x6761;&#x6307;&#x4EE4;&#x5B8C;&#x6210;&#x4E00;&#x4E2A; kubernetes &#x96C6;&#x7FA4;&#x7684;&#x90E8;&#x7F72;&#xFF1A;</p>
+<pre class="language-"><code class="lang-shell"><span class="token comment"># &#x521B;&#x5EFA;&#x4E00;&#x4E2A; Master &#x8282;&#x70B9;</span>
+$ kubeadm init
+<span class="token comment"># &#x5C06;&#x4E00;&#x4E2A; Node &#x8282;&#x70B9;&#x52A0;&#x5165;&#x5230;&#x5F53;&#x524D;&#x96C6;&#x7FA4;&#x4E2D;</span>
+$ kubeadm <span class="token function">join</span> <span class="token operator">&lt;</span>Master &#x8282;&#x70B9;&#x7684; IP &#x548C;&#x7AEF;&#x53E3; <span class="token operator">&gt;</span>
+</code></pre>
+<h2 id="1-&#x5B89;&#x88C5;&#x8981;&#x6C42;">1. &#x5B89;&#x88C5;&#x8981;&#x6C42;</h2>
+<p>&#x5728;&#x5F00;&#x59CB;&#x4E4B;&#x524D;&#xFF0C;&#x90E8;&#x7F72; Kubernetes &#x96C6;&#x7FA4;&#x673A;&#x5668;&#x9700;&#x8981;&#x6EE1;&#x8DB3;&#x4EE5;&#x4E0B;&#x51E0;&#x4E2A;&#x6761;&#x4EF6;&#xFF1A;</p>
+<ul>
+<li>&#x4E00;&#x53F0;&#x6216;&#x591A;&#x53F0;&#x673A;&#x5668;&#xFF0C;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF; CentOS7.x-86_x64</li>
+<li>&#x786C;&#x4EF6;&#x914D;&#x7F6E;&#xFF1A;2GB &#x6216;&#x66F4;&#x591A; RAM&#xFF0C;2 &#x4E2A; CPU &#x6216;&#x66F4;&#x591A; CPU&#xFF0C;&#x786C;&#x76D8; 30GB &#x6216;&#x66F4;&#x591A;</li>
+<li>&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#x5916;&#x7F51;&#xFF0C;&#x9700;&#x8981;&#x62C9;&#x53D6;&#x955C;&#x50CF;&#xFF0C;&#x5982;&#x679C;&#x670D;&#x52A1;&#x5668;&#x4E0D;&#x80FD;&#x4E0A;&#x7F51;&#xFF0C;&#x9700;&#x8981;&#x63D0;&#x524D;&#x4E0B;&#x8F7D;&#x955C;&#x50CF;&#x5E76;&#x5BFC;&#x5165;&#x8282;&#x70B9;</li>
+<li>&#x7981;&#x6B62; swap &#x5206;&#x533A;<h2 id="2-&#x51C6;&#x5907;&#x73AF;&#x5883;">2. &#x51C6;&#x5907;&#x73AF;&#x5883;</h2>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>&#x89D2;&#x8272;</strong></th>
+<th style="text-align:left"><strong>IP</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">master1</td>
+<td style="text-align:left">192.168.44.155</td>
+</tr>
+<tr>
+<td style="text-align:left">master2</td>
+<td style="text-align:left">192.168.44.156</td>
+</tr>
+<tr>
+<td style="text-align:left">node1</td>
+<td style="text-align:left">192.168.44.157</td>
+</tr>
+<tr>
+<td style="text-align:left">VIP&#xFF08;&#x865A;&#x62DF; ip&#xFF09;</td>
+<td style="text-align:left">192.168.44.158</td>
+</tr>
+</tbody>
+</table>
+<pre class="language-"><code class="lang-properties"><span class="token comment"># &#x5173;&#x95ED;&#x9632;&#x706B;&#x5899;</span>
+<span class="token attr-name">systemctl</span> <span class="token attr-value">stop firewalld</span>
+<span class="token attr-name">systemctl</span> <span class="token attr-value">disable firewalld</span>
+<span class="token comment"># &#x5173;&#x95ED; selinux</span>
+<span class="token attr-name">sed</span> <span class="token attr-value">-i &apos;s/enforcing/disabled/&apos; /etc/selinux/config # &#x6C38;&#x4E45;</span>
+<span class="token attr-name">setenforce</span> <span class="token attr-value">0 # &#x4E34;&#x65F6;</span>
+<span class="token comment"># &#x5173;&#x95ED; swap</span>
+<span class="token attr-name">swapoff</span> <span class="token attr-value">-a # &#x4E34;&#x65F6;</span>
+<span class="token attr-name">sed</span> <span class="token attr-value">-ri &apos;s/.*swap.*/#&amp;/&apos; /etc/fstab # &#x6C38;&#x4E45;</span>
+<span class="token comment"># &#x6839;&#x636E;&#x89C4;&#x5212;&#x8BBE;&#x7F6E;&#x4E3B;&#x673A;&#x540D;</span>
+<span class="token attr-name">hostnamectl</span> <span class="token attr-value">set-hostname &lt;hostname&gt;</span>
+<span class="token comment"># &#x5728; master &#x6DFB;&#x52A0; hosts</span>
+<span class="token attr-name">cat</span> <span class="token attr-value">&gt;&gt; /etc/hosts &lt;&lt; EOF</span>
+<span class="token attr-name">192.168.44.158</span> <span class="token attr-value">master.k8s.io k8s-vip</span>
+<span class="token attr-name">192.168.44.155</span> <span class="token attr-value">master01.k8s.io master1</span>
+<span class="token attr-name">192.168.44.156</span> <span class="token attr-value">master02.k8s.io master2</span>
+<span class="token attr-name">192.168.44.157</span> <span class="token attr-value">node01.k8s.io node1</span>
+EOF
+<span class="token comment"># &#x5C06;&#x6865;&#x63A5;&#x7684; IPv4 &#x6D41;&#x91CF;&#x4F20;&#x9012;&#x5230; iptables &#x7684;&#x94FE;</span>
+<span class="token attr-name">cat</span> <span class="token attr-value">&gt; /etc/sysctl.d/k8s.conf &lt;&lt; EOF</span>
+<span class="token attr-name">net.bridge.bridge-nf-call-ip6tables</span> <span class="token punctuation">=</span> <span class="token attr-value">1</span>
+<span class="token attr-name">net.bridge.bridge-nf-call-iptables</span> <span class="token punctuation">=</span> <span class="token attr-value">1</span>
+EOF
+<span class="token attr-name">sysctl</span> <span class="token attr-value">--system # &#x751F;&#x6548;</span>
+<span class="token comment"># &#x65F6;&#x95F4;&#x540C;&#x6B65;</span>
+<span class="token attr-name">yum</span> <span class="token attr-value">install ntpdate -y</span>
+<span class="token attr-name">ntpdate</span> <span class="token attr-value">time.windows.com</span>
+</code></pre>
+<h2 id="3-&#x6240;&#x6709;-master-&#x8282;&#x70B9;&#x90E8;&#x7F72;-keepalived">3. &#x6240;&#x6709; master &#x8282;&#x70B9;&#x90E8;&#x7F72; keepalived</h2>
+<h3 id="31-&#x5B89;&#x88C5;&#x76F8;&#x5173;&#x5305;&#x548C;-keepalived">3.1 &#x5B89;&#x88C5;&#x76F8;&#x5173;&#x5305;&#x548C; keepalived</h3>
+<pre class="language-"><code class="lang-bash">yum <span class="token function">install</span> -y conntrack-tools libseccomp libtool-ltdl
+yum <span class="token function">install</span> -y keepalived
+</code></pre>
+<h3 id="32-&#x914D;&#x7F6E;-master-&#x8282;&#x70B9;">3.2 &#x914D;&#x7F6E; master &#x8282;&#x70B9;</h3>
+<p>master1 &#x8282;&#x70B9;&#x914D;&#x7F6E;</p>
+<pre class="language-"><code class="lang-properties"><span class="token attr-name">cat</span> <span class="token attr-value">&gt; /etc/keepalived/keepalived.conf &lt;&lt;EOF</span>
+<span class="token comment">! Configuration File for keepalived</span>
+<span class="token attr-name">global_defs</span> <span class="token attr-value">{</span>
+<span class="token attr-name">    router_id</span> <span class="token attr-value">k8s</span>
+}
+<span class="token attr-name">vrrp_script</span> <span class="token attr-value">check_haproxy {</span>
+<span class="token attr-name">    script</span> <span class="token attr-value">&quot;killall -0 haproxy&quot;</span>
+<span class="token attr-name">    interval</span> <span class="token attr-value">3</span>
+<span class="token attr-name">    weight</span> <span class="token attr-value">-2</span>
+<span class="token attr-name">    fall</span> <span class="token attr-value">10</span>
+<span class="token attr-name">    rise</span> <span class="token attr-value">2</span>
+}
+<span class="token attr-name">vrrp_instance</span> <span class="token attr-value">VI_1 {</span>
+<span class="token attr-name">    state</span> <span class="token attr-value">MASTER</span>
+<span class="token attr-name">    interface</span> <span class="token attr-value">ens33</span>
+<span class="token attr-name">    virtual_router_id</span> <span class="token attr-value">51</span>
+<span class="token attr-name">    priority</span> <span class="token attr-value">250</span>
+<span class="token attr-name">    advert_int</span> <span class="token attr-value">1</span>
+<span class="token attr-name">    authentication</span> <span class="token attr-value">{</span>
+<span class="token attr-name">        auth_type</span> <span class="token attr-value">PASS</span>
+<span class="token attr-name">        auth_pass</span> <span class="token attr-value">ceb1b3ec013d66163d6ab</span>
+    }
+<span class="token attr-name">    virtual_ipaddress</span> <span class="token attr-value">{</span>
+        192.168.44.158
+    }
+<span class="token attr-name">    track_script</span> <span class="token attr-value">{</span>
+        check_haproxy
+    }
+}
+EOF
+</code></pre>
+<p>master2 &#x8282;&#x70B9;&#x914D;&#x7F6E;</p>
+<pre class="language-"><code class="lang-properties"><span class="token attr-name">cat</span> <span class="token attr-value">&gt; /etc/keepalived/keepalived.conf &lt;&lt;EOF</span>
+<span class="token comment">! Configuration File for keepalived</span>
+<span class="token attr-name">global_defs</span> <span class="token attr-value">{</span>
+<span class="token attr-name">    router_id</span> <span class="token attr-value">k8s</span>
+}
+<span class="token attr-name">vrrp_script</span> <span class="token attr-value">check_haproxy {</span>
+<span class="token attr-name">    script</span> <span class="token attr-value">&quot;killall -0 haproxy&quot;</span>
+<span class="token attr-name">    interval</span> <span class="token attr-value">3</span>
+<span class="token attr-name">    weight</span> <span class="token attr-value">-2</span>
+<span class="token attr-name">    fall</span> <span class="token attr-value">10</span>
+<span class="token attr-name">    rise</span> <span class="token attr-value">2</span>
+}
+<span class="token attr-name">vrrp_instance</span> <span class="token attr-value">VI_1 {</span>
+<span class="token attr-name">    state</span> <span class="token attr-value">BACKUP</span>
+<span class="token attr-name">    interface</span> <span class="token attr-value">ens33</span>
+<span class="token attr-name">    virtual_router_id</span> <span class="token attr-value">51</span>
+<span class="token attr-name">    priority</span> <span class="token attr-value">200</span>
+<span class="token attr-name">    advert_int</span> <span class="token attr-value">1</span>
+<span class="token attr-name">    authentication</span> <span class="token attr-value">{</span>
+<span class="token attr-name">        auth_type</span> <span class="token attr-value">PASS</span>
+<span class="token attr-name">        auth_pass</span> <span class="token attr-value">ceb1b3ec013d66163d6ab</span>
+    }
+<span class="token attr-name">    virtual_ipaddress</span> <span class="token attr-value">{</span>
+        192.168.44.158
+    }
+<span class="token attr-name">    track_script</span> <span class="token attr-value">{</span>
+        check_haproxy
+    }
+}
+EOF
+</code></pre>
+<h3 id="33-&#x542F;&#x52A8;&#x548C;&#x68C0;&#x67E5;">3.3 &#x542F;&#x52A8;&#x548C;&#x68C0;&#x67E5;</h3>
+<p>&#x5728;&#x4E24;&#x53F0; master &#x8282;&#x70B9;&#x90FD;&#x6267;&#x884C;</p>
+<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x542F;&#x52A8; keepalived</span>
+$ systemctl start keepalived.service
+&#x8BBE;&#x7F6E;&#x5F00;&#x673A;&#x542F;&#x52A8;
+$ systemctl <span class="token builtin class-name">enable</span> keepalived.service
+<span class="token comment"># &#x67E5;&#x770B;&#x542F;&#x52A8;&#x72B6;&#x6001;</span>
+$ systemctl status keepalived.service
+</code></pre>
+<p>&#x542F;&#x52A8;&#x540E;&#x67E5;&#x770B; master1 &#x7684;&#x7F51;&#x5361;&#x4FE1;&#x606F;</p>
+<pre class="language-"><code class="lang-bash"><span class="token function">ip</span> a s ens33
+</code></pre>
+<h2 id="4-&#x90E8;&#x7F72;-haproxy">4. &#x90E8;&#x7F72; haproxy</h2>
+<h3 id="41-&#x5B89;&#x88C5;">4.1 &#x5B89;&#x88C5;</h3>
+<pre class="language-"><code class="lang-bash">yum <span class="token function">install</span> -y haproxy
+</code></pre>
+<h3 id="42-&#x914D;&#x7F6E;">4.2 &#x914D;&#x7F6E;</h3>
+<p>&#x4E24;&#x53F0; master &#x8282;&#x70B9;&#x7684;&#x914D;&#x7F6E;&#x5747;&#x76F8;&#x540C;&#xFF0C;&#x914D;&#x7F6E;&#x4E2D;&#x58F0;&#x660E;&#x4E86;&#x540E;&#x7AEF;&#x4EE3;&#x7406;&#x7684;&#x4E24;&#x4E2A; master &#x8282;&#x70B9;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x6307;&#x5B9A;&#x4E86; haproxy &#x8FD0;&#x884C;&#x7684;&#x7AEF;&#x53E3;&#x4E3A; 16443 &#x7B49;&#xFF0C;&#x56E0;&#x6B64; 16443 &#x7AEF;&#x53E3;&#x4E3A;&#x96C6;&#x7FA4;&#x7684;&#x5165;&#x53E3;</p>
+<pre class="language-"><code class="lang-properties"><span class="token attr-name">cat</span> <span class="token attr-value">&gt; /etc/haproxy/haproxy.cfg &lt;&lt; EOF</span>
+<span class="token comment">#---------------------------------------------------------------------</span>
+<span class="token comment"># Global settings</span>
+<span class="token comment">#---------------------------------------------------------------------</span>
+global
+<span class="token comment">    # to have these messages end up in /var/log/haproxy.log you will</span>
+<span class="token comment">    # need to:</span>
+<span class="token comment">    # 1) configure syslog to accept network log events. This is done</span>
+<span class="token comment">    # by adding the &apos;-r&apos; option to the SYSLOGD_OPTIONS in</span>
+<span class="token comment">    # /etc/sysconfig/syslog</span>
+<span class="token comment">    # 2) configure local2 events to go to the /var/log/haproxy.log</span>
+<span class="token comment">    # file. A line like the following can be added to</span>
+<span class="token comment">    # /etc/sysconfig/syslog</span>
+<span class="token comment">    #</span>
+<span class="token comment">    # local2.* /var/log/haproxy.log</span>
+<span class="token comment">    #</span>
+<span class="token attr-name">    log</span> <span class="token attr-value">127.0.0.1 local2</span>
+<span class="token attr-name">    chroot</span> <span class="token attr-value">/var/lib/haproxy</span>
+<span class="token attr-name">    pidfile</span> <span class="token attr-value">/var/run/haproxy.pid</span>
+<span class="token attr-name">    maxconn</span> <span class="token attr-value">4000</span>
+<span class="token attr-name">    user</span> <span class="token attr-value">haproxy</span>
+<span class="token attr-name">    group</span> <span class="token attr-value">haproxy</span>
+    daemon
+<span class="token comment">    # turn on stats unix socket</span>
+<span class="token attr-name">    stats</span> <span class="token attr-value">socket /var/lib/haproxy/stats</span>
+<span class="token comment">#---------------------------------------------------------------------</span>
+<span class="token comment"># common defaults that all the &apos;listen&apos; and &apos;backend&apos; sections will</span>
+<span class="token comment"># use if not designated in their block</span>
+<span class="token comment">#---------------------------------------------------------------------</span>
+defaults
+<span class="token attr-name">    mode</span> <span class="token attr-value">http</span>
+<span class="token attr-name">    log</span> <span class="token attr-value">global</span>
+<span class="token attr-name">    option</span> <span class="token attr-value">httplog</span>
+<span class="token attr-name">    option</span> <span class="token attr-value">dontlognull</span>
+<span class="token attr-name">    option</span> <span class="token attr-value">http-server-close</span>
+<span class="token attr-name">    option</span> <span class="token attr-value">forwardfor except 127.0.0.0/8</span>
+<span class="token attr-name">    option</span> <span class="token attr-value">redispatch</span>
+<span class="token attr-name">    retries</span> <span class="token attr-value">3</span>
+<span class="token attr-name">    timeout</span> <span class="token attr-value">http-request 10s</span>
+<span class="token attr-name">    timeout</span> <span class="token attr-value">queue 1m</span>
+<span class="token attr-name">    timeout</span> <span class="token attr-value">connect 10s</span>
+<span class="token attr-name">    timeout</span> <span class="token attr-value">client 1m</span>
+<span class="token attr-name">    timeout</span> <span class="token attr-value">server 1m</span>
+<span class="token attr-name">    timeout</span> <span class="token attr-value">http-keep-alive 10s</span>
+<span class="token attr-name">    timeout</span> <span class="token attr-value">check 10s</span>
+<span class="token attr-name">    maxconn</span> <span class="token attr-value">3000</span>
+<span class="token comment">#---------------------------------------------------------------------</span>
+<span class="token comment"># kubernetes apiserver frontend which proxys to the backends</span>
+<span class="token comment">#---------------------------------------------------------------------</span>
+<span class="token attr-name">frontend</span> <span class="token attr-value">kubernetes-apiserver</span>
+<span class="token attr-name">    mode</span> <span class="token attr-value">tcp</span>
+<span class="token attr-name">    bind</span> <span class="token attr-value">*:16443</span>
+<span class="token attr-name">    option</span> <span class="token attr-value">tcplog</span>
+<span class="token attr-name">    default_backend</span> <span class="token attr-value">kubernetes-apiserver</span>
+<span class="token comment">#---------------------------------------------------------------------</span>
+<span class="token comment"># round robin balancing between the various backends</span>
+<span class="token comment">#---------------------------------------------------------------------</span>
+<span class="token attr-name">backend</span> <span class="token attr-value">kubernetes-apiserver</span>
+<span class="token attr-name">    mode</span> <span class="token attr-value">tcp</span>
+<span class="token attr-name">    balance</span> <span class="token attr-value">roundrobin</span>
+<span class="token attr-name">    server</span> <span class="token attr-value">master01.k8s.io 192.168.44.155:6443 check</span>
+<span class="token attr-name">    server</span> <span class="token attr-value">master02.k8s.io 192.168.44.156:6443 check</span>
+<span class="token comment">#---------------------------------------------------------------------</span>
+<span class="token comment"># collection haproxy statistics message</span>
+<span class="token comment">#---------------------------------------------------------------------</span>
+<span class="token attr-name">listen</span> <span class="token attr-value">stats</span>
+<span class="token attr-name">    bind</span> <span class="token attr-value">*:1080</span>
+<span class="token attr-name">    stats</span> <span class="token attr-value">auth admin:awesomePassword</span>
+<span class="token attr-name">    stats</span> <span class="token attr-value">refresh 5s</span>
+<span class="token attr-name">    stats</span> <span class="token attr-value">realm HAProxy\ Statistics</span>
+<span class="token attr-name">    stats</span> <span class="token attr-value">uri /admin?stats</span>
+EOF
+</code></pre>
+<h3 id="43-&#x542F;&#x52A8;&#x548C;&#x68C0;&#x67E5;">4.3 &#x542F;&#x52A8;&#x548C;&#x68C0;&#x67E5;</h3>
+<p>&#x4E24;&#x53F0; master &#x90FD;&#x542F;&#x52A8;</p>
+<pre class="language-"><code class="lang-bash"><span class="token comment"># &#x8BBE;&#x7F6E;&#x5F00;&#x673A;&#x542F;&#x52A8;</span>
+$ systemctl <span class="token builtin class-name">enable</span> haproxy
+<span class="token comment"># &#x5F00;&#x542F; haproxy</span>
+$ systemctl start haproxy
+<span class="token comment"># &#x67E5;&#x770B;&#x542F;&#x52A8;&#x72B6;&#x6001;</span>
+$ systemctl status haproxy
+</code></pre>
+<p>&#x68C0;&#x67E5;&#x7AEF;&#x53E3;</p>
+<pre class="language-"><code class="lang-bash"><span class="token function">netstat</span> -lntup<span class="token operator">|</span><span class="token function">grep</span> haproxy
+</code></pre>
+<h2 id="5-&#x6240;&#x6709;&#x8282;&#x70B9;&#x5B89;&#x88C5;-dockerkubeadmkubelet">5. &#x6240;&#x6709;&#x8282;&#x70B9;&#x5B89;&#x88C5; Docker/kubeadm/kubelet</h2>
+<p>Kubernetes &#x9ED8;&#x8BA4; CRI&#xFF08;&#x5BB9;&#x5668;&#x8FD0;&#x884C;&#x65F6;&#xFF09;&#x4E3A; Docker&#xFF0C;&#x56E0;&#x6B64;&#x5148;&#x5B89;&#x88C5; Docker&#x3002;</p>
+<h3 id="51-&#x5B89;&#x88C5;-docker">5.1 &#x5B89;&#x88C5; Docker</h3>
+<pre class="language-"><code class="lang-bash">$ <span class="token function">wget</span> https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo -O /etc/yum.repos.d/docker-ce.repo
+$ yum -y <span class="token function">install</span> docker-ce-18.06.1.ce-3.el7
+$ systemctl <span class="token builtin class-name">enable</span> docker <span class="token operator">&amp;&amp;</span> systemctl start docker
+$ docker --version
+Docker version <span class="token number">18.06</span>.1-ce, build e68fc7a 
+$ <span class="token function">cat</span> <span class="token operator">&gt;</span> /etc/docker/daemon.json <span class="token operator">&lt;&lt;</span> <span class="token string">EOF
+{
+  &quot;registry-mirrors&quot;: [&quot;https://b9pmyelo.mirror.aliyuncs.com&quot;]
+}
+EOF</span>
+</code></pre>
+<h3 id="52-&#x6DFB;&#x52A0;&#x963F;&#x91CC;&#x4E91;-yum-&#x8F6F;&#x4EF6;&#x6E90;">5.2 &#x6DFB;&#x52A0;&#x963F;&#x91CC;&#x4E91; YUM &#x8F6F;&#x4EF6;&#x6E90;</h3>
+<pre class="language-"><code class="lang-properties"><span class="token attr-name">$</span> <span class="token attr-value">cat &gt; /etc/yum.repos.d/kubernetes.repo &lt;&lt; EOF</span>
+[kubernetes]
+<span class="token attr-name">name</span><span class="token punctuation">=</span><span class="token attr-value">Kubernetes</span>
+<span class="token attr-name">baseurl</span><span class="token punctuation">=</span><span class="token attr-value">https://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64</span>
+<span class="token attr-name">enabled</span><span class="token punctuation">=</span><span class="token attr-value">1</span>
+<span class="token attr-name">gpgcheck</span><span class="token punctuation">=</span><span class="token attr-value">0</span>
+<span class="token attr-name">repo_gpgcheck</span><span class="token punctuation">=</span><span class="token attr-value">0</span>
+<span class="token attr-name">gpgkey</span><span class="token punctuation">=</span><span class="token attr-value">https://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg https://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg</span>
+EOF
+</code></pre>
+<h3 id="53-&#x5B89;&#x88C5;-kubeadm&#xFF0C;kubelet-&#x548C;-kubectl">5.3 &#x5B89;&#x88C5; kubeadm&#xFF0C;kubelet &#x548C; kubectl</h3>
+<p>&#x7531;&#x4E8E;&#x7248;&#x672C;&#x66F4;&#x65B0;&#x9891;&#x7E41;&#xFF0C;&#x8FD9;&#x91CC;&#x6307;&#x5B9A;&#x7248;&#x672C;&#x53F7;&#x90E8;&#x7F72;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">$ yum <span class="token function">install</span> -y kubelet-1.16.3 kubeadm-1.16.3 kubectl-1.16.3
+$ systemctl <span class="token builtin class-name">enable</span> kubelet
+</code></pre>
+<h2 id="6-&#x90E8;&#x7F72;-kubernetes-master">6. &#x90E8;&#x7F72; Kubernetes Master</h2>
+<h3 id="61-&#x521B;&#x5EFA;-kubeadm-&#x914D;&#x7F6E;&#x6587;&#x4EF6;">6.1 &#x521B;&#x5EFA; kubeadm &#x914D;&#x7F6E;&#x6587;&#x4EF6;</h3>
+<p>&#x5728;&#x5177;&#x6709; vip &#x7684; master &#x4E0A;&#x64CD;&#x4F5C;&#xFF0C;&#x8FD9;&#x91CC;&#x4E3A; master1</p>
+<pre class="language-"><code class="lang-properties"><span class="token attr-name">$</span> <span class="token attr-value">mkdir /usr/local/kubernetes/manifests -p</span>
+<span class="token attr-name">$</span> <span class="token attr-value">cd /usr/local/kubernetes/manifests/</span>
+<span class="token attr-name">$</span> <span class="token attr-value">vi kubeadm-config.yaml</span>
+<span class="token attr-name">apiServer</span><span class="token punctuation">:</span>
+<span class="token attr-name">  certSANs</span><span class="token punctuation">:</span>
+<span class="token attr-name">    -</span> <span class="token attr-value">master1</span>
+<span class="token attr-name">    -</span> <span class="token attr-value">master2</span>
+<span class="token attr-name">    -</span> <span class="token attr-value">master.k8s.io</span>
+<span class="token attr-name">    -</span> <span class="token attr-value">192.168.44.158</span>
+<span class="token attr-name">    -</span> <span class="token attr-value">192.168.44.155</span>
+<span class="token attr-name">    -</span> <span class="token attr-value">192.168.44.156</span>
+<span class="token attr-name">    -</span> <span class="token attr-value">127.0.0.1</span>
+<span class="token attr-name">  extraArgs</span><span class="token punctuation">:</span>
+<span class="token attr-name">    authorization-mode</span><span class="token punctuation">:</span> <span class="token attr-value">Node,RBAC</span>
+<span class="token attr-name">    timeoutForControlPlane</span><span class="token punctuation">:</span> <span class="token attr-value">4m0s</span>
+<span class="token attr-name">apiVersion</span><span class="token punctuation">:</span> <span class="token attr-value">kubeadm.k8s.io/v1beta1</span>
+<span class="token attr-name">certificatesDir</span><span class="token punctuation">:</span> <span class="token attr-value">/etc/kubernetes/pki</span>
+<span class="token attr-name">clusterName</span><span class="token punctuation">:</span> <span class="token attr-value">kubernetes</span>
+<span class="token attr-name">controlPlaneEndpoint</span><span class="token punctuation">:</span> <span class="token attr-value">&quot;master.k8s.io:16443&quot;</span>
+<span class="token attr-name">controllerManager</span><span class="token punctuation">:</span> <span class="token attr-value">{}</span>
+<span class="token attr-name">dns</span><span class="token punctuation">:</span>
+<span class="token attr-name">  type</span><span class="token punctuation">:</span> <span class="token attr-value">CoreDNS</span>
+<span class="token attr-name">etcd</span><span class="token punctuation">:</span>
+<span class="token attr-name">  local</span><span class="token punctuation">:</span>
+<span class="token attr-name">    dataDir</span><span class="token punctuation">:</span> <span class="token attr-value">/var/lib/etcd</span>
+<span class="token attr-name">imageRepository</span><span class="token punctuation">:</span> <span class="token attr-value">registry.aliyuncs.com/google_containers</span>
+<span class="token attr-name">kind</span><span class="token punctuation">:</span> <span class="token attr-value">ClusterConfiguration</span>
+<span class="token attr-name">kubernetesVersion</span><span class="token punctuation">:</span> <span class="token attr-value">v1.16.3</span>
+<span class="token attr-name">networking</span><span class="token punctuation">:</span>
+<span class="token attr-name">  dnsDomain</span><span class="token punctuation">:</span> <span class="token attr-value">cluster.local</span>
+<span class="token attr-name">  podSubnet</span><span class="token punctuation">:</span> <span class="token attr-value">10.244.0.0/16</span>
+<span class="token attr-name">  serviceSubnet</span><span class="token punctuation">:</span> <span class="token attr-value">10.1.0.0/16</span>
+<span class="token attr-name">scheduler</span><span class="token punctuation">:</span> <span class="token attr-value">{}</span>
+</code></pre>
+<h3 id="62-&#x5728;-master1-&#x8282;&#x70B9;&#x6267;&#x884C;">6.2 &#x5728; master1 &#x8282;&#x70B9;&#x6267;&#x884C;</h3>
+<pre class="language-"><code class="lang-bash">$ kubeadm init --config kubeadm-config.yaml
+</code></pre>
+<p>&#x6309;&#x7167;&#x63D0;&#x793A;&#x914D;&#x7F6E;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#xFF0C;&#x4F7F;&#x7528; kubectl &#x5DE5;&#x5177;&#xFF1A;</p>
+<pre class="language-"><code class="lang-shell"><span class="token function">mkdir</span> -p <span class="token environment constant">$HOME</span>/.kube
+<span class="token function">sudo</span> <span class="token function">cp</span> -i /etc/kubernetes/admin.conf <span class="token environment constant">$HOME</span>/.kube/config
+<span class="token function">sudo</span> <span class="token function">chown</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">id</span> -u<span class="token variable">)</span></span><span class="token builtin class-name">:</span><span class="token variable"><span class="token variable">$(</span><span class="token function">id</span> -g<span class="token variable">)</span></span> <span class="token environment constant">$HOME</span>/.kube/config
+$ kubectl get nodes
+$ kubectl get pods -n kube-system
+</code></pre>
+<p><strong>&#x6309;&#x7167;&#x63D0;&#x793A;&#x4FDD;&#x5B58;&#x4EE5;&#x4E0B;&#x5185;&#x5BB9;&#xFF0C;&#x4E00;&#x4F1A;&#x8981;&#x4F7F;&#x7528;&#xFF1A;</strong></p>
+<pre class="language-"><code class="lang-bash">kubeadm <span class="token function">join</span> master.k8s.io:16443 --token jv5z7n.3y1zi95p952y9p65 <span class="token punctuation">\</span>
+--discovery-token-ca-cert-hash sha256:403bca185c2f3a4791685013499e7ce58f9848e2213e27194b75a2e3293d8812 <span class="token punctuation">\</span>
+--control-plane
+</code></pre>
+<p>&#x67E5;&#x770B;&#x96C6;&#x7FA4;&#x72B6;&#x6001;</p>
+<pre class="language-"><code class="lang-bash">kubectl get cs
+kubectl get pods -n kube-system
+</code></pre>
+<h2 id="7&#x5B89;&#x88C5;&#x96C6;&#x7FA4;&#x7F51;&#x7EDC;">7.&#x5B89;&#x88C5;&#x96C6;&#x7FA4;&#x7F51;&#x7EDC;</h2>
+<p>&#x4ECE;&#x5B98;&#x65B9;&#x5730;&#x5740;&#x83B7;&#x53D6;&#x5230; flannel &#x7684; yaml&#xFF0C;&#x5728; master1 &#x4E0A;&#x6267;&#x884C;</p>
+<pre class="language-"><code class="lang-bash"><span class="token function">mkdir</span> flannel
+<span class="token builtin class-name">cd</span> flannel
+<span class="token function">wget</span> -c https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+</code></pre>
+<p>&#x5B89;&#x88C5; flannel &#x7F51;&#x7EDC;</p>
+<pre class="language-"><code class="lang-bash">kubectl apply -f kube-flannel.yml
+</code></pre>
+<p>&#x68C0;&#x67E5;</p>
+<pre class="language-"><code class="lang-bash">kubectl get pods -n kube-system
+</code></pre>
+<h2 id="8&#x3001;master2-&#x8282;&#x70B9;&#x52A0;&#x5165;&#x96C6;&#x7FA4;">8&#x3001;master2 &#x8282;&#x70B9;&#x52A0;&#x5165;&#x96C6;&#x7FA4;</h2>
+<h3 id="81-&#x590D;&#x5236;&#x5BC6;&#x94A5;&#x53CA;&#x76F8;&#x5173;&#x6587;&#x4EF6;">8.1 &#x590D;&#x5236;&#x5BC6;&#x94A5;&#x53CA;&#x76F8;&#x5173;&#x6587;&#x4EF6;</h3>
+<p>&#x4ECE; master1 &#x590D;&#x5236;&#x5BC6;&#x94A5;&#x53CA;&#x76F8;&#x5173;&#x6587;&#x4EF6;&#x5230; master2</p>
+<pre class="language-"><code class="lang-bash"><span class="token comment"># ssh root@192.168.44.156 mkdir -p /etc/kubernetes/pki/etcd</span>
+<span class="token comment"># scp /etc/kubernetes/admin.conf root@192.168.44.156:/etc/kubernetes</span>
+
+<span class="token comment"># scp /etc/kubernetes/pki/{ca.*,sa.*,front-proxy-ca.*} root@192.168.44.156:/etc/kubernetes/pki</span>
+
+<span class="token comment"># scp /etc/kubernetes/pki/etcd/ca.* root@192.168.44.156:/etc/kubernetes/pki/etcd</span>
+</code></pre>
+<h3 id="82-master2-&#x52A0;&#x5165;&#x96C6;&#x7FA4;">8.2 master2 &#x52A0;&#x5165;&#x96C6;&#x7FA4;</h3>
+<p>&#x6267;&#x884C;&#x5728; master1 &#x4E0A; init &#x540E;&#x8F93;&#x51FA;&#x7684; join &#x547D;&#x4EE4;,&#x9700;&#x8981;&#x5E26;&#x4E0A;&#x53C2;&#x6570;<code>--control-plane</code>&#x8868;&#x793A;&#x628A; master &#x63A7;&#x5236;&#x8282;&#x70B9;&#x52A0;&#x5165;&#x96C6;&#x7FA4;</p>
+<pre class="language-"><code class="lang-bash">kubeadm <span class="token function">join</span> master.k8s.io:16443 --token ckf7bs.30576l0okocepg8b --discovery-token-ca-cert-hash sha256:19afac8b11182f61073e254fb57b9f19ab4d798b70501036fc69ebef46094aba --control-plane
+</code></pre>
+<p>&#x68C0;&#x67E5;&#x72B6;&#x6001;</p>
+<pre class="language-"><code class="lang-bash">kubectl get node
+kubectl get pods --all-namespaces
+</code></pre>
+<h2 id="5-&#x52A0;&#x5165;-kubernetes-node">5. &#x52A0;&#x5165; Kubernetes Node</h2>
+<p>&#x5728; node1 &#x4E0A;&#x6267;&#x884C;</p>
+<p>&#x5411;&#x96C6;&#x7FA4;&#x6DFB;&#x52A0;&#x65B0;&#x8282;&#x70B9;&#xFF0C;&#x6267;&#x884C;&#x5728; kubeadm init &#x8F93;&#x51FA;&#x7684; kubeadm join &#x547D;&#x4EE4;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">kubeadm <span class="token function">join</span> master.k8s.io:16443 --token ckf7bs.30576l0okocepg8b --discovery-token-ca-cert-hash sha256:19afac8b11182f61073e254fb57b9f19ab4d798b70501036fc69ebef46094aba
+</code></pre>
+<p><strong>&#x96C6;&#x7FA4;&#x7F51;&#x7EDC;&#x91CD;&#x65B0;&#x5B89;&#x88C5;&#xFF0C;&#x56E0;&#x4E3A;&#x6DFB;&#x52A0;&#x4E86;&#x65B0;&#x7684; node &#x8282;&#x70B9;</strong>
+&#x68C0;&#x67E5;&#x72B6;&#x6001;</p>
+<pre class="language-"><code class="lang-bash">kubectl get node
+kubectl get pods --all-namespaces
+</code></pre>
+<h2 id="7-&#x6D4B;&#x8BD5;-kubernetes-&#x96C6;&#x7FA4;">7. &#x6D4B;&#x8BD5; kubernetes &#x96C6;&#x7FA4;</h2>
+<p>&#x5728; Kubernetes &#x96C6;&#x7FA4;&#x4E2D;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; pod&#xFF0C;&#x9A8C;&#x8BC1;&#x662F;&#x5426;&#x6B63;&#x5E38;&#x8FD0;&#x884C;&#xFF1A;</p>
+<pre class="language-"><code class="lang-bash">$ kubectl create deployment nginx --image<span class="token operator">=</span>nginx
+$ kubectl expose deployment nginx --port<span class="token operator">=</span><span class="token number">80</span> --type<span class="token operator">=</span>NodePort
+$ kubectl get pod,svc
+</code></pre>
+<p>&#x8BBF;&#x95EE;&#x5730;&#x5740;&#xFF1A;<a href="http://NodeIP:Port" target="_blank">http://NodeIP:Port</a></p>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9; ohter.com 2021 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x8BE5;&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
+2021-04-19 13:39:43
+</span></footer>
+<script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="kubeadm-install-one.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 1.快速部署一个K8s集群">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"2搭建高可用的K8s集群","level":"1.8.4.2","depth":3,"previous":{"title":"1.快速部署一个K8s集群","level":"1.8.4.1","depth":3,"path":"automation/k8s/kubeadm-install-one.md","ref":"automation/k8s/kubeadm-install-one.md","articles":[]},"dir":"ltr"},"config":{"plugins":["chapter-fold","theme-comscore","back-to-top-button","code","tbfed-pagefooter","page-treeview","pageview-count","popup","prism","-highlight","hide-element","-lunr","-search","search-pro","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy ohter.com 2021","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"page-treeview":{"collapsed":false,"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"livereload":{},"search-pro":{},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"back-to-top-button":{},"pageview-count":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"liufeihua","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"日常笔记","language":"zh-hans","gitbook":"*","description":"日常笔记"},"file":{"path":"automation/k8s/kubeadm-install-all.md","mtime":"2021-04-19T05:39:43.486Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-19T05:51:27.366Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-hide-element/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
+        
+    
+
+    </body>
+</html>
+

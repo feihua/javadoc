@@ -44,16 +44,16 @@ NoSQL数据库在以下的这几种情况下比较适用：
 ![图片](https://uploader.shimo.im/f/xbE8M7mVudYOp7Hv.png!thumbnail)
 
 **逻辑结构与关系数据库的对比：**
-| **关系型数据库**   | **MongoDb**   | 
+| **关系型数据库**   | **MongoDb**   |
 |:----|:----|
-| database(数据库)   | database（数据库）   | 
-| table （表）   | collection（ 集合）   | 
-| row（ 行）   | document（ BSON 文档）   | 
-| column （列）   | field （字段）   | 
-| index（唯一索引、主键索引）   | index （全文索引）   | 
-| join （主外键关联）   | embedded Document (嵌套文档)   | 
-| primary key(指定1至N个列做主键)   | primary key  (指定_id field做为主键)    | 
-| aggreation(groupy)   | aggreation (pipeline mapReduce)   | 
+| database(数据库)   | database（数据库）   |
+| table （表）   | collection（ 集合）   |
+| row（ 行）   | document（ BSON 文档）   |
+| column （列）   | field （字段）   |
+| index（唯一索引、主键索引）   | index （全文索引）   |
+| join （主外键关联）   | embedded Document (嵌套文档)   |
+| primary key(指定1至N个列做主键)   | primary key  (指定_id field做为主键)    |
+| aggreation(groupy)   | aggreation (pipeline mapReduce)   |
 
 
 ## **二、MongoDb安装配置与基础命令**
@@ -80,7 +80,7 @@ tar -zxvf mongodb-linux-x86_64-4.0.5.tgz
 
 ### 2.mongoDb启动参数说明
 mongoDb 由C++编写，下载下来的包可以直接启动
-```
+```powershell
 #创建数据库目录
 mkdir -p /data/mongo
 # 启动mongo
@@ -88,23 +88,23 @@ mkdir -p /data/mongo
 ```
 
 常规参数
-| 参数   | 说明   | 
+| 参数   | 说明   |
 |:----|:----|
-| dbpath   | 数据库目录，默认/data/db   | 
-| bind_ip   | 监听IP地址，默认全部可以访问   | 
-| port   | 监听的端口，默认27017   | 
-| logpath   | 日志路径   | 
-| logappend   | 是否追加日志   | 
-| auth   | 是开启用户密码登陆   | 
-| fork   | 是否已后台启动的方式登陆   | 
-| config   | 指定配置文件   | 
+| dbpath   | 数据库目录，默认/data/db   |
+| bind_ip   | 监听IP地址，默认全部可以访问   |
+| port   | 监听的端口，默认27017   |
+| logpath   | 日志路径   |
+| logappend   | 是否追加日志   |
+| auth   | 是开启用户密码登陆   |
+| fork   | 是否已后台启动的方式登陆   |
+| config   | 指定配置文件   |
 
 配置文件示例
-```
+```powershell
 vim mongo.conf
 ```
 内容：
-```
+```properties
 
 dbpath=/data/mongo/
 port=27017
@@ -116,12 +116,12 @@ auth=false
 ```
 
 已配置文件方式启动
-```
+```powershell
 ./bin/mongod -f mongo.conf
 ```
 
 ### 3.客户端Shell 的使用及参数说明
-```
+```powershell
 #启动客户端 连接 本机的地的默认端口
 ./bin/mongo 
 # 指定IP和端口
@@ -129,7 +129,7 @@ auth=false
 ```
 
 mongo shell 是一个js 控台，可以执行js 相关运算如:
-```
+```powershell
 > 1+1
 2
 > var i=123;
@@ -139,7 +139,7 @@ mongo shell 是一个js 控台，可以执行js 相关运算如:
 ```
 
 ### 4.数据库与集合的基础操作
-```
+```sql
   #查看数据库
   show dbs;
   #切换数据库
@@ -172,7 +172,7 @@ mongo shell 是一个js 控台，可以执行js 相关运算如:
 2. 同一个集合中不同数据字段结构可以不一样
 
 插入相关方法：
-```
+```sql
 //插入单条 
 db.friend.insertOne({name:"wukong"，sex:"man"});
 // 插入多条
@@ -188,6 +188,7 @@ db.friend.insertMany([
 
 ### **2、数据的查询**
 **概要：**
+
   1. 基于条件的基础查询
   2. $and、$or、$in、$gt、$gte、$lt、$lte 运算符
   3. 基于 sort skip limit 方法实现排序与分页
@@ -196,7 +197,7 @@ db.friend.insertMany([
   6. 数组嵌套查询
 
 基础查询：
-```
+```sql
 #基于ID查找
 db.emp.find({_id:1101})
 #基于属性查找
@@ -212,13 +213,13 @@ db.emp.find({$or:[{job:"讲师"  },{job:"客服部"}] })
 
 ### 排序与分页：
 //  sort skip limit
-```
+```sql
 db.emp.find().sort({dep:1,salary:-1}).skip(5).limit(2)
 ```
 
 嵌套查询：
 
-```
+```sql
 # 错误示例：无结果
 db.student.find({grade:{redis:87,dubbo:90 });
 #错误示例：无结果 
@@ -235,7 +236,7 @@ db.student.find({"grade.redis":{"$gt":80}});
 
 
 数组查询：
-```
+```sql
 db.subject.insertMany([
 {_id:"001",name:"陈霸天",subjects:["redis","zookeper","dubbo"]},
 {_id:"002",name:"张明明",subjects:["redis","Java","mySql"]},
@@ -244,7 +245,7 @@ db.subject.insertMany([
 ])
 ```
 
-```
+```sql
 #无结果
 db.subject.find({subjects:["redis","zookeper"]})
 #无结果
@@ -263,7 +264,7 @@ db.subject.find({subjects:{$in: ["redis","zookeper"]}})
 
 
 数组嵌套查询：
-```
+```sql
 #基础查询 ，必须查询全部，且顺序一至
 db.subject2.find({subjects:{name:"redis",hour:12} })
 #指定查询第一个数组 课时大于12
@@ -281,7 +282,7 @@ db.subject2.find({"subjects.name":"mysql","subjects.hour":120})
 
 
 ### 修改
-```
+```sql
 #设置值
 db.emp.update({_id:1101} ,{ $set:{salary:10300}  })
 #自增
@@ -297,7 +298,7 @@ db.emp.updateMany({"dep":"客服部"},{$inc:{salary:100}})
 
 ### **3、数据的修改与删除**
 修改
-```
+```sql
 #设置值
 db.emp.update({_id:1101} ,{ $set:{salary:10300}  })
 #自增
@@ -311,7 +312,7 @@ db.emp.updateMany({"dep":"客服部"},{$inc:{salary:100}})
 
 ```
 删除：
-```
+```sql
 // 基于查找删除
 db.emp.deleteOne({_id:1101})
 // 删除整个集合
@@ -323,23 +324,23 @@ db.dropDatabase()
 
 ### **4、全文索引**
 索引的创建
-```
+```sql
 db.project.createIndex({name:"text",description:"text"})
 ```
 基于索引分词进行查询
-```
+```sql
 db.project.find({$text:{$search:"java jquery"}})
 ```
    基于索引 短语
-```
+```sql
 db.project.find({$text:{$search:"\"Apache ZooKeeper\""}})
 ```
 过滤指定单词
-```
+```sql
 db.project.find({$text:{$search:"java apache -阿里"}})
 ```
 查看执行计划
-```
+```sql
 db.project.find({$text:{$search:"java -阿里"}}).explain("executionStats")
 ```
 
