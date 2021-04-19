@@ -1,0 +1,2051 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>3.Spring mvc原理深度解析 · 日常笔记</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="liufeihua">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-page-treeview/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-pageview-count/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism-okaidia.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-page-toc-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-theme-comscore/test.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../../concurrent/" />
+    
+    
+    <link rel="prev" href="aop.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../automation/">
+            
+                <a href="../../automation/">
+            
+                    
+                    一、互联网专题
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../../automation/git/">
+            
+                <a href="../../automation/git/">
+            
+                    
+                    Git版本控制
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.1" data-path="../../automation/git/git-base-use.html">
+            
+                <a href="../../automation/git/git-base-use.html">
+            
+                    
+                    1.Git基本概念与核心命令掌握
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../../automation/maven/">
+            
+                <a href="../../automation/maven/">
+            
+                    
+                    Maven依赖管理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.2.1" data-path="../../automation/maven/maven-base-use.html">
+            
+                <a href="../../automation/maven/maven-base-use.html">
+            
+                    
+                    1.Maven基本概念与核心配置 
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../../automation/jenkins/">
+            
+                <a href="../../automation/jenkins/">
+            
+                    
+                    Jenkins自动化
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.3.1" data-path="../../automation/jenkins/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.2" data-path="../../automation/jenkins/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.3" data-path="../../automation/jenkins/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../../automation/k8s/">
+            
+                <a href="../../automation/k8s/">
+            
+                    
+                    K8s服务编排
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.4.1" data-path="../../automation/k8s/kubeadm-install-one.html">
+            
+                <a href="../../automation/k8s/kubeadm-install-one.html">
+            
+                    
+                    1.快速部署一个K8s集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.2" data-path="../../automation/k8s/kubeadm-install-all.html">
+            
+                <a href="../../automation/k8s/kubeadm-install-all.html">
+            
+                    
+                    2搭建高可用的K8s集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    二、源码框架专题
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../mybatis/">
+            
+                <a href="../mybatis/">
+            
+                    
+                    mybatis
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1" data-path="../mybatis/base-use.html">
+            
+                <a href="../mybatis/base-use.html">
+            
+                    
+                    1.基本使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2" data-path="../mybatis/analysis.html">
+            
+                <a href="../mybatis/analysis.html">
+            
+                    
+                    2源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.3" data-path="../mybatis/realization.html">
+            
+                <a href="../mybatis/realization.html">
+            
+                    
+                    3.代码实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    spring
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.2.1" data-path="ioc.html">
+            
+                <a href="ioc.html">
+            
+                    
+                    1.IOC容器设计理念与源码解读
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.2" data-path="aop.html">
+            
+                <a href="aop.html">
+            
+                    
+                    2.AOP事物底层原理分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.2.3" data-path="mvc.html">
+            
+                <a href="mvc.html">
+            
+                    
+                    3.Spring mvc原理深度解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../../concurrent/">
+            
+                <a href="../../concurrent/">
+            
+                    
+                    三、并发编程专题
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../../concurrent/executor.html">
+            
+                <a href="../../concurrent/executor.html">
+            
+                    
+                    1.Executor线程池详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../../concurrent/JMM&Lock&Tools.html">
+            
+                <a href="../../concurrent/JMM&Lock&Tools.html">
+            
+                    
+                    2.JMM&Lock&Tools详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../../concurrent/atomic&collections.html">
+            
+                <a href="../../concurrent/atomic&collections.html">
+            
+                    
+                    3.atomic&collections详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../../concurrent/Fork-join.html">
+            
+                <a href="../../concurrent/Fork-join.html">
+            
+                    
+                    4.Fork-join框架原理解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../../concurrent/BlockingQueue.html">
+            
+                <a href="../../concurrent/BlockingQueue.html">
+            
+                    
+                    5.BlockingQueue框架原理解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../../performance/">
+            
+                <a href="../../performance/">
+            
+                    
+                    四、性能调优专题
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../../performance/jvm/">
+            
+                <a href="../../performance/jvm/">
+            
+                    
+                    jvm
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1.1" data-path="../../performance/jvm/base.html">
+            
+                <a href="../../performance/jvm/base.html">
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.2" data-path="../../performance/jvm/view.html">
+            
+                <a href="../../performance/jvm/view.html">
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.3" data-path="../../performance/jvm/gc.html">
+            
+                <a href="../../performance/jvm/gc.html">
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../../performance/mysql/">
+            
+                <a href="../../performance/mysql/">
+            
+                    
+                    mysql
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.2.1" data-path="../../performance/mysql/use.html">
+            
+                <a href="../../performance/mysql/use.html">
+            
+                    
+                    1.Mysql安装和使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.2" data-path="../../performance/mysql/high-use.html">
+            
+                <a href="../../performance/mysql/high-use.html">
+            
+                    
+                    2.Mysql性能优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.3" data-path="../../performance/mysql/mysql-index.html">
+            
+                <a href="../../performance/mysql/mysql-index.html">
+            
+                    
+                    3.索引底层数据结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.4" data-path="../../performance/mysql/Explain.html">
+            
+                <a href="../../performance/mysql/Explain.html">
+            
+                    
+                    1.Explain详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.5" data-path="../../performance/mysql/high-index.html">
+            
+                <a href="../../performance/mysql/high-index.html">
+            
+                    
+                    2.索引优化深入
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.6" data-path="../../performance/mysql/acid.html">
+            
+                <a href="../../performance/mysql/acid.html">
+            
+                    
+                    3.Mysql锁与事务隔离级别
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../../performance/nginx/">
+            
+                <a href="../../performance/nginx/">
+            
+                    
+                    nginx
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.3.1" data-path="../../performance/nginx/Nginx-config.html">
+            
+                <a href="../../performance/nginx/Nginx-config.html">
+            
+                    
+                    1.Nginx核心模块与配置实践
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3.2" data-path="../../performance/nginx/Nginx-In-actual-combat.html">
+            
+                <a href="../../performance/nginx/Nginx-In-actual-combat.html">
+            
+                    
+                    2.Nginx 性能优化实践
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../../performance/tomcat/">
+            
+                <a href="../../performance/tomcat/">
+            
+                    
+                    tomcat
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.4.1" data-path="../../performance/tomcat/Tomcat-pro-use.html">
+            
+                <a href="../../performance/tomcat/Tomcat-pro-use.html">
+            
+                    
+                    1.Tomcat生产环境应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../../distributed/">
+            
+                <a href="../../distributed/">
+            
+                    
+                    五、分布式框架专题
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../../distributed/zookeeper/">
+            
+                <a href="../../distributed/zookeeper/">
+            
+                    
+                    zookeeper
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1.1" data-path="../../distributed/zookeeper/zookeeper-base-use.html">
+            
+                <a href="../../distributed/zookeeper/zookeeper-base-use.html">
+            
+                    
+                    1.特性与节点说明
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.2" data-path="../../distributed/zookeeper/zookeeper-client-use.html">
+            
+                <a href="../../distributed/zookeeper/zookeeper-client-use.html">
+            
+                    
+                    2.客户端使用与集群特性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.3" data-path="../../distributed/zookeeper/zookeeper-sence-use.html">
+            
+                <a href="../../distributed/zookeeper/zookeeper-sence-use.html">
+            
+                    
+                    3.典型使用场景实践
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.4" data-path="../../distributed/zookeeper/zookeeper-zab.html">
+            
+                <a href="../../distributed/zookeeper/zookeeper-zab.html">
+            
+                    
+                    4.ZAB协议实现源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../../distributed/netty/">
+            
+                <a href="../../distributed/netty/">
+            
+                    
+                    netty
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.2.1" data-path="../../distributed/netty/shell.html">
+            
+                <a href="../../distributed/netty/shell.html">
+            
+                    
+                    1.启停脚本
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.2" data-path="../../distributed/netty/netty.html">
+            
+                <a href="../../distributed/netty/netty.html">
+            
+                    
+                    2.分布式之netty
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../../distributed/dubbo/">
+            
+                <a href="../../distributed/dubbo/">
+            
+                    
+                    dubbo
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.3.1" data-path="../../distributed/dubbo/dubbo-introduce.html">
+            
+                <a href="../../distributed/dubbo/dubbo-introduce.html">
+            
+                    
+                    1.从0到1整体认知分布式系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.2" data-path="../../distributed/dubbo/dubbo-base-use.html">
+            
+                <a href="../../distributed/dubbo/dubbo-base-use.html">
+            
+                    
+                    2.快速掌握Dubbo常规应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.3" data-path="../../distributed/dubbo/dubbo-high-use.html">
+            
+                <a href="../../distributed/dubbo/dubbo-high-use.html">
+            
+                    
+                    3.Dubbo企业级应用进阶
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.4" data-path="../../distributed/dubbo/dubbo-module-detail.html">
+            
+                <a href="../../distributed/dubbo/dubbo-module-detail.html">
+            
+                    
+                    2.Dubb调用模块详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.5" data-path="../../distributed/dubbo/dubbo-proto-detail.html">
+            
+                <a href="../../distributed/dubbo/dubbo-proto-detail.html">
+            
+                    
+                    3.Dubbo协议模块源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../../distributed/rocketmq/">
+            
+                <a href="../../distributed/rocketmq/">
+            
+                    
+                    rocketmq
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.4.1" data-path="../../distributed/rocketmq/shell.html">
+            
+                <a href="../../distributed/rocketmq/shell.html">
+            
+                    
+                    1.启停脚本
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4.2" data-path="../../distributed/rocketmq/rocketmq.html">
+            
+                <a href="../../distributed/rocketmq/rocketmq.html">
+            
+                    
+                    2.分布式之RockeqMq
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../../distributed/rabbitmq/">
+            
+                <a href="../../distributed/rabbitmq/">
+            
+                    
+                    rabbitmq
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.5.1" data-path="../../distributed/rabbitmq/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5.2" data-path="../../distributed/rabbitmq/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5.3" data-path="../../distributed/rabbitmq/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../../distributed/kafka/">
+            
+                <a href="../../distributed/kafka/">
+            
+                    
+                    kafka
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.6.1" data-path="../../distributed/kafka/shell.html">
+            
+                <a href="../../distributed/kafka/shell.html">
+            
+                    
+                    1.集群启动停止脚本
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6.2" data-path="../../distributed/kafka/kafka.html">
+            
+                <a href="../../distributed/kafka/kafka.html">
+            
+                    
+                    2.大数据技术之Kafka
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../../distributed/mongo/">
+            
+                <a href="../../distributed/mongo/">
+            
+                    
+                    mongo
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.7.1" data-path="../../distributed/mongo/mongoDb-data.html">
+            
+                <a href="../../distributed/mongo/mongoDb-data.html">
+            
+                    
+                    1.准备数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7.2" data-path="../../distributed/mongo/mongoDb-quick-start.html">
+            
+                <a href="../../distributed/mongo/mongoDb-quick-start.html">
+            
+                    
+                    2.快速上手
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7.3" data-path="../../distributed/mongo/mongoDb-enterprise.html">
+            
+                <a href="../../distributed/mongo/mongoDb-enterprise.html">
+            
+                    
+                    3.企业应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../../distributed/redis/">
+            
+                <a href="../../distributed/redis/">
+            
+                    
+                    redis
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.8.1" data-path="../../distributed/redis/shell.html">
+            
+                <a href="../../distributed/redis/shell.html">
+            
+                    
+                    1.启停脚本
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8.2" data-path="../../distributed/redis/redis.html">
+            
+                <a href="../../distributed/redis/redis.html">
+            
+                    
+                    2.分布式之Redis
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="../../distributed/shardingsphere/">
+            
+                <a href="../../distributed/shardingsphere/">
+            
+                    
+                    shardingsphere
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.9.1" data-path="../../distributed/shardingsphere/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9.2" data-path="../../distributed/shardingsphere/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9.3" data-path="../../distributed/shardingsphere/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10" data-path="../../distributed/elk/">
+            
+                <a href="../../distributed/elk/">
+            
+                    
+                    elk
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.10.1" data-path="../../distributed/elk/shell.html">
+            
+                <a href="../../distributed/elk/shell.html">
+            
+                    
+                    1.启停脚本
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10.2" data-path="../../distributed/elk/elk.html">
+            
+                <a href="../../distributed/elk/elk.html">
+            
+                    
+                    2.分布式之ELK
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../../micro/">
+            
+                <a href="../../micro/">
+            
+                    
+                    六、微服务框架专题
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../../micro/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../../micro/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../../micro/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../../micro/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../../micro/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../../micro/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" data-path="../../micro/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8" data-path="../../micro/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9" data-path="../../micro/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.10" data-path="../../micro/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.11" data-path="../../micro/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.12" data-path="../../micro/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../../project/">
+            
+                <a href="../../project/">
+            
+                    
+                    七、项目实战专题
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../../project/SystemArchitecture.html">
+            
+                <a href="../../project/SystemArchitecture.html">
+            
+                    
+                    1.系统架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../../project/member.html">
+            
+                <a href="../../project/member.html">
+            
+                    
+                    2.商品&会员模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../../project/order.html">
+            
+                <a href="../../project/order.html">
+            
+                    
+                    3.交易&营销模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="../../project/pay.html">
+            
+                <a href="../../project/pay.html">
+            
+                    
+                    4.支付模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="../../project/Depots-table-1.html">
+            
+                <a href="../../project/Depots-table-1.html">
+            
+                    
+                    5.分库分表一
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" data-path="../../project/Depots-table-2.html">
+            
+                <a href="../../project/Depots-table-2.html">
+            
+                    
+                    6.分库分表二
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >3.Spring mvc原理深度解析</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div class="treeview__container"><div class="treeview__container-title"><span class="treeview__main-title">Treeview</span><span class="treeview__copyright">Copyright &#xA9; aleen42 all right reserved, powered by <a href="https://github.com/aleen42" target="_blank">aleen42</a></span></div><ul>
+<li><div><a href="#&#x4E00;&#x3001;spring-mvc-&#x8BBE;&#x8BA1;&#x601D;&#x60F3;&#x4E0E;&#x4F53;&#x7CFB;&#x7ED3;&#x6784;&#x7EC4;&#x6210;">&#x4E00;&#x3001;spring mvc &#x8BBE;&#x8BA1;&#x601D;&#x60F3;&#x4E0E;&#x4F53;&#x7CFB;&#x7ED3;&#x6784;&#x7EC4;&#x6210;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#1&#x3001;&#x56DE;&#x987E;servlet-&#x4E0E;jsp-&#x6267;&#x884C;&#x8FC7;&#x7A0B;">1&#x3001;&#x56DE;&#x987E;servlet &#x4E0E;jsp &#x6267;&#x884C;&#x8FC7;&#x7A0B;</a><i></i></div></li>
+<li><div><a href="#2&#x3001;spring-mvc-&#x6267;&#x884C;&#x6D41;&#x7A0B;&#xFF1A;">2&#x3001;spring mvc &#x6267;&#x884C;&#x6D41;&#x7A0B;&#xFF1A;</a><i></i></div></li>
+<li><div><a href="#3&#x3001;spring-mvc-&#x4F53;&#x7CFB;&#x7ED3;&#x6784;">3&#x3001;spring mvc &#x4F53;&#x7CFB;&#x7ED3;&#x6784;</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#&#x4E8C;&#x3001;mvc-&#x6267;&#x884C;&#x6D41;&#x7A0B;&#x89E3;&#x6790;">&#x4E8C;&#x3001;mvc &#x6267;&#x884C;&#x6D41;&#x7A0B;&#x89E3;&#x6790;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#&#x8981;&#x70B9;&#xFF1A;">&#x8981;&#x70B9;&#xFF1A;</a><i></i></div></li>
+<li><div><a href="#2&#x3001;handlermapping-&#x8BE6;&#x89E3;">2&#x3001;HandlerMapping &#x8BE6;&#x89E3;</a><i></i></div></li>
+<li><div><a href="#3&#x3001;handleradapter&#x8BE6;&#x89E3;">3&#x3001;HandlerAdapter&#x8BE6;&#x89E3;</a><i></i></div></li>
+<li><div><a href="#4&#x3001;viewresolver-&#x4E0E;view-&#x8BE6;&#x89E3;">4&#x3001;ViewResolver &#x4E0E;View &#x8BE6;&#x89E3;</a><i></i></div></li>
+<li><div><a href="#5&#x3001;handlerexceptionresolver&#x8BE6;&#x89E3;">5&#x3001;HandlerExceptionResolver&#x8BE6;&#x89E3;</a><i></i></div></li>
+<li><div><a href="#6&#x3001;handlerinterceptor-&#x8BE6;&#x89E3;">6&#x3001;HandlerInterceptor &#x8BE6;&#x89E3;</a><i></i></div></li>
+<li><div><a href="#&#x4E09;&#x3001;&#x6CE8;&#x89E3;&#x914D;&#x7F6E;">&#x4E09;&#x3001;&#x6CE8;&#x89E3;&#x914D;&#x7F6E;</a><i></i></div></li>
+</ul></li>
+</ul>
+</div>
+
+<p><strong>&#x8BFE;&#x7A0B;&#x6982;&#x8981;</strong></p>
+<ol>
+<li>spring mvc &#x8BBE;&#x8BA1;&#x601D;&#x60F3;&#x4E0E;&#x4F53;&#x7CFB;&#x7ED3;&#x6784;&#x7EC4;&#x6210;</li>
+<li>mvc &#x6267;&#x884C;&#x6D41;&#x7A0B;&#x89E3;&#x6790;</li>
+<li><p>&#x6CE8;&#x89E3;&#x914D;&#x7F6E;</p>
+<h2 id="&#x4E00;&#x3001;spring-mvc-&#x8BBE;&#x8BA1;&#x601D;&#x60F3;&#x4E0E;&#x4F53;&#x7CFB;&#x7ED3;&#x6784;&#x7EC4;&#x6210;">&#x4E00;&#x3001;spring mvc &#x8BBE;&#x8BA1;&#x601D;&#x60F3;&#x4E0E;&#x4F53;&#x7CFB;&#x7ED3;&#x6784;&#x7EC4;&#x6210;</h2>
+</li>
+<li><p>jsp &#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x56DE;&#x987E;</p>
+</li>
+<li>spring mvc&#x6267;&#x884C;&#x6D41;&#x7A0B;&#x89E3;&#x6790;</li>
+<li>mvc &#x4F53;&#x7CFB;&#x7ED3;&#x6784;<h3 id="1&#x3001;&#x56DE;&#x987E;servlet-&#x4E0E;jsp-&#x6267;&#x884C;&#x8FC7;&#x7A0B;">1&#x3001;&#x56DE;&#x987E;servlet &#x4E0E;jsp &#x6267;&#x884C;&#x8FC7;&#x7A0B;</h3>
+</li>
+</ol>
+<p><img src="https://uploader.shimo.im/f/iH1XWXOfTDZ6wSSM.png!thumbnail?fileGuid=JHQCHrkhhyJV9YCD" alt="&#x56FE;&#x7247;"></p>
+<p><strong>&#x6D41;&#x7A0B;&#x8BF4;&#x660E;&#xFF1A;</strong></p>
+<ol>
+<li>&#x8BF7;&#x6C42;Servlet</li>
+<li>&#x5904;&#x7406;&#x4E1A;&#x52A1;&#x903B;&#x8F91;</li>
+<li>&#x8BBE;&#x7F6E;&#x4E1A;&#x52A1;Model</li>
+<li>forward jsp Servlet</li>
+<li>jsp Servlet &#x89E3;&#x6790;&#x5C01;&#x88C5;html &#x8FD4;&#x56DE;</li>
+</ol>
+<p>&#x63D0;&#x95EE;&#xFF1A;&#x8FD9;&#x4E2A;&#x662F;&#x4E00;&#x4E2A;MVC&#x5E94;&#x7528;&#x573A;&#x666F;&#x5417;&#xFF1F;</p>
+<p>spring mvc&#x672C;&#x8D28;&#x4E0A;&#x8FD8;&#x662F;&#x5728;&#x4F7F;&#x7528;Servlet&#x5904;&#x7406;&#xFF0C;&#x5E76;&#x5728;&#x5176;&#x57FA;&#x7840;&#x4E0A;&#x8FDB;&#x884C;&#x4E86;&#x5C01;&#x88C5;&#x7B80;&#x5316;&#x4E86;&#x5F00;&#x53D1;&#x6D41;&#x7A0B;&#xFF0C;&#x63D0;&#x9AD8;&#x6613;&#x7528;&#x6027;&#x3001;&#x5E76;&#x4F7F;&#x7528;&#x7A0B;&#x5E8F;&#x903B;&#x8F91;&#x7ED3;&#x6784;&#x53D8;&#x5F97;&#x66F4;&#x6E05;&#x6670;</p>
+<ol>
+<li>&#x57FA;&#x4E8E;&#x6CE8;&#x89E3;&#x7684;URL&#x6620;&#x8C22;</li>
+<li>http&#x8868;&#x5355;&#x53C2;&#x6570;&#x8F6C;&#x6362;</li>
+<li>&#x5168;&#x5C40;&#x7EDF;&#x4E00;&#x5F02;&#x5E38;&#x5904;&#x7406;</li>
+<li>&#x62E6;&#x622A;&#x5668;&#x7684;&#x5B9E;&#x73B0;<h3 id="2&#x3001;spring-mvc-&#x6267;&#x884C;&#x6D41;&#x7A0B;&#xFF1A;"><strong>2&#x3001;spring mvc &#x6267;&#x884C;&#x6D41;&#x7A0B;&#xFF1A;</strong></h3>
+</li>
+</ol>
+<p><img src="https://uploader.shimo.im/f/Vv3SxsCZgMQjuvOx.png!thumbnail?fileGuid=JHQCHrkhhyJV9YCD" alt="&#x56FE;&#x7247;"></p>
+<p><strong>&#x6574;&#x4E2A;&#x8FC7;&#x7A0B;&#x662F;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x7684;&#xFF1F;</strong></p>
+<ol>
+<li>dispatchServlet &#x5982;&#x4F55;&#x627E;&#x5230;&#x5BF9;&#x5E94;&#x7684;Control&#xFF1F;</li>
+<li>&#x5982;&#x4F55;&#x6267;&#x884C;&#x8C03;&#x7528;Control &#x5F53;&#x4E2D;&#x7684;&#x4E1A;&#x52A1;&#x65B9;&#x6CD5;&#xFF1F;</li>
+</ol>
+<p>&#x56DE;&#x7B54;&#x8FD9;&#x4E9B;&#x95EE;&#x9898;&#x4E4B;&#x524D;&#x6211;&#x4EEC;&#x5148;&#x6765;&#x8BA4;&#x8BC6;&#x4E00;&#x4E0B;spring mvc &#x4F53;&#x7CFB;&#x7ED3;&#x6784;</p>
+<h3 id="3&#x3001;spring-mvc-&#x4F53;&#x7CFB;&#x7ED3;&#x6784;">3&#x3001;spring mvc &#x4F53;&#x7CFB;&#x7ED3;&#x6784;</h3>
+<ul>
+<li><strong>HandlerMapping</strong>&apos;h&#xE6;ndl&#x259;  &apos;m&#xE6;p&#x26A;&#x14B;<ul>
+<li>url&#x4E0E;&#x63A7;&#x5236;&#x5668;&#x7684;&#x6620;&#x8C22;</li>
+</ul>
+</li>
+<li><strong>HandlerAdapter</strong>&apos;h&#xE6;ndl&#x259;  &#x259;&apos;d&#xE6;pt&#x259;<ul>
+<li>&#x63A7;&#x5236;&#x5668;&#x6267;&#x884C;&#x9002;&#x914D;&#x5668;</li>
+</ul>
+</li>
+<li><strong>ViewResolver</strong>vju&#x2D0;  ri&#x2D0;&apos;z&#x252;lv&#x259;<ul>
+<li>&#x89C6;&#x56FE;&#x4ED3;&#x5E93;</li>
+</ul>
+</li>
+<li><strong>view</strong><ul>
+<li>&#x5177;&#x4F53;&#x89E3;&#x6790;&#x89C6;&#x56FE;</li>
+</ul>
+</li>
+<li><strong>HandlerExceptionResolver</strong>&apos;h&#xE6;ndl&#x259;  &#x26A;k&apos;sep&#x283;(&#x259;)n  ri&#x2D0;&apos;z&#x252;lv&#x259;<ul>
+<li>&#x5F02;&#x5E38;&#x6355;&#x6355;&#x6349;&#x5668;</li>
+</ul>
+</li>
+<li><strong>HandlerInterceptor</strong>&apos;h&#xE6;ndl&#x259;  &#x26A;nt&#x259;&apos;sept&#x259;<ul>
+<li>&#x62E6;&#x622A;&#x5668;</li>
+</ul>
+</li>
+</ul>
+<p><strong>&#x914D;&#x7F6E;&#x4E00;&#x4E2A;spring mvc &#x793A;&#x4F8B;&#x6F14;&#x793A; &#x9A8C;&#x8BC1;&#x4E0A;&#x8FF0;&#x6D41;&#x7A0B;</strong></p>
+<pre class="language-"><code>- [ ] &#x521B;&#x5EFA;&#x4E00;&#x4E2A;Controller &#x7C7B;
+- [ ] &#x914D;&#x7F6E;DispatchServlet
+- [ ] &#x521B;&#x5EFA;spring-mvc.xml &#x6587;&#x4EF6;
+- [ ] &#x914D;&#x7F6E;SimpleUrlHandlerMapping
+- [ ] &#x914D;&#x7F6E;InternalResourceViewResolver
+</code></pre><p><strong>&#x4F53;&#x7CFB;&#x7ED3;&#x6784;UML</strong></p>
+<p><img src="https://uploader.shimo.im/f/5Oy6EcXmg6envBzM.png!thumbnail?fileGuid=JHQCHrkhhyJV9YCD" alt="&#x56FE;&#x7247;"></p>
+<h2 id="&#x4E8C;&#x3001;mvc-&#x6267;&#x884C;&#x6D41;&#x7A0B;&#x89E3;&#x6790;">&#x4E8C;&#x3001;mvc &#x6267;&#x884C;&#x6D41;&#x7A0B;&#x89E3;&#x6790;</h2>
+<h3 id="&#x8981;&#x70B9;&#xFF1A;">&#x8981;&#x70B9;&#xFF1A;</h3>
+<ol>
+<li>mvc &#x5177;&#x4F53;&#x6267;&#x884C;&#x6D41;&#x7A0B;</li>
+<li>HandlerMapping&#x8BE6;&#x89E3;</li>
+<li>HandlerAdapter &#x8BE6;&#x89E3;</li>
+<li>ViewResolver&#x4E0E;View&#x8BE6;&#x89E3;</li>
+<li>HandlerExceptionResolver&#x8BE6;&#x89E3;</li>
+<li>HandlerInterceptor &#x8BE6;&#x89E3;</li>
+<li>mvc &#x5404;&#x7EC4;&#x4EF6;&#x6267;&#x884C;&#x6D41;&#x7A0B;</li>
+</ol>
+<p><img src="https://uploader.shimo.im/f/CmEqoYyzNbTaH6eO.png!thumbnail?fileGuid=JHQCHrkhhyJV9YCD" alt="&#x56FE;&#x7247;"></p>
+<h3 id="2&#x3001;handlermapping-&#x8BE6;&#x89E3;"><strong>2&#x3001;HandlerMapping &#x8BE6;&#x89E3;</strong></h3>
+<p>&#x5176;&#x4E3A;mvc &#x4E2D;url&#x8DEF;&#x5F84;&#x4E0E;Control&#x5BF9;&#x50CF;&#x7684;&#x6620;&#x5C04;&#xFF0C;DispatcherServlet &#x5C31;&#x662F;&#x57FA;&#x4E8E;&#x6B64;&#x7EC4;&#x4EF6;&#x6765;&#x5BFB;&#x627E;&#x5BF9;&#x5E94;&#x7684;Control&#xFF0C;&#x5982;&#x679C;&#x627E;&#x4E0D;&#x5230;&#x5C31;&#x4F1A;&#x62A5;Not Found mapping &#x7684;&#x5F02;&#x5E38;&#x3002;</p>
+<p>HandlerMapping &#x63A5;&#x53E3;&#x65B9;&#x6CD5;</p>
+<p><img src="https://uploader.shimo.im/f/r9iL1e868FE5j3vA.png!thumbnail?fileGuid=JHQCHrkhhyJV9YCD" alt="&#x56FE;&#x7247;"></p>
+<p>HandlerMapping &#x63A5;&#x53E3;&#x7ED3;&#x6784;</p>
+<p><img src="https://uploader.shimo.im/f/0UN295D5ahQpjMif.png!thumbnail?fileGuid=JHQCHrkhhyJV9YCD" alt="&#x56FE;&#x7247;"></p>
+<p>&#x76EE;&#x524D;&#x4E3B;&#x6D41;&#x7684;&#x4E09;&#x79CD;mapping &#x5982;&#x4E0B;&#xFF1A;</p>
+<p>BeanNameUrlHandlerMapping:  &#x57FA;&#x4E8E;ioc name &#x4E2D;&#x5DF2; &quot;/&quot; &#x5F00;&#x5934;&#x7684;Bean&#x65F6;&#x884C; &#x6CE8;&#x518C;&#x81F3;&#x6620;&#x8C22;.</p>
+<p>SimpleUrlHandlerMapping&#xFF1A;&#x57FA;&#x4E8E;&#x624B;&#x52A8;&#x914D;&#x7F6E; url &#x4E0E;control &#x6620;&#x8C22;</p>
+<p>RequestMappingHandlerMapping&#xFF1A;&#x57FA;&#x4E8E;@RequestMapping&#x6CE8;&#x89E3;&#x914D;&#x7F6E;&#x5BF9;&#x5E94;&#x6620;&#x8C22;</p>
+<ul>
+<li>[ ] &#x6F14;&#x793A;&#x57FA;&#x4E8E; BeanNameUrlHandlerMapping  &#x914D;&#x7F6E;&#x6620;&#x8C22;&#x3002;</li>
+</ul>
+<p>&#x7F16;&#x5199;mvc &#x6587;&#x4EF6;</p>
+<pre class="language-"><code class="lang-xml"><span class="token comment">&lt;!--&#x7B80;&#x5355;&#x63A7;&#x5236;&#x5668;--&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>/user.do<span class="token punctuation">&quot;</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>com.tuling.mvc.control.BeanNameControl<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+</code></pre>
+<pre class="language-"><code class="lang-java"><span class="token comment">// beanname control &#x63A7;&#x5236;&#x5668;</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BeanNameControl</span> <span class="token keyword">implements</span> <span class="token class-name">HttpRequestHandler</span> <span class="token punctuation">{</span>
+<span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">handleRequest</span><span class="token punctuation">(</span><span class="token class-name">HttpServletRequest</span> request<span class="token punctuation">,</span> <span class="token class-name">HttpServletResponse</span> response<span class="token punctuation">)</span>
+<span class="token keyword">throws</span> <span class="token class-name">IOException</span><span class="token punctuation">,</span> <span class="token class-name">ServletException</span> <span class="token punctuation">{</span>
+request<span class="token punctuation">.</span><span class="token function">getRequestDispatcher</span><span class="token punctuation">(</span><span class="token string">&quot;/WEB-INF/page/userView.jsp&quot;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forward</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> response<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x5F53;IOC &#x4E2D;&#x5B9E;&#x4F8B;&#x5316;&#x8FD9;&#x4E9B;&#x7C7B;&#x4E4B;&#x540E; DispatcherServlet &#x5C31;&#x4F1A;&#x901A;&#x8FC7;org.springframework.web.servlet.DispatcherServlet#getHandler() &#x65B9;&#x6CD5;&#x57FA;&#x4E8E;request&#x67E5;&#x627E;&#x5BF9;&#x5E94;Handler&#x3002; &#x4F46;&#x627E;&#x5230;&#x5BF9;&#x5E94;&#x7684;Handler&#x4E4B;&#x540E;&#x6211;&#x4EEC;&#x53D1;&#x73B0;&#x4ED6;&#x662F;&#x4E00;&#x4E2A;Object&#x7C7B;&#x578B;&#xFF0C;&#x5E76;&#x6CA1;&#x6709;&#x5B9E;&#x73B0;&#x7279;&#x5B9A;&#x63A5;&#x53E3;&#x3002;&#x5982;&#x4F55;&#x8C03;&#x7528;Handler&#x5462;&#xFF1F;</p>
+<h3 id="3&#x3001;handleradapter&#x8BE6;&#x89E3;"><strong>3&#x3001;HandlerAdapter&#x8BE6;&#x89E3;</strong></h3>
+<p>&#x8FD9;&#x91CC;spring mvc &#x91C7;&#x7528;&#x9002;&#x914D;&#x5668;&#x6A21;&#x5F0F;&#x6765;&#x9002;&#x914D;&#x8C03;&#x7528;&#x6307;&#x5B9A;Handler&#xFF0C;&#x6839;&#x636E;Handler&#x7684;&#x4E0D;&#x540C;&#x79CD;&#x7C7B;&#x91C7;&#x7528;&#x4E0D;&#x540C;&#x7684;Adapter,&#x5176;Handler&#x4E0E; HandlerAdapter &#x5BF9;&#x5E94;&#x5173;&#x7CFB;&#x5982;&#x4E0B;:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Handler&#x7C7B;&#x522B;</strong></th>
+<th style="text-align:left"><strong>&#x5BF9;&#x5E94;&#x9002;&#x914D;&#x5668;</strong></th>
+<th style="text-align:left"><strong>&#x63CF;&#x8FF0;</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Controller</td>
+<td style="text-align:left">SimpleControllerHandlerAdapter</td>
+<td style="text-align:left">&#x6807;&#x51C6;&#x63A7;&#x5236;&#x5668;&#xFF0C;&#x8FD4;&#x56DE;ModelAndView</td>
+</tr>
+<tr>
+<td style="text-align:left">HttpRequestHandler</td>
+<td style="text-align:left">HttpRequestHandlerAdapter</td>
+<td style="text-align:left">&#x4E1A;&#x52A1;&#x81EA;&#x884C;&#x5904;&#x7406; &#x8BF7;&#x6C42;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x901A;&#x8FC7;modelAndView &#x8F6C;&#x5230;&#x89C6;&#x56FE;</td>
+</tr>
+<tr>
+<td style="text-align:left">Servlet</td>
+<td style="text-align:left">SimpleServletHandlerAdapter</td>
+<td style="text-align:left">&#x57FA;&#x4E8E;&#x6807;&#x51C6;&#x7684;servlet &#x5904;&#x7406;</td>
+</tr>
+<tr>
+<td style="text-align:left">HandlerMethod</td>
+<td style="text-align:left">RequestMappingHandlerAdapter</td>
+<td style="text-align:left">&#x57FA;&#x4E8E;@requestMapping&#x5BF9;&#x5E94;&#x65B9;&#x6CD5;&#x5904;&#x7406;</td>
+</tr>
+</tbody>
+</table>
+<p>HandlerAdapter  &#x63A5;&#x53E3;&#x65B9;&#x6CD5;</p>
+<p><img src="https://uploader.shimo.im/f/EVwZBKTyxhADfYM1.png!thumbnail?fileGuid=JHQCHrkhhyJV9YCD" alt="&#x56FE;&#x7247;"></p>
+<p>HandlerAdapter  &#x63A5;&#x53E3;&#x7ED3;&#x6784;&#x56FE;</p>
+<p><img src="https://uploader.shimo.im/f/RjINUyg6fRzSgqKT.png!thumbnail?fileGuid=JHQCHrkhhyJV9YCD" alt="&#x56FE;&#x7247;"></p>
+<ul>
+<li>[ ] &#x6F14;&#x793A;&#x57FA;&#x4E8E;Servlet &#x5904;&#x7406;  SimpleServletHandlerAdapter<pre class="language-"><code class="lang-xml"><span class="token comment">&lt;!-- &#x914D;&#x7F6E;&#x63A7;&#x5236;&#x5668; --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>/hello.do<span class="token punctuation">&quot;</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>com.tuling.mvc.control.HelloServlet<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+<span class="token comment">&lt;!-- &#x914D;&#x7F6E;&#x9002;&#x914D;&#x5668; --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>org.springframework.web.servlet.handler.SimpleServletHandlerAdapter<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+</code></pre>
+<pre class="language-"><code class="lang-java"><span class="token comment">// &#x6807;&#x51C6;Servlet</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HelloServlet</span> <span class="token keyword">extends</span> <span class="token class-name">HttpServlet</span> <span class="token punctuation">{</span>
+<span class="token annotation punctuation">@Override</span>
+<span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">doGet</span><span class="token punctuation">(</span><span class="token class-name">HttpServletRequest</span> req<span class="token punctuation">,</span> <span class="token class-name">HttpServletResponse</span> resp<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">ServletException</span><span class="token punctuation">,</span> <span class="token class-name">IOException</span> <span class="token punctuation">{</span>
+resp<span class="token punctuation">.</span><span class="token function">getWriter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;hello luban &quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+&#x4E0A;&#x8FF0;&#x4F8B;&#x5B50;&#x4E2D;&#x5F53;IOC &#x4E2D;&#x5B9E;&#x4F8B;&#x5316;&#x8FD9;&#x4E9B;&#x7C7B;&#x4E4B;&#x540E; DispatcherServlet &#x5C31;&#x4F1A;&#x901A;&#x8FC7;
+org.springframework.web.servlet.DispatcherServlet#getHandlerAdapter() &#x65B9;&#x6CD5;&#x67E5;&#x627E;&#x5BF9;&#x5E94;handler&#x7684;&#x9002;&#x914D;&#x5668; &#xFF0C;&#x5982;&#x679C;&#x627E;&#x4E0D;&#x5230;&#x5C31;&#x4F1A;&#x62A5; No adapter for handler &#x3002;</li>
+</ul>
+<h3 id="4&#x3001;viewresolver-&#x4E0E;view-&#x8BE6;&#x89E3;"><strong>4&#x3001;ViewResolver &#x4E0E;View &#x8BE6;&#x89E3;</strong></h3>
+<p>&#x627E;&#x5230;&#x5E94;&#x7684;Adapter &#x4E4B;&#x540E;&#x5C31;&#x4F1A;&#x57FA;&#x4E8E;&#x9002;&#x914D;&#x5668;&#x8C03;&#x7528;&#x4E1A;&#x52A1;&#x5904;&#x7406;&#xFF0C;&#x5904;&#x7406;&#x5B8C;&#x4E4B;&#x540E;&#x4E1A;&#x52A1;&#x65B9;&#x4F1A;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;ModelAndView &#xFF0C;&#x5728;&#x53BB;&#x67E5;&#x627E;&#x5BF9;&#x5E94;&#x7684;&#x89C6;&#x56FE;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x3002;&#x5176;&#x5728;org.springframework.web.servlet.DispatcherServlet#resolveViewName() &#x4E2D;&#x904D;&#x5386; viewResolvers &#x5217;&#x8868;&#x67E5;&#x627E;&#xFF0C;&#x5982;&#x679C;&#x627E;&#x4E0D;&#x5230;&#x5C31;&#x4F1A;&#x62A5;&#x4E00;&#x4E2A; Could not resolve view with name &#x5F02;&#x5E38;&#x3002;</p>
+<p><img src="https://uploader.shimo.im/f/Es8FLpo4I47AlYZj.png!thumbnail?fileGuid=JHQCHrkhhyJV9YCD" alt="&#x56FE;&#x7247;"></p>
+<p>&#x5728;&#x4E0B;&#x4E00;&#x6B65;&#x5C31;&#x662F;&#x57FA;&#x4E8E;ViewResolver<strong>.</strong>resolveViewName() &#x83B7;&#x53D6;&#x5BF9;&#x5E94;View&#x6765;&#x89E3;&#x6790;&#x751F;&#x6210;Html&#x5E76;&#x8FD4;&#x56DE; &#x3002;&#x5BF9;&#x5E94;VIEW&#x7ED3;&#x6784;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p><img src="https://uploader.shimo.im/f/3wpgYHrjCJGCykdc.png!thumbnail?fileGuid=JHQCHrkhhyJV9YCD" alt="&#x56FE;&#x7247;"></p>
+<p>&#x81F3;&#x6B64;&#x6574;&#x4E2A;&#x6B63;&#x5411;&#x6D41;&#x7A0B;&#x5C31;&#x5DF2;&#x7ECF;&#x8D70;&#x5B8C;&#x4E86;&#xFF0C;&#x5982;&#x679C;&#x6B64;&#x65F6;&#x7A0B;&#x5E8F;&#x5904;&#x7406;&#x5F02;&#x5E38; MVC &#x8BE5;&#x5982;&#x4F55;&#x5904;&#x7406;&#x5462;&#xFF1F;</p>
+<h3 id="5&#x3001;handlerexceptionresolver&#x8BE6;&#x89E3;">5&#x3001;HandlerExceptionResolver&#x8BE6;&#x89E3;</h3>
+<p>&#x8BE5;&#x7EC4;&#x4EF6;&#x7528;&#x4E8E;&#x6307;&#x793A; &#x5F53;&#x51FA;&#x73B0;&#x5F02;&#x5E38;&#x65F6; mvc &#x8BE5;&#x5982;&#x4F55;&#x5904;&#x7406;&#x3002; dispatcherServlet &#x4F1A;&#x8C03;&#x7528;org.springframework.web.servlet.DispatcherServlet#processHandlerException() &#x65B9;&#x6CD5;&#xFF0C;&#x904D;&#x5386; handlerExceptionResolvers &#x5904;&#x7406;&#x5F02;&#x5E38;&#xFF0C;&#x5904;&#x7406;&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#x8FD4;&#x56DE;errorView &#x8DF3;&#x8F6C;&#x5230;&#x5F02;&#x5E38;&#x89C6;&#x56FE;&#x3002;</p>
+<pre class="language-"><code>- [ ] &#x6F14;&#x793A;&#x81EA;&#x5B9A;&#x4E49;&#x5F02;&#x5E38;&#x6355;&#x6349;
+</code></pre><pre class="language-"><code class="lang-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SimpleExceptionHandle</span> <span class="token keyword">implements</span> <span class="token class-name">HandlerExceptionResolver</span> <span class="token punctuation">{</span>
+<span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> <span class="token class-name">ModelAndView</span> <span class="token function">resolveException</span><span class="token punctuation">(</span><span class="token class-name">HttpServletRequest</span> request<span class="token punctuation">,</span> <span class="token class-name">HttpServletResponse</span> response<span class="token punctuation">,</span> <span class="token class-name">Object</span> handler<span class="token punctuation">,</span> <span class="token class-name">Exception</span> ex<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ModelAndView</span><span class="token punctuation">(</span><span class="token string">&quot;error&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<pre class="language-"><code class="lang-xml"><span class="token comment">&lt;!-- &#x6F14;&#x793A;&#x5F02;&#x5E38;&#x914D;&#x7F6E; --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>com.tuling.mvc.control.SimpleExceptionHandle<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+</code></pre>
+<p>HandlerExceptionResolver &#x7ED3;&#x6784;</p>
+<p><img src="https://uploader.shimo.im/f/Zdxu0Le4EOrVqBRA.png!thumbnail?fileGuid=JHQCHrkhhyJV9YCD" alt="&#x56FE;&#x7247;"></p>
+<p>&#x9664;&#x4E86;&#x4E0A;&#x8FF0;&#x7EC4;&#x4EF6;&#x4E4B;&#x5916; spring &#x4E2D;&#x8FD8;&#x5F15;&#x5165;&#x4E86;  &#x6211;Interceptor &#x62E6;&#x622A;&#x5668; &#x673A;&#x5236;&#xFF0C;&#x7C7B;&#x4F3C;&#x4E8E;Filter&#x3002;</p>
+<h3 id="6&#x3001;handlerinterceptor-&#x8BE6;&#x89E3;">6&#x3001;HandlerInterceptor &#x8BE6;&#x89E3;</h3>
+<ul>
+<li>[ ] &#x6F14;&#x793A;HandlerInterceptor<pre class="language-"><code class="lang-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SimpleHandlerInterceptor</span> <span class="token keyword">implements</span> <span class="token class-name">HandlerInterceptor</span> <span class="token punctuation">{</span>
+<span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">preHandle</span><span class="token punctuation">(</span><span class="token class-name">HttpServletRequest</span> request<span class="token punctuation">,</span> <span class="token class-name">HttpServletResponse</span> response<span class="token punctuation">,</span> <span class="token class-name">Object</span> handler<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;preHandle&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">postHandle</span><span class="token punctuation">(</span><span class="token class-name">HttpServletRequest</span> request<span class="token punctuation">,</span> <span class="token class-name">HttpServletResponse</span> response<span class="token punctuation">,</span> <span class="token class-name">Object</span> handler<span class="token punctuation">,</span> <span class="token class-name">ModelAndView</span> modelAndView<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;postHandle&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">afterCompletion</span><span class="token punctuation">(</span><span class="token class-name">HttpServletRequest</span> request<span class="token punctuation">,</span> <span class="token class-name">HttpServletResponse</span> response<span class="token punctuation">,</span> <span class="token class-name">Object</span> handler<span class="token punctuation">,</span> <span class="token class-name">Exception</span> ex<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
+<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;afterCompletion&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<pre class="language-"><code><span class="token comment">&lt;!--&#x914D;&#x7F6E;interceptor &#x7EC4;&#x4EF6;--&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>com.tuling.mvc.control.SimpleHandlerInterceptor<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>bean</span><span class="token punctuation">&gt;</span></span>
+</code></pre>&#x5176;&#x5B9E;&#x73B0;&#x673A;&#x5236;&#x662F;&#x57FA;&#x4E8E; HandlerExecutionChain &#x5206;&#x522B;&#x5728; doDispatch &#x65B9;&#x6CD5;&#x4E2D;&#x6267;&#x884C;&#x4EE5;&#x4E0B;&#x65B9;&#x6CD5;&#xFF1A;</li>
+<li>preHandle &#xFF1A;&#x4E1A;&#x52A1;&#x5904;&#x7406;&#x524D;&#x6267;&#x884C;</li>
+<li>postHandle&#xFF1A;&#x4E1A;&#x52A1;&#x5904;&#x7406;&#x540E;&#xFF08;&#x5F02;&#x5E38;&#x5219;&#x4E0D;&#x6267;&#x884C;&#xFF09;</li>
+<li>afterCompletion&#xFF1A;&#x89C6;&#x56FE;&#x5904;&#x7406;&#x540E;</li>
+</ul>
+<p>&#x5177;&#x4F53;&#x903B;&#x8F91;&#x6E90;&#x7801;&#x53C2;&#x89C1;&#xFF1A;org.springframework.web.servlet.DispatcherServlet#doDispatch &#x65B9;&#x6CD5;&#x3002;</p>
+<h3 id="&#x4E09;&#x3001;&#x6CE8;&#x89E3;&#x914D;&#x7F6E;">&#x4E09;&#x3001;&#x6CE8;&#x89E3;&#x914D;&#x7F6E;</h3>
+<hr>
+<ul>
+<li>[ ] &#x6F14;&#x793A;&#x57FA;&#x4E8E;&#x6CE8;&#x89E3;&#x914D;&#x7F6E;mvc mapping<pre class="language-"><code class="lang-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">context:</span>component-scan</span> <span class="token attr-name">base-package</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>com.tuling.mvc.control<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+<span class="token comment">&lt;!-- &#x6CE8;&#x89E3;&#x9A71;&#x52A8; --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">mvc:</span>annotation-driven</span><span class="token punctuation">/&gt;</span></span>
+<span class="token comment">&lt;!-- &#x89C6;&#x56FE;&#x4ED3;&#x5E93; --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span>  <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>org.springframework.web.servlet.view.InternalResourceViewResolver<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>prefix<span class="token punctuation">&quot;</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>/WEB-INF/page/<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>suffix<span class="token punctuation">&quot;</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>.jsp<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>viewClass<span class="token punctuation">&quot;</span></span>
+<span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>org.springframework.web.servlet.view.JstlView<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>bean</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+<pre class="language-"><code class="lang-java"><span class="token comment">// &#x6CE8;&#x89E3;&#x65B9;&#x6CD5;</span>
+<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">&quot;/hello.do&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token class-name">ModelAndView</span> <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token class-name">ModelAndView</span> mv <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ModelAndView</span><span class="token punctuation">(</span><span class="token string">&quot;userView&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+mv<span class="token punctuation">.</span><span class="token function">addObject</span><span class="token punctuation">(</span><span class="token string">&quot;name&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;luban&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">return</span> mv<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+&#x63D0;&#x95EE; &#x4E3A;&#x4EC0;&#x4E48;&#x57FA;&#x4E8E; <mvc:annotation-driven> &#x914D;&#x7F6E;&#x5C31;&#x80FD;&#x5B9E;&#x73B0;mvc &#x7684;&#x6574;&#x4E2A;&#x914D;&#x7F6E;&#x4E86;&#xFF0C;&#x4E4B;&#x524D;&#x6240;&#x63D0;&#x5230;&#x7684; handlerMapping &#x3001;&#x4E0E;handlerAdapter &#x7EC4;&#x4EF6;&#x90FD;&#x4E0D;&#x9002;&#x7528;&#x4E86;&#xFF1F;</mvc:annotation-driven></li>
+</ul>
+<p>&#x53EA;&#x8981;&#x67E5;&#x770B;&#x4EE5;&#x7C7B;&#x7684;&#x6E90;&#x5C31;&#x53EF;&#x4EE5;&#x77E5;&#x6653;&#x5176;&#x4E2D;&#x539F;&#x56E0;&#xFF1A;</p>
+<ul>
+<li>[ ] &#x8BA4;&#x8BC6; NamespaceHandler &#x63A5;&#x53E3;</li>
+<li>[ ] &#x67E5;&#x770B; MvcNamespaceHandler</li>
+<li>[ ] &#x67E5;&#x770B;AnnotationDrivenBeanDefinitionParser</li>
+</ul>
+<p><strong>&#x7ED3;&#x8BBA;</strong>&#xFF1A;</p>
+<p>&#x5728;<mvc:annotation-driven>  &#x5BF9;&#x5E94;&#x7684;&#x89E3;&#x6790;&#x5668;&#xFF0C;&#x81EA;&#x52A8;&#x5411;ioc  &#x91CC;&#x9762;&#x6CE8;&#x518C;&#x4E86;&#x4E24;&#x4E2A;BeanDefinition&#x3002;&#x5206;&#x522B;&#x662F;&#xFF1A;RequestMappingHandlerMapping&#x4E0E;BeanNameUrlHandlerMapping</mvc:annotation-driven></p>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9; ohter.com 2021 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x8BE5;&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
+2021-04-19 14:15:19
+</span></footer>
+<script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="aop.html" class="navigation navigation-prev " aria-label="Previous page: 2.AOP事物底层原理分析">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../../concurrent/" class="navigation navigation-next " aria-label="Next page: 三、并发编程专题">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"3.Spring mvc原理深度解析","level":"1.3.2.3","depth":3,"next":{"title":"三、并发编程专题","level":"1.4","depth":1,"path":"concurrent/README.md","ref":"concurrent/README.md","articles":[{"title":"1.Executor线程池详解","level":"1.4.1","depth":2,"path":"concurrent/executor.md","ref":"concurrent/executor.md","articles":[]},{"title":"2.JMM&Lock&Tools详解","level":"1.4.2","depth":2,"path":"concurrent/JMM&Lock&Tools.md","ref":"concurrent/JMM&Lock&Tools.md","articles":[]},{"title":"3.atomic&collections详解","level":"1.4.3","depth":2,"path":"concurrent/atomic&collections.md","ref":"concurrent/atomic&collections.md","articles":[]},{"title":"4.Fork-join框架原理解析","level":"1.4.4","depth":2,"path":"concurrent/Fork-join.md","ref":"concurrent/Fork-join.md","articles":[]},{"title":"5.BlockingQueue框架原理解析","level":"1.4.5","depth":2,"path":"concurrent/BlockingQueue.md","ref":"concurrent/BlockingQueue.md","articles":[]}]},"previous":{"title":"2.AOP事物底层原理分析","level":"1.3.2.2","depth":3,"path":"source/spring/aop.md","ref":"source/spring/aop.md","articles":[]},"dir":"ltr"},"config":{"plugins":["chapter-fold","theme-comscore","back-to-top-button","code","tbfed-pagefooter","page-treeview","pageview-count","popup","prism","-highlight","hide-element","-lunr","-search","search-pro","page-toc-button"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy ohter.com 2021","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"page-treeview":{"collapsed":false,"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"search-pro":{},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"liufeihua","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"日常笔记","language":"zh-hans","gitbook":"*","description":"日常笔记"},"file":{"path":"source/spring/mvc.md","mtime":"2021-04-19T06:15:19.260Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-19T10:10:24.413Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-hide-element/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
+        
+    
+
+    </body>
+</html>
+
