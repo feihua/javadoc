@@ -1,0 +1,2172 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>2.分布式之netty · 日常笔记</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="liufeihua">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-page-treeview/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-pageview-count/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism-okaidia.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-page-toc-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-theme-comscore/test.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../dubbo/" />
+    
+    
+    <link rel="prev" href="shell.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../automation/">
+            
+                <a href="../../automation/">
+            
+                    
+                    一、互联网专题
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../../automation/git/">
+            
+                <a href="../../automation/git/">
+            
+                    
+                    Git版本控制
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.1" data-path="../../automation/git/git-base-use.html">
+            
+                <a href="../../automation/git/git-base-use.html">
+            
+                    
+                    1.Git基本概念与核心命令掌握
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../../automation/maven/">
+            
+                <a href="../../automation/maven/">
+            
+                    
+                    Maven依赖管理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.2.1" data-path="../../automation/maven/maven-base-use.html">
+            
+                <a href="../../automation/maven/maven-base-use.html">
+            
+                    
+                    1.Maven基本概念与核心配置 
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../../automation/jenkins/">
+            
+                <a href="../../automation/jenkins/">
+            
+                    
+                    Jenkins自动化
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.3.1" data-path="../../automation/jenkins/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.2" data-path="../../automation/jenkins/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3.3" data-path="../../automation/jenkins/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../../automation/k8s/">
+            
+                <a href="../../automation/k8s/">
+            
+                    
+                    K8s服务编排
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.4.1" data-path="../../automation/k8s/kubeadm-install-one.html">
+            
+                <a href="../../automation/k8s/kubeadm-install-one.html">
+            
+                    
+                    1.快速部署一个K8s集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4.2" data-path="../../automation/k8s/kubeadm-install-all.html">
+            
+                <a href="../../automation/k8s/kubeadm-install-all.html">
+            
+                    
+                    2搭建高可用的K8s集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../source/">
+            
+                <a href="../../source/">
+            
+                    
+                    二、源码框架专题
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../../source/mybatis/">
+            
+                <a href="../../source/mybatis/">
+            
+                    
+                    mybatis
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1" data-path="../../source/mybatis/base-use.html">
+            
+                <a href="../../source/mybatis/base-use.html">
+            
+                    
+                    1.基本使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2" data-path="../../source/mybatis/analysis.html">
+            
+                <a href="../../source/mybatis/analysis.html">
+            
+                    
+                    2源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.3" data-path="../../source/mybatis/realization.html">
+            
+                <a href="../../source/mybatis/realization.html">
+            
+                    
+                    3.代码实现
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../../source/spring/">
+            
+                <a href="../../source/spring/">
+            
+                    
+                    spring
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.2.1" data-path="../../source/spring/ioc.html">
+            
+                <a href="../../source/spring/ioc.html">
+            
+                    
+                    1.IOC容器设计理念与源码解读
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.2" data-path="../../source/spring/aop.html">
+            
+                <a href="../../source/spring/aop.html">
+            
+                    
+                    2.AOP事物底层原理分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2.3" data-path="../../source/spring/mvc.html">
+            
+                <a href="../../source/spring/mvc.html">
+            
+                    
+                    3.Spring mvc原理深度解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../../concurrent/">
+            
+                <a href="../../concurrent/">
+            
+                    
+                    三、并发编程专题
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../../concurrent/executor.html">
+            
+                <a href="../../concurrent/executor.html">
+            
+                    
+                    1.Executor线程池详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../../concurrent/JMM&Lock&Tools.html">
+            
+                <a href="../../concurrent/JMM&Lock&Tools.html">
+            
+                    
+                    2.JMM&Lock&Tools详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../../concurrent/atomic&collections.html">
+            
+                <a href="../../concurrent/atomic&collections.html">
+            
+                    
+                    3.atomic&collections详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../../concurrent/Fork-join.html">
+            
+                <a href="../../concurrent/Fork-join.html">
+            
+                    
+                    4.Fork-join框架原理解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../../concurrent/BlockingQueue.html">
+            
+                <a href="../../concurrent/BlockingQueue.html">
+            
+                    
+                    5.BlockingQueue框架原理解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../../performance/">
+            
+                <a href="../../performance/">
+            
+                    
+                    四、性能调优专题
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../../performance/jvm/">
+            
+                <a href="../../performance/jvm/">
+            
+                    
+                    jvm
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1.1" data-path="../../performance/jvm/base.html">
+            
+                <a href="../../performance/jvm/base.html">
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.2" data-path="../../performance/jvm/view.html">
+            
+                <a href="../../performance/jvm/view.html">
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.3" data-path="../../performance/jvm/gc.html">
+            
+                <a href="../../performance/jvm/gc.html">
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../../performance/mysql/">
+            
+                <a href="../../performance/mysql/">
+            
+                    
+                    mysql
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.2.1" data-path="../../performance/mysql/use.html">
+            
+                <a href="../../performance/mysql/use.html">
+            
+                    
+                    1.Mysql安装和使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.2" data-path="../../performance/mysql/high-use.html">
+            
+                <a href="../../performance/mysql/high-use.html">
+            
+                    
+                    2.Mysql性能优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.3" data-path="../../performance/mysql/mysql-index.html">
+            
+                <a href="../../performance/mysql/mysql-index.html">
+            
+                    
+                    3.索引底层数据结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.4" data-path="../../performance/mysql/Explain.html">
+            
+                <a href="../../performance/mysql/Explain.html">
+            
+                    
+                    1.Explain详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.5" data-path="../../performance/mysql/high-index.html">
+            
+                <a href="../../performance/mysql/high-index.html">
+            
+                    
+                    2.索引优化深入
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.6" data-path="../../performance/mysql/acid.html">
+            
+                <a href="../../performance/mysql/acid.html">
+            
+                    
+                    3.Mysql锁与事务隔离级别
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../../performance/nginx/">
+            
+                <a href="../../performance/nginx/">
+            
+                    
+                    nginx
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.3.1" data-path="../../performance/nginx/Nginx-config.html">
+            
+                <a href="../../performance/nginx/Nginx-config.html">
+            
+                    
+                    1.Nginx核心模块与配置实践
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3.2" data-path="../../performance/nginx/Nginx-In-actual-combat.html">
+            
+                <a href="../../performance/nginx/Nginx-In-actual-combat.html">
+            
+                    
+                    2.Nginx 性能优化实践
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../../performance/tomcat/">
+            
+                <a href="../../performance/tomcat/">
+            
+                    
+                    tomcat
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.4.1" data-path="../../performance/tomcat/Tomcat-pro-use.html">
+            
+                <a href="../../performance/tomcat/Tomcat-pro-use.html">
+            
+                    
+                    1.Tomcat生产环境应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    五、分布式框架专题
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../zookeeper/">
+            
+                <a href="../zookeeper/">
+            
+                    
+                    zookeeper
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1.1" data-path="../zookeeper/zookeeper-base-use.html">
+            
+                <a href="../zookeeper/zookeeper-base-use.html">
+            
+                    
+                    1.特性与节点说明
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.2" data-path="../zookeeper/zookeeper-client-use.html">
+            
+                <a href="../zookeeper/zookeeper-client-use.html">
+            
+                    
+                    2.客户端使用与集群特性
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.3" data-path="../zookeeper/zookeeper-sence-use.html">
+            
+                <a href="../zookeeper/zookeeper-sence-use.html">
+            
+                    
+                    3.典型使用场景实践
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.4" data-path="../zookeeper/zookeeper-zab.html">
+            
+                <a href="../zookeeper/zookeeper-zab.html">
+            
+                    
+                    4.ZAB协议实现源码分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    netty
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.2.1" data-path="shell.html">
+            
+                <a href="shell.html">
+            
+                    
+                    1.启停脚本
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.6.2.2" data-path="netty.html">
+            
+                <a href="netty.html">
+            
+                    
+                    2.分布式之netty
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../dubbo/">
+            
+                <a href="../dubbo/">
+            
+                    
+                    dubbo
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.3.1" data-path="../dubbo/dubbo-introduce.html">
+            
+                <a href="../dubbo/dubbo-introduce.html">
+            
+                    
+                    1.从0到1整体认知分布式系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.2" data-path="../dubbo/dubbo-base-use.html">
+            
+                <a href="../dubbo/dubbo-base-use.html">
+            
+                    
+                    2.快速掌握Dubbo常规应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.3" data-path="../dubbo/dubbo-high-use.html">
+            
+                <a href="../dubbo/dubbo-high-use.html">
+            
+                    
+                    3.Dubbo企业级应用进阶
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.4" data-path="../dubbo/dubbo-module-detail.html">
+            
+                <a href="../dubbo/dubbo-module-detail.html">
+            
+                    
+                    2.Dubb调用模块详解
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3.5" data-path="../dubbo/dubbo-proto-detail.html">
+            
+                <a href="../dubbo/dubbo-proto-detail.html">
+            
+                    
+                    3.Dubbo协议模块源码剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../rocketmq/">
+            
+                <a href="../rocketmq/">
+            
+                    
+                    rocketmq
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.4.1" data-path="../rocketmq/shell.html">
+            
+                <a href="../rocketmq/shell.html">
+            
+                    
+                    1.启停脚本
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4.2" data-path="../rocketmq/rocketmq.html">
+            
+                <a href="../rocketmq/rocketmq.html">
+            
+                    
+                    2.分布式之RockeqMq
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../rabbitmq/">
+            
+                <a href="../rabbitmq/">
+            
+                    
+                    rabbitmq
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.5.1" data-path="../rabbitmq/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5.2" data-path="../rabbitmq/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5.3" data-path="../rabbitmq/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../kafka/">
+            
+                <a href="../kafka/">
+            
+                    
+                    kafka
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.6.1" data-path="../kafka/shell.html">
+            
+                <a href="../kafka/shell.html">
+            
+                    
+                    1.集群启动停止脚本
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6.2" data-path="../kafka/kafka.html">
+            
+                <a href="../kafka/kafka.html">
+            
+                    
+                    2.大数据技术之Kafka
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../mongo/">
+            
+                <a href="../mongo/">
+            
+                    
+                    mongo
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.7.1" data-path="../mongo/mongoDb-data.html">
+            
+                <a href="../mongo/mongoDb-data.html">
+            
+                    
+                    1.准备数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7.2" data-path="../mongo/mongoDb-quick-start.html">
+            
+                <a href="../mongo/mongoDb-quick-start.html">
+            
+                    
+                    2.快速上手
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7.3" data-path="../mongo/mongoDb-enterprise.html">
+            
+                <a href="../mongo/mongoDb-enterprise.html">
+            
+                    
+                    3.企业应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../redis/">
+            
+                <a href="../redis/">
+            
+                    
+                    redis
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.8.1" data-path="../redis/shell.html">
+            
+                <a href="../redis/shell.html">
+            
+                    
+                    1.启停脚本
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8.2" data-path="../redis/redis.html">
+            
+                <a href="../redis/redis.html">
+            
+                    
+                    2.分布式之Redis
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="../shardingsphere/">
+            
+                <a href="../shardingsphere/">
+            
+                    
+                    shardingsphere
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.9.1" data-path="../shardingsphere/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9.2" data-path="../shardingsphere/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9.3" data-path="../shardingsphere/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10" data-path="../elk/">
+            
+                <a href="../elk/">
+            
+                    
+                    elk
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.10.1" data-path="../elk/shell.html">
+            
+                <a href="../elk/shell.html">
+            
+                    
+                    1.启停脚本
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10.2" data-path="../elk/elk.html">
+            
+                <a href="../elk/elk.html">
+            
+                    
+                    2.分布式之ELK
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../../micro/">
+            
+                <a href="../../micro/">
+            
+                    
+                    六、微服务框架专题
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../../micro/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../../micro/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../../micro/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../../micro/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../../micro/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../../micro/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" data-path="../../micro/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8" data-path="../../micro/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9" data-path="../../micro/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.10" data-path="../../micro/1_JVM整体结构介绍.md">
+            
+                <span>
+            
+                    
+                    1.JVM整体结构介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.11" data-path="../../micro/2_JVM性能调优监控工具.md">
+            
+                <span>
+            
+                    
+                    2.JVM性能调优监控工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.12" data-path="../../micro/3_JVM垃圾回收与调优.md">
+            
+                <span>
+            
+                    
+                    3.JVM垃圾回收与调优
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../../project/">
+            
+                <a href="../../project/">
+            
+                    
+                    七、项目实战专题
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../../project/SystemArchitecture.html">
+            
+                <a href="../../project/SystemArchitecture.html">
+            
+                    
+                    1.系统架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../../project/member.html">
+            
+                <a href="../../project/member.html">
+            
+                    
+                    2.商品&会员模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../../project/order.html">
+            
+                <a href="../../project/order.html">
+            
+                    
+                    3.交易&营销模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="../../project/pay.html">
+            
+                <a href="../../project/pay.html">
+            
+                    
+                    4.支付模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="../../project/Depots-table-1.html">
+            
+                <a href="../../project/Depots-table-1.html">
+            
+                    
+                    5.分库分表一
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" data-path="../../project/Depots-table-2.html">
+            
+                <a href="../../project/Depots-table-2.html">
+            
+                    
+                    6.分库分表二
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >2.分布式之netty</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div class="treeview__container"><div class="treeview__container-title"><span class="treeview__main-title">Treeview</span><span class="treeview__copyright">Copyright &#xA9; aleen42 all right reserved, powered by <a href="https://github.com/aleen42" target="_blank">aleen42</a></span></div><ul>
+<li><div><a href="#1java-io-&#x4E0E;-nio">1.Java IO &#x4E0E; NIO</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#11linux-io-&#x6A21;&#x578B;&#x4ECB;&#x7ECD;">1.1Linux I/O &#x6A21;&#x578B;&#x4ECB;&#x7ECD;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#111linux-io-&#x6D41;&#x7A0B;">1.1.1Linux I/O &#x6D41;&#x7A0B;</a><i></i></div></li>
+<li><div><a href="#112-&#x5C06;-io-&#x6A21;&#x578B;&#x5212;&#x5206;&#x4E3A;&#x4EE5;&#x4E0B;&#x4E94;&#x79CD;&#x7C7B;&#x578B;&#xFF1A;">1.1.2 &#x5C06; I/O &#x6A21;&#x578B;&#x5212;&#x5206;&#x4E3A;&#x4EE5;&#x4E0B;&#x4E94;&#x79CD;&#x7C7B;&#x578B;&#xFF1A;</a><i></i></div></li>
+<li><div><a href="#113-&#x5404;&#x79CD;-io-&#x6A21;&#x578B;&#x7684;&#x6BD4;&#x8F83;">1.1.3 &#x5404;&#x79CD; I/O &#x6A21;&#x578B;&#x7684;&#x6BD4;&#x8F83;</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#12java-io">1.2Java I/O</a><i></i></div></li>
+<li><div><a href="#13java-nio">1.3Java NIO</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#131java-io-&#x548C;-java-nio-&#x5BF9;&#x6BD4;">1.3.1java io &#x548C; java nio &#x5BF9;&#x6BD4;</a><i></i></div></li>
+<li><div><a href="#132java-nio-&#x4E3B;&#x8981;&#x7531;3-&#x90E8;&#x5206;&#x6838;&#x5FC3;&#x7EC4;&#x4EF6;&#x7EC4;&#x6210;">1.3.2Java NIO &#x4E3B;&#x8981;&#x7531;3 &#x90E8;&#x5206;&#x6838;&#x5FC3;&#x7EC4;&#x4EF6;&#x7EC4;&#x6210;</a><i></i></div></li>
+<li><div><a href="#133nio-&#x5E26;&#x6765;&#x4E86;&#x4EC0;&#x4E48;">1.3.3NIO &#x5E26;&#x6765;&#x4E86;&#x4EC0;&#x4E48;</a><i></i></div></li>
+</ul></li>
+</ul></li>
+<li><div><a href="#2netty-&#x7F16;&#x7A0B;&#x5B9E;&#x8DF5;">2.Netty &#x7F16;&#x7A0B;&#x5B9E;&#x8DF5;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#21netty-&#x4ECB;&#x7ECD;">2.1Netty &#x4ECB;&#x7ECD;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#211&#x7279;&#x6027;">2.1.1&#x7279;&#x6027;</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#22netty-&#x4E3B;&#x8981;&#x7EC4;&#x4EF6;&#x4ECB;&#x7ECD;">2.2Netty &#x4E3B;&#x8981;&#x7EC4;&#x4EF6;&#x4ECB;&#x7ECD;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#221bootstrap-&#x548C;-serverbootstrap">2.2.1Bootstrap &#x548C; ServerBootstrap</a><i></i></div></li>
+<li><div><a href="#222transport-channel">2.2.2Transport Channel</a><i></i></div></li>
+<li><div><a href="#223eventloop&#x548C;eventloopgroup">2.2.3EventLoop&#x548C;EventLoopGroup</a><i></i></div></li>
+<li><div><a href="#224channelhandler&#x548C;channelpipeline">2.2.4ChannelHandler&#x548C;ChannelPipeline</a><i></i></div></li>
+<li><div><a href="#225bytebuf">2.2.5ByteBuf</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#23netty-&#x7F16;&#x7A0B;&#x793A;&#x4F8B;">2.3Netty &#x7F16;&#x7A0B;&#x793A;&#x4F8B;</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#3netty-&#x7EBF;&#x7A0B;&#x6A21;&#x578B;&#x89E3;&#x6790;">3.Netty &#x7EBF;&#x7A0B;&#x6A21;&#x578B;&#x89E3;&#x6790;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#31reactor-&#x6A21;&#x5F0F;&#x53CA;&#x5176;&#x4E0E;-netty-&#x7684;&#x5BF9;&#x5E94;&#x5173;&#x7CFB;">3.1Reactor &#x6A21;&#x5F0F;&#x53CA;&#x5176;&#x4E0E; Netty &#x7684;&#x5BF9;&#x5E94;&#x5173;&#x7CFB;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#311&#x5355;&#x7EBF;&#x7A0B;reactor">3.1.1&#x5355;&#x7EBF;&#x7A0B;Reactor</a><i></i></div></li>
+<li><div><a href="#312&#x591A;&#x7EBF;&#x7A0B;reactor">3.1.2&#x591A;&#x7EBF;&#x7A0B;Reactor</a><i></i></div></li>
+<li><div><a href="#313multiple-reactor">3.1.3Multiple Reactor</a><i></i></div></li>
+<li><div><a href="#314&#x4E3B;&#x4ECE;reactor">3.1.4&#x4E3B;&#x4ECE;Reactor</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#32netty--eventloop-&#x6E90;&#x7801;&#x89E3;&#x6790;">3.2Netty  EventLoop &#x6E90;&#x7801;&#x89E3;&#x6790;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#321nioeventloopgroup&#x6574;&#x4F53;&#x7ED3;&#x6784;">3.2.1NioEventLoopGroup&#x6574;&#x4F53;&#x7ED3;&#x6784;</a><i></i></div></li>
+<li><div><a href="#322nioeventloop&#x521B;&#x5EFA;&#x5206;&#x6790;">3.2.2NioEventLoop&#x521B;&#x5EFA;&#x5206;&#x6790;</a><i></i></div></li>
+<li><div><a href="#323nioeventloop&#x542F;&#x52A8;&#x6D41;&#x7A0B;&#x5206;&#x6790;">3.2.3NioEventLoop&#x542F;&#x52A8;&#x6D41;&#x7A0B;&#x5206;&#x6790;</a><i></i></div></li>
+<li><div><a href="#324nioeventloop&#x6267;&#x884C;&#x6D41;&#x7A0B;&#x5206;&#x6790;">3.2.4NioEventLoop&#x6267;&#x884C;&#x6D41;&#x7A0B;&#x5206;&#x6790;</a><i></i></div></li>
+</ul></li>
+</ul></li>
+<li><div><a href="#4netty-&#x7F16;&#x89E3;&#x7801;&#x7F16;&#x7A0B;&#x5B9E;&#x6218;">4.Netty &#x7F16;&#x89E3;&#x7801;&#x7F16;&#x7A0B;&#x5B9E;&#x6218;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#41-&#x534A;&#x5305;&#x7C98;&#x5305;&#x95EE;&#x9898;&#x793A;&#x4F8B;&#x4E0E;&#x5206;&#x6790;">4.1 &#x534A;&#x5305;&#x7C98;&#x5305;&#x95EE;&#x9898;&#x793A;&#x4F8B;&#x4E0E;&#x5206;&#x6790;</a><i></i></div></li>
+<li><div><a href="#42netty-&#x534A;&#x5305;&#x7C98;&#x5305;&#x95EE;&#x9898;&#x89E3;&#x51B3;">4.2Netty &#x534A;&#x5305;&#x7C98;&#x5305;&#x95EE;&#x9898;&#x89E3;&#x51B3;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#421linebasedframedecoder&#xFF08;n-rn">4.2.1LineBasedFrameDecoder&#xFF08;\n, \r\n)</a><i></i></div></li>
+<li><div><a href="#422delimiterbasedframedecoder">4.2.2DelimiterBasedFrameDecoder</a><i></i></div></li>
+<li><div><a href="#423fixedlengthframedecoder">4.2.3FixedLengthFrameDecoder</a><i></i></div></li>
+<li><div><a href="#424lengthfieldbasedframedecoder">4.2.4LengthFieldBasedFrameDecoder</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#43netty-&#x7F16;&#x89E3;&#x7801;&#x5668;&#x5206;&#x6790;">4.3Netty &#x7F16;&#x89E3;&#x7801;&#x5668;&#x5206;&#x6790;</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#5&#x57FA;&#x4E8E;-netty-&#x5B9E;&#x73B0;&#x9AD8;&#x6027;&#x80FD;&#x5F39;&#x5E55;&#x7CFB;&#x7EDF;">5.&#x57FA;&#x4E8E; Netty &#x5B9E;&#x73B0;&#x9AD8;&#x6027;&#x80FD;&#x5F39;&#x5E55;&#x7CFB;&#x7EDF;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#51-&#x5F39;&#x5E55;&#x7CFB;&#x7EDF;&#x6982;&#x8981;&#x8BBE;&#x8BA1;">5.1 &#x5F39;&#x5E55;&#x7CFB;&#x7EDF;&#x6982;&#x8981;&#x8BBE;&#x8BA1;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#511&#x5F39;&#x5E55;&#x7CFB;&#x7EDF;&#x7279;&#x70B9;">5.1.1&#x5F39;&#x5E55;&#x7CFB;&#x7EDF;&#x7279;&#x70B9;</a><i></i></div></li>
+<li><div><a href="#512&#x5F39;&#x5E55;&#x7CFB;&#x7EDF;&#x67B6;&#x6784;&#x8BBE;&#x8BA1;">5.1.2&#x5F39;&#x5E55;&#x7CFB;&#x7EDF;&#x67B6;&#x6784;&#x8BBE;&#x8BA1;</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#52netty-&#x5BF9;-http-&#x534F;&#x8BAE;&#x89E3;&#x6790;&#x5B9E;&#x73B0;">5.2Netty &#x5BF9; Http &#x534F;&#x8BAE;&#x89E3;&#x6790;&#x5B9E;&#x73B0;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#521http&#x62A5;&#x6587;&#x89E3;&#x6790;&#x65B9;&#x6848;&#xFF1A;">5.2.1http&#x62A5;&#x6587;&#x89E3;&#x6790;&#x65B9;&#x6848;&#xFF1A;</a><i></i></div></li>
+<li><div><a href="#522netty&#x5173;&#x4E8E;http-&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF1A;">5.2.2netty&#x5173;&#x4E8E;http &#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF1A;</a><i></i></div></li>
+<li><div><a href="#523netty-http&#x7684;&#x8BF7;&#x6C42;&#x5904;&#x7406;&#x6D41;&#x7A0B;">5.2.3Netty Http&#x7684;&#x8BF7;&#x6C42;&#x5904;&#x7406;&#x6D41;&#x7A0B;</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#53webscoket-&#x534F;&#x8BAE;&#x89E3;&#x6790;&#x5B9E;&#x73B0;">5.3WebScoket &#x534F;&#x8BAE;&#x89E3;&#x6790;&#x5B9E;&#x73B0;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#531websocket-&#x534F;&#x8BAE;&#x7B80;&#x4ECB;&#xFF1A;">5.3.1webSocket &#x534F;&#x8BAE;&#x7B80;&#x4ECB;&#xFF1A;</a><i></i></div></li>
+<li><div><a href="#532websocket&#x7279;&#x70B9;&#x5982;&#x4E0B;&#xFF1A;">5.3.2webSocket&#x7279;&#x70B9;&#x5982;&#x4E0B;&#xFF1A;</a><i></i></div></li>
+<li><div><a href="#533websocket-&#x534F;&#x8BAE;&#x62A5;&#x6587;&#x683C;&#x5F0F;&#xFF1A;">5.3.3WebSocket &#x534F;&#x8BAE;&#x62A5;&#x6587;&#x683C;&#x5F0F;&#xFF1A;</a><i></i></div></li>
+</ul></li>
+</ul></li>
+<li><div><a href="#6&#x57FA;&#x4E8E;-netty-&#x5B9E;&#x73B0;-rpc-&#x6846;&#x67B6;">6.&#x57FA;&#x4E8E; Netty &#x5B9E;&#x73B0; RPC &#x6846;&#x67B6;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#61rpc&#x6784;&#x5EFA;&#x9700;&#x8981;&#x8003;&#x8651;&#x7684;&#x4E3B;&#x8981;&#x56E0;&#x7D20;">6.1RPC&#x6784;&#x5EFA;&#x9700;&#x8981;&#x8003;&#x8651;&#x7684;&#x4E3B;&#x8981;&#x56E0;&#x7D20;</a><i></i></div></li>
+<li><div><a href="#612rpc&#x6846;&#x67B6;">6..1.2RPC&#x6846;&#x67B6;</a><i></i></div></li>
+</ul></li>
+</ul>
+</div>
+
+<h1 id="1java-io-&#x4E0E;-nio">1.Java IO &#x4E0E; NIO</h1>
+<h2 id="11linux-io-&#x6A21;&#x578B;&#x4ECB;&#x7ECD;">1.1Linux I/O &#x6A21;&#x578B;&#x4ECB;&#x7ECD;</h2>
+<h3 id="111linux-io-&#x6D41;&#x7A0B;">1.1.1Linux I/O &#x6D41;&#x7A0B;</h3>
+<p><img src="https://uploader.shimo.im/f/tSYh1RPfmq1tm1N8.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD" alt="&#x56FE;&#x7247;"></p>
+<h3 id="112-&#x5C06;-io-&#x6A21;&#x578B;&#x5212;&#x5206;&#x4E3A;&#x4EE5;&#x4E0B;&#x4E94;&#x79CD;&#x7C7B;&#x578B;&#xFF1A;">1.1.2 &#x5C06; I/O &#x6A21;&#x578B;&#x5212;&#x5206;&#x4E3A;&#x4EE5;&#x4E0B;&#x4E94;&#x79CD;&#x7C7B;&#x578B;&#xFF1A;</h3>
+<ul>
+<li>&#x963B;&#x585E;&#x5F0F; I/O &#x6A21;&#x578B;</li>
+</ul>
+<p><img src="https://uploader.shimo.im/f/6L7VJKhdrRImo3Ij.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD" alt="&#x56FE;&#x7247;"></p>
+<ul>
+<li>&#x975E;&#x963B;&#x585E;&#x5F0F; I/O &#x6A21;&#x578B;</li>
+</ul>
+<p><img src="https://uploader.shimo.im/f/KwjmsW0SBekQVkYe.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD" alt="&#x56FE;&#x7247;"></p>
+<ul>
+<li>I/O &#x590D;&#x7528;</li>
+</ul>
+<p><img src="https://uploader.shimo.im/f/Q5rDsOK4C6SDcYum.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD" alt="&#x56FE;&#x7247;"></p>
+<ul>
+<li>&#x4FE1;&#x53F7;&#x9A71;&#x52A8;&#x5F0F; I/O</li>
+</ul>
+<p><img src="https://uploader.shimo.im/f/rKyY5Um3BJdxL6i7.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD" alt="&#x56FE;&#x7247;"></p>
+<ul>
+<li>&#x5F02;&#x6B65; I/O</li>
+</ul>
+<p><img src="https://uploader.shimo.im/f/7m1RVDrteNMVHiBe.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD" alt="&#x56FE;&#x7247;"></p>
+<h3 id="113-&#x5404;&#x79CD;-io-&#x6A21;&#x578B;&#x7684;&#x6BD4;&#x8F83;">1.1.3 &#x5404;&#x79CD; I/O &#x6A21;&#x578B;&#x7684;&#x6BD4;&#x8F83;</h3>
+<p><img src="https://uploader.shimo.im/f/AJJsv9QKGfTFi3hu.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD" alt="&#x56FE;&#x7247;"></p>
+<h2 id="12java-io">1.2Java I/O</h2>
+<p><img src="https://uploader.shimo.im/f/mGjmAUkCcFBw86H2.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD" alt="&#x56FE;&#x7247;"></p>
+<h2 id="13java-nio">1.3Java NIO</h2>
+<h3 id="131java-io-&#x548C;-java-nio-&#x5BF9;&#x6BD4;">1.3.1java io &#x548C; java nio &#x5BF9;&#x6BD4;</h3>
+<p><img src="https://uploader.shimo.im/f/TjmoanINTlsfo0YZ.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD" alt="&#x56FE;&#x7247;"></p>
+<h3 id="132java-nio-&#x4E3B;&#x8981;&#x7531;3-&#x90E8;&#x5206;&#x6838;&#x5FC3;&#x7EC4;&#x4EF6;&#x7EC4;&#x6210;">1.3.2Java NIO &#x4E3B;&#x8981;&#x7531;3 &#x90E8;&#x5206;&#x6838;&#x5FC3;&#x7EC4;&#x4EF6;&#x7EC4;&#x6210;</h3>
+<p>a. Buffer</p>
+<p>&#x4E00;&#x4E2A; Buffer &#x672C;&#x8D28;&#x4E0A;&#x662F;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x4E00;&#x5757;&#xFF0C; &#x53EF;&#x4EE5;&#x5C06;&#x6570;&#x636E;&#x5199;&#x5165;&#x8FD9;&#x5757;&#x5185;&#x5B58;&#xFF0C; &#x4ECE;&#x8FD9;&#x5757;&#x5185;&#x5B58;&#x83B7;&#x53D6;&#x6570;&#x636E;</p>
+<p>java.nio &#x5B9A;&#x4E49;&#x4E86;&#x4EE5;&#x4E0B;&#x51E0;&#x4E2A; Buffer &#x7684;&#x5B9E;&#x73B0;</p>
+<p><img src="https://uploader.shimo.im/f/KMizyslX0DYuCeB5.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD" alt="&#x56FE;&#x7247;"></p>
+<p>Java NIO Buffer &#x4E09;&#x5927;&#x6838;&#x5FC3;&#x6982;&#x5FF5;&#xFF1A;position&#x3001;limit&#x3001;capacity</p>
+<p>&#x6700;&#x597D;&#x7406;&#x89E3;&#x7684;&#x5F53;&#x7136;&#x662F; capacity&#xFF0C;&#x5B83;&#x4EE3;&#x8868;&#x8FD9;&#x4E2A;&#x7F13;&#x51B2;&#x533A;&#x7684;&#x5BB9;&#x91CF;&#xFF0C;&#x4E00;&#x65E6;&#x8BBE;&#x5B9A;&#x5C31;&#x4E0D;&#x53EF;&#x4EE5;&#x66F4;&#x6539;&#x3002;&#x6BD4;&#x5982; capacity &#x4E3A; 1024 &#x7684; IntBuffer&#xFF0C;&#x4EE3;&#x8868;&#x5176;&#x4E00;&#x6B21;&#x53EF;&#x4EE5;&#x5B58;&#x653E; 1024 &#x4E2A; int &#x7C7B;&#x578B;&#x7684;&#x503C;&#x3002;</p>
+<p>&#x4E00;&#x65E6; Buffer &#x7684;&#x5BB9;&#x91CF;&#x8FBE;&#x5230; capacity&#xFF0C;&#x9700;&#x8981;&#x6E05;&#x7A7A; Buffer&#xFF0C;&#x624D;&#x80FD;&#x91CD;&#x65B0;&#x5199;&#x5165;&#x503C;&#x3002;</p>
+<p><img src="https://uploader.shimo.im/f/McB2lr7g9Gld4m5i.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD" alt="&#x56FE;&#x7247;"></p>
+<p>b. Channel</p>
+<p>&#x6240;&#x6709;&#x7684; NIO &#x64CD;&#x4F5C;&#x59CB;&#x4E8E;&#x901A;&#x9053;&#xFF0C;&#x901A;&#x9053;&#x662F;&#x6570;&#x636E;&#x6765;&#x6E90;&#x6216;&#x6570;&#x636E;&#x5199;&#x5165;&#x7684;&#x76EE;&#x7684;&#x5730;&#xFF0C;&#x4E3B;&#x8981;&#x5730;&#xFF0C;java.nio &#x5305;&#x4E2D;&#x4E3B;&#x8981;&#x5B9E;&#x73B0;&#x7684;&#x4EE5;&#x4E0B;&#x51E0;&#x4E2A; Channel&#xFF1A;</p>
+<p><img src="https://uploader.shimo.im/f/lnYqw380HOUDkLmP.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD" alt="&#x56FE;&#x7247;"></p>
+<p>c. Selector</p>
+<p>Selector &#x662F; Java NIO &#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#x7EC4;&#x4EF6;&#xFF0C;&#x7528;&#x4E8E;&#x68C0;&#x67E5;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A; NIO Channel &#x7684;&#x72B6;&#x6001;&#x662F;&#x5426;&#x5904;&#x4E8E;&#x53EF;&#x8BFB;&#x3001;&#x53EF;&#x5199;</p>
+<p>&#x5982;&#x6B64;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x5355;&#x7EBF;&#x7A0B;&#x7BA1;&#x7406;&#x591A;&#x4E2A; channels,&#x4E5F;&#x5C31;&#x662F;&#x53EF;&#x4EE5;&#x7BA1;&#x7406;&#x591A;&#x4E2A;&#x7F51;&#x7EDC;&#x94FE;&#x63A5;</p>
+<p><img src="https://uploader.shimo.im/f/5guZ2eLTAFP9FFou.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD" alt="&#x56FE;&#x7247;"></p>
+<p><img src="https://uploader.shimo.im/f/AncMHkVXuDQ4iYLP.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD" alt="&#x56FE;&#x7247;"></p>
+<h3 id="133nio-&#x5E26;&#x6765;&#x4E86;&#x4EC0;&#x4E48;">1.3.3NIO &#x5E26;&#x6765;&#x4E86;&#x4EC0;&#x4E48;</h3>
+<ul>
+<li>&#x4E8B;&#x4EF6;&#x9A71;&#x52A8;&#x6A21;&#x578B;<ul>
+<li>&#x907F;&#x514D;&#x591A;&#x7EBF;&#x7A0B;</li>
+<li>&#x5355;&#x7EBF;&#x7A0B;&#x5904;&#x7406;&#x591A;&#x4EFB;&#x52A1;</li>
+</ul>
+</li>
+<li>&#x975E;&#x963B;&#x585E; IO,IO &#x8BFB;&#x5199;&#x4E0D;&#x518D;&#x963B;&#x585E;,&#x800C;&#x662F;&#x8FD4;&#x56DE; 0</li>
+<li>&#x57FA;&#x4E8E; block &#x7684;&#x4F20;&#x8F93;,&#x901A;&#x5E38;&#x6BD4;&#x57FA;&#x4E8E;&#x6D41;&#x7684;&#x4F20;&#x8F93;&#x66F4;&#x9AD8;&#x6548;</li>
+<li>&#x66F4;&#x9AD8;&#x7EA7;&#x7684; IO &#x51FD;&#x6570;,zero-copy</li>
+<li>IO &#x591A;&#x8DEF;&#x590D;&#x7528;&#x5927;&#x5927;&#x63D0;&#x9AD8;&#x4E86; java &#x7F51;&#x7EDC;&#x5E94;&#x7528;&#x7684;&#x53EF;&#x4F38;&#x7F29;&#x6027;&#x548C;&#x5B9E;&#x7528;&#x6027;</li>
+</ul>
+<p>&#x6CE8;&#x610F;</p>
+<ol>
+<li>&#x4F7F;&#x7528;NIO = &#x9AD8;&#x6027;&#x80FD;</li>
+<li>NIO&#x4E0D;&#x4E00;&#x5B9A;&#x66F4;&#x5FEB;&#x7684;&#x573A;&#x666F;<ol>
+<li>&#x5BA2;&#x6237;&#x7AEF;&#x5E94;&#x7528;</li>
+<li>&#x8FDE;&#x63A5;&#x6570;&lt;1000</li>
+<li>&#x5E76;&#x53D1;&#x7A0B;&#x5EA6;&#x4E0D;&#x9AD8;</li>
+<li>&#x5C40;&#x57DF;&#x7F51;&#x73AF;&#x5883;&#x4E0B;</li>
+</ol>
+</li>
+<li>NIO&#x5B8C;&#x5168;&#x5C4F;&#x853D;&#x4E86;&#x5E73;&#x53F0;&#x5DEE;&#x5F02;(Linux poll/select/epoll, FreeBSD Kqueue)<ol>
+<li>NIO&#x4ECD;&#x7136;&#x662F;&#x57FA;&#x4E8E;&#x5404;&#x4E2A;OS&#x5E73;&#x53F0;&#x7684;IO&#x7CFB;&#x7EDF;&#x5B9E;&#x73B0;&#x7684;,&#x5DEE;&#x5F02;&#x4ECD;&#x7136;&#x5B58;&#x5728;</li>
+</ol>
+</li>
+<li>&#x4F7F;&#x7528;NIO&#x505A;&#x7F51;&#x7EDC;&#x7F16;&#x7A0B;&#x5F88;&#x5BB9;&#x6613;<ol>
+<li>&#x79BB;&#x6563;&#x7684;&#x4E8B;&#x4EF6;&#x9A71;&#x52A8;&#x6A21;&#x578B;&#xFF0C;&#x7F16;&#x7A0B;&#x56F0;&#x96BE;<h1 id="2netty-&#x7F16;&#x7A0B;&#x5B9E;&#x8DF5;">2.Netty &#x7F16;&#x7A0B;&#x5B9E;&#x8DF5;</h1>
+</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://uploader.shimo.im/f/vKbhcExH3zqYALDQ.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD" alt="&#x56FE;&#x7247;"></p>
+<h2 id="21netty-&#x4ECB;&#x7ECD;">2.1Netty &#x4ECB;&#x7ECD;</h2>
+<h3 id="211&#x7279;&#x6027;">2.1.1&#x7279;&#x6027;</h3>
+<ol>
+<li>&#x8BBE;&#x8BA1;<ol>
+<li>&#x7EDF;&#x4E00;&#x7684;API,&#x9002;&#x7528;&#x4E8E;&#x4E0D;&#x540C;&#x7684;&#x534F;&#x8BAE;(&#x963B;&#x585E;&#x548C;&#x975E;&#x963B;&#x585E;)</li>
+<li>&#x57FA;&#x4E8E;&#x7075;&#x6D3B;&#x3001;&#x53EF;&#x6269;&#x5C55;&#x7684;&#x4E8B;&#x4EF6;&#x9A71;&#x52A8;&#x6A21;&#x578B;&#xFF08;SEDA&#xFF09;</li>
+<li>&#x9AD8;&#x5EA6;&#x53EF;&#x5B9A;&#x5236;&#x7684;&#x7EBF;&#x7A0B;&#x6A21;&#x578B;</li>
+<li>&#x53EF;&#x9760;&#x7684;&#x65E0;&#x8FDE;&#x63A5;&#x6570;&#x636E;Socket&#x652F;&#x6301;(UDP)</li>
+</ol>
+</li>
+<li>&#x6027;&#x80FD;<ol>
+<li>&#x66F4;&#x597D;&#x7684;&#x541E;&#x5410;&#x91CF;,&#x4F4E;&#x5EF6;&#x8FDF;</li>
+<li>&#x66F4;&#x7701;&#x8D44;&#x6E90;</li>
+<li>&#x5C3D;&#x91CF;&#x51CF;&#x5C11;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x5185;&#x5B58;&#x62F7;&#x8D1D;</li>
+</ol>
+</li>
+<li>&#x5B89;&#x5168;<ol>
+<li>&#x5B8C;&#x6574;&#x7684;SSL/ TLS&#x548C;STARTTLS&#x7684;&#x652F;&#x6301;</li>
+</ol>
+</li>
+<li>&#x6613;&#x7528;<ol>
+<li>&#x5B8C;&#x5584;&#x7684;Java doc,&#x7528;&#x6237;&#x6307;&#x5357;&#x548C;&#x6837;&#x4F8B;</li>
+<li>&#x4EC5;&#x4F9D;&#x8D56;&#x4E8E;JDK1.6&#xFF08;netty 4.x)<h2 id="22netty-&#x4E3B;&#x8981;&#x7EC4;&#x4EF6;&#x4ECB;&#x7ECD;">2.2Netty &#x4E3B;&#x8981;&#x7EC4;&#x4EF6;&#x4ECB;&#x7ECD;</h2>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="221bootstrap-&#x548C;-serverbootstrap">2.2.1Bootstrap &#x548C; ServerBootstrap</h3>
+<p>Netty Server&#x542F;&#x52A8;&#x4E3B;&#x8981;&#x6D41;&#x7A0B;&#xFF1A;</p>
+<ol>
+<li>&#x8BBE;&#x7F6E;&#x670D;&#x52A1;&#x7AEF;ServerBootStrap&#x542F;&#x52A8;&#x53C2;&#x6570;<ol>
+<li>group(parentGroup, childGroup):</li>
+<li>channel(NioServerSocketChannel): &#x8BBE;&#x7F6E;&#x901A;&#x9053;&#x7C7B;&#x578B;</li>
+<li>handler()&#xFF1A;&#x8BBE;&#x7F6E;NioServerSocketChannel&#x7684;ChannelHandlerPipeline</li>
+<li>childHandler(): &#x8BBE;&#x7F6E;NioSocketChannel&#x7684;ChannelHandlerPipeline</li>
+</ol>
+</li>
+<li>&#x901A;&#x8FC7;ServerBootStrap&#x7684;bind&#x65B9;&#x6CD5;&#x542F;&#x52A8;&#x670D;&#x52A1;&#x7AEF;&#xFF0C;bind&#x65B9;&#x6CD5;&#x4F1A;&#x5728;parentGroup&#x4E2D;&#x6CE8;&#x518C;NioServerScoketChannel&#xFF0C;&#x76D1;&#x542C;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x8FDE;&#x63A5;&#x8BF7;&#x6C42;<ol>
+<li>&#x4F1A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;NioServerSocketChannel&#x5B9E;&#x4F8B;&#xFF0C;&#x5E76;&#x5C06;&#x5176;&#x5728;parentGroup&#x4E2D;&#x8FDB;&#x884C;&#x6CE8;&#x518C;</li>
+</ol>
+</li>
+</ol>
+<p>Netty Server&#x6267;&#x884C;&#x4E3B;&#x8981;&#x6D41;&#x7A0B;&#xFF1A;</p>
+<p>Client&#x53D1;&#x8D77;&#x8FDE;&#x63A5;CONNECT&#x8BF7;&#x6C42;&#xFF0C;parentGroup&#x4E2D;&#x7684;NioEventLoop&#x4E0D;&#x65AD;&#x8F6E;&#x5FAA;&#x662F;&#x5426;&#x6709;&#x65B0;&#x7684;&#x5BA2;&#x6237;&#x7AEF;&#x8BF7;&#x6C42;&#xFF0C;&#x5982;&#x679C;&#x6709;&#xFF0C;ACCEPT&#x4E8B;&#x4EF6;&#x89E6;&#x53D1;</p>
+<p>ACCEPT&#x4E8B;&#x4EF6;&#x89E6;&#x53D1;&#x540E;&#xFF0C;parentGroup&#x4E2D;NioEventLoop&#x4F1A;&#x901A;&#x8FC7;NioServerSocketChannel&#x83B7;&#x53D6;&#x5230;&#x5BF9;&#x5E94;&#x7684;&#x4EE3;&#x8868;&#x5BA2;&#x6237;&#x7AEF;&#x7684;NioSocketChannel&#xFF0C;&#x5E76;&#x5C06;&#x5176;&#x6CE8;&#x518C;&#x5230;childGroup&#x4E2D;</p>
+<p>childGroup&#x4E2D;&#x7684;NioEventLoop&#x4E0D;&#x65AD;&#x68C0;&#x6D4B;&#x81EA;&#x5DF1;&#x7BA1;&#x7406;&#x7684;NioSocketChannel&#x662F;&#x5426;&#x6709;&#x8BFB;&#x5199;&#x4E8B;&#x4EF6;&#x51C6;&#x5907;&#x597D;</p>
+<p><img src="https://uploader.shimo.im/f/WNvpOKjGrSjcRzQb.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD" alt="&#x56FE;&#x7247;"></p>
+<h3 id="222transport-channel">2.2.2Transport Channel</h3>
+<p>&#x63D0;&#x4F9B;&#x4E86;&#x7EDF;&#x4E00;&#x7684;API&#xFF0C;&#x652F;&#x6301;&#x4E0D;&#x540C;&#x7C7B;&#x578B;&#x7684;&#x4F20;&#x8F93;&#x5C42;&#xFF1A;</p>
+<ol>
+<li>OIO -&#x963B;&#x585E;IO</li>
+<li>NIO - Java NIO</li>
+<li>Epoll -  Linux Epoll(JNI)</li>
+<li>Local Transport - IntraVM&#x8C03;&#x7528;</li>
+<li>Embedded Transport - &#x4F9B;&#x6D4B;&#x8BD5;&#x4F7F;&#x7528;&#x7684;&#x5D4C;&#x5165;&#x4F20;&#x8F93;</li>
+<li><p>UDS -  Unix&#x5957;&#x63A5;&#x5B57;&#x7684;&#x672C;&#x5730;&#x4F20;&#x8F93;</p>
+<h3 id="223eventloop&#x548C;eventloopgroup">2.2.3EventLoop&#x548C;EventLoopGroup</h3>
+</li>
+<li><p>EventLoopGroup</p>
+<ol>
+<li>&#x5305;&#x62EC;&#x591A;&#x4E2A;EventLoop</li>
+<li>&#x591A;&#x4E2A;EventLoop&#x4E4B;&#x95F4;&#x4E0D;&#x4EA4;&#x4E92;</li>
+</ol>
+</li>
+<li>EventLoop&#xFF1A;<ol>
+<li>&#x6BCF;&#x4E2A;EventLoop&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;</li>
+<li>&#x6240;&#x6709;&#x8FDE;&#x63A5;(channel)&#x90FD;&#x5C06;&#x6CE8;&#x518C;&#x5230;&#x4E00;&#x4E2A;EventLoop&#xFF0C;&#x5E76;&#x4E14;&#x53EA;&#x6CE8;&#x518C;&#x5230;&#x4E00;&#x4E2A;&#xFF0C;&#x6574;&#x4E2A;&#x751F;&#x547D;&#x5468;&#x671F;&#x4E2D;&#x90FD;&#x4E0D;&#x4F1A;&#x53D8;&#x5316;</li>
+<li>&#x6BCF;&#x4E2A;EventLoop&#x7BA1;&#x7406;&#x7740;&#x591A;&#x4E2A;&#x8FDE;&#x63A5;(channel)</li>
+<li>EventLoop&#x6765;&#x5904;&#x7406;&#x8FDE;&#x63A5;(Channel)&#x4E0A;&#x7684;&#x8BFB;&#x5199;&#x4E8B;&#x4EF6;</li>
+</ol>
+</li>
+<li>ServerBootstrap&#x5305;&#x62EC;2&#x4E2A;&#x4E0D;&#x540C;&#x7C7B;&#x578B;&#x7684;EventLoopGroup:<ol>
+<li>Parent EventLoop:&#x8D1F;&#x8D23;&#x5904;&#x7406;Accept&#x4E8B;&#x4EF6;&#xFF0C;&#x63A5;&#x6536;&#x8BF7;&#x6C42;</li>
+<li>Child EventLoop&#xFF1A;&#x8D1F;&#x8D23;&#x5904;&#x7406;&#x8BFB;&#x5199;&#x4E8B;&#x4EF6;</li>
+</ol>
+</li>
+<li>ByteBuf&#x901A;&#x8FC7;&#x4E24;&#x4E2A;&#x7D22;&#x5F15;&#xFF08;reader index&#x3001;writer index&#xFF09;&#x5212;&#x5206;&#x4E3A;&#x4E09;&#x4E2A;&#x533A;&#x57DF;&#xFF1A;<ol>
+<li>reader index&#x524D;&#x9762;&#x7684;&#x6570;&#x636E;&#x662F;&#x5DF2;&#x7ECF;&#x8BFB;&#x8FC7;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x8FD9;&#x4E9B;&#x6570;&#x636E;&#x53EF;&#x4EE5;&#x4E22;&#x5F03;</li>
+<li>&#x4ECE;reader index&#x5F00;&#x59CB;&#xFF0C;&#x5230;writer index&#x4E4B;&#x524D;&#x7684;&#x6570;&#x636E;&#x662F;&#x53EF;&#x8BFB;&#x6570;&#x636E;</li>
+<li>&#x4ECE;writer index&#x5F00;&#x59CB;&#xFF0C;&#x4E3A;&#x53EF;&#x5199;&#x533A;&#x57DF;<h3 id="224channelhandler&#x548C;channelpipeline">2.2.4ChannelHandler&#x548C;ChannelPipeline</h3>
+</li>
+</ol>
+</li>
+</ol>
+<p>ChannelHandler  - &#x4E1A;&#x52A1;&#x5904;&#x7406;&#x6838;&#x5FC3;&#x903B;&#x8F91;&#xFF0C;&#x7528;&#x6237;&#x81EA;&#x5B9A;&#x4E49;</p>
+<p>Netty &#x63D0;&#x4F9B;2&#x4E2A;&#x91CD;&#x8981;&#x7684; ChannelHandler &#x5B50;&#x63A5;&#x53E3;&#xFF1A;</p>
+<p>ChannelInboundHandler - &#x5904;&#x7406;&#x8FDB;&#x7AD9;&#x6570;&#x636E;&#x548C;&#x6240;&#x6709;&#x72B6;&#x6001;&#x66F4;&#x6539;&#x4E8B;&#x4EF6;</p>
+<p>ChannelOutboundHandler - &#x5904;&#x7406;&#x51FA;&#x7AD9;&#x6570;&#x636E;&#xFF0C;&#x5141;&#x8BB8;&#x62E6;&#x622A;&#x5404;&#x79CD;&#x64CD;&#x4F5C;</p>
+<p>ChannelPipeline &#x662F;ChannelHandler&#x5BB9;&#x5668;</p>
+<p>&#x5305;&#x62EC;&#x4E00;&#x7CFB;&#x5217;&#x7684;ChannelHandler &#x5B9E;&#x4F8B;,&#x7528;&#x4E8E;&#x62E6;&#x622A;&#x6D41;&#x7ECF;&#x4E00;&#x4E2A; Channel &#x7684;&#x5165;&#x7AD9;&#x548C;&#x51FA;&#x7AD9;&#x4E8B;&#x4EF6;</p>
+<p>&#x6BCF;&#x4E2A;Channel&#x90FD;&#x6709;&#x4E00;&#x4E2A;&#x5176;ChannelPipeline</p>
+<p>&#x53EF;&#x4EE5;&#x4FEE;&#x6539; ChannelPipeline &#x901A;&#x8FC7;&#x52A8;&#x6001;&#x6DFB;&#x52A0;&#x548C;&#x5220;&#x9664; ChannelHandler</p>
+<p>&#x5B9A;&#x4E49;&#x4E86;&#x4E30;&#x5BCC;&#x7684;API&#x8C03;&#x7528;&#x6765;&#x56DE;&#x5E94;&#x5165;&#x7AD9;&#x548C;&#x51FA;&#x7AD9;&#x4E8B;&#x4EF6;</p>
+<p>ChannelHandlerContext&#x8868;&#x793A; ChannelHandler &#x548C;ChannelPipeline &#x4E4B;&#x95F4;&#x7684;&#x5173;&#x8054;</p>
+<p>&#x5728; ChannelHandler &#x6DFB;&#x52A0;&#x5230; ChannelPipeline &#x65F6;&#x521B;&#x5EFA;</p>
+<p>ChannelHandlerContext&#x8868;&#x793A; ChannelHandler &#x548C;ChannelPipeline &#x4E4B;&#x95F4;&#x7684;&#x5173;&#x8054;</p>
+<p><img src="https://uploader.shimo.im/f/lb3ZgWuQx7wTLZSr.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD" alt="&#x56FE;&#x7247;"></p>
+<h3 id="225bytebuf">2.2.5ByteBuf</h3>
+<ol>
+<li>&#x76F8;&#x6BD4;JDK ByteBuffer&#xFF0C; &#x66F4;&#x52A0;&#x6613;&#x4E8E;&#x4F7F;&#x7528;&#xFF1A;<ol>
+<li>&#x4E3A;&#x8BFB;/&#x5199;&#x5206;&#x522B;&#x7EF4;&#x62A4;&#x5355;&#x72EC;&#x7684;&#x6307;&#x9488;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x901A;&#x8FC7;flip()&#x8FDB;&#x884C;&#x8BFB;/&#x5199;&#x6A21;&#x5F0F;&#x5207;&#x6362;</li>
+<li>&#x5BB9;&#x91CF;&#x81EA;&#x52A8;&#x4F38;&#x7F29;&#xFF08;&#x7C7B;&#x4F3C;&#x4E8E; ArrayList&#xFF0C;StringBuilder&#xFF09;</li>
+<li>Fluent API (&#x94FE;&#x5F0F;&#x8C03;&#x7528;&#xFF09;</li>
+</ol>
+</li>
+<li>&#x66F4;&#x597D;&#x7684;&#x6027;&#x80FD;&#xFF1A;<ol>
+<li>&#x901A;&#x8FC7;&#x5185;&#x7F6E;&#x7684;CompositeBuffer&#x6765;&#x51CF;&#x5C11;&#x6570;&#x636E;&#x62F7;&#x8D1D;&#xFF08;Zero copy&#xFF09;</li>
+<li>&#x652F;&#x6301;&#x5185;&#x5B58;&#x6C60;&#xFF0C;&#x51CF;&#x5C11;GC&#x538B;&#x529B;<h2 id="23netty-&#x7F16;&#x7A0B;&#x793A;&#x4F8B;">2.3Netty &#x7F16;&#x7A0B;&#x793A;&#x4F8B;</h2>
+</li>
+</ol>
+</li>
+</ol>
+<h1 id="3netty-&#x7EBF;&#x7A0B;&#x6A21;&#x578B;&#x89E3;&#x6790;">3.Netty &#x7EBF;&#x7A0B;&#x6A21;&#x578B;&#x89E3;&#x6790;</h1>
+<h2 id="31reactor-&#x6A21;&#x5F0F;&#x53CA;&#x5176;&#x4E0E;-netty-&#x7684;&#x5BF9;&#x5E94;&#x5173;&#x7CFB;">3.1Reactor &#x6A21;&#x5F0F;&#x53CA;&#x5176;&#x4E0E; Netty &#x7684;&#x5BF9;&#x5E94;&#x5173;&#x7CFB;</h2>
+<h3 id="311&#x5355;&#x7EBF;&#x7A0B;reactor">3.1.1&#x5355;&#x7EBF;&#x7A0B;Reactor</h3>
+<h3 id="312&#x591A;&#x7EBF;&#x7A0B;reactor">3.1.2&#x591A;&#x7EBF;&#x7A0B;Reactor</h3>
+<h3 id="313multiple-reactor">3.1.3Multiple Reactor</h3>
+<h3 id="314&#x4E3B;&#x4ECE;reactor">3.1.4&#x4E3B;&#x4ECE;Reactor</h3>
+<h2 id="32netty--eventloop-&#x6E90;&#x7801;&#x89E3;&#x6790;">3.2Netty  EventLoop &#x6E90;&#x7801;&#x89E3;&#x6790;</h2>
+<h3 id="321nioeventloopgroup&#x6574;&#x4F53;&#x7ED3;&#x6784;">3.2.1NioEventLoopGroup&#x6574;&#x4F53;&#x7ED3;&#x6784;</h3>
+<h3 id="322nioeventloop&#x521B;&#x5EFA;&#x5206;&#x6790;">3.2.2NioEventLoop&#x521B;&#x5EFA;&#x5206;&#x6790;</h3>
+<h3 id="323nioeventloop&#x542F;&#x52A8;&#x6D41;&#x7A0B;&#x5206;&#x6790;">3.2.3NioEventLoop&#x542F;&#x52A8;&#x6D41;&#x7A0B;&#x5206;&#x6790;</h3>
+<h3 id="324nioeventloop&#x6267;&#x884C;&#x6D41;&#x7A0B;&#x5206;&#x6790;">3.2.4NioEventLoop&#x6267;&#x884C;&#x6D41;&#x7A0B;&#x5206;&#x6790;</h3>
+<h1 id="4netty-&#x7F16;&#x89E3;&#x7801;&#x7F16;&#x7A0B;&#x5B9E;&#x6218;">4.Netty &#x7F16;&#x89E3;&#x7801;&#x7F16;&#x7A0B;&#x5B9E;&#x6218;</h1>
+<h2 id="41-&#x534A;&#x5305;&#x7C98;&#x5305;&#x95EE;&#x9898;&#x793A;&#x4F8B;&#x4E0E;&#x5206;&#x6790;">4.1 &#x534A;&#x5305;&#x7C98;&#x5305;&#x95EE;&#x9898;&#x793A;&#x4F8B;&#x4E0E;&#x5206;&#x6790;</h2>
+<h2 id="42netty-&#x534A;&#x5305;&#x7C98;&#x5305;&#x95EE;&#x9898;&#x89E3;&#x51B3;">4.2Netty &#x534A;&#x5305;&#x7C98;&#x5305;&#x95EE;&#x9898;&#x89E3;&#x51B3;</h2>
+<h3 id="421linebasedframedecoder&#xFF08;n-rn">4.2.1LineBasedFrameDecoder&#xFF08;\n, \r\n)</h3>
+<p>&#x56DE;&#x8F66;&#x6362;&#x884C;&#x89E3;&#x7801;&#x5668;</p>
+<p>&#x914D;&#x5408;StringDecoder</p>
+<h3 id="422delimiterbasedframedecoder">4.2.2DelimiterBasedFrameDecoder</h3>
+<p>&#x5206;&#x9694;&#x7B26;&#x89E3;&#x7801;&#x5668;</p>
+<h3 id="423fixedlengthframedecoder">4.2.3FixedLengthFrameDecoder</h3>
+<p>&#x56FA;&#x5B9A;&#x957F;&#x5EA6;&#x89E3;&#x7801;&#x5668;</p>
+<h3 id="424lengthfieldbasedframedecoder">4.2.4LengthFieldBasedFrameDecoder</h3>
+<p>&#x57FA;&#x4E8E;&apos;&#x957F;&#x5EA6;&apos;&#x89E3;&#x7801;&#x5668;(&#x79C1;&#x6709;&#x534F;&#x8BAE;&#x6700;&#x5E38;&#x7528;)</p>
+<h2 id="43netty-&#x7F16;&#x89E3;&#x7801;&#x5668;&#x5206;&#x6790;">4.3Netty &#x7F16;&#x89E3;&#x7801;&#x5668;&#x5206;&#x6790;</h2>
+<h1 id="5&#x57FA;&#x4E8E;-netty-&#x5B9E;&#x73B0;&#x9AD8;&#x6027;&#x80FD;&#x5F39;&#x5E55;&#x7CFB;&#x7EDF;">5.&#x57FA;&#x4E8E; Netty &#x5B9E;&#x73B0;&#x9AD8;&#x6027;&#x80FD;&#x5F39;&#x5E55;&#x7CFB;&#x7EDF;</h1>
+<h2 id="51-&#x5F39;&#x5E55;&#x7CFB;&#x7EDF;&#x6982;&#x8981;&#x8BBE;&#x8BA1;">5.1 &#x5F39;&#x5E55;&#x7CFB;&#x7EDF;&#x6982;&#x8981;&#x8BBE;&#x8BA1;</h2>
+<h3 id="511&#x5F39;&#x5E55;&#x7CFB;&#x7EDF;&#x7279;&#x70B9;">5.1.1&#x5F39;&#x5E55;&#x7CFB;&#x7EDF;&#x7279;&#x70B9;</h3>
+<p>1.&#x5B9E;&#x65F6;&#x6027;&#x9AD8;&#xFF1A;&#x4F60;&#x53D1;&#x6211;&#x6536;&#xFF0C; &#x6BEB;&#x79D2;&#x4E4B;&#x5DEE;</p>
+<p>2.&#x5E76;&#x53D1;&#x91CF;&#x5927;&#xFF1A;&#x4E00;&#x4EBA;&#x5410;&#x69FD;&#xFF0C;&#x4E07;&#x4EBA;&#x89C2;&#x770B;</p>
+<h3 id="512&#x5F39;&#x5E55;&#x7CFB;&#x7EDF;&#x67B6;&#x6784;&#x8BBE;&#x8BA1;">5.1.2&#x5F39;&#x5E55;&#x7CFB;&#x7EDF;&#x67B6;&#x6784;&#x8BBE;&#x8BA1;</h3>
+<p>&#x4E1A;&#x52A1;&#x67B6;&#x6784;</p>
+<p><img src="https://uploader.shimo.im/f/RBePFluRYF0dk3Vk.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD" alt="&#x56FE;&#x7247;"></p>
+<p>&#x5B9E;&#x73B0;&#x65B9;&#x6848;&#x4E00;</p>
+<p><img src="https://uploader.shimo.im/f/18M9B3CKIcAoO6Da.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD" alt="&#x56FE;&#x7247;"></p>
+<p>&#x5B9E;&#x73B0;&#x65B9;&#x6848;&#x4E8C;</p>
+<p><img src="https://uploader.shimo.im/f/8vUgmYmpe4nkXgE7.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD" alt="&#x56FE;&#x7247;"></p>
+<h2 id="52netty-&#x5BF9;-http-&#x534F;&#x8BAE;&#x89E3;&#x6790;&#x5B9E;&#x73B0;">5.2Netty &#x5BF9; Http &#x534F;&#x8BAE;&#x89E3;&#x6790;&#x5B9E;&#x73B0;</h2>
+<p>request &#x62A5;&#x6587;</p>
+<p><img src="https://uploader.shimo.im/f/AXzG6kNqM15AhioD.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD" alt="&#x56FE;&#x7247;"></p>
+<p>response &#x62A5;&#x6587;</p>
+<p><img src="https://uploader.shimo.im/f/4VXZFhFteuqG7UO3.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD" alt="&#x56FE;&#x7247;"></p>
+<h3 id="521http&#x62A5;&#x6587;&#x89E3;&#x6790;&#x65B9;&#x6848;&#xFF1A;">5.2.1http&#x62A5;&#x6587;&#x89E3;&#x6790;&#x65B9;&#x6848;&#xFF1A;</h3>
+<p>1&#xFF1A;&#x8BF7;&#x6C42;&#x884C;&#x7684;&#x8FB9;&#x754C;&#x662F;CRLF(&#x56DE;&#x8F66;)&#xFF0C;&#x5982;&#x679C;&#x8BFB;&#x53D6;&#x5230;CRLF(&#x56DE;&#x8F66;)&#xFF0C;&#x5219;&#x610F;&#x5473;&#x7740;&#x8BF7;&#x6C42;&#x884C;&#x7684;&#x4FE1;&#x606F;&#x5DF2;&#x7ECF;&#x8BFB;&#x53D6;&#x5B8C;&#x6210;&#x3002;</p>
+<p>2&#xFF1A;Header&#x7684;&#x8FB9;&#x754C;&#x662F;CRLF&#xFF0C;&#x5982;&#x679C;&#x8FDE;&#x7EED;&#x8BFB;&#x53D6;&#x4E24;&#x4E2A;CRLF&#xFF0C;&#x5219;&#x610F;&#x5473;&#x7740;header&#x7684;&#x4FE1;&#x606F;&#x8BFB;&#x53D6;&#x5B8C;&#x6210;&#x3002;</p>
+<p>3&#xFF1A;body&#x7684;&#x957F;&#x5EA6;&#x662F;&#x6709;Content-Length &#x6765;&#x8FDB;&#x884C;&#x786E;&#x5B9A;&#x3002;</p>
+<h3 id="522netty&#x5173;&#x4E8E;http-&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF1A;">5.2.2netty&#x5173;&#x4E8E;http &#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF1A;</h3>
+<p>// &#x89E3;&#x6790;&#x8BF7;&#x6C42;</p>
+<p>&#x5F88;&#x591A;http server&#x7684;&#x5B9E;&#x73B0;&#x90FD;&#x662F;&#x57FA;&#x4E8E;servlet&#x6807;&#x51C6;&#xFF0C;&#x4F46;&#x662F;netty&#x5BF9;http&#x5B9E;&#x73B0;&#x5E76;&#x6CA1;&#x6709;&#x57FA;&#x4E8E;servlet&#x3002;&#x6240;&#x4EE5;&#x5728;&#x4F7F;&#x7528;&#x4E0A;&#x6BD4;Servlet&#x590D;&#x6742;&#x5F88;&#x591A;&#x3002;&#x6BD4;&#x5982;&#x5728;servlet &#x4E2D;&#x76F4;&#x63A5;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; HttpServletRequest &#x83B7;&#x53D6; &#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#x3001;&#x8BF7;&#x6C42;&#x5934;&#x3001;&#x8BF7;&#x6C42;&#x53C2;&#x6570;&#x3002;&#x800C;netty &#x786E;&#x9700;&#x8981;&#x901A;&#x8FC7;&#x5982;&#x4E0B;&#x5BF9;&#x8C61;&#x81EA;&#x884C;&#x89E3;&#x6790;&#x83B7;&#x53D6;&#x3002;</p>
+<p>HttpMethod&#xFF1A;&#x4E3B;&#x8981;&#x662F;&#x5BF9;method&#x7684;&#x5C01;&#x88C5;&#xFF0C;&#x5305;&#x542B;method&#x5E8F;&#x5217;&#x5316;&#x7684;&#x64CD;&#x4F5C;</p>
+<p>HttpVersion: &#x5BF9;version&#x7684;&#x5C01;&#x88C5;&#xFF0C;netty&#x5305;&#x542B;1.0&#x548C;1.1&#x7684;&#x7248;&#x672C;</p>
+<p>QueryStringDecoder: &#x4E3B;&#x8981;&#x662F;&#x5BF9;urI&#x8FDB;&#x884C;&#x89E3;&#x6790;&#xFF0C;&#x89E3;&#x6790;path&#x548C;url&#x4E0A;&#x9762;&#x7684;&#x53C2;&#x6570;&#x3002;</p>
+<p>HttpPostRequestDecoder&#xFF1A;&#x5BF9;post &#x4E2D;body &#x5185;&#x5BB9;&#x8FDB;&#x884C;&#x89E3;&#x6790;&#x83B7;&#x53D6; form &#x53C2;&#x6570;&#x3002;</p>
+<p>HttpHeaders&#xFF1A;&#x5305;&#x542B;&#x5BF9;header&#x7684;&#x5185;&#x5BB9;&#x8FDB;&#x884C;&#x5C01;&#x88C5;&#x53CA;&#x64CD;&#x4F5C;</p>
+<p>HttpContent&#xFF1A;&#x662F;&#x5BF9;body&#x8FDB;&#x884C;&#x5C01;&#x88C5;&#xFF0C;&#x672C;&#x8D28;&#x4E0A;&#x5C31;&#x662F;&#x4E00;&#x4E2A;ByteBuf&#x3002;&#x5982;&#x679C;ByteBuf&#x7684;&#x957F;&#x5EA6;&#x662F;&#x56FA;&#x5B9A;&#x7684;&#xFF0C;&#x5219;&#x8BF7;&#x6C42;&#x7684;body&#x8FC7;&#x5927;&#xFF0C;&#x53EF;&#x80FD;&#x5305;&#x542B;&#x591A;&#x4E2A;HttpContent&#xFF0C;&#x5176;&#x4E2D;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x4E3A;LastHttpContent(&#x7A7A;&#x7684;HttpContent),&#x7528;&#x6765;&#x8BF4;&#x660E;body&#x7684;&#x7ED3;&#x675F;&#x3002;</p>
+<p>HttpRequest&#xFF1A;&#x4E3B;&#x8981;&#x5305;&#x542B;&#x5BF9;Request Line&#x548C;Header&#x7684;&#x7EC4;&#x5408;</p>
+<p>FullHttpRequest&#xFF1A; &#x4E3B;&#x8981;&#x5305;&#x542B;&#x5BF9;HttpRequest&#x548C;httpContent&#x7684;&#x7EC4;&#x5408;</p>
+<p><img src="https://uploader.shimo.im/f/dtqqtVJNlc7vhhqo.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD" alt="&#x56FE;&#x7247;"></p>
+<h3 id="523netty-http&#x7684;&#x8BF7;&#x6C42;&#x5904;&#x7406;&#x6D41;&#x7A0B;">5.2.3Netty Http&#x7684;&#x8BF7;&#x6C42;&#x5904;&#x7406;&#x6D41;&#x7A0B;</h3>
+<p><img src="https://uploader.shimo.im/f/dGpEHzOrq0nR26ut.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD" alt="&#x56FE;&#x7247;"></p>
+<p>&#x4ECE;&#x56FE;&#x4E2D;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#x505A;&#x4E3A;&#x670D;&#x52A1;&#x7AEF;&#x7684;Netty &#x5C31;&#x662F;&#x5728;&#x505A; &#x7F16;&#x7801;&#x548C;&#x89E3;&#x7801;&#x64CD;&#x4F5C;&#x3002;&#x5176;&#x5206;&#x522B;&#x901A;&#x8FC7;&#x4EE5;&#x4E0B;&#x4E24;&#x4E2A;ChannelHandler&#x5BF9;&#x8C61;&#x5B9E;&#x73B0;&#xFF1A;</p>
+<p>HttpRequestDecoder :&#x7528;&#x4E8E;&#x4ECE;byteBuf &#x83B7;&#x53D6;&#x6570;&#x636E;&#x5E76;&#x89E3;&#x6790;&#x5C01;&#x88C5;&#x6210;HttpRequest &#x5BF9;&#x8C61;</p>
+<p>HttpResponseEncoder&#xFF1A;&#x7528;&#x4E8E;&#x5C06;&#x4E1A;&#x52A1;&#x8FD4;&#x56DE;&#x6570;&#x636E;&#x7F16;&#x7801;&#x6210; Response&#x62A5;&#x6587;&#x5E76;&#x53D1;&#x9001;&#x5230;ByteBuf&#x3002;</p>
+<p>&#x5C06;&#x4EE5;&#x4E0A;&#x4E24;&#x4E2A;&#x5BF9;&#x8C61;&#x6DFB;&#x52A0;&#x8FDB; Netty &#x7684; pipeline &#x5373;&#x53EF;&#x5B9E;&#x73B0;&#x6700;&#x7B80;&#x5355;&#x7684;http &#x670D;&#x52A1;&#x3002;</p>
+<p>Decoder &#x6D41;&#x7A0B;</p>
+<p><img src="https://uploader.shimo.im/f/IDjRVjvWuDTYbD0X.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD" alt="&#x56FE;&#x7247;"></p>
+<p>encode &#x6D41;&#x7A0B;</p>
+<p><img src="https://uploader.shimo.im/f/WGaEhN6EqdbUbZ15.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD" alt="&#x56FE;&#x7247;"></p>
+<h2 id="53webscoket-&#x534F;&#x8BAE;&#x89E3;&#x6790;&#x5B9E;&#x73B0;">5.3WebScoket &#x534F;&#x8BAE;&#x89E3;&#x6790;&#x5B9E;&#x73B0;</h2>
+<h3 id="531websocket-&#x534F;&#x8BAE;&#x7B80;&#x4ECB;&#xFF1A;">5.3.1webSocket &#x534F;&#x8BAE;&#x7B80;&#x4ECB;&#xFF1A;</h3>
+<p>webSocket &#x662F;html5 &#x5F00;&#x59CB;&#x63D0;&#x4F9B;&#x7684;&#x4E00;&#x79CD;&#x6D4F;&#x89C8;&#x5668;&#x4E0E;&#x670D;&#x52A1;&#x5668;&#x95F4;&#x8FDB;&#x884C;&#x5168;&#x53CC;&#x5DE5;&#x4E8C;&#x8FDB;&#x5236;&#x901A;&#x4FE1;&#x534F;&#x8BAE;&#xFF0C;&#x5176;&#x57FA;&#x4E8E;TCP&#x53CC;&#x5411;&#x5168;&#x53CC;&#x5DE5;&#x4F5C;&#x8FDB;&#x884C;&#x6D88;&#x606F;&#x4F20;&#x9012;&#xFF0C;&#x540C;&#x4E00;&#x65F6;&#x523B;&#x5373;&#x53EF;&#x4EE5;&#x53D1;&#x53C8;&#x53EF;&#x4EE5;&#x63A5;&#x6536;&#x6D88;&#x606F;&#xFF0C;&#x76F8;&#x6BD4;Http&#x7684;&#x534A;&#x53CC;&#x5DE5;&#x534F;&#x8BAE;&#x6027;&#x80FD;&#x6709;&#x5F88;&#x5927;&#x7684;&#x63D0;&#x5347;&#xFF0C;</p>
+<h3 id="532websocket&#x7279;&#x70B9;&#x5982;&#x4E0B;&#xFF1A;">5.3.2webSocket&#x7279;&#x70B9;&#x5982;&#x4E0B;&#xFF1A;</h3>
+<p>1.&#x5355;&#x4E00;TCP&#x957F;&#x8FDE;&#x63A5;&#xFF0C;&#x91C7;&#x7528;&#x5168;&#x53CC;&#x5DE5;&#x901A;&#x4FE1;&#x6A21;&#x5F0F;</p>
+<p>2.&#x5BF9;&#x4EE3;&#x7406;&#x3001;&#x9632;&#x706B;&#x5899;&#x900F;&#x660E;</p>
+<p>3.&#x65E0;&#x5934;&#x90E8;&#x4FE1;&#x606F;&#x3001;&#x6D88;&#x606F;&#x66F4;&#x7CBE;&#x7B80;</p>
+<p>4.&#x901A;&#x8FC7;ping/pong &#x6765;&#x4FDD;&#x6D3B;</p>
+<p>5.&#x670D;&#x52A1;&#x5668;&#x53EF;&#x4EE5;&#x4E3B;&#x52A8;&#x63A8;&#x9001;&#x6D88;&#x606F;&#x7ED9;&#x5BA2;&#x6237;&#x7AEF;&#xFF0C;&#x4E0D;&#x5728;&#x9700;&#x8981;&#x5BA2;&#x6237;&#x8F6E;&#x8BE2;</p>
+<h3 id="533websocket-&#x534F;&#x8BAE;&#x62A5;&#x6587;&#x683C;&#x5F0F;&#xFF1A;">5.3.3WebSocket &#x534F;&#x8BAE;&#x62A5;&#x6587;&#x683C;&#x5F0F;&#xFF1A;</h3>
+<p>&#x6211;&#x4EEC;&#x77E5;&#x9053;&#xFF0C;&#x4EFB;&#x4F55;&#x5E94;&#x7528;&#x534F;&#x8BAE;&#x90FD;&#x6709;&#x5176;&#x7279;&#x6709;&#x7684;&#x62A5;&#x6587;&#x683C;&#x5F0F;&#xFF0C;&#x6BD4;&#x5982;Http&#x534F;&#x8BAE;&#x901A;&#x8FC7; &#x7A7A;&#x683C; &#x6362;&#x884C;&#x7EC4;&#x6210;&#x5176;&#x62A5;&#x6587;&#x3002;&#x5982;http &#x534F;&#x8BAE;&#x4E0D;&#x540C;&#x5728;&#x4E8E;WebSocket&#x5C5E;&#x4E8E;&#x4E8C;&#x8FDB;&#x5236;&#x534F;&#x8BAE;&#xFF0C;&#x901A;&#x8FC7;&#x89C4;&#x8303;&#x8FDB;&#x4E8C;&#x8FDB;&#x4F4D;&#x6765;&#x7EC4;&#x6210;&#x5176;&#x62A5;&#x6587;&#x3002;&#x5177;&#x4F53;&#x7EC4;&#x6210;&#x5982;&#x4E0B;&#x56FE;&#xFF1A;</p>
+<p><img src="https://uploader.shimo.im/f/h4mjHsFyFdYRJfte.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD" alt="&#x56FE;&#x7247;"></p>
+<pre class="language-"><code class="lang-javascript">&#x901A;&#x8FC7;javaScript &#x4E2D;&#x7684;<span class="token constant">API</span>&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x64CD;&#x4F5C;WebSocket &#x5BF9;&#x8C61;&#xFF0C;&#x5176;&#x793A;&#x4F8B;&#x5982;&#x4E0B;&#xFF1A;
+<span class="token keyword">var</span> ws <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WebSocket</span><span class="token punctuation">(</span>&#x201C;ws<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>localhost<span class="token operator">:</span><span class="token number">8080</span>&#x201D;<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ws<span class="token punctuation">.</span><span class="token function-variable function">onopen</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment">// &#x5EFA;&#x7ACB;&#x6210;&#x529F;&#x4E4B;&#x540E;&#x89E6;&#x53D1;&#x7684;&#x4E8B;&#x4EF6; {</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>&#x201C;&#x6253;&#x5F00;&#x8FDE;&#x63A5;&#x201D;<span class="token punctuation">)</span><span class="token punctuation">;</span> ws<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">&quot;ddd&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &#x53D1;&#x9001;&#x6D88;&#x606F;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+ws<span class="token punctuation">.</span><span class="token function-variable function">onmessage</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">evt</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// &#x63A5;&#x6536;&#x670D;&#x52A1;&#x5668;&#x6D88;&#x606F;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>evt<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+ws<span class="token punctuation">.</span><span class="token function-variable function">onclose</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">evt</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>&#x201C;WebSocketClosed<span class="token operator">!</span>&#x201D;<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &#x5173;&#x95ED;&#x8FDE;&#x63A5; };</span>
+ws<span class="token punctuation">.</span><span class="token function-variable function">onerror</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">evt</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>&#x201C;WebSocketError<span class="token operator">!</span>&#x201D;<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// &#x8FDE;&#x63A5;&#x5F02;&#x5E38;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<h1 id="6&#x57FA;&#x4E8E;-netty-&#x5B9E;&#x73B0;-rpc-&#x6846;&#x67B6;">6.&#x57FA;&#x4E8E; Netty &#x5B9E;&#x73B0; RPC &#x6846;&#x67B6;</h1>
+<h2 id="61rpc&#x6784;&#x5EFA;&#x9700;&#x8981;&#x8003;&#x8651;&#x7684;&#x4E3B;&#x8981;&#x56E0;&#x7D20;">6.1RPC&#x6784;&#x5EFA;&#x9700;&#x8981;&#x8003;&#x8651;&#x7684;&#x4E3B;&#x8981;&#x56E0;&#x7D20;</h2>
+<ol>
+<li>&#x901A;&#x4FE1;&#x534F;&#x8BAE;</li>
+<li>&#x6587;&#x672C;&#x534F;&#x8BAE;&#x6216;&#x4E8C;&#x8FDB;&#x5236;&#x534F;&#x8BAE;&#xFF08;RESTful with JSON or RPC with Binary Encoding&#xFF09;</li>
+<li>&#x652F;&#x6301;&#x7684;&#x8C03;&#x7528;&#x65B9;&#x5F0F;&#xFF1A;&#x5355;&#x5411;&#x3001;&#x53CC;&#x5411;&#x3001;Streaming</li>
+<li>API&#x5BB9;&#x9519;&#x3001;&#x53EF;&#x4F38;&#x7F29;&#x6027;<h2 id="612rpc&#x6846;&#x67B6;">6..1.2RPC&#x6846;&#x67B6;</h2>
+</li>
+</ol>
+<p><img src="https://uploader.shimo.im/f/N1iMOCRPQ2RZcFsK.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD" alt="&#x56FE;&#x7247;"></p>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9; ohter.com 2021 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x8BE5;&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
+2021-04-19 15:27:02
+</span></footer>
+<script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="shell.html" class="navigation navigation-prev " aria-label="Previous page: 1.启停脚本">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../dubbo/" class="navigation navigation-next " aria-label="Next page: dubbo">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"2.分布式之netty","level":"1.6.2.2","depth":3,"next":{"title":"dubbo","level":"1.6.3","depth":2,"path":"distributed/dubbo/README.md","ref":"distributed/dubbo/README.md","articles":[{"title":"1.从0到1整体认知分布式系统","level":"1.6.3.1","depth":3,"path":"distributed/dubbo/dubbo-introduce.md","ref":"distributed/dubbo/dubbo-introduce.md","articles":[]},{"title":"2.快速掌握Dubbo常规应用","level":"1.6.3.2","depth":3,"path":"distributed/dubbo/dubbo-base-use.md","ref":"distributed/dubbo/dubbo-base-use.md","articles":[]},{"title":"3.Dubbo企业级应用进阶","level":"1.6.3.3","depth":3,"path":"distributed/dubbo/dubbo-high-use.md","ref":"distributed/dubbo/dubbo-high-use.md","articles":[]},{"title":"2.Dubb调用模块详解","level":"1.6.3.4","depth":3,"path":"distributed/dubbo/dubbo-module-detail.md","ref":"distributed/dubbo/dubbo-module-detail.md","articles":[]},{"title":"3.Dubbo协议模块源码剖析","level":"1.6.3.5","depth":3,"path":"distributed/dubbo/dubbo-proto-detail.md","ref":"distributed/dubbo/dubbo-proto-detail.md","articles":[]}]},"previous":{"title":"1.启停脚本","level":"1.6.2.1","depth":3,"path":"distributed/netty/shell.md","ref":"distributed/netty/shell.md","articles":[]},"dir":"ltr"},"config":{"plugins":["chapter-fold","theme-comscore","back-to-top-button","code","tbfed-pagefooter","page-treeview","pageview-count","popup","prism","-highlight","hide-element","-lunr","-search","search-pro","page-toc-button"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy ohter.com 2021","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"page-treeview":{"collapsed":false,"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"search-pro":{},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"liufeihua","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"日常笔记","language":"zh-hans","gitbook":"*","description":"日常笔记"},"file":{"path":"distributed/netty/netty.md","mtime":"2021-04-19T07:27:02.171Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-19T10:10:24.413Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-hide-element/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-page-toc-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-theme-comscore/test.js"></script>
+        
+    
+
+    </body>
+</html>
+
