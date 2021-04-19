@@ -17,7 +17,8 @@
         "hide-element",
 		"-lunr",
 		"-search", 
-		"search-pro"
+		"search-pro",
+		"page-toc-button"
     ],
     "pluginsConfig": {
         "tbfed-pagefooter": {
@@ -34,6 +35,10 @@
             "elements": [
                 ".gitbook-link"
             ]
-        }
+        },
+		"page-toc-button": {
+            "maxTocDepth": 2,
+            "minTocSize": 2
+           }
     }
 }
