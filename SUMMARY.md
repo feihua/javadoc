@@ -12,9 +12,13 @@
 		*  [2.JVM性能调优监控工具](automation/jenkins/2_JVM性能调优监控工具.md)
 		*  [3.JVM垃圾回收与调优](automation/jenkins/3_JVM垃圾回收与调优.md)
 	*  [K8s服务编排](automation/k8s/README.md)
-		*  [1.快速部署一个K8s集群](automation/k8s/kubeadm-install-one.md)
-		*  [2搭建高可用的K8s集群](automation/k8s/kubeadm-install-all.md)
-
+		*  [K8s安装](automation/k8s/install.md)
+			*  [1.快速部署一个K8s集群](automation/k8s/kubeadm-install-one.md)
+			*  [2.搭建高可用的K8s集群](automation/k8s/kubeadm-install-all.md)
+		*  [1.K8s相关命令](automation/k8s/cmd.md)
+		*  [2.K8s部署应用](automation/k8s/Kubernetes-deployment.md)I		
+		*  [3.Ingress暴露容器化应用](automation/k8s/Ingress.md)
+		
 *  [二、源码框架专题](source/README.md)	
 	*  [mybatis](source/mybatis/README.md)
 		*  [1.基本使用](source/mybatis/base-use.md)

@@ -1215,7 +1215,7 @@
                 <a href="../distributed/redis/">
             
                     
-                    redis
+                    redis缓存
             
                 </a>
             
@@ -1224,12 +1224,12 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.6.8.1" data-path="../distributed/redis/shell.html">
+        <li class="chapter " data-level="1.6.8.1" data-path="../distributed/redis/redis.html">
             
-                <a href="../distributed/redis/shell.html">
+                <a href="../distributed/redis/redis.html">
             
                     
-                    1.启停脚本
+                    1.分布式之Redis
             
                 </a>
             
@@ -1237,12 +1237,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.8.2" data-path="../distributed/redis/redis.html">
+        <li class="chapter " data-level="1.6.8.2" data-path="../distributed/redis/redis6.html">
             
-                <a href="../distributed/redis/redis.html">
+                <a href="../distributed/redis/redis6.html">
             
                     
-                    2.分布式之Redis
+                    2.Redis6.0
             
                 </a>
             
@@ -1721,7 +1721,7 @@
                                 
                                 <h1 id="introduction">Introduction</h1>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; ohter.com 2021 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x8BE5;&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
-2021-04-19 20:41:05
+2021-04-13 09:07:24
 </span></footer>
 <script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
                                 
@@ -1766,7 +1766,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"二、源码框架专题","level":"1.3","depth":1,"next":{"title":"mybatis","level":"1.3.1","depth":2,"path":"source/mybatis/README.md","ref":"source/mybatis/README.md","articles":[{"title":"1.基本使用","level":"1.3.1.1","depth":3,"path":"source/mybatis/base-use.md","ref":"source/mybatis/base-use.md","articles":[]},{"title":"2源码分析","level":"1.3.1.2","depth":3,"path":"source/mybatis/analysis.md","ref":"source/mybatis/analysis.md","articles":[]},{"title":"3.代码实现","level":"1.3.1.3","depth":3,"path":"source/mybatis/realization.md","ref":"source/mybatis/realization.md","articles":[]}]},"previous":{"title":"2搭建高可用的K8s集群","level":"1.2.4.2","depth":3,"path":"automation/k8s/kubeadm-install-all.md","ref":"automation/k8s/kubeadm-install-all.md","articles":[]},"dir":"ltr"},"config":{"plugins":["chapter-fold","theme-comscore","back-to-top-button","code","tbfed-pagefooter","page-treeview","pageview-count","popup","prism","-highlight","hide-element","-lunr","-search","search-pro","page-toc-button"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy ohter.com 2021","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"page-treeview":{"collapsed":false,"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"search-pro":{},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"liufeihua","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"日常笔记","language":"zh-hans","gitbook":"*","description":"日常笔记"},"file":{"path":"source/README.md","mtime":"2021-04-19T12:41:05.821Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-19T14:14:40.831Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"二、源码框架专题","level":"1.3","depth":1,"next":{"title":"mybatis","level":"1.3.1","depth":2,"path":"source/mybatis/README.md","ref":"source/mybatis/README.md","articles":[{"title":"1.基本使用","level":"1.3.1.1","depth":3,"path":"source/mybatis/base-use.md","ref":"source/mybatis/base-use.md","articles":[]},{"title":"2源码分析","level":"1.3.1.2","depth":3,"path":"source/mybatis/analysis.md","ref":"source/mybatis/analysis.md","articles":[]},{"title":"3.代码实现","level":"1.3.1.3","depth":3,"path":"source/mybatis/realization.md","ref":"source/mybatis/realization.md","articles":[]}]},"previous":{"title":"2搭建高可用的K8s集群","level":"1.2.4.2","depth":3,"path":"automation/k8s/kubeadm-install-all.md","ref":"automation/k8s/kubeadm-install-all.md","articles":[]},"dir":"ltr"},"config":{"plugins":["chapter-fold","theme-comscore","back-to-top-button","code","tbfed-pagefooter","page-treeview","pageview-count","popup","prism","-highlight","hide-element","-lunr","-search","search-pro","page-toc-button"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy ohter.com 2021","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"page-treeview":{"collapsed":false,"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"search-pro":{},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"liufeihua","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"日常笔记","language":"zh-hans","gitbook":"*","description":"日常笔记"},"file":{"path":"source/README.md","mtime":"2021-04-13T01:07:24.904Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-20T08:55:48.151Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
