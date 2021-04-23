@@ -757,9 +757,11 @@ public class SqlSessionFactoryBuilder {
 <T> T getMapper(Class<T> clazz);
 ```
 
-
 ######4.6.3.2 修改DefaultSqlSession添加代理实现
-	@Override
+	
+
+```java
+@Override
 	public <T> T getMapper(Class<T> clazz) {
 	    /*****
 	     * 参数：
@@ -774,6 +776,7 @@ public class SqlSessionFactoryBuilder {
 	        }
 	    });
 	}
+```
 
 
 ######4.6.3.3 动态代理实现增删改查
@@ -790,12 +793,14 @@ public class SqlSessionFactoryBuilder {
 ######4.6.3.4 在SqlSession中编写增删改查，在DefaultSqlSession中实现增删改查
 修改SqlSession，在SqlSession中增加selectList方法
 
-    /***
-     * 集合查询
-     * @param <E>
-     * @return
-     */
-    <E> List<E> selectList(String statement);
+```java
+/***
+ * 集合查询
+ * @param <E>
+ * @return
+ */
+<E> List<E> selectList(String statement);
+```
 
 修改DefaultSqlSession，在DefaultSqlSession中实现selectList方法,其中集合查询我们用到了一个Converter转换器，转换器的写法紧接着在后面会列出。
 
@@ -918,16 +923,21 @@ public class MapperProxyFactory implements InvocationHandler {
 ```
 
 DefaultSqlSession中的getMapper方法
-	@Override
+	
+
+```java
+@Override
 	public <T> T getMapper(Class<T> clazz) {
 	    /*****
-	     * 参数：
-	     *      1)被代理对象的类加载器
-	     *      2)字节数组，让代理对象和被代理对象有相同的行为[行为也就是有相同的方法]
-	          *      3)InvocationHandler:增强代码,需要使用提供者增强的代码，改代码是以接口的实现类方式提供的，通常用匿名内部内，但不绝对。
-	               */
-	            return (T) Proxy.newProxyInstance(clazz.getClassLoader(), new Class[]{clazz}, new MapperProxyFactory(this));
-	}
+
+   * 参数：
+          1)被代理对象的类加载器
+        *      2)字节数组，让代理对象和被代理对象有相同的行为[行为也就是有相同的方法]
+                  *      3)InvocationHandler:增强代码,需要使用提供者增强的代码，改代码是以接口的实现类方式提供的，通常用匿名内部内，但不绝对。
+                              */
+                             return (T) Proxy.newProxyInstance(clazz.getClassLoader(), new Class[]{clazz}, new MapperProxyFactory(this));
+                         }
+```
 
 ######4.6.3.7 执行SQL代码封装Executor
 将DefaultSqlSession中selectList的代码封装到一个Executor的工具类中，方便使用。我们新建一个Executor的工具类。
