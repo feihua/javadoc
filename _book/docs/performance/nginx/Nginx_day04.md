@@ -66,13 +66,13 @@ DNS
 
 验证:
 
-```
+```bash
 ping www.nginx521.cn
 ```
 
 清空本地的dns缓存
 
-```
+```bash
 ipconfig/flushdns
 ```
 
@@ -168,7 +168,7 @@ Nginx要实现七层负载均衡需要用到proxy_pass代理模块配置。Nginx
 
 服务端设置
 
-```
+```properties
 server {
     listen   9001;
     server_name localhost;
@@ -197,7 +197,7 @@ server {
 
 负载均衡器设置
 
-```
+```properties
 upstream backend{
 	server 192.168.200.146:9091;
 	server 192.168.200.146:9092;
@@ -228,7 +228,7 @@ server {
 
 down:将该服务器标记为永久不可用，那么该代理服务器将不参与负载均衡。
 
-```
+```properties
 upstream backend{
 	server 192.168.200.146:9001 down;
 	server 192.168.200.146:9002
@@ -251,7 +251,7 @@ server {
 
 backup:将该服务器标记为备份服务器，当主服务器不可用时，将用来传递请求。
 
-```
+```properties
 upstream backend{
 	server 192.168.200.146:9001 down;
 	server 192.168.200.146:9002 backup;
@@ -272,31 +272,31 @@ server {
 
 查询防火墙中指定的端口是否开放
 
-```
+```bash
 firewall-cmd --query-port=9001/tcp
 ```
 
 如何开放一个指定的端口
 
-```
+```bash
 firewall-cmd --permanent --add-port=9002/tcp
 ```
 
 批量添加开发端口
 
-```
+```bash
 firewall-cmd --permanent --add-port=9001-9003/tcp
 ```
 
 如何移除一个指定的端口
 
-```
+```bash
 firewall-cmd --permanent --remove-port=9003/tcp
 ```
 
 重新加载
 
-```
+```bash
 firewall-cmd --reload
 ```
 
@@ -318,7 +318,7 @@ max_fails=number:设置允许请求代理服务器失败的次数，默认为1�
 
 fail_timeout=time:设置经过max_fails失败后，服务暂停的时间，默认是10秒。
 
-```
+```properties
 upstream backend{
 	server 192.168.200.133:9001 down;
 	server 192.168.200.133:9002 backup;
@@ -354,7 +354,7 @@ Nginx的upstream支持如下六种方式的分配算法，分别是:
 
 是upstream模块负载均衡默认的策略。每个请求会按时间顺序逐个分配到不同的后端服务器。轮询不需要额外的配置。
 
-```
+```properties
 upstream backend{
 	server 192.168.200.146:9001 weight=1;
 	server 192.168.200.146:9002;
@@ -375,7 +375,7 @@ server {
 
 weight=number:用来设置服务器的权重，默认为1，权重数据越大，被分配到请求的几率越大；该权重值，主要是针对实际工作环境中不同的后端服务器硬件配置进行调整的，所有此策略比较适合服务器的硬件配置差别比较大的情况。
 
-```
+```properties
 upstream backend{
 	server 192.168.200.146:9001 weight=10;
 	server 192.168.200.146:9002 weight=5;
@@ -399,7 +399,7 @@ server {
 | 默认值 | —        |
 | 位置   | upstream |
 
-```
+```properties
 upstream backend{
 	ip_hash;
 	server 192.168.200.146:9001;
@@ -423,7 +423,7 @@ server {
 
 最少连接，把请求转发给连接数较少的后端服务器。轮询算法是把请求平均的转发给各个后端，使它们的负载大致相同；但是，有些请求占用的时间很长，会导致其所在的后端负载较高。这种情况下，least_conn这种方式就可以达到更好的负载均衡效果。
 
-```
+```properties
 upstream backend{
 	least_conn;
 	server 192.168.200.146:9001;
@@ -447,7 +447,7 @@ server {
 
 按访问url的hash结果来分配请求，使每个url定向到同一个后端服务器，要配合缓存命中来使用。同一个资源多次请求，可能会到达不同的服务器上，导致不必要的多次下载，缓存命中率不高，以及一些资源时间的浪费。而使用url_hash，可以使得同一个url（也就是同一个资源请求）会到达同一台服务器，一旦缓存住了资源，再此收到请求，就可以从缓存中读取。
 
-```
+```properties
 upstream backend{
 	hash &request_uri;
 	server 192.168.200.146:9001;
@@ -465,7 +465,7 @@ server {
 
 访问如下地址：
 
-```
+```http
 http://192.168.200.133:8083/a
 http://192.168.200.133:8083/b
 http://192.168.200.133:8083/c
@@ -483,7 +483,7 @@ http://192.168.200.133:8083/c
 
 fair采用的不是内建负载均衡使用的轮换的均衡算法，而是可以根据页面大小、加载时间长短智能的进行负载均衡。那么如何使用第三方模块的fair负载均衡策略。
 
-```
+```properties
 upstream backend{
 	fair;
 	server 192.168.200.146:9001;
@@ -503,32 +503,32 @@ server {
 
 1. 下载nginx-upstream-fair模块
 
-```
+```http
 下载地址为:
 	https://github.com/gnosek/nginx-upstream-fair
 ```
 
 2. 将下载的文件上传到服务器并进行解压缩
 
-```
+```bash
 unzip nginx-upstream-fair-master.zip
 ```
 
 3. 重命名资源
 
-```
+```bash
 mv nginx-upstream-fair-master fair
 ```
 
 4. 使用./configure命令将资源添加到Nginx模块中
 
-```
+```bash
 ./configure --add-module=/root/fair
 ```
 
 5. 编译
 
-```
+```bash
 make
 ```
 
@@ -555,20 +555,20 @@ in_port_t	   default_port
 
 ​	 6.1 将sbin目录下的nginx进行备份
 
-```
+```bash
 mv /usr/local/nginx/sbin/nginx /usr/local/nginx/sbin/nginxold
 ```
 
 ​	6.2 将安装目录下的objs中的nginx拷贝到sbin目录
 
-```
+```bash
 cd objs
 cp nginx /usr/local/nginx/sbin
 ```
 
 ​	 6.3 更新Nginx
 
-```
+```bash
 cd ../
 make upgrade
 ```
@@ -581,7 +581,7 @@ make upgrade
 
 ##### 案例一：对所有请求实现一般轮询规则的负载均衡
 
-```
+```properties
 upstream backend{
 	server 192.168.200.146:9001;
 	server 192.168.200.146:9002;
@@ -598,7 +598,7 @@ server {
 
 ##### 案例二：对所有请求实现加权轮询规则的负载均衡
 
-```
+```properties
 upstream backend{
 	server 192.168.200.146:9001 weight=7;
 	server 192.168.200.146:9002 weight=5;
@@ -615,7 +615,7 @@ server {
 
 ##### 案例三：对特定资源实现负载均衡
 
-```
+```properties
 upstream videobackend{
 	server 192.168.200.146:9001;
 	server 192.168.200.146:9002;
@@ -638,7 +638,7 @@ server {
 
 ##### 案例四：对不同域名实现负载均衡
 
-```
+```properties
 upstream itcastbackend{
 	server 192.168.200.146:9001;
 	server 192.168.200.146:9002;
@@ -665,7 +665,7 @@ server {
 
 ##### 案例五：实现带有URL重写的负载均衡
 
-```
+```properties
 upstream backend{
 	server 192.168.200.146:9001;
 	server 192.168.200.146:9002;
@@ -735,52 +735,52 @@ Nginx默认是没有编译这个模块的，需要使用到stream模块，那么
 
 2.将安装包进行解压缩
 
-```
+```bash
 tar -zxf redis-4.0.14.tar.gz
 ```
 
 3.进入redis的安装包
 
-```
+```bash
 cd redis-4.0.14
 ```
 
 4.使用make和install进行编译和安装
 
-```
+```bash
 make PREFIX=/usr/local/redis/redis01 install
 ```
 
 5.拷贝redis配置文件`redis.conf`到/usr/local/redis/redis01/bin目录中
 
-```
+```bash
 cp redis.conf	/usr/local/redis/redis01/bin
 ```
 
 6.修改redis.conf配置文件
 
-```
+```properties
 port  6379      #redis的端口
 daemonize yes   #后台启动redis
 ```
 
 7.将redis01复制一份为redis02
 
-```
+```bash
 cd /usr/local/redis
 cp -r redis01 redis02
 ```
 
 8.将redis02文件文件夹中的redis.conf进行修改
 
-```
+```properties
 port  6378      #redis的端口
 daemonize yes   #后台启动redis
 ```
 
 9.分别启动，即可获取两个Redis.并查看
 
-```
+```properties
 ps -ef | grep redis
 ```
 
@@ -792,20 +792,20 @@ ps -ef | grep redis
 
 2.将安装包进行解压缩
 
-```
+```bash
 tar -zxf apache-tomcat-8.5.56.tar.gz
 ```
 
 3.进入tomcat的bin目录
 
-```
+```bash
 cd apache-tomcat-8.5.56/bin
 ./startup
 ```
 
 nginx.conf配置
 
-```
+```properties
 stream {
         upstream redisbackend {
                 server 192.168.200.146:6379;
@@ -888,13 +888,13 @@ Nginx的web缓存服务主要是使用`ngx_http_proxy_module`模块相关指令�
 
 path:缓存路径地址,如：
 
-```
+```bash
 /usr/local/proxy_cache
 ```
 
 levels: 指定该缓存空间对应的目录，最多可以设置3层，每层取值为1|2如 :
 
-```
+```properties
 levels=1:2   缓存空间有两层目录，第一次是1个字母，第二次是2个字母
 举例说明:
 itheima[key]通过MD5加密以后的值为 43c8233266edce38c2c9af0694e2107d
@@ -923,7 +923,7 @@ max_size=20g
 
 配置实例:
 
-```
+```properties
 http{
 	proxy_cache_path /usr/local/proxy_cache keys_zone=itcast:200m  levels=1:2:1 inactive=1d max_size=20g;
 }
@@ -960,7 +960,7 @@ zone_name：指定使用缓存区的名称
 
 如：
 
-```
+```properties
 proxy_cache_valid 200 302 10m;
 proxy_cache_valid 404 1m;
 为200和302的响应URL设置10分钟缓存，为404的响应URL设置1分钟缓存
@@ -1008,7 +1008,7 @@ proxy_cache_valid any 1m;
 
 （3）访问测试
 
-```
+```bash
 http://192.168.200.146:8080/js/jquery.js
 ```
 
@@ -1016,7 +1016,7 @@ Nginx的环境准备
 
 （1）完成Nginx反向代理配置
 
-```
+```properties
 http{
 	upstream backend{
 		server 192.168.200.146:8080;
@@ -1035,7 +1035,7 @@ http{
 
 4.添加缓存配置
 
-```
+```properties
 http{
 	proxy_cache_path /usr/local/proxy_cache levels=2:1 keys_zone=itcast:200m inactive=1d max_size=20g;
 	upstream backend{
@@ -1062,7 +1062,7 @@ http{
 
 ### 方式一:删除对应的缓存目录
 
-```
+```bash
 rm -rf /usr/local/proxy_cache/......
 ```
 
@@ -1072,61 +1072,61 @@ rm -rf /usr/local/proxy_cache/......
 
 （1）下载ngx_cache_purge模块对应的资源包，并上传到服务器上。
 
-```
+```bash
 ngx_cache_purge-2.3.tar.gz
 ```
 
 （2）对资源文件进行解压缩
 
-```
+```bash
 tar -zxf ngx_cache_purge-2.3.tar.gz
 ```
 
 （3）修改文件夹名称，方便后期配置
 
-```
+```bash
 mv ngx_cache_purge-2.3 purge
 ```
 
 （4）查询Nginx的配置参数
 
-```
+```bash
 nginx -V
 ```
 
 （5）进入Nginx的安装目录，使用./configure进行参数配置
 
-```
+```bash
 ./configure --add-module=/root/nginx/module/purge
 ```
 
 （6）使用make进行编译
 
-```
+```bash
 make
 ```
 
 （7）将nginx安装目录的nginx二级制可执行文件备份
 
-```
+```bash
 mv /usr/local/nginx/sbin/nginx /usr/local/nginx/sbin/nginxold
 ```
 
 （8）将编译后的objs中的nginx拷贝到nginx的sbin目录下
 
-```
+```bash
 cp objs/nginx /usr/local/nginx/sbin
 ```
 
 （9）使用make进行升级
 
-```
+```bash
 make upgrade
 ```
 
 （10）在nginx配置文件中进行如下配置
 
-```
+```properties
 server{
 	location ~/purge(/.*) {
 		proxy_cache_purge itcast itheima;
@@ -1155,7 +1155,7 @@ proxy_no_cache
 
 配置实例
 
-```
+```properties
 proxy_no_cache $cookie_nocache $arg_nocache $arg_comment;
 ```
 
@@ -1170,7 +1170,7 @@ proxy_cache_bypass
 
 配置实例
 
-```
+```properties
 proxy_cache_bypass $cookie_nocache $arg_nocache $arg_comment;
 ```
 
@@ -1180,7 +1180,7 @@ proxy_cache_bypass $cookie_nocache $arg_nocache $arg_comment;
 
 这三个参数分别代表的含义是:
 
-```
+```properties
 $cookie_nocache
 指的是当前请求的cookie中键的名称为nocache对应的值
 $arg_nocache和$arg_comment
@@ -1189,7 +1189,7 @@ $arg_nocache和$arg_comment
 
 案例演示下:
 
-```
+```properties
 log_format params $cookie_nocache | $arg_nocache | $arg_comment；
 server{
 	listen	8081;
@@ -1207,7 +1207,7 @@ server{
 
 设置不缓存资源的配置方案
 
-```
+```properties
 server{
 	listen	8080;
 	server_name localhost;

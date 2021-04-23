@@ -31,7 +31,7 @@
 
 配置的内容如下:
 
-```
+```properties
 
 ##全局块 begin##
 #配置允许运行Nginx工作进程的用户和用户组
@@ -81,7 +81,7 @@ http{
 
 server1.conf
 
-```
+```properties
 server{
 		#配置监听端口和主机名称
 		listen 8081;
@@ -110,7 +110,7 @@ server{
 
 server2.conf
 
-```
+```properties
 server{
 		#配置监听端口和主机名称
 		listen 8082;
@@ -168,7 +168,7 @@ Nginx命令配置到系统环境
 vim /usr/lib/systemd/system/nginx.service
 ```
 
-```
+```properties
 [Unit]
 Description=nginx web service
 Documentation=http://nginx.org/en/docs/
@@ -189,13 +189,13 @@ WantedBy=default.target
 
 (2)添加完成后如果权限有问题需要进行权限设置
 
-```
+```bash
 chmod 755 /usr/lib/systemd/system/nginx.service
 ```
 
 (3)使用系统命令来操作Nginx服务
 
-```
+```bash
 启动: systemctl start nginx
 停止: systemctl stop nginx
 重启: systemctl restart nginx
@@ -210,7 +210,7 @@ chmod 755 /usr/lib/systemd/system/nginx.service
 
 演示可删除
 
-```
+```bash
 /usr/local/nginx/sbin/nginx -V
 cd /usr/local/nginx/sbin  nginx -V
 如何优化？？？
@@ -218,7 +218,7 @@ cd /usr/local/nginx/sbin  nginx -V
 
 (1)修改`/etc/profile`文件
 
-```
+```bash
 vim /etc/profile
 在最后一行添加
 export PATH=$PATH:/usr/local/nginx/sbin
@@ -226,13 +226,13 @@ export PATH=$PATH:/usr/local/nginx/sbin
 
 (2)使之立即生效
 
-```
+```bash
 source /etc/profile
 ```
 
 (3)执行nginx命令
 
-```
+```bash
 nginx -V
 ```
 
@@ -267,7 +267,7 @@ listen:用来配置监听端口。
 
 listen的设置比较灵活，我们通过几个例子来把常用的设置方式熟悉下：
 
-```
+```properties
 listen 127.0.0.1:8000; // listen localhost:8000 监听指定的IP和端口
 listen 127.0.0.1;	监听指定IP的所有端口
 listen 8000;	监听指定端口上的连接
@@ -276,7 +276,7 @@ listen *:8000;	监听指定端口上的连接
 
 default_server属性是标识符，用来将此虚拟主机设置成默认主机。所谓的默认主机指的是如果没有匹配到对应的address:port，则会默认执行的。如果不指定默认使用的是第一个server。
 
-```
+```properties
 server{
 	listen 8080;
 	server_name 127.0.0.1;
@@ -316,7 +316,7 @@ server_name：用来设置虚拟主机服务名称。
 
 如：
 
-```
+```properties
 server {
 	listen 80;
 	server_name www.itcast.cn www.itheima.cn;
@@ -336,7 +336,7 @@ centos：/etc/hosts
 
 因为域名是要收取一定的费用，所以我们可以使用修改hosts文件来制作一些虚拟域名来使用。需要修改 `/etc/hosts`文件来添加
 
-```
+```properties
 vim /etc/hosts
 127.0.0.1 www.itcast.cn
 127.0.0.1 www.itheima.cn
@@ -346,7 +346,7 @@ vim /etc/hosts
 
 server_name中支持通配符"*",但需要注意的是通配符不能出现在域名的中间，只能出现在首段或尾段，如：
 
-```
+```properties
 server {
 	listen 80;
 	server_name  *.itcast.cn	www.itheima.*;
@@ -357,7 +357,7 @@ server {
 
 下面的配置就会报错
 
-```
+```properties
 server {
 	listen 80;
 	server_name  www.*.cn www.itheima.c*
@@ -390,7 +390,7 @@ server_name中可以使用正则表达式，并且使用`~`作为正则表达式
 
 配置如下：
 
-```
+```properties
 server{
         listen 80;
         server_name ~^www\.(\w+)\.com$;
@@ -404,7 +404,7 @@ server{
 
 由于server_name指令支持通配符和正则表达式，因此在包含多个虚拟主机的配置文件中，可能会出现一个名称被多个虚拟主机的server_name匹配成功，当遇到这种情况，当前的请求交给谁来处理呢？
 
-```
+```properties
 server{
 	listen 80;
 	server_name ~^www\.\w+\.com$;
@@ -443,7 +443,7 @@ server{
 
 结论：
 
-```
+```properties
 exact_success
 wildcard_before_success
 wildcard_after_success
@@ -465,7 +465,7 @@ No5:被默认的default_server处理，如果没有指定默认找第一个serve
 
 #### location指令
 
-```
+```properties
 server{
 	listen 80;
 	server_name localhost;
@@ -492,7 +492,7 @@ uri变量是待匹配的请求字符串，可以不包含正则表达式，也�
 
 不带符号，要求必须以指定模式开始
 
-```
+```properties
 server {
 	listen 80;
 	server_name 127.0.0.1;
@@ -510,7 +510,7 @@ http://192.168.200.133/abcdef
 
 = :  用于不包含正则表达式的uri前，必须与指定的模式精确匹配
 
-```
+```properties
 server {
 	listen 80;
 	server_name 127.0.0.1;
@@ -532,7 +532,7 @@ http://192.168.200.133/abcdef
 
 换句话说，如果uri包含了正则表达式，需要用上述两个符合来标识
 
-```
+```properties
 server {
 	listen 80;
 	server_name 127.0.0.1;
@@ -553,7 +553,7 @@ server {
 
 ^~: 用于不包含正则表达式的uri前，功能和不加符号的一致，唯一不同的是，如果模式匹配，那么就停止搜索其他模式了。
 
-```
+```properties
 server {
 	listen 80;
 	server_name 127.0.0.1;
@@ -590,7 +590,7 @@ path为修改后的根路径。
 
 （1）在`/usr/local/nginx/html`目录下创建一个 images目录,并在目录下放入一张图片`mv.png`图片
 
-```
+```properties
 location /images {
 	root /usr/local/nginx/html;
 }
@@ -598,13 +598,13 @@ location /images {
 
 访问图片的路径为:
 
-```
+```http
 http://192.168.200.133/images/mv.png
 ```
 
 （2）如果把root改为alias
 
-```
+```properties
 location /images {
 	alias /usr/local/nginx/html;
 }
@@ -621,7 +621,7 @@ alias的处理结果是:使用alias路径替换location路径
 
 需要在alias后面路径改为
 
-```
+```properties
 location /images {
 	alias /usr/local/nginx/html/images;
 }
@@ -631,7 +631,7 @@ location /images {
 
 将上述配置修改为
 
-```
+```properties
 location /images/ {
 	alias /usr/local/nginx/html/images;
 }
@@ -661,7 +661,7 @@ index后面可以跟多个设置，如果访问的时候没有指定具体访问
 
 举例说明：
 
-```
+```properties
 location / {
 	root /usr/local/nginx/html;
 	index index.html index.htm;
@@ -684,7 +684,7 @@ error_page:设置网站的错误页面
 
 （1）可以指定具体跳转的地址
 
-```
+```properties
 server {
 	error_page 404 http://www.itcast.cn;
 }
@@ -692,7 +692,7 @@ server {
 
 （2）可以指定重定向地址
 
-```
+```properties
 server{
 	error_page 404 /50x.html;
 	error_page 500 502 503 504 /50x.html;
@@ -704,7 +704,7 @@ server{
 
 （3）使用location的@符合完成错误信息展示
 
-```
+```properties
 server{
 	error_page 404 @jump_to_error;
 	location @jump_to_error {
@@ -716,7 +716,7 @@ server{
 
 可选项`=[response]`的作用是用来将相应代码更改为另外一个
 
-```
+```properties
 server{
 	error_page 404 =200 /50x.html;
 	location =/50x.html{
@@ -730,7 +730,7 @@ server{
 
 Nginx对静态资源如何进行优化配置。这里从三个属性配置进行优化：
 
-```
+```properties
 sendfile on;
 tcp_nopush on;
 tcp_nodeplay on;
@@ -747,7 +747,7 @@ tcp_nodeplay on;
 
 如：
 
-```
+```properties
 server {
 	listen 80;
 	server_name localhost；
@@ -786,7 +786,7 @@ http://192.168.200.133/welcome.html
 
 经过刚才的分析，"tcp_nopush"和”tcp_nodelay“看起来是"互斥的"，那么为什么要将这两个值都打开，这个大家需要知道的是在linux2.5.9以后的版本中两者是可以兼容的，三个指令都开启的好处是，sendfile可以开启高效的文件传输模式，tcp_nopush开启可以确保在发送到客户端之前数据包已经充分“填满”， 这大大减少了网络开销，并加快了文件发送的速度。 然后，当它到达最后一个可能因为没有“填满”而暂停的数据包时，Nginx会忽略tcp_nopush参数， 然后，tcp_nodelay强制套接字发送数据。由此可知，TCP_NOPUSH可以与TCP_NODELAY一起设置，它比单独配置TCP_NODELAY具有更强的性能。所以我们可以使用如下配置来优化Nginx静态资源的处理
 
-```
+```properties
 sendfile on;
 tcp_nopush on;
 tcp_nodelay on;
@@ -798,7 +798,7 @@ tcp_nodelay on;
 
 在Nginx的配置文件中可以通过配置gzip来对静态资源进行压缩，相关的指令可以配置在http块、server块和location块中，Nginx可以通过
 
-```
+```properties
 ngx_http_gzip_module模块
 ngx_http_gzip_static_module模块
 ngx_http_gunzip_module模块
@@ -828,7 +828,7 @@ ngx_http_gunzip_module模块
 
 注意只有该指令为打开状态，下面的指令才有效果
 
-```
+```properties
 http{
    gzip on;
 }
@@ -843,7 +843,7 @@ http{
 
 所选择的值可以从mime.types文件中进行查找，也可以使用"*"代表所有。
 
-```
+```properties
 http{
 	gzip_types application/javascript;
 }
@@ -856,7 +856,7 @@ http{
 | 默认值 | gzip_comp_level 1;     |
 | 位置   | http、server、location |
 
-```
+```properties
 http{
 	gzip_comp_level 6;
 }
@@ -880,7 +880,7 @@ http{
 
 其中number:指定Nginx服务器向系统申请缓存空间个数，size指的是每个缓存空间的大小。主要实现的是申请number个每个大小为size的内存空间。这个值的设定一般会和服务器的操作系统有关，所以建议此项不设置，使用默认值即可。
 
-```
+```properties
 gzip_buffers 4 16K;	  #缓存空间大小
 ```
 
@@ -895,7 +895,7 @@ gzip_buffers 4 16K;	  #缓存空间大小
 
 regex:根据客户端的浏览器标志(user-agent)来设置，支持使用正则表达式。指定的浏览器标志不使用Gzip.该指令一般是用来排除一些明显不支持Gzip的浏览器。
 
-```
+```properties
 gzip_disable "MSIE [1-6]\.";
 ```
 
@@ -943,7 +943,7 @@ any - 无条件启用压缩
 
 #### Gzip压缩功能的实例配置
 
-```
+```properties
 gzip on;  			  #开启gzip功能
 gzip_types *;		  #压缩源文件类型,根据具体的访问资源类型设定
 gzip_comp_level 6;	  #gzip压缩级别
@@ -959,7 +959,7 @@ gzip_proxied  off； #nginx作为反向代理压缩服务端返回数据的条�
 
 nginx_gzip.conf
 
-```
+```properties
 gzip on;
 gzip_types *;
 gzip_comp_level 6;
@@ -1004,44 +1004,44 @@ nginx -V
 
 (2)将nginx安装目录下sbin目录中的nginx二进制文件进行更名
 
-```
+```bash
 cd /usr/local/nginx/sbin
 mv nginx nginxold
 ```
 
 (3) 进入Nginx的安装目录
 
-```
+```bash
 cd /root/nginx/core/nginx-1.16.1
 ```
 
 (4)执行make clean清空之前编译的内容
 
-```
+```bash
 make clean
 ```
 
 (5)使用configure来配置参数
 
-```
+```bash
 ./configure --with-http_gzip_static_module
 ```
 
 (6)使用make命令进行编译
 
-```
+```bash
 make
 ```
 
 (7) 将objs目录下的nginx二进制执行文件移动到nginx安装目录下的sbin目录中
 
-```
+```bash
 mv objs/nginx /usr/local/nginx/sbin
 ```
 
 (8)执行更新命令
 
-```
+```bash
 make upgrade
 ```
 
@@ -1055,7 +1055,7 @@ make upgrade
 
 (2)使用gzip命令进行压缩
 
-```
+```bash
 cd /usr/local/nginx/html
 gzip jquery.js
 ```
@@ -1171,7 +1171,7 @@ Cache-Control作为响应头信息，可以设置如下值：
 
 缓存响应指令：
 
-```
+```properties
 Cache-control: must-revalidate
 Cache-control: no-cache
 Cache-control: no-store
@@ -1213,7 +1213,7 @@ max-age=[秒]：
 
 同源:  协议、域名(IP)、端口相同即为同源
 
-```
+```properties
 http://192.168.200.131/user/1
 https://192.168.200.131/user/1
 不
@@ -1278,7 +1278,7 @@ http://www.nginx.org/user/1
 
 （2）在nginx.conf配置如下内容
 
-```
+```properties
 server{
         listen  8080;
         server_name localhost;
@@ -1320,7 +1320,7 @@ Access-Control-Allow-Methods:直译过来是允许跨域访问的请求方式，
 
 具体配置方式
 
-```
+```properties
 location /getUser{
     add_header Access-Control-Allow-Origin *;
     add_header Access-Control-Allow-Methods GET,POST,PUT,DELETE;
@@ -1376,7 +1376,7 @@ server_names:指定具体的域名或者IP
 
 string: 可以支持正则表达式和*的字符串。如果是正则表达式，需要以`~`开头表示，例如
 
-```
+```properties
 location ~*\.(png|jpg|gif){
            valid_referers none blocked www.baidu.com 192.168.200.222 *.example.com example.*  www.example.org  ~\.google\.;
            if ($invalid_referer){
@@ -1395,7 +1395,7 @@ location ~*\.(png|jpg|gif){
 
 配置如下：
 
-```
+```properties
 location /images {
            valid_referers none blocked www.baidu.com 192.168.200.222 *.example.com example.*  www.example.org  ~\.google\.;
            if ($invalid_referer){
@@ -1486,7 +1486,7 @@ condition为判定条件，可以支持以下写法：
 
 1. 变量名。如果变量名对应的值为空或者是0，if都判断为false,其他条件为true。
 
-```
+```sh
 if ($param){
 	
 }
@@ -1496,7 +1496,7 @@ if ($param){
 2. 使用"="和"!="比较变量和字符串是否相等，满足条件为true，不满足为false
 ```
 
-```
+```sh
 if ($request_method = POST){
 	return 405;
 }
@@ -1512,7 +1512,7 @@ if ($request_method = POST){
 
    "!~"和"!~\*"刚好和上面取相反值，如果匹配上返回false,匹配不上返回true
 
-```
+```shell
 if ($http_user_agent ~ MSIE){
 	#$http_user_agent的值中是否包含MSIE字符串，如果包含返回true
 }
@@ -1526,7 +1526,7 @@ if ($http_user_agent ~ MSIE){
 
    当使用"!f"时，如果请求文件不存在，但该文件所在目录存在返回true,文件和目录都不存在返回false,如果文件存在返回false
 
-```
+```shell
 if (-f $request_filename){
 	#判断请求的文件是否存在
 }
@@ -1564,7 +1564,7 @@ if (!-f $request_filename){
 
 例子:
 
-```
+```properties
 location /{
 	if ($param){
 		set $id $1;
@@ -1639,18 +1639,18 @@ flag:用来设置rewrite对URI的处理行为，可选值有如下：
 
 - 准备两个域名  www.360buy.com | www.jd.com
 
-```
+```bash
 vim /etc/hosts
 ```
 
-```
+```properties
 192.168.200.133 www.360buy.com
 192.168.200.133 www.jd.com
 ```
 
 - 在/usr/local/nginx/html/hm目录下创建一个访问页面
 
-```
+```html
 <html>
 	<title></title>
 	<body>
@@ -1661,7 +1661,7 @@ vim /etc/hosts
 
 - 通过Nginx实现当访问www.访问到系统的首页
 
-```
+```properties
 server {
 	listen 80;
 	server_name www.hm.com;
@@ -1674,7 +1674,7 @@ server {
 
 》通过Rewrite完成将www.360buy.com的请求跳转到www.jd.com
 
-```
+```properties
 server {
 	listen 80;
 	server_name www.360buy.com;
@@ -1686,7 +1686,7 @@ server {
 
 修改配置信息
 
-```
+```properties
 server {
 	listen 80;
 	server_name www.itheima.com;
@@ -1698,14 +1698,14 @@ server {
 
 添加域名
 
-```
+```bash
 vim /etc/hosts
 192.168.200.133 www.jingdong.com
 ```
 
 修改配置信息
 
-```
+```properties
 server{
 	listen 80;
 	server_name www.360buy.com www.jingdong.com;
@@ -1717,7 +1717,7 @@ server{
 
 上述案例中，将www.360buy.com 和 www.jingdong.com都能跳转到www.jd.com，那么www.jd.com我们就可以把它起名叫主域名，其他两个就是我们所说的镜像域名，当然如果我们不想把整个网站做镜像，只想为其中某一个子目录下的资源做镜像，我们可以在location块中配置rewrite功能，比如:
 
-```
+```properties
 server {
 	listen 80;
 	server_name rewrite.myweb.com;
@@ -1736,13 +1736,13 @@ server {
 
 需求：
 
-```
+```properties
 http://search.hm.com  访问商品搜索模块
 http://item.hm.com	  访问商品详情模块
 http://cart.hm.com	  访问商品购物车模块
 ```
 
-```
+```properties
 server{
 	listen 80;
 	server_name search.hm.com;
@@ -1766,7 +1766,7 @@ server{
 
 通过一个例子来演示下问题:
 
-```
+```properties
 server {
 	listen	80;
 	server_name localhost;
@@ -1780,7 +1780,7 @@ server {
 
 要想访问上述资源，很简单，只需要通过http://192.168.200.133直接就能访问，地址后面不需要加/,但是如果将上述的配置修改为如下内容:
 
-```
+```properties
 server {
 	listen	80;
 	server_name localhost;
@@ -1808,7 +1808,7 @@ server {
 
 我们可以使用rewrite功能为末尾没有斜杠的URL自动添加一个斜杠
 
-```
+```properties
 server {
 	listen	80;
 	server_name localhost;
@@ -1827,7 +1827,7 @@ server {
 
 举例，网站中有一个资源文件的访问路径时 /server/11/22/33/44/20.html,也就是说20.html存在于第5级目录下，如果想要访问该资源文件，客户端的URL地址就要写成 `http://www.web.name/server/11/22/33/44/20.html`,
 
-```
+```properties
 server {
 	listen 80;
 	server_name www.web.name;
@@ -1839,7 +1839,7 @@ server {
 
 但是这个是非常不利于SEO搜索引擎优化的，同时客户端也不好记.使用rewrite我们可以进行如下配置:
 
-```
+```properties
 server {
 	listen 80;
 	server_name www.web.name;
@@ -1857,7 +1857,7 @@ server {
 
 防盗链之前我们已经介绍过了相关的知识，在rewrite中的防盗链和之前将的原理其实都是一样的，只不过通过rewrite可以将防盗链的功能进行完善下，当出现防盗链的情况，我们可以使用rewrite将请求转发到自定义的一张图片和页面，给用户比较好的提示信息。下面我们就通过根据文件类型实现防盗链的一个配置实例:
 
-```
+```properties
 server{
 	listen 80;
 	server_name www.web.com;
@@ -1872,7 +1872,7 @@ server{
 
 根据目录实现防盗链配置：
 
-```
+```properties
 server{
 	listen 80;
 	server_name www.web.com;

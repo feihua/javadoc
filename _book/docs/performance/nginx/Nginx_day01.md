@@ -201,7 +201,7 @@ MobaXterm
 
 (2)确保centos能联网
 
-```
+```bash
 ping www.baidu.com
 ```
 
@@ -231,7 +231,7 @@ sestatus查看状态
 
 如果查看不是disabled状态，我们可以通过修改配置文件来进行设置,修改SELINUX=disabled，然后重启下系统即可生效。
 
-```
+```bash
 vim /etc/selinux/config
 ```
 
@@ -294,38 +294,38 @@ SSL:Secure Sockets Layer安全套接协议的缩写，可以在Internet上提供
 
 (1)进入官网查找需要下载版本的链接地址，然后使用wget命令进行下载
 
-```
+```bash
 wget http://nginx.org/download/nginx-1.16.1.tar.gz
 ```
 
 (2)建议大家将下载的资源进行包管理
 
-```
+```bash
 mkdir -p nginx/core
 mv nginx-1.16.1.tar.gz nginx/core
 ```
 
 (3)解压缩
 
-```
+```bash
 tar -xzf nginx-1.16.1.tar.gz
 ```
 
 (4)进入资源文件中，发现configure
 
-```
+```bash
 ./configure
 ```
 
 (5)编译
 
-```
+```bash
 make
 ```
 
 (6)安装
 
-```
+```bash
 make install
 ```
 
@@ -337,17 +337,17 @@ make install
 
 （1）安装yum-utils
 
-```
+```bash
 sudo yum  install -y yum-utils
 ```
 
 （2）添加yum源文件
 
-```
+```bash
 vim /etc/yum.repos.d/nginx.repo
 ```
 
-```
+```properties
 [nginx-stable]
 name=nginx stable repo
 baseurl=http://nginx.org/packages/centos/$releasever/$basearch/
@@ -367,7 +367,7 @@ module_hotfixes=true
 
 （3）查看是否安装成功
 
-```
+```bash
 yum list | grep nginx
 ```
 
@@ -375,13 +375,13 @@ yum list | grep nginx
 
 （4）使用yum进行安装
 
-```
+```bash
 yun install -y nginx
 ```
 
 （5）查看nginx的安装位置
 
-```
+```bash
 whereis nginx
 ```
 
@@ -449,55 +449,55 @@ without:是关闭模块，默认是开启的
 
 --prefix=PATH
 
-```
+```bash
 指向Nginx的安装目录，默认值为/usr/local/nginx   
 ```
 
 --sbin-path=PATH
 
-```
+```bash
 指向(执行)程序文件(nginx)的路径,默认值为<prefix>/sbin/nginx
 ```
 
 --modules-path=PATH
 
-```
+```bash
 指向Nginx动态模块安装目录，默认值为<prefix>/modules
 ```
 
 --conf-path=PATH
 
-```
+```bash
 指向配置文件(nginx.conf)的路径,默认值为<prefix>/conf/nginx.conf
 ```
 
 --error-log-path=PATH 
 
-```
+```bash
 指向错误日志文件的路径,默认值为<prefix>/logs/error.log
 ```
 
 --http-log-path=PATH  
 
-```
+```bash
 指向访问日志文件的路径,默认值为<prefix>/logs/access.log
 ```
 
 --pid-path=PATH
 
-```
+```bash
 指向Nginx启动后进行ID的文件路径，默认值为<prefix>/logs/nginx.pid
 ```
 
 --lock-path=PATH
 
-```
+```bash
 指向Nginx锁文件的存放路径,默认值为<prefix>/logs/nginx.lock
 ```
 
 要想使用可以通过如下命令
 
-```
+```bash
 ./configure --prefix=/usr/local/nginx \
 --sbin-path=/usr/local/nginx/sbin/nginx \
 --modules-path=/usr/local/nginx/modules \
@@ -512,19 +512,19 @@ without:是关闭模块，默认是开启的
 
 步骤一：需要将nginx的进程关闭
 
-```
+```bash
 ./nginx -s stop
 ```
 
 步骤二:将安装的nginx进行删除
 
-```
+```bash
 rm -rf /usr/local/nginx
 ```
 
 步骤三:将安装包之前编译的环境清除掉
 
-```
+```bash
 make clean
 ```
 
@@ -631,36 +631,36 @@ signal:即为信号；PID即为获取到的master线程ID
 
 1. 发送TERM/INT信号给master进程，会将Nginx服务立即关闭。
 
-```
+```bash
 kill -TERM PID / kill -TERM `cat /usr/local/nginx/logs/nginx.pid`
 kill -INT PID / kill -INT `cat /usr/local/nginx/logs/nginx.pid`
 ```
 
 2. 发送QUIT信号给master进程，master进程会控制所有的work进程不再接收新的请求，等所有请求处理完后，在把进程都关闭掉。
 
-```
+```bash
 kill -QUIT PID / kill -TERM `cat /usr/local/nginx/logs/nginx.pid`
 ```
 
 3. 发送HUP信号给master进程，master进程会把控制旧的work进程不再接收新的请求，等处理完请求后将旧的work进程关闭掉，然后根据nginx的配置文件重新启动新的work进程
 
-```
+```bash
 kill -HUP PID / kill -TERM `cat /usr/local/nginx/logs/nginx.pid`
 ```
 
 4. 发送USR1信号给master进程，告诉Nginx重新开启日志文件
 
-```
+```bash
 kill -USR1 PID / kill -TERM `cat /usr/local/nginx/logs/nginx.pid`
 ```
 
 5. 发送USR2信号给master进程，告诉master进程要平滑升级，这个时候，会重新开启对应的master进程和work进程，整个系统中将会有两个master进程，并且新的master进程的PID会被记录在`/usr/local/nginx/logs/nginx.pid`而之前的旧的master进程PID会被记录在`/usr/local/nginx/logs/nginx.pid.oldbin`文件中，接着再次发送QUIT信号给旧的master进程，让其处理完请求后再进行关闭
 
-```
+```bash
 kill -USR2 PID / kill -USR2 `cat /usr/local/nginx/logs/nginx.pid`
 ```
 
-```
+```bash
 kill -QUIT PID / kill -QUIT `cat /usr/local/nginx/logs/nginx.pid.oldbin`
 ```
 
@@ -668,7 +668,7 @@ kill -QUIT PID / kill -QUIT `cat /usr/local/nginx/logs/nginx.pid.oldbin`
 
 6. 发送WINCH信号给master进程,让master进程控制不让所有的work进程在接收新的请求了，请求处理完后关闭work进程。注意master进程不会被关闭掉
 
-```
+```bash
 kill -WINCH PID /kill -WINCH`cat /usr/local/nginx/logs/nginx.pid`
 ```
 
@@ -726,7 +726,7 @@ kill -WINCH PID /kill -WINCH`cat /usr/local/nginx/logs/nginx.pid`
 
 （2）使用Nginx源码安装的方式将1.14.2版本安装成功并正确访问
 
-```
+```bash
 进入安装目录
 ./configure
 make && make install
@@ -734,7 +734,7 @@ make && make install
 
 （3）将Nginx1.16.1进行参数配置和编译，不需要进行安装。
 
-```
+```bash
 进入安装目录
 ./configure
 make 
@@ -744,14 +744,14 @@ make
 
 第一步:将1.14.2版本的sbin目录下的nginx进行备份
 
-```
+```bash
 cd /usr/local/nginx/sbin
 mv nginx nginxold
 ```
 
 第二步:将Nginx1.16.1安装目录编译后的objs目录下的nginx文件，拷贝到原来`/usr/local/nginx/sbin`目录下
 
-```
+```bash
 cd ~/nginx/core/nginx-1.16.1/objs
 cp nginx /usr/local/nginx/sbin
 ```
@@ -760,7 +760,7 @@ cp nginx /usr/local/nginx/sbin
 
 第四步:发送信号QUIT给Nginx的1.14.2版本对应的master进程
 
-```
+```bash
 kill -QUIT `more /usr/local/logs/nginx.pid.oldbin`
 ```
 
@@ -768,14 +768,14 @@ kill -QUIT `more /usr/local/logs/nginx.pid.oldbin`
 
 第一步:将1.14.2版本的sbin目录下的nginx进行备份
 
-```
+```bash
 cd /usr/local/nginx/sbin
 mv nginx nginxold
 ```
 
 第二步:将Nginx1.16.1安装目录编译后的objs目录下的nginx文件，拷贝到原来`/usr/local/nginx/sbin`目录下
 
-```
+```bash
 cd ~/nginx/core/nginx-1.16.1/objs
 cp nginx /usr/local/nginx/sbin
 ```
@@ -786,7 +786,7 @@ cp nginx /usr/local/nginx/sbin
 
 第四步:查看是否更新成功
 
-```
+```bash
 ./nginx -v
 ```
 
@@ -798,7 +798,7 @@ cp nginx /usr/local/nginx/sbin
 
 读取Nginx自带的Nginx配置文件，我们将其中的注释部分【学习一个技术点就是在Nginx的配置文件中可以使用`#`来注释】删除掉后，就剩下下面内容:
 
-```conf
+```properties
 worker_processes  1;
 
 events {
@@ -827,7 +827,7 @@ http {
 }
 ```
 
-```
+```properties
 指令名	指令值;  #全局块，主要设置Nginx服务器整体运行的配置指令
 
  #events块,主要设置,Nginx服务器与用户的网络连接,这一部分对Nginx服务器的性能影响较大
@@ -879,13 +879,13 @@ user www;
 
 (2) 创建一个用户
 
-```
+```bash
 useradd www
 ```
 
 (3)修改user属性
 
-```
+```bash
 user www
 ```
 
@@ -923,7 +923,7 @@ Commercial support is available at
 
 (5)修改nginx.conf
 
-```
+```properties
 location / {
 	root   /root/html;
 	index  index.html index.htm;
@@ -944,7 +944,7 @@ location / {
 
 (7)将文件创建到 `/home/www/html/index.html`,修改配置
 
-```
+```properties
 location / {
 	root   /home/www/html;
 	index  index.html index.htm;
@@ -1067,7 +1067,7 @@ error_log:用来配置Nginx的错误日志存放路径
 
 打开Nginx的配置文件 nginx.conf,添加如下配置
 
-```
+```properties
 events{
 	accept_mutex on;
 	multi_accept on;
@@ -1078,7 +1078,7 @@ events{
 
 启动测试
 
-```
+```bash
 ./nginx -t
 ./nginx -s reload
 ```
@@ -1091,7 +1091,7 @@ events{
 
 在Nginx的配置文件中，默认有两行配置
 
-```
+```properties
 include mime.types;
 default_type application/octet-stream;
 ```
@@ -1111,7 +1111,7 @@ default_type application/octet-stream;
 
 如何实现:
 
-```
+```properties
 location /get_text {
 	#这里也可以设置成text/plain
     default_type text/html;
@@ -1183,7 +1183,7 @@ server块和location块都是我们要重点讲解和学习的内容，因为我
 
 本节我们主要来认识下Nginx默认给的nginx.conf中的相关内容，以及server块与location块在使用的时候需要注意的一些内容。
 
-```
+```properties
 	server {
         listen       80;
         server_name  localhost;
