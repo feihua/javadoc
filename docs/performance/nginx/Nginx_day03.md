@@ -68,7 +68,7 @@ value:变量的值，可以是字符串、其他变量或者变量的组合等�
 
 上述参数还可以在日志文件中使用，这个就要用到前面我们介绍的`log_format`指令
 
-```
+```properties
 log_format main '$remote_addr - $request - $status-$request_uri  $http_user_agent';
 
 access_log logs/access.log main;
@@ -87,7 +87,7 @@ condition为判定条件，可以支持以下写法：
 
 1. 变量名。如果变量名对应的值为空字符串或"0"，if都判断为false,其他条件为true。
 
-```
+```sh
 if ($param){
 	
 }
@@ -95,7 +95,7 @@ if ($param){
 
 2. 使用"="和"!="比较变量和字符串是否相等，满足条件为true，不满足为false
 
-```
+```sh
 if ($request_method = POST){
 	return 405;
 }
@@ -111,7 +111,7 @@ if ($request_method = POST){
 
    "!~"和"!~\*"刚好和上面取相反值，如果匹配上返回false,匹配不上返回true
 
-```
+```sh
 if ($http_user_agent ~ MSIE){
 	#$http_user_agent的值中是否包含MSIE字符串，如果包含返回true
 }
@@ -122,7 +122,7 @@ if ($http_user_agent ~ MSIE){
 4. 判断请求的文件是否存在使用"-f"和"!-f",
 
 
-```
+```sh
 if (-f $request_filename){
 	#判断请求的文件是否存在
 }
@@ -149,7 +149,7 @@ if (!-f $request_filename){
 
 例子:
 
-```
+```properties
 location /testbreak{
 	default_type text/plain;
 	set $username TOM;
@@ -178,7 +178,7 @@ text:为返回给客户端的响应体内容，支持变量的使用
 
 URL:为返回给客户端的URL地址
 
-```
+```properties
 location /testreturn {
 
 	return 200 success;
@@ -211,7 +211,7 @@ regex:用来匹配URI的正则表达式
 
 replacement:匹配成功后，用于替换URI中被截取内容的字符串。如果该字符串是以"http://"或者"https://"开头的，则不会继续向下对URI进行其他处理，而是直接返回重写后的URI给客户端。
 
-```
+```properties
 location rewrite {
 	rewrite ^/rewrite/url\w*$ https://www.baidu.com;
 	rewrite ^/rewrite/(test)\w*$ /$1;
@@ -231,7 +231,7 @@ flag:用来设置rewrite对URI的处理行为，可选值有如下：
 
 - last:终止继续在本location块中处理接收到的URI，并将此处重写的URI作为一个新的URI，使用各location块进行处理。该标志将重写后的URI重写在server块中执行，为重写后的URI提供了转入到其他location块的机会。
 
-```
+```properties
 location rewrite {
 	rewrite ^/rewrite/(test)\w*$ /$1 last;
 	rewrite ^/rewrite/(demo)\w*$ /$1 last;
@@ -252,7 +252,7 @@ location /demo{
 
 - break：将此处重写的URI作为一个新的URI,在本块中继续进行处理。该标志将重写后的地址在当前的location块中执行，不会将新的URI转向其他的location块。
 
-```
+```properties
 location rewrite {
     #/test   /usr/local/nginx/html/test/index.html
 	rewrite ^/rewrite/(test)\w*$ /$1 break;
@@ -274,7 +274,7 @@ location /demo{
 
 - redirect：将重写后的URI返回给客户端，状态码为302，指明是临时重定向URI,主要用在replacement变量不是以"http://"或者"https://"开头的情况。
 
-```
+```properties
 location rewrite {
 	rewrite ^/rewrite/(test)\w*$ /$1 redirect;
 	rewrite ^/rewrite/(demo)\w*$ /$1 redirect;
@@ -293,7 +293,7 @@ location /demo{
 
 - permanent：将重写后的URI返回给客户端，状态码为301，指明是永久重定向URI,主要用在replacement变量不是以"http://"或者"https://"开头的情况。
 
-```
+```properties
 location rewrite {
 	rewrite ^/rewrite/(test)\w*$ /$1 permanent;
 	rewrite ^/rewrite/(demo)\w*$ /$1 permanent;
@@ -321,7 +321,7 @@ location /demo{
 
 开启后，URL重写的相关日志将以notice级别输出到error_log指令配置的日志文件汇总。
 
-```
+```properties
 rewrite_log on;
 error_log  logs/error.log notice;
 ```
@@ -342,7 +342,7 @@ error_log  logs/error.log notice;
 vim /etc/hosts
 ```
 
-```
+```properties
 127.0.0.1   www.itcast.cn
 127.0.0.1   www.itheima.cn
 127.0.0.1   www.itheima.com
@@ -350,7 +350,7 @@ vim /etc/hosts
 
 - 通过Nginx实现访问www.itcast.cn
 
-```
+```properties
 server {
 	listen 80;
 	server_name www.itcast.cn;
@@ -363,7 +363,7 @@ server {
 
 》通过Rewrite完成将www.ithema.com和www.itheima.cn的请求跳转到www.itcast.com
 
-```
+```properties
 server {
 	listen 80;
 	server_name www.itheima.com www.itheima.cn;
@@ -375,7 +375,7 @@ server {
 
 修改配置信息
 
-```
+```properties
 server {
 	listen 80;
 	server_name www.itheima.com www.itheima.cn;
@@ -391,7 +391,7 @@ server {
 
 而我们所说的域名镜像和网站镜像比较类似，上述案例中，将www.itheima.com和 www.itheima.cn都能跳转到www.itcast.cn，那么www.itcast.cn我们就可以把它起名叫主域名，其他两个就是我们所说的镜像域名，当然如果我们不想把整个网站做镜像，只想为其中某一个子目录下的资源做镜像，我们可以在location块中配置rewrite功能，比如:
 
-```
+```properties
 server {
     listen          80;
     server_name     www.itheima.cn www.itheima.com;
@@ -412,13 +412,13 @@ server {
 
 需求：
 
-```
+```properties
 http://search.itcast.com:81  访问商品搜索模块
 http://item.itcast.com:82	  访问商品详情模块
 http://cart.itcast.com:83	  访问商品购物车模块
 ```
 
-```
+```properties
 server{
 	listen 81;
 	server_name search.itcast.com;
@@ -442,7 +442,7 @@ server{
 
 通过一个例子来演示下问题:
 
-```
+```properties
 server {
 	listen	8082;
 	server_name localhost;
@@ -458,7 +458,7 @@ server {
 
 如果不加斜杠，Nginx服务器内部会自动做一个301的重定向，重定向的地址会有一个指令叫server_name_in_redirect on|off;来决定重定向的地址：
 
-```
+```http
 如果该指令为on
 	重定向的地址为:  http://server_name:8082/目录名/;
 	http://localhost:8082/heima/
@@ -475,7 +475,7 @@ server {
 
 我们可以使用rewrite功能为末尾没有斜杠的URL自动添加一个斜杠
 
-```
+```properties
 server {
 	listen	80;
 	server_name localhost;
@@ -494,7 +494,7 @@ server {
 
 举例，网站中有一个资源文件的访问路径时 /server/11/22/33/44/20.html,也就是说20.html存在于第5级目录下，如果想要访问该资源文件，客户端的URL地址就要写成 `http://192.168.200.133/server/11/22/33/44/20.html`,
 
-```
+```properties
 server {
 	listen 8083;
 	server_name localhost;
@@ -506,7 +506,7 @@ server {
 
 但是这个是非常不利于SEO搜索引擎优化的，同时客户端也不好记.使用rewrite我们可以进行如下配置:
 
-```
+```properties
 server {
 	listen 8083;
 	server_name localhost;
@@ -522,7 +522,7 @@ server {
 
 防盗链之前我们已经介绍过了相关的知识，在rewrite中的防盗链和之前将的原理其实都是一样的，只不过通过rewrite可以将防盗链的功能进行完善下，当出现防盗链的情况，我们可以使用rewrite将请求转发到自定义的一张图片和页面，给用户比较好的提示信息。下面我们就通过根据文件类型实现防盗链的一个配置实例:
 
-```
+```properties
 location /images {
     root html;
     valid_referers none blocked www.baidu.com;
@@ -550,7 +550,7 @@ Nginx即可以实现正向代理，也可以实现反向代理。
 
 (1)服务端的设置：
 
-```
+```properties
 http {
   log_format main 'client send request=>clientIp=$remote_addr serverIp=>$host';
 	server{
@@ -571,7 +571,7 @@ http {
 
 (3)代理服务器设置：
 
-```
+```properties
 server {
 
         listen  82;
@@ -601,7 +601,7 @@ server {
 
 Nginx反向代理模块的指令是由`ngx_http_proxy_module`模块进行解析，该模块在安装Nginx的时候已经自己加装到Nginx中了，接下来我们把反向代理中的常用指令一一介绍下：
 
-```
+```properties
 proxy_pass
 proxy_set_header
 proxy_redirect
@@ -620,7 +620,7 @@ URL:为要设置的被代理服务器地址，包含传输协议(`http`,`https:/
 
 举例：
 
-```
+```properties
 proxy_pass http://www.baidu.com;
 location /server{}
 proxy_pass http://192.168.200.146;
@@ -633,7 +633,7 @@ proxy_pass http://192.168.200.146/;
 
 接下来通过例子来说明刚才我们提到的问题：
 
-```
+```properties
 server {
 	listen 80;
 	server_name localhost;
@@ -669,7 +669,7 @@ server{
 
 被代理服务器： [192.168.200.146]
 
-```
+```properties
 server {
         listen  8080;
         server_name localhost;
@@ -680,7 +680,7 @@ server {
 
 代理服务器: [192.168.200.133]
 
-```
+```properties
 server {
         listen  8080;
         server_name localhost;
@@ -707,7 +707,7 @@ server {
 
 服务端[192.168.200.146]
 
-```
+```properties
 server {
     listen  8081;
     server_name localhost;
@@ -720,7 +720,7 @@ server {
 
 代理服务端[192.168.200.133]
 
-```
+```properties
 server {
 	listen  8081;
 	server_name localhost;
@@ -735,14 +735,14 @@ server {
 
 proxy_redirect redirect replacement;
 
-```
+```properties
 redirect:目标,Location的值
 replacement:要替换的值
 ```
 
 proxy_redirect default;
 
-```
+```properties
 default;
 将location块的uri变量作为replacement,
 将proxy_pass变量作为redirect进行替换
@@ -750,7 +750,7 @@ default;
 
 proxy_redirect off;
 
-```
+```properties
 关闭proxy_redirect的功能
 ```
 
@@ -769,7 +769,7 @@ proxy_redirect off;
 
 1. 如果服务器1、服务器2和服务器3的内容不一样，那我们可以根据用户请求来分发到不同的服务器。
 
-```
+```properties
 代理服务器
 server {
         listen          8082;
@@ -851,7 +851,7 @@ Nginx要想使用SSL，需要满足一个条件即需要添加一个模块`--wit
 
 （1）完成 `--with-http_ssl_module`模块的增量添加
 
-```
+```sh
 》将原有/usr/local/nginx/sbin/nginx进行备份
 》拷贝nginx之前的配置信息
 》在nginx的安装源码进行配置指定对应模块  ./configure --with-http_ssl_module
@@ -937,13 +937,13 @@ shared:所有工作进程之间共享缓存，缓存的相关信息用name和siz
 
 先要确认当前系统是否有安装openssl
 
-```
+```sh
 openssl version
 ```
 
 安装下面的命令进行生成
 
-```
+```sh
 mkdir /root/cert
 cd /root/cert
 openssl genrsa -des3 -out server.key 1024
@@ -955,7 +955,7 @@ openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
 
 ##### 开启SSL实例
 
-```
+```properties
 server {
     listen       443 ssl;
     server_name  localhost;
@@ -1048,7 +1048,7 @@ size:每个缓冲区的大小，缓冲区的总大小就是number*size
 
 通用网站的配置
 
-```
+```properties
 proxy_buffering on;
 proxy_buffer_size 4 32k;
 proxy_busy_buffers_size 64k;

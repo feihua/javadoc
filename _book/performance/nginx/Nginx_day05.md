@@ -19,7 +19,7 @@
 
 浏览器访问:
 
-```
+```http
 http://192.168.200.146:8080/demo/index.html
 ```
 
@@ -27,7 +27,7 @@ http://192.168.200.146:8080/demo/index.html
 
 获取动态资源的链接地址:
 
-```
+```http
 http://192.168.200.146:8080/demo/getAddress
 ```
 
@@ -37,7 +37,7 @@ http://192.168.200.146:8080/demo/getAddress
 
 （1）在Centos上准备一个Tomcat
 
-```
+```bash
 1.Tomcat官网地址:https://tomcat.apache.org/
 2.下载tomcat,本次课程使用的是apache-tomcat-8.5.59.tar.gz
 3.将tomcat进行解压缩
@@ -47,7 +47,7 @@ tar -zxf apache-tomcat-8.5.59.tar.gz -C /web_tomcat
 
 （2）准备一个web项目，将其打包为war
 
-```
+```bash
 1.将资料中的demo.war上传到tomcat8目录下的webapps包下
 2.将tomcat进行启动，进入tomcat8的bin目录下
 ./startup.sh
@@ -55,7 +55,7 @@ tar -zxf apache-tomcat-8.5.59.tar.gz -C /web_tomcat
 
 （3）启动tomcat进行访问测试。
 
-```
+```html
 静态资源: http://192.168.200.146:8080/demo/index.html
 动态资源: http://192.168.200.146:8080/demo/getAddress
 ```
@@ -64,7 +64,7 @@ tar -zxf apache-tomcat-8.5.59.tar.gz -C /web_tomcat
 
 （1）使用Nginx的反向代理，将请求转给Tomcat进行处理。
 
-```
+```properties
 upstream webservice {
 	server 192.168.200.146:8080;
 }
@@ -161,7 +161,7 @@ server{
 
 4.配置Nginx的静态资源与动态资源的访问
 
-```conf
+```properties
 upstream webservice{
    server 192.168.200.146:8080;
 }
@@ -224,19 +224,19 @@ server {
 
 (2)启动tomcat并访问测试，
 
-```
+```http
 http://192.168.200.146:8080/demo/getAddress
 ```
 
 ![1604494822961](assets/1604494822961.png)
 
-```
+```http
 http://192.168.200.146:8180/demo/getAddress
 ```
 
 ![1604494843886](assets/1604494843886.png)
 
-```
+```http
 http://192.168.200.146:8280/demo/getAddress
 ```
 
@@ -246,7 +246,7 @@ http://192.168.200.146:8280/demo/getAddress
 
 (3)在Nginx对应的配置文件中添加如下内容:
 
-```
+```properties
 upstream webservice{
         server 192.168.200.146:8080;
         server 192.168.200.146:8180;
@@ -315,7 +315,7 @@ Master路由和Backup路由之间会有一个心跳检测，Master会定时告�
 
 keepalived的安装
 
-```
+```bash
 步骤1:从官方网站下载keepalived,官网地址https://keepalived.org/
 步骤2:将下载的资源上传到服务器
 	keepalived-2.0.20.tar.gz
@@ -342,7 +342,7 @@ keepalived的安装
 这里面会分三部，第一部分是global全局配置、第二部分是vrrp相关配置、第三部分是LVS相关配置。
 本次课程主要是使用keepalived实现高可用部署，没有用到LVS，所以我们重点关注的是前两部分
 
-```
+```properties
 global全局部分：
 global_defs {
    #通知邮件，当keepalived发送切换时需要发email给具体的邮箱地址
@@ -370,7 +370,7 @@ global_defs {
 }
 ```
 
-```
+```properties
 VRRP部分，该部分可以包含以下四个子模块
 1. vrrp_script
 2. vrrp_sync_group
@@ -398,7 +398,7 @@ vrrp_instance VI_1 {
 
 服务器1
 
-```
+```properties
 global_defs {
    notification_email {
         tom@itcast.cn
@@ -432,7 +432,7 @@ vrrp_instance VI_1 {
 
 服务器2
 
-```
+```properties
 ! Configuration File for keepalived
 
 global_defs {
@@ -474,7 +474,7 @@ vrrp_instance VI_1 {
 
 2. 分别启动两台服务器的keepalived
 
-```
+```bash
 cd /usr/local/sbin
 ./keepalived
 ```
@@ -493,7 +493,7 @@ cd /usr/local/sbin
 
 我们把192.168.200.133服务器的keepalived再次启动下，由于它的优先级高于服务器192.168.200.122的，所有它会再次成为MASTER，VIP也会"漂移"过去，然后我们再次通过浏览器访问:
 
-```
+```http
 http://192.168.200.222/
 ```
 
@@ -515,7 +515,7 @@ keepalived只能做到对网络故障和keepalived本身的监控，即当出现
 
 1. 在keepalived配置文件中添加对应的配置像
 
-```
+```properties
 vrrp_script 脚本名称
 {
     script "脚本位置"
@@ -528,7 +528,7 @@ vrrp_script 脚本名称
 
 ck_nginx.sh
 
-```
+```shell
 #!/bin/bash
 num=`ps -C nginx --no-header | wc -l`
 if [ $num -eq 0 ];then
@@ -548,13 +548,13 @@ Linux ps命令用于显示当前进程 (process) 的状态。
 
 3. 为脚本文件设置权限
 
-```
+```bash
 chmod 755 ck_nginx.sh
 ```
 
 4. 将脚本添加到
 
-```
+```properties
 vrrp_script ck_nginx {
    script "/etc/keepalived/ck_nginx.sh" #执行脚本的位置
    interval 2		#执行脚本的周期，秒为单位
@@ -646,7 +646,7 @@ nginx编译的时候会自动加载该模块，但是该模块默认是关闭的
 
 配置方式如下:
 
-```
+```properties
 location /download{
     root /usr/local;
     autoindex on;
@@ -695,7 +695,7 @@ Nginx对应用户认证这块是通过ngx_http_auth_basic_module模块来实现�
 
 1.nginx.conf添加如下内容
 
-```
+```properties
 location /download{
     root /usr/local;
     autoindex on;
@@ -709,11 +709,11 @@ location /download{
 
 2.我们需要使用`htpasswd`工具生成
 
-```
+```bash
 yum install -y httpd-tools
 ```
 
-```
+```bash
 htpasswd -c /usr/local/nginx/conf/htpasswd username //创建一个新文件记录用户名和密码
 htpasswd -b /usr/local/nginx/conf/htpasswd username password //在指定文件新增一个用户名和密码
 htpasswd -D /usr/local/nginx/conf/htpasswd username //从指定文件删除一个用户信息
@@ -768,13 +768,13 @@ Lua的官网地址为:`https://www.lua.org`
 
 1. 点击download可以找到对应版本的下载地址，我们本次课程采用的是lua-5.3.5,其对应的资源链接地址为https://www.lua.org/ftp/lua-5.4.1.tar.gz,也可以使用wget命令直接下载:
 
-```
+```bash
 wget https://www.lua.org/ftp/lua-5.4.1.tar.gz
 ```
 
 2. 编译安装
 
-```
+```bash
 cd lua-5.4.1
 make linux test
 make install
@@ -786,13 +786,13 @@ make install
 
 说明当前系统缺少libreadline-dev依赖包，需要通过命令来进行安装
 
-```
+```bash
 yum install -y readline-devel
 ```
 
 验证是否安装成功
 
-```
+```bash
 lua -v
 ```
 
@@ -828,7 +828,7 @@ Lua交互式编程模式可以通过命令lua -i 或lua来启用:
 
 hello.lua
 
-```
+```lua
 print("Hello World!!")
 ```
 
@@ -838,20 +838,20 @@ print("Hello World!!")
 
 将hello.lua做如下修改
 
-```
+```lua
 #!/usr/local/bin/lua
 print("Hello World!!!")
 ```
 
 第一行用来指定Lua解释器所在位置为 /usr/local/bin/lua，加上#号标记解释器会忽略它。一般情况下#!就是用来指定用哪个程序来运行本文件。但是hello.lua并不是一个可执行文件，需要通过chmod来设置可执行权限，最简单的方式为:
 
-```
+```bash
 chmod 755 hello.lua
 ```
 
 然后执行该文件 
 
-```
+```bash
 ./hello.lua
 ```
 
@@ -859,7 +859,7 @@ chmod 755 hello.lua
 
 补充一点，如果想在交互式中运行脚本式的hello.lua中的内容，我们可以使用一个dofile函数，如：
 
-```
+```lua
 dofile("lua_demo/hello.lua")
 ```
 
@@ -867,7 +867,7 @@ dofile("lua_demo/hello.lua")
 
 在Lua语言中，表达式之间的换行也起不到任何作用。如以下四个写法，其实都是等效的
 
-```
+```lua
 写法一
 a=1
 b=a+2
@@ -948,7 +948,7 @@ Lua中支持的运算符有算术运算符、关系运算符、逻辑运算符�
 
 例如:
 
-```
+```lua
 10+20	-->30
 20-10	-->10
 10*20	-->200
@@ -971,7 +971,7 @@ Lua中支持的运算符有算术运算符、关系运算符、逻辑运算符�
 
 例如:
 
-```
+```lua
 10==10		-->true
 10~=10		-->false
 20>10		-->true
@@ -990,7 +990,7 @@ not	逻辑非  取反，如果为true,则返回false  !
 
 逻辑运算符可以作为if的判断条件，返回的结果如下:
 
-```
+```lua
 A = true
 B = true
 
@@ -1023,7 +1023,7 @@ not A 	-->true
 
 例如:
 
-```
+```lua
 > "HELLO ".."WORLD"		-->HELLO WORLD
 > #"HELLO"			-->5
 ```
@@ -1042,7 +1042,7 @@ not A 	-->true
 
 Lua有8个数据类型
 
-```
+```lua
 nil(空，无效值)
 boolean(布尔，true/false)
 number(数值)
@@ -1055,7 +1055,7 @@ userdata（用户数据）
 
 可以使用type函数测试给定变量或者的类型：
 
-```
+```lua
 print(type(nil))				-->nil
 print(type(true))               --> boolean
 print(type(1.1*1.1))             --> number
@@ -1083,7 +1083,7 @@ boolean类型具有两个值，true和false。boolean类型一般被用来做条
 
 数值常量的表示方式:
 
-```
+```lua
 >4			-->4
 >0.4		-->0.4
 >4.75e-3	-->0.00475
@@ -1092,7 +1092,7 @@ boolean类型具有两个值，true和false。boolean类型一般被用来做条
 
 不管是整型还是双精度浮点型，使用type()函数来取其类型，都会返回的是number
 
-```
+```lua
 >type(3)	-->number
 >type(3.3)	-->number
 ```
@@ -1105,7 +1105,7 @@ Lua语言中的字符串即可以表示单个字符，也可以表示一整本�
 
 可以使用单引号或双引号来声明字符串
 
-```
+```lua
 >a = "hello"
 >b = 'world'
 >print(a)	-->hello
@@ -1114,7 +1114,7 @@ Lua语言中的字符串即可以表示单个字符，也可以表示一整本�
 
 如果声明的字符串比较长或者有多行，则可以使用如下方式进行声明
 
-```
+```html
 html = [[
 <html>
 <head>
@@ -1133,7 +1133,7 @@ html = [[
 
 创建表的最简单方式:
 
-```
+```lua
 > a = {}
 ```
 
@@ -1141,13 +1141,13 @@ html = [[
 
 ​	我们都知道数组就是相同数据类型的元素按照一定顺序排列的集合，那么使用table如何创建一个数组呢?
 
-```
+```lua
 >arr = {"TOM","JERRY","ROSE"}
 ```
 
 ​	要想获取数组中的值，我们可以通过如下内容来获取:
 
-```
+```lua
 print(arr[0])		nil
 print(arr[1])		TOM
 print(arr[2])		JERRY
@@ -1156,7 +1156,7 @@ print(arr[3])		ROSE
 
 ​	从上面的结果可以看出来，数组的下标默认是从1开始的。所以上述创建数组，也可以通过如下方式来创建
 
-```
+```lua
 >arr = {}
 >arr[1] = "TOM"
 >arr[2] = "JERRY"
@@ -1165,7 +1165,7 @@ print(arr[3])		ROSE
 
 上面我们说过了，表的索引即可以是数字，也可以是字符串等其他的内容，所以我们也可以将索引更改为字符串来创建
 
-```
+```lua
 >arr = {}
 >arr["X"] = 10
 >arr["Y"] = 20
@@ -1174,7 +1174,7 @@ print(arr[3])		ROSE
 
 当然，如果想要获取这些数组中的值，可以使用下面的方式
 
-```
+```lua
 方式一
 >print(arr["X"])
 >print(arr["Y"])
@@ -1187,13 +1187,13 @@ print(arr[3])		ROSE
 
 当前table的灵活不进于此，还有更灵活的声明方式
 
-```
+```lua
 >arr = {"TOM",X=10,"JERRY",Y=20,"ROSE",Z=30}
 ```
 
 如何获取上面的值?
 
-```
+```lua
 TOM :  arr[1]
 10  :  arr["X"] | arr.X
 JERRY: arr[2]
@@ -1207,7 +1207,7 @@ ROESE?
 
 定义函数的语法为:
 
-```
+```lua
 function functionName(params)
 
 end
@@ -1215,7 +1215,7 @@ end
 
 函数被调用的时候，传入的参数个数与定义函数时使用的参数个数不一致的时候，Lua 语言会通过 抛弃多余参数和将不足的参数设为 nil 的方式来调整参数的个数。
 
-```
+```lua
 function  f(a,b)
 print(a,b)
 end
@@ -1228,7 +1228,7 @@ f(2.6.8)	--> 2 6 (8被丢弃)
 
 可变长参数函数
 
-```
+```lua
 function add(...)
 a,b,c=...
 print(a)
@@ -1241,7 +1241,7 @@ add(1,2,3)  --> 1 2 3
 
 函数返回值可以有多个，这点和Java不太一样
 
-```
+```lua
 function f(a,b)
 return a,b
 end
@@ -1265,7 +1265,7 @@ Lua 语言提供了一组精简且常用的控制结构，包括用于条件执�
 
 if语句先测试其条件，并根据条件是否满足执行相应的 then 部分或 else 部分。 else 部分 是可选的。
 
-```
+```lua
 function testif(a)
  if a>0 then
  	print("a是正数")
@@ -1283,7 +1283,7 @@ end
 
 如果要编写嵌套的 if 语句，可以使用 elseif。 它类似于在 else 后面紧跟一个if。根据传入的年龄返回不同的结果，如
 
-```
+```lua
 age<=18 青少年，
 age>18 , age <=45 青年
 age>45 , age<=60 中年人
@@ -1308,7 +1308,7 @@ end
 
 语法：
 
-```
+```lua
 while 条件 do
   循环体
 end
@@ -1316,7 +1316,7 @@ end
 
 例子:实现数组的循环
 
-```
+```lua
 function testWhile()
  local i = 1
  while i<=10 do
@@ -1332,7 +1332,7 @@ end
 
 语法
 
-```
+```lua
 repeat
  循环体
  until 条件
@@ -1340,7 +1340,7 @@ repeat
 
 
 
-```
+```lua
 function testRepeat()
  local i = 10
  repeat
@@ -1356,7 +1356,7 @@ end
 
 语法
 
-```
+```lua
 for param=exp1,exp2,exp3 do
  循环体
 end
@@ -1364,7 +1364,7 @@ end
 
 param的值从exp1变化到exp2之前的每次循环会执行 循环体，并在每次循环结束后将步长(step)exp3增加到param上。exp3可选，如果不设置默认为1
 
-```
+```lua
 for i = 1,100,10 do
 print(i)
 end
@@ -1376,7 +1376,7 @@ end
 
 语法
 
-```
+```lua
 for i,v in ipairs(x) do
 	循环体
 end
@@ -1386,7 +1386,7 @@ i是数组索引值，v是对应索引的数组元素值，ipairs是Lua提供的
 
 例如:
 
-```
+```lua
 arr = {"TOME","JERRY","ROWS","LUCY"}
 for i,v in ipairs(arr) do
  print(i,v)
@@ -1404,7 +1404,7 @@ end
 
 但是如果将arr的值进行修改为
 
-```
+```lua
 arr = {"TOME","JERRY","ROWS",x="JACK","LUCY"}
 ```
 
@@ -1412,7 +1412,7 @@ arr = {"TOME","JERRY","ROWS",x="JACK","LUCY"}
 
 我们可以将迭代器函数变成pairs,如
 
-```
+```lua
 for i,v in pairs(arr) do
  print(i,v)
 end
@@ -1464,14 +1464,14 @@ x	JACK
 
 导入环境变量，告诉Nginx去哪里找luajit
 
-```
+```properties
 export LUAJIT_LIB=/usr/local/lib
 export LUAJIT_INC=/usr/local/include/luajit-2.0
 ```
 
 进入Nginx的目录执行如下命令:
 
-```
+```bash
 ./configure --prefix=/usr/local/nginx --add-module=../lua-nginx-module
 make && make install
 ```
@@ -1486,7 +1486,7 @@ make && make install
 
 设置软链接，使用如下命令
 
-```
+```bash
  ln -s /usr/local/lib/libluajit-5.1.so.2 /lib64/libluajit-5.1.so.2
 ```
 
@@ -1498,7 +1498,7 @@ make && make install
 
 解决方案有两个:一种是下载对应的模块，另一种则是禁用掉restry模块，禁用的方式为:
 
-```
+```properties
 http{
 	lua_load_resty_core off;
 }
@@ -1508,7 +1508,7 @@ http{
 
 在nginx.conf下配置如下内容:
 
-```
+```properties
 location /lua{
     default_type 'text/html';
     content_by_lua 'ngx.say("<h1>HELLO,LUA</h1>")';
@@ -1527,7 +1527,7 @@ location /lua{
 
 #### 安装
 
-```
+```properties
 (1) 下载OpenResty：https://openresty.org/download/openresty-1.15.8.2.tar.gz
 (2)使用wget下载: wget https://openresty.org/download/openresty-1.15.8.2.tar.gz
 (3)解压缩: tar -zxf openresty-1.15.8.2.tar.gz
@@ -1638,7 +1638,7 @@ Nginx接收到请求后，根据gender传入的值，如果gender传入的是1�
 
 实现代码
 
-```
+```properties
 location /getByGender {
 	default_type 'text/html';
 	set_by_lua $name "
@@ -1676,7 +1676,7 @@ Redis在系统中经常作为数据缓存、内存数据库使用，在大型系
 
 步骤一:准备一个Redis环境
 
-```
+```properties
 连接地址
 host= 192.168.200.111
 port=6379
@@ -1686,7 +1686,7 @@ port=6379
 
 步骤二:准备对应的API
 
-```
+```properties
 lua-resty-redis提供了访问Redis的详细API，包括创建对接、连接、操作、数据处理等。这些API基本上与Redis的操作一一对应。
 （1）redis = require "resty.redis"
 （2）new
@@ -1695,7 +1695,7 @@ lua-resty-redis提供了访问Redis的详细API，包括创建对接、连接、
 	语法:ok,err=redis:connect(host,port[,options_table]),设置连接Redis的连接信息。
 	ok:连接成功返回 1，连接失败返回nil
 	err:返回对应的错误信息
-（4）set_timeout
+（4）set_timeoutproperties
 	语法: redis:set_timeout(time) ，设置请求操作Redis的超时时间。
 （5）close
 	语法: ok,err = redis:close(),关闭当前连接，成功返回1，失败返回nil和错误信息
@@ -1706,7 +1706,7 @@ lua-resty-redis提供了访问Redis的详细API，包括创建对接、连接、
 
 步骤三:效果实现
 
-```
+```properties
 location / {
     default_type "text/html";
     content_by_lua_block{
@@ -1764,7 +1764,7 @@ lua-resty-mysql是OpenResty开发的模块，使用灵活、功能强大，适�
 
 准备MYSQL
 
-```
+```properties
 host: 192.168.200.111
 port: 3306
 username:root
@@ -1773,7 +1773,7 @@ password:123456
 
 创建一个数据库表及表中的数据。
 
-```
+```sql
 create database nginx_db;
 
 use nginx_db;
@@ -1794,7 +1794,7 @@ insert into users(id,username,birthday,salary) values(null,"JACK","1992-11-11",5
 
 数据库连接四要素:
 
-```
+```properties
 driverClass=com.mysql.jdbc.Driver
 url=jdbc:mysql://192.168.200.111:3306/nginx_db
 username=root
@@ -1803,7 +1803,7 @@ password=123456
 
 步骤二:API学习
 
-```
+```lua
 （1）引入"resty.mysql"模块
 	local mysql = require "resty.mysql"
 （2）new
@@ -1854,7 +1854,7 @@ password=123456
 
 步骤三:效果实现
 
-```
+```properties
 location /{
     content_by_lua_block{
         local mysql = require "resty.mysql"
@@ -1897,19 +1897,19 @@ location /{
 
 步骤一：引入cjson
 
-```
-local cjson = require "cjson"
+```lua
+llocal cjson = require "cjson"
 ```
 
 步骤二：调用cjson的encode方法进行类型转换
 
-```
+```lua
 cjson.encode(res) 
 ```
 
 步骤三:使用
 
-```
+```properties
 location /{
     content_by_lua_block{
 
@@ -1954,13 +1954,13 @@ location /{
 
 语法:
 
-```
+```lua
 res, err, errcode, sqlstate = db:query(sql[,rows])
 ```
 
 有了该API，上面的代码我们就可以进行对应的优化，如下:
 
-```
+```properties
 location /{
     content_by_lua_block{
 
@@ -2006,7 +2006,7 @@ location /{
 
 （2）浏览器输入如下地址
 
-```
+```http
 http://191.168.200.133?username=TOM
 ```
 
@@ -2016,7 +2016,7 @@ http://191.168.200.133?username=TOM
 
 （5）将查询的结果数据存入Redis中
 
-```
+```properties
 init_by_lua_block{
 
 	redis = require "resty.redis"
