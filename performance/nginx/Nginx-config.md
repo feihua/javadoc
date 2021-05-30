@@ -1,5 +1,3 @@
-主讲：鲁班
-时间：2018/10/12
 **概要：**
 1. Nginx 简介
 2. Nginx 架构说明
@@ -255,5 +253,4 @@ debug_connection 192.168.0.147; 
 debug_connection 10.224.57.0/200;
 }
 [nginx.conf](https://attachments-cdn.shimo.im/fWYRhqhjvfIxcISK/nginx.conf)
-
 
