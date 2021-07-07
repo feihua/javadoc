@@ -89,7 +89,7 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="realization.html" />
+    <link rel="next" href="mybatis-source.html" />
     
     
     <link rel="prev" href="base-use.html" />
@@ -490,25 +490,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.1.3" data-path="realization.html">
-            
-                <a href="realization.html">
-            
-                    
-                    3.代码实现
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.3.1.4" data-path="mybatis-source.html">
+        <li class="chapter " data-level="1.3.1.3" data-path="mybatis-source.html">
             
                 <a href="mybatis-source.html">
             
                     
-                    4.mybatis源码剖析-黑马
+                    3.mybatis源码剖析-黑马
             
                 </a>
             
@@ -2170,63 +2157,12 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <p><strong>mybatis**</strong>&#x6838;&#x5FC3;&#x6982;&#x5FF5;**</p>
-<p><strong>Configuration**</strong>&#x3001;<strong><strong>SqlSessionFactory</strong></strong>&#x3001;<strong><strong>Session</strong></strong>&#x3001;<strong><strong>Executor</strong></strong>&#x3001;<strong><strong>MappedStatement</strong></strong>&#x3001;<strong><strong>StatementHandler</strong></strong>&#x3001;<strong>**ResultSetHandler</strong></p>
-<p><strong>&#x6574;&#x4F53;&#x8BA4;&#x8BC6;**</strong>mybatis<strong>**&#x6E90;&#x7801;&#x5305;</strong></p>
-<p><strong>Debug**</strong>&#x4E00;&#x884C;&#x884C;&#x770B;&#x4EE3;&#x7801;**</p>
-<p><img src="https://uploader.shimo.im/f/NFSYFvz72WiG6FHy.jpeg!thumbnail?fileGuid=pSZLJa4xIhYMZJMl" alt="&#x56FE;&#x7247;"></p>
-<p>&#x5B8F;&#x89C2; &#x5FAE;&#x89C2; &#x753B;&#x56FE;</p>
-<p><img src="https://uploader.shimo.im/f/dvucstYE0bfYA8YV.jpeg!thumbnail?fileGuid=pSZLJa4xIhYMZJMl" alt="&#x56FE;&#x7247;"></p>
-<p><strong>Mybatis**</strong>&#x4E4B;<strong>**Configuration</strong></p>
-<p>org.apache.ibatis.builder.xml.XMLConfigBuilder#parseConfiguration</p>
-<p><strong>Properties**</strong>&#x6587;&#x4EF6;&#x89E3;&#x6790;&#xFF1A;**</p>
-<p>org.apache.ibatis.builder.xml.XMLConfigBuilder#propertiesElement</p>
-<p><strong>Setting &#x6587;&#x4EF6;&#x89E3;&#x6790;&#xFF1A;</strong></p>
-<p>org.apache.ibatis.builder.xml.XMLConfigBuilder#settingsElement</p>
-<p><strong>environments &#x6587;&#x4EF6;&#x89E3;&#x6790;&#xFF1A;</strong></p>
-<p>org.apache.ibatis.builder.xml.XMLConfigBuilder#environmentsElement</p>
-<p><strong>Mybatis**</strong>&#x4E4B;<strong>**Session</strong></p>
-<p><img src="https://uploader.shimo.im/f/BIBlgFqcuMKk0Bkx.jpeg!thumbnail?fileGuid=pSZLJa4xIhYMZJMl" alt="&#x56FE;&#x7247;"></p>
-<p><strong>Mybatis**</strong>&#x4E4B;<strong>**Mapper</strong></p>
-<p>:Type interface com.jiagouedu.UserMapper is not known to the MapperRegistry.</p>
-<p><img src="https://uploader.shimo.im/f/m00xx5bDXEuun75E.jpeg!thumbnail?fileGuid=pSZLJa4xIhYMZJMl" alt="&#x56FE;&#x7247;"></p>
-<p><strong>Mybatis**</strong>&#x4E4B;<strong>**Sql</strong></p>
-<ul>
-<li>txt.txt&#x6587;&#x4EF6;</li>
-</ul>
-<p><strong>Mybatis**</strong>&#x4E4B;<strong>**Executor</strong></p>
-<p><img src="https://uploader.shimo.im/f/RCcV4PTnOH0G21ZY.png!thumbnail?fileGuid=pSZLJa4xIhYMZJMl" alt="&#x56FE;&#x7247;"></p>
-<p>&#x5176;&#x5B9E;&#x662F;&#x4E0D;&#x5E72;&#x4E8B;&#x60C5;&#x7684;</p>
-<p>org.apache.ibatis.executor.statement.StatementHandler</p>
-<p>org.apache.ibatis.executor.statement.PreparedStatementHandler</p>
-<p>org.apache.ibatis.executor.resultset.ResultSetHandler</p>
-<p>org.apache.ibatis.executor.resultset.DefaultResultSetHandler</p>
-<p><strong>Mybatis**</strong>&#x4E4B;<strong><strong>cache</strong></strong>&#xFF1A;**</p>
-<p>&#x6BCF;&#x5F53;&#x6211;&#x4EEC;&#x4F7F;&#x7528;MyBatis&#x5F00;&#x542F;&#x4E00;&#x6B21;&#x548C;&#x6570;&#x636E;&#x5E93;&#x7684;&#x4F1A;&#x8BDD;&#xFF0C;MyBatis&#x4F1A;&#x521B;&#x5EFA;&#x51FA;&#x4E00;&#x4E2A;SqlSession&#x5BF9;&#x8C61;&#x8868;&#x793A;&#x4E00;&#x6B21;&#x6570;&#x636E;&#x5E93;&#x4F1A;&#x8BDD;&#x3002; &#x5728;&#x5BF9;&#x6570;&#x636E;&#x5E93;&#x7684;&#x4E00;&#x6B21;&#x4F1A;&#x8BDD;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x6709;&#x53EF;&#x80FD;&#x4F1A;&#x53CD;&#x590D;&#x5730;&#x6267;&#x884C;&#x5B8C;&#x5168;&#x76F8;&#x540C;&#x7684;&#x67E5;&#x8BE2;&#x8BED;&#x53E5;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x91C7;&#x53D6;&#x4E00;&#x4E9B;&#x63AA;&#x65BD;&#x7684;&#x8BDD;&#xFF0C;&#x6BCF;&#x4E00;&#x6B21;&#x67E5;&#x8BE2;&#x90FD;&#x4F1A;&#x67E5;&#x8BE2;&#x4E00;&#x6B21;&#x6570;&#x636E;&#x5E93;,&#x800C;&#x6211;&#x4EEC;&#x5728;&#x6781;&#x77ED;&#x7684;&#x65F6;&#x95F4;&#x5185;&#x505A;&#x4E86;&#x5B8C;&#x5168;&#x76F8;&#x540C;&#x7684;&#x67E5;&#x8BE2;&#xFF0C;&#x90A3;&#x4E48;&#x5B83;&#x4EEC;&#x7684;&#x7ED3;&#x679C;&#x6781;&#x6709;&#x53EF;&#x80FD;&#x5B8C;&#x5168;&#x76F8;&#x540C;&#xFF0C;&#x7531;&#x4E8E;&#x67E5;&#x8BE2;&#x4E00;&#x6B21;&#x6570;&#x636E;&#x5E93;&#x7684;&#x4EE3;&#x4EF7;&#x5F88;&#x5927;&#xFF0C;&#x8FD9;&#x6709;&#x53EF;&#x80FD;&#x9020;&#x6210;&#x5F88;&#x5927;&#x7684;&#x8D44;&#x6E90;&#x6D6A;&#x8D39;&#x3002;</p>
-<p>&#x4E3A;&#x4E86;&#x89E3;&#x51B3;&#x8FD9;&#x4E00;&#x95EE;&#x9898;&#xFF0C;&#x51CF;&#x5C11;&#x8D44;&#x6E90;&#x7684;&#x6D6A;&#x8D39;&#xFF0C;MyBatis&#x4F1A;&#x5728;&#x8868;&#x793A;&#x4F1A;&#x8BDD;&#x7684;SqlSession&#x5BF9;&#x8C61;&#x4E2D;&#x5EFA;&#x7ACB;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x7F13;&#x5B58;&#xFF0C;&#x5C06;&#x6BCF;&#x6B21;&#x67E5;&#x8BE2;&#x5230;&#x7684;&#x7ED3;&#x679C;&#x7ED3;&#x679C;&#x7F13;&#x5B58;&#x8D77;&#x6765;&#xFF0C;&#x5F53;&#x4E0B;&#x6B21;&#x67E5;&#x8BE2;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5982;&#x679C;&#x5224;&#x65AD;&#x5148;&#x524D;&#x6709;&#x4E2A;&#x5B8C;&#x5168;&#x4E00;&#x6837;&#x7684;&#x67E5;&#x8BE2;&#xFF0C;&#x4F1A;&#x76F4;&#x63A5;&#x4ECE;&#x7F13;&#x5B58;&#x4E2D;&#x76F4;&#x63A5;&#x5C06;&#x7ED3;&#x679C;&#x53D6;&#x51FA;&#xFF0C;&#x8FD4;&#x56DE;&#x7ED9;&#x7528;&#x6237;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x518D;&#x8FDB;&#x884C;&#x4E00;&#x6B21;&#x6570;&#x636E;&#x5E93;&#x67E5;&#x8BE2;&#x4E86;&#x3002;</p>
-<p>cache key: id +sql+limit+offsetxxx</p>
-<p>&#x4F5C;&#x7528;&#x57DF;&#xFF1A;&#x4E00;&#x7EA7;&#x7F13;&#x5B58;session</p>
-<p>&#x5168;&#x5C40;&#xFF1A;&#x4E8C;&#x7EA7;&#x7F13;&#x5B58;</p>
-<p><img src="https://uploader.shimo.im/f/tLMk6b8RNqUt9hKZ.jpeg!thumbnail?fileGuid=pSZLJa4xIhYMZJMl" alt="&#x56FE;&#x7247;"></p>
-<p><strong>&#x4ECA;&#x5929;&#x6E90;&#x7801;&#x5206;&#x6790;&#x6D89;&#x53CA;&#x5230;&#x7684;&#x6A21;&#x5F0F;&#x662F;&#xFF08;&#x5B66;&#x5458;&#x6574;&#x7406;&#xFF09;&#xFF1A;</strong></p>
-<p>1.sqlSessionFactory&#x5DE5;&#x5382;</p>
-<p>2.build&#x5EFA;&#x9020;&#x8005;</p>
-<ol>
-<li>getInstance  &#xFF0C;Cache  &#x5355;&#x4F8B;</li>
-<li>&#x59D4;&#x6D3E;  &#xFF08;&#x5355;&#x8BCD;&#x5FD8;&#x4E86;&#xFF09;&#x88C5;&#x9970;</li>
-</ol>
-<p>5.InterceptorChain&#x8D23;&#x4EFB;&#x94FE;</p>
-<p>6Proxy&#x4EE3;&#x7406;</p>
-<p>7.ExecuteCommand&#x547D;&#x4EE4;</p>
-<p>8.doQuery&#x6A21;&#x677F;</p>
-<p><strong>Mybatis**</strong>&#x4F5C;&#x4E1A;**</p>
-<p>annotations&#x4E2D;&#x7684;@select&#x6E90;&#x7801;&#x52A0;&#x8F7D;&#x6267;&#x884C;</p>
-<p><img src="https://uploader.shimo.im/f/hZspc114Dl6dR1p2.jpeg!thumbnail?fileGuid=pSZLJa4xIhYMZJMl" alt="&#x56FE;&#x7247;"></p>
-<p>&#x63D0;&#x4EA4;&#x5730;&#x5740;&#xFF1A;</p>
-<p><a href="http://git.jiagouedu.com/java-vip/tuling-mybatis/issues/new?fileGuid=pSZLJa4xIhYMZJMl" target="_blank">http://git.jiagouedu.com/java-vip/tuling-mybatis/issues/new</a></p>
-<p>&#x8981;&#x6C42;&#xFF1A;&#x6D41;&#x7A0B;&#x56FE;+&#x627E;&#x51FA;&#x4EE3;&#x7801;&#x8C03;&#x7528;&#x6D41;&#x7A0B;</p>
+                                <p><strong>mybatis&#x6838;&#x5FC3;&#x6982;&#x5FF5;</strong></p>
+<p><img src="https://gitee.com/liufeihua/images/raw/master/images/image-20210506224054138.png" alt=""></p>
+<p><strong>&#x5B8F;&#x89C2; &#x5FAE;&#x89C2; &#x753B;&#x56FE;</strong>
+<img src="https://gitee.com/liufeihua/images/raw/master/images/image-20210506224550315.png" alt=""></p>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; ohter.com 2021 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x8BE5;&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
-2021-04-19 14:59:11
+2021-07-07 10:28:05
 </span></footer>
 <script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
                                 
@@ -2260,7 +2196,7 @@
                 </a>
                 
                 
-                <a href="realization.html" class="navigation navigation-next " aria-label="Next page: 3.代码实现">
+                <a href="mybatis-source.html" class="navigation navigation-next " aria-label="Next page: 3.mybatis源码剖析-黑马">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2271,7 +2207,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"2源码分析","level":"1.3.1.2","depth":3,"next":{"title":"3.代码实现","level":"1.3.1.3","depth":3,"path":"source/mybatis/realization.md","ref":"source/mybatis/realization.md","articles":[]},"previous":{"title":"1.基本使用","level":"1.3.1.1","depth":3,"path":"source/mybatis/base-use.md","ref":"source/mybatis/base-use.md","articles":[]},"dir":"ltr"},"config":{"plugins":["chapter-fold","theme-comscore","back-to-top-button","code","tbfed-pagefooter","page-treeview","pageview-count","popup","prism","-highlight","hide-element","-lunr","-search","search-pro","page-toc-button"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy ohter.com 2021","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"page-treeview":{"collapsed":false,"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"search-pro":{},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"liufeihua","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"日常笔记","language":"zh-hans","gitbook":"*","description":"日常笔记"},"file":{"path":"source/mybatis/analysis.md","mtime":"2021-04-19T06:59:11.140Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-23T07:53:47.558Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"2源码分析","level":"1.3.1.2","depth":3,"next":{"title":"3.mybatis源码剖析-黑马","level":"1.3.1.3","depth":3,"path":"source/mybatis/mybatis-source.md","ref":"source/mybatis/mybatis-source.md","articles":[]},"previous":{"title":"1.基本使用","level":"1.3.1.1","depth":3,"path":"source/mybatis/base-use.md","ref":"source/mybatis/base-use.md","articles":[]},"dir":"ltr"},"config":{"plugins":["chapter-fold","theme-comscore","back-to-top-button","code","tbfed-pagefooter","page-treeview","pageview-count","popup","prism","-highlight","hide-element","-lunr","-search","search-pro","page-toc-button"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy ohter.com 2021","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"page-treeview":{"collapsed":false,"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"search-pro":{},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"liufeihua","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"日常笔记","language":"zh-hans","gitbook":"*","description":"日常笔记"},"file":{"path":"source/mybatis/analysis.md","mtime":"2021-07-07T02:28:05.963Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-07T02:55:13.906Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

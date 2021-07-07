@@ -420,10 +420,7 @@ public class DefaultSqlSession implements SqlSession {
 	                String name = element.attributeValue("name");
 	                //vallue属性的值
 	                String value = element.attributeValue("value");
-```
 
-​	
-```java
                 //2）将解析的数据库连接信息存储到Configuration中
                 //数据库驱动
                 if(name.equals("driver")){

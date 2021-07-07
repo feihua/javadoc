@@ -28,23 +28,23 @@ GIT 把内容按元数据方式存储类似k/v 数据库，而 SVN 是按文件(
 
 SVN 基本使用过程
 
-![图片](https://uploader.shimo.im/f/MhuXnzrDjwzLDSQ3.png!thumbnail?fileGuid=tQCdwGV9HkDqXwQX)
+![image-20210707104232607](https://gitee.com/liufeihua/images/raw/master/images/image-20210707104232607.png)
 
 Git 基本使用过程
 
-![图片](https://uploader.shimo.im/f/1dZcUlEq8bQKO7du.png!thumbnail?fileGuid=tQCdwGV9HkDqXwQX)
+![image-20210707104313483](https://gitee.com/liufeihua/images/raw/master/images/image-20210707104313483.png)
 
-### **1.1.3****版本管理模式区别**
+### **1.1.3**版本管理模式区别
 
 git 是一个分布式的版本管理系统，而要 SVN 是一个远程集中式的管理系统
 
 集中式
 
-![图片](https://uploader.shimo.im/f/B8QmxXD14ZypacMW.png!thumbnail?fileGuid=tQCdwGV9HkDqXwQX)
+![image-20210707104407048](https://gitee.com/liufeihua/images/raw/master/images/image-20210707104407048.png)
 
 分布式
 
-![图片](https://uploader.shimo.im/f/ouYCLnjcld44HW3Z.png!thumbnail?fileGuid=tQCdwGV9HkDqXwQX)
+![image-20210707104420011](https://gitee.com/liufeihua/images/raw/master/images/image-20210707104420011.png)
 
 
 # **2.**GIT 核心命令使用
@@ -228,7 +228,7 @@ Git 是一个内容寻址文件系统，其核心部分是一个简单的键值�
 git 键值库中插入数据
 
 ```plain
-echo 'luban is good man' | git hash-object -w --stdin
+echo 'feihua is good man' | git hash-object -w --stdin
 79362d07cf264f8078b489a47132afbc73f87b9a
 ```
 基于键获取指定内容
@@ -265,9 +265,7 @@ git cat-file -p c11e96db44f7f3bc4c608aa7d7cd9ba4ab25066e > README.MF
 
 ## **3.2**GIT树对像
 
-树对像解决了文件名的问题，它的目的将多个文件名组织在一起，其内包含多个文件名称与其对应的 Key 和其它树对像的用引用，可以理解成操作系统当中的文件夹，一个文件夹包含多个文件和多个其它文件夹。
-
-![图片](https://uploader.shimo.im/f/jum4YgQ810wWzu9h.png!thumbnail?fileGuid=tQCdwGV9HkDqXwQX)
+树对像解决了文件名的问题，它的目的将多个文件名组织在一起，其内包含多个文件名称与其对应的 Key 和其它树对像的用引用，可以理解成操作系统当中的文件夹
 
 每一个分支当中都关联了一个树对像，他存储了当前分支下所有的文件名及对应的 key.
 
@@ -362,10 +360,11 @@ Gogs 是一款开源的轻量级 Git web 服务，其特点是简单易用完档
 
 解压之后目录：
 
-![图片](https://uploader.shimo.im/f/9VZv9MUTRy6P262d.png!thumbnail?fileGuid=tQCdwGV9HkDqXwQX)
+![image-20210707104708331](https://gitee.com/liufeihua/images/raw/master/images/image-20210707104708331.png)
 
 运行：
 
+```
 #前台运行
 
 ./gogs web
@@ -373,6 +372,7 @@ Gogs 是一款开源的轻量级 Git web 服务，其特点是简单易用完档
 #后台运行
 
 $nohup ./gogs web &
+```
 
 默认端口：3000
 
@@ -382,61 +382,9 @@ $nohup ./gogs web &
 
 *注：mysql 索引长度的问题没有安装成功,需要用 mysql5.7 以上版本*
 
-## **4.2gogs 基础配置**
+## **4.2gogs 定时备份与恢复**
 
-**邮件配置说明：**
-
-邮件配置是用于注册时邮件确认，和找回密码时候的验证邮件发送。其配置分为两步：
-
-第一：创建一个开通了 smtp 服务的邮箱帐号，一般用公司管理员邮箱。我这里用的是 QQ 邮箱。
-
-第二：在{gogs_home/custom/conf/app.ini  文件中配置。
-
-**QQ 邮箱开通 smtp 服务**
-
-1、点击设置
-
-![图片](https://uploader.shimo.im/f/q8N2B5rW5WLgNMr3.png!thumbnail?fileGuid=tQCdwGV9HkDqXwQX)
-
-2、开启 smtp
-
-![图片](https://uploader.shimo.im/f/sAkQMSnKelx1pHsU.png!thumbnail?fileGuid=tQCdwGV9HkDqXwQX)
-
-
-**邮件设置**
-
-设置文件：{gogs_home/custom/conf/app.ini
-
-![图片](https://uploader.shimo.im/f/27VAmX9JjYGvnbus.png!thumbnail?fileGuid=tQCdwGV9HkDqXwQX)
-
-
-ENABLED = true
-
-HOST=smtp.qq.com:465
-
-FROM=tuling<2877438881@qq.com>
-
-USER=
-
-PASSWD=
-
-
-**ENABLED**=true 表示启用邮件服务
-
-**host**为 smtp 服务器地址，（需要对应邮箱开通 smtp 服务 且必须为 ssl 的形式访问）
-
-**from**发送人名称地址
-
-**user**发送帐号
-
-**passwd**开通 smtp 帐户时会有对应的授权码
-
-**重启后可直接测试**
-
-管理员登录==》控制面版==》应用配置管理==》邮件配置==》发送测试邮件
-
-## **4.3gogs 定时备份与恢复**
-
+```
 备份与恢复：
 
 #查看备份相关参数
@@ -464,10 +412,14 @@ gogs_home="/home/apps/svr/gogs/"
 
 backup_dir="$gogs_home/backups"
 
-cd `dirname $0`
+cd `dirname $0
+```
 
-# 执行备份命令
 
+
+## 4.3执行备份命令
+
+```
 ./gogs backup --target=$backup_dir
 
 echo 'backup sucess'
@@ -479,23 +431,31 @@ day=7
 find $backup_dir -name '*.zip' -mtime +7 -type f |xargs rm -f;
 
 echo 'delete expire back data!'
+```
 
-#添加定时任务 每天 4：00 执行备份
+## 4.4添加定时任务 每天 4：00 执行备份
 
-# 打开任务编辑器
+打开任务编辑器
 
+```
 crontab -e
+```
 
-# 输入如下命令 00 04 * * * 每天凌晨 4 点执行 do-backup.sh 并输出日志至 #backup.log
+输入如下命令 00 04 * * * 每天凌晨 4 点执行 do-backup.sh 并输出日志至 #backup.log
 
+```
 00 04 * * * /home/apps/svr/gogs/do-backup.sh >> /home/apps/svr/gogs/backup.log 2>&1
+```
 
-## **4、客户端公钥配置与添加**
+
+
+## **4.5、客户端公钥配置与添加**
 
 **Git 配置**
 
 #Git 安装完之后，需做最后一步配置。打开 git bash，分别执行以下两句命令
 
+```shell
 git config --global user.name “用户名”
 
 git config --global user.email “邮箱”
@@ -503,9 +463,11 @@ git config --global user.email “邮箱”
 #git 自动记住用户和密码操作
 
 git config --global credential.helper store
+```
 
 **SSH 公钥创建**
 
+```shell
 1、打开 git bash
 
 2、执行生成公钥和私钥的命令：ssh-keygen -t rsa 并按回车 3 下
@@ -513,4 +475,5 @@ git config --global credential.helper store
 3、执行查看公钥的命令：cat ~/.ssh/id_rsa.pub
 
 4、拷贝 id_rsa.pub 内容至至服务~~/.ssh/authorized_keys 中
+```
 

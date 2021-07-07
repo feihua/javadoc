@@ -1,4 +1,3 @@
-**主讲**：鲁班
 **时间**：2018/10/14
 
 **概要：**
@@ -256,7 +255,6 @@ accept_mutex是Nginx的负载均衡锁，当某一个worker进程建立的连接
 语法：accept_mutex_delay Nms; 
 默认：accept_mutex_delay 500ms; 
 在使用accept锁后，同一时间只有一个worker进程能够取到accept锁。这个accept锁不是堵塞锁，如果取不到会立刻返回。如果只有一个worker进程试图取锁而没有取到，他至少要等待accept_mutex_delay定义的时间才能再次试图取锁。
-
 
 
 
