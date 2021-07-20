@@ -95,8 +95,11 @@
 		*  [2.快速上手](distributed/mongo/mongoDb-quick-start.md)
 		*  [3.企业应用](distributed/mongo/mongoDb-enterprise.md)
 	*  [redis缓存](distributed/redis/README.md)
-		*  [1.分布式之Redis](distributed/redis/redis.md)
-		*  [2.Redis6.0](distributed/redis/redis6.md)
+		*  [1.特性介绍](distributed/redis/特性介绍.md)
+		*  [2.集群部署](distributed/redis/集群部署.md)
+		*  [3.原理分析](distributed/redis/原理分析.md)
+		*  [4.源码分析](distributed/redis/源码分析.md)
+		*  [5.Redis6.0](distributed/redis/redis6.md)
 	*  [shardingsphere数据库中间件](distributed/shardingsphere/README.md)
 		*  [1.JVM整体结构介绍](distributed/shardingsphere/1_JVM整体结构介绍.md)
 		*  [2.JVM性能调优监控工具](distributed/shardingsphere/2_JVM性能调优监控工具.md)
@@ -104,7 +107,7 @@
 	*  [elk日志监控](distributed/elk/README.md)
 		*  [1.启停脚本](distributed/elk/shell.md)
 		*  [2.分布式之ELK](distributed/elk/elk.md)
-		
+	
 *  [六、微服务专题](micro/README.md)
 	*  [springboot](micro/springboot-index.md)
 		*  [1.快速开始](micro/fast.md)
@@ -141,4 +144,3 @@
 	*  [4.支付模块](project/pay.md)
 	*  [5.分库分表一](project/Depots-table-1.md)
 	*  [6.分库分表二](project/Depots-table-2.md)
-	
