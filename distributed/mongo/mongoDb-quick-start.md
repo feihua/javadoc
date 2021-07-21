@@ -3,13 +3,12 @@
 **2、MongoDb安装配置与基础命令**
 **3、MongoDB CRUD与全文索引**
 
-[数据脚本.txt](https://uploader.shimo.im/f/wequSJM7pVgm8dSp.txt)
-
 
 ## **一、MongoDb的体系结构**
 
 ---
 **概要：**
+
 1. NoSql的概念
 2. NoSql的应用场景
 3. MongoDb的逻辑组成
@@ -20,12 +19,13 @@
 **NoSql的分类：**
 	键值(Key-Value)存储数据库
 	这一类数据库主要会使用到一个哈希表，这个表中有一个特定的键和一个指针指向特定的数据。Key/value模型对于IT系统来说的优势在于简单、易部署。但是如果DBA只对部分值进行查询或更新的时候，Key/value就显得效率低下了。举例如：Tokyo Cabinet/Tyrant, Redis, Voldemort, Oracle BDB.
-**	**列存储数据库。
+列存储数据库。
 	这部分数据库通常是用来应对分布式存储的海量数据。键仍然存在，但是它们的特点是指向了多个列。这些列是由列家族来安排的。如：Cassandra, HBase, Riak.
 	文档型数据库
 	文档型数据库的灵感是来自于Lotus Notes办公软件的，而且它同第一种键值存储相类似。该类型的数据模型是版本化的文档，半结构化的文档以特定的格式存储，比如JSON。文档型数据库可 以看作是键值数据库的升级版，允许之间嵌套键值。而且文档型数据库比键值数据库的查询效率更高。如：CouchDB, MongoDb. 国内也有文档型数据库SequoiaDB，已经开源。
 	图形(Graph)数据库
 	图形结构的数据库同其他行列以及刚性结构的SQL数据库不同，它是使用灵活的图形模型，并且能够扩展到多个服务器上。NoSQL数据库没有标准的查询语言(SQL)，因此进行数据库查询需要制定数据模型。许多NoSQL数据库都有REST式的数据接口或者查询API。如：Neo4J, InfoGrid, Infinite Graph.
+
 ### 2、NoSql的应用场景
 NoSQL数据库在以下的这几种情况下比较适用：
 	1、数据模型比较简单；
@@ -41,7 +41,7 @@ NoSQL数据库在以下的这几种情况下比较适用：
 ### **3、MongoDb的逻辑组成**
 
 **体系结构：**
-![图片](https://uploader.shimo.im/f/xbE8M7mVudYOp7Hv.png!thumbnail)
+![image-20210721090426166](https://gitee.com/liufeihua/images/raw/master/images/image-20210721090426166.png)
 
 **逻辑结构与关系数据库的对比：**
 | **关系型数据库**   | **MongoDb**   |
@@ -60,6 +60,7 @@ NoSQL数据库在以下的这几种情况下比较适用：
 
 ---
 **概要：**
+
 1. mongoDb版本说明
 2. mongoDb启动参数说明
 3. 客户端Shell 的使用及参数说明
@@ -67,9 +68,11 @@ NoSQL数据库在以下的这几种情况下比较适用：
 
 1. mongoDb社区版说明
 
-下载地址：[https://www.mongodb.com/download-center/community](https://www.mongodb.com/download-center/community)
+### 1.下载地址
 
-![图片](https://uploader.shimo.im/f/wDTyLsHbglkacywj.png!thumbnail)
+[https://www.mongodb.com/download-center/community](https://www.mongodb.com/download-center/community)
+
+![image-20210721090551558](https://gitee.com/liufeihua/images/raw/master/images/image-20210721090551558.png)
 
 ```
 #下载

@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>1.集群启动停止脚本 · 日常笔记</title>
+        <title>1.概述 · 日常笔记</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -89,7 +89,7 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="kafka.html" />
+    <link rel="next" href="核心概念.html" />
     
     
     <link rel="prev" href="./" />
@@ -1250,12 +1250,12 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.6.4.1" data-path="../rocketmq/shell.html">
+        <li class="chapter " data-level="1.6.4.1" data-path="../rocketmq/初识消息中间件.html">
             
-                <a href="../rocketmq/shell.html">
+                <a href="../rocketmq/初识消息中间件.html">
             
                     
-                    1.启停脚本
+                    1.初识消息中间件
             
                 </a>
             
@@ -1263,12 +1263,25 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.4.2" data-path="../rocketmq/rocketmq.html">
+        <li class="chapter " data-level="1.6.4.2" data-path="../rocketmq/特性详解&场景介绍.html">
             
-                <a href="../rocketmq/rocketmq.html">
+                <a href="../rocketmq/特性详解&场景介绍.html">
             
                     
-                    2.分布式之RockeqMq
+                    2.特性详解&场景介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4.3" data-path="../rocketmq/源码分析.html">
+            
+                <a href="../rocketmq/源码分析.html">
+            
+                    
+                    3.源码分析
             
                 </a>
             
@@ -1339,9 +1352,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.6" data-path="./">
+        <li class="chapter " data-level="1.6.6" data-path="../kafka/">
             
-                <a href="./">
+                <a href="../kafka/">
             
                     
                     kafka消息中间件
@@ -1353,25 +1366,12 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.6.6.1" data-path="shell.html">
+        <li class="chapter " data-level="1.6.6.1" data-path="../kafka/kafka.html">
             
-                <a href="shell.html">
-            
-                    
-                    1.集群启动停止脚本
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.6.2" data-path="kafka.html">
-            
-                <a href="kafka.html">
+                <a href="../kafka/kafka.html">
             
                     
-                    2.大数据技术之Kafka
+                    1.kafka消息中间件
             
                 </a>
             
@@ -1526,12 +1526,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.9" data-path="../shardingsphere/">
+        <li class="chapter " data-level="1.6.9" data-path="./">
             
-                <a href="../shardingsphere/">
+                <a href="./">
             
                     
-                    shardingsphere数据库中间件
+                    shardingsphere中间件
             
                 </a>
             
@@ -1540,12 +1540,12 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.6.9.1" data-path="../shardingsphere/1_JVM整体结构介绍.md">
+        <li class="chapter active" data-level="1.6.9.1" data-path="概述.html">
             
-                <span>
+                <a href="概述.html">
             
                     
-                    1.JVM整体结构介绍
+                    1.概述
             
                 </a>
             
@@ -1553,25 +1553,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.9.2" data-path="../shardingsphere/2_JVM性能调优监控工具.md">
+        <li class="chapter " data-level="1.6.9.2" data-path="核心概念.html">
             
-                <span>
-            
-                    
-                    2.JVM性能调优监控工具
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.9.3" data-path="../shardingsphere/3_JVM垃圾回收与调优.md">
-            
-                <span>
+                <a href="核心概念.html">
             
                     
-                    3.JVM垃圾回收与调优
+                    2.核心概念
             
                 </a>
             
@@ -1598,25 +1585,12 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.6.10.1" data-path="../elk/shell.html">
-            
-                <a href="../elk/shell.html">
-            
-                    
-                    1.启停脚本
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.10.2" data-path="../elk/elk.html">
+        <li class="chapter " data-level="1.6.10.1" data-path="../elk/elk.html">
             
                 <a href="../elk/elk.html">
             
                     
-                    2.分布式之ELK
+                    1.分布式之ELK
             
                 </a>
             
@@ -2155,7 +2129,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >1.集群启动停止脚本</a>
+        <a href="../.." >1.概述</a>
     </h1>
 </div>
 
@@ -2171,31 +2145,77 @@
                                 <section class="normal markdown-section">
                                 
                                 <div class="treeview__container"><div class="treeview__container-title"><span class="treeview__main-title">Treeview</span><span class="treeview__copyright">Copyright &#xA9; aleen42 all right reserved, powered by <a href="https://github.com/aleen42" target="_blank">aleen42</a></span></div><ul>
-<li><div><a href="#binbash">! /bin/bash</a><i></i></div></li>
+<li><div><a href="#&#x4E3A;&#x4EC0;&#x4E48;&#x9700;&#x8981;&#x5206;&#x5E93;&#x5206;&#x8868;&#xFF1A;">&#x4E3A;&#x4EC0;&#x4E48;&#x9700;&#x8981;&#x5206;&#x5E93;&#x5206;&#x8868;&#xFF1A;</a><i></i></div></li>
+<li><div><a href="#&#x8BFB;&#x5199;&#x5206;&#x79BB;&#xFF1A;">&#x8BFB;&#x5199;&#x5206;&#x79BB;&#xFF1A;</a><i></i></div></li>
+<li><div><a href="#&#x5206;&#x5E93;&#x5206;&#x8868;&#x5E38;&#x89C1;&#x65B9;&#x5F0F;&#xFF1A;">&#x5206;&#x5E93;&#x5206;&#x8868;&#x5E38;&#x89C1;&#x65B9;&#x5F0F;&#xFF1A;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<ul>
+<li><div><a href="#&#x5782;&#x76F4;">&#x5782;&#x76F4;</a><i></i></div></li>
+<li><div><a href="#&#x6C34;&#x5E73;">&#x6C34;&#x5E73;</a><i></i></div></li>
+</ul></li>
+<li><div><a href="#&#x5206;&#x5E93;&#x5206;&#x8868;&#x4E4B;&#x540E;&#x5E26;&#x6765;&#x7684;&#x95EE;&#x9898;&#xFF1A;">&#x5206;&#x5E93;&#x5206;&#x8868;&#x4E4B;&#x540E;&#x5E26;&#x6765;&#x7684;&#x95EE;&#x9898;&#xFF1A;</a><i></i></div></li>
+<li><div><a href="#&#x5206;&#x5E93;&#x5206;&#x8868;&#x7B97;&#x6CD5;&#xFF1A;">&#x5206;&#x5E93;&#x5206;&#x8868;&#x7B97;&#x6CD5;&#xFF1A;</a><i></i></div></li>
+<li><div><a href="#&#x5E38;&#x89C1;&#x7684;&#x4E2D;&#x95F4;&#x4EF6;&#xFF1A;">&#x5E38;&#x89C1;&#x7684;&#x4E2D;&#x95F4;&#x4EF6;&#xFF1A;</a><i></i></div></li>
 </ul>
 </div>
 
-<pre class="language-"><code class="lang-shell"><span class="token shebang important">#! /bin/bash</span>
-<span class="token keyword">case</span> <span class="token variable">$1</span> <span class="token keyword">in</span>
-<span class="token string">&quot;start&quot;</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token keyword">for</span> <span class="token for-or-select variable">i</span> <span class="token keyword">in</span> hadoop101 hadoop102 hadoop103
-        <span class="token keyword">do</span>
-                <span class="token builtin class-name">echo</span> <span class="token string">&quot; --------&#x542F;&#x52A8; <span class="token variable">$i</span> Kafka-------&quot;</span>
-                <span class="token comment"># &#x7528;&#x4E8E;KafkaManager&#x76D1;&#x63A7;</span>
-                <span class="token function">ssh</span> <span class="token variable">$i</span> <span class="token string">&quot;export JMX_PORT=9988 &amp;&amp; /usr/local/software/kafka_2.12-2.6.0/bin/kafka-server-start.sh -daemon /usr/local/software/kafka_2.12-2.6.0/config/server.properties &quot;</span>
-        <span class="token keyword">done</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
-<span class="token string">&quot;stop&quot;</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token keyword">for</span> <span class="token for-or-select variable">i</span> <span class="token keyword">in</span> hadoop101 hadoop102 hadoop103
-        <span class="token keyword">do</span>
-                <span class="token builtin class-name">echo</span> <span class="token string">&quot; --------&#x505C;&#x6B62; <span class="token variable">$i</span> Kafka-------&quot;</span>
-                <span class="token function">ssh</span> <span class="token variable">$i</span> <span class="token string">&quot;/usr/local/software/kafka_2.12-2.6.0/bin/kafka-server-stop.sh stop&quot;</span>
-        <span class="token keyword">done</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
-<span class="token keyword">esac</span>
-</code></pre>
+<h1 id="&#x4EC0;&#x4E48;&#x662F;&#x5206;&#x5E93;&#x5206;&#x8868;&#xFF1A;">&#x4EC0;&#x4E48;&#x662F;&#x5206;&#x5E93;&#x5206;&#x8868;&#xFF1A;</h1>
+<p>&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x5E93;&#x4E00;&#x5F20;&#x8868;&#x5206;&#x6210;N&#x5C0F;&#x8868;</p>
+<p>&#x4E0D;&#x628A;&#x9E21;&#x86CB;&#x653E;&#x5728;&#x4E00;&#x4E2A;&#x7BEE;&#x5B50;&#x91CC;</p>
+<h1 id="&#x4E3A;&#x4EC0;&#x4E48;&#x9700;&#x8981;&#x5206;&#x5E93;&#x5206;&#x8868;&#xFF1A;">&#x4E3A;&#x4EC0;&#x4E48;&#x9700;&#x8981;&#x5206;&#x5E93;&#x5206;&#x8868;&#xFF1A;</h1>
+<p>&#x4E1A;&#x52A1;&#x8D8A;&#x6765;&#x8D8A;&#x5927;&#xFF0C;&#x5355;&#x8868;&#x6570;&#x636E;&#x8D85;&#x51FA;&#x4E86;&#x6570;&#x636E;&#x5E93;&#x652F;&#x6301;&#x7684;&#x5BB9;&#x91CF;&#x3002;</p>
+<p>&#x6301;&#x4E45;&#x5316;&#x78C1;&#x76D8;IO&#xFF0C;&#x4F20;&#x7EDF;&#x7684;&#x6570;&#x636E;&#x5E93;&#x6027;&#x80FD;&#x74F6;&#x9888;&#xFF0C;&#x4EA7;&#x54C1;&#x7ECF;&#x7406;&#x4E1A;&#x52A1;&#x5FC5;&#x987B;&#x8FD9;&#x4E48;&#x505A;</p>
+<p>&#x6539;&#x53D8;&#x7A0B;&#x5E8F;&#x3002;&#x6570;&#x636E;&#x5E93;&#x4E0B;&#x5200;&#x5B50;&#x5207;&#x5206;&#x4F18;&#x5316;</p>
+<p>1&#x3001;&#x6362;&#x6570;&#x636E;&#x5E93;&#xFF08;&#x7F13;&#x5B58;&#xFF09;</p>
+<p>2&#x3001;Sql&#x3001;&#x7D22;&#x5F15;&#x3001;&#x5B57;&#x6BB5;&#x4F18;&#x5316;</p>
+<p>3&#x3001;&#x8BFB;&#x5199;&#x5206;&#x79BB;&#xFF08;&#x4E1A;&#x52A1;&#x6709;&#x5173;&#x4F18;&#x5316;&#xFF09;</p>
+<p>4&#x3001;&#x5206;&#x5E93;&#x5206;&#x8868;&#xFF08;&#x4E1A;&#x52A1;&#xFF09;</p>
+<p>5&#x3001;&#x5206;&#x533A;</p>
+<h1 id="&#x8BFB;&#x5199;&#x5206;&#x79BB;&#xFF1A;">&#x8BFB;&#x5199;&#x5206;&#x79BB;&#xFF1A;</h1>
+<p> <strong>&#x4EC0;&#x4E48;&#x662F;&#x8BFB;&#x5199;&#x5206;&#x79BB;</strong>:&#x6211;&#x4EEC;&#x4E00;&#x822C;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x8BBF;&#x95EE;&#x6570;&#x636E;&#x5E93;&#x65E0;&#x975E;&#x662F;&#x8BFB;&#x53D6;&#x6570;&#x636E;&#x3001;&#x4FEE;&#x6539;&#x6570;&#x636E;&#x3001;&#x63D2;&#x5165;&#x6570;&#x636E;&#x3001;&#x5220;&#x9664;&#x6570;&#x636E; CRUD&#x3002;</p>
+<p>&#x5206;&#x5F00;&#x300B;&#x5206;&#x5E93; &#x524D;&#x63D0;&#x6761;&#x4EF6;&#xFF1A;master&#x300B;salve &#x4E3B;&#x4ECE;&#xFF08;&#x540C;&#x6B65;&#xFF09;&#x67B6;&#x6784; &#x8BFB;&#x5199; &#x4E92;&#x8054;&#x7F51;&#x8BFB;&#x591A;&#x5199;&#x5C11;</p>
+<p>Insert orders 1 select orders N</p>
+<h1 id="&#x5206;&#x5E93;&#x5206;&#x8868;&#x5E38;&#x89C1;&#x65B9;&#x5F0F;&#xFF1A;">&#x5206;&#x5E93;&#x5206;&#x8868;&#x5E38;&#x89C1;&#x65B9;&#x5F0F;&#xFF1A;</h1>
+<h2 id="&#x5782;&#x76F4;">&#x5782;&#x76F4;</h2>
+<p>&#x901A;&#x4FD7;&#x7684;&#x8BF4;&#x6CD5;&#x53EB;&#x505A;&#x201C;&#x5927;&#x8868;&#x62C6;&#x5C0F;&#x8868;&#x201D;&#xFF0C;&#x62C6;&#x5206;&#x662F;&#x57FA;&#x4E8E;&#x5173;&#x7CFB;&#x578B;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x7684;&#x201C;&#x5217;&#x201D;&#xFF08;&#x5B57;&#x6BB5;&#xFF09;&#x8FDB;&#x884C;&#x7684;&#x3002;</p>
+<p>&#x5B57;&#x6BB5;&#x62C6;&#x5206;</p>
+<p>&#x7279;&#x70B9;:1&#x3001;&#x6BCF;&#x4E2A;&#x5E93;&#xFF08;&#x8868;&#xFF09;&#x7684;&#x7ED3;&#x6784;&#x90FD;&#x4E0D;&#x4E00;&#x6837;</p>
+<p>&#x200B;         2&#x3001;&#x6BCF;&#x4E2A;&#x5E93;&#xFF08;&#x8868;&#xFF09;&#x7684;&#x6570;&#x636E;&#x90FD;&#xFF08;&#x81F3;&#x5C11;&#x6709;&#x4E00;&#x5217;&#xFF09;&#x4E00;&#x6837;</p>
+<p>&#x200B;     3&#x3001;&#x6BCF;&#x4E2A;&#x5E93;&#xFF08;&#x8868;&#xFF09;&#x7684;&#x5E76;&#x96C6;&#x662F;&#x5168;&#x91CF;&#x6570;&#x636E;</p>
+<p><img src="https://gitee.com/liufeihua/images/raw/master/images/image-20210721170400177.png" alt="image-20210721170400177"></p>
+<p>1&#x3001;&#x5176;&#x5B9E;&#x6CA1;&#x592A;&#x7406;&#x89E3;&#x5782;&#x76F4;&#x62C6;&#x5206;&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x6539;&#x8868;&#x7ED3;&#x6784;&#xFF0C;&#x4E4B;&#x524D;&#x5728;&#x4E00;&#x4E2A;&#x5E93;&#x91CC;&#x7684;&#x65F6;&#x5019; &#x8BA2;&#x5355;&#x4F1A;&#x5458;&#x8FD9;&#x79CD;&#x4E1A;&#x52A1;&#x8868;&#x4E4B;&#x95F4;&#x4E5F;&#x662F;&#x8981;&#x5173;&#x8054;&#x7684;&#x554A;&#xFF1F;</p>
+<p>2&#x3001;&#x6839;&#x636E;&#x7528;&#x6237;id&#x5206;&#xFF0C;&#x4F1A;&#x4E0D;&#x4F1A;&#x51FA;&#x73B0;&#x6570;&#x636E;&#x4E0D;&#x5E73;&#x8861;&#x7684;&#x60C5;&#x51B5; &#x5E73;&#x8861;</p>
+<p>3&#x3001;&#x6839;&#x636E;&#x7528;&#x6237;&#x5206;&#xFF0C;&#x4F1A;&#x4E0D;&#x4F1A;&#x51FA;&#x73B0;&#x6570;&#x636E;&#x4E0D;&#x5E73;&#x8861;&#x7684;&#x60C5;&#x51B5;</p>
+<p>4&#x3001;&#x8001;&#x5E08;&#xFF0C;&#x4E0D;&#x660E;&#x767D;&#x521A;&#x521A;&#x5206;&#x5E93;&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x6709;&#x90A3;&#x79CD; &#x94FE;&#x8868;&#x67E5;&#x8BE2;&#xFF0C;&#x8FD9;&#x4E2A;&#x5782;&#x76F4;&#x5206;&#x5E93;&#x4E0D;&#x4E5F;&#x662F;&#x6309;&#x6570;&#x636E;&#x5185;&#x5BB9;&#x5206;&#x5E93;&#x5417; &#xFF1F;&#xFF1F;&#xFF1F;</p>
+<p>5&#x3001;&#x7535;&#x5546;&#x7CFB;&#x7EDF;&#x7684;&#x8BA2;&#x5355;&#x91CF;&#x4F1A;&#x5F88;&#x5927;&#xFF0C;&#x8BA2;&#x5355;&#x8868;&#x6570;&#x636E;&#x4E5F;&#x5927;&#xFF0C;&#x5728;&#x5206;&#x8868;&#x7684;&#x65F6;&#x5019;&#x5982;&#x679C;&#x662F;&#x5BF9;&#x8BA2;&#x5355;id&#x4F5C;&#x4E3A;&#x5206;&#x8868;&#x89C4;&#x5219;&#xFF0C;&#x90A3;&#x4E48;&#x5728;&#x67E5;&#x8BE2;&#x67D0;&#x4E2A;&#x7528;&#x6237;&#x7684;&#x8BA2;&#x5355;&#x4F1A;&#x6D89;&#x53CA;&#x5230;&#x5F88;&#x591A;&#x4E2A;&#x8868;&#x7684;&#x6570;&#x636E;&#x3002;&#x76F8;&#x53CD;&#xFF0C;&#x4E5F;&#x4F1A;&#x6709;&#x540C;&#x6837;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x95EE;&#x4E0B;&#x8001;&#x5E08;&#x5982;&#x4F55;&#x89E3;&#x51B3;&#xFF1F;</p>
+<p>&#x8BA2;&#x5355;&#x91CC;&#x9762;&#x4E00;&#x822C;&#x8BA2;&#x5355;id userid&#xFF08;&#x4E92;&#x8054;&#x7F51;&#x7F51;&#x7AD9; &#x7528;&#x6237;&#x4E3A;&#x4E2D;&#x5FC3; userid&#xFF09;</p>
+<p>&#x67E5;&#x770B;&#x6211;&#x7684;&#x8BA2;&#x5355;</p>
+<p>Select * from orders where orderid=333 and userid=123</p>
+<p>&#x67E5;&#x770B;<strong>&#x6211;</strong>&#x7684;&#x8BA2;&#x5355;&#x5217;&#x8868;</p>
+<p>Select * from orders where userid=123 1&#x5E93;</p>
+<p>&#x67E5;&#x770B;&#x7684;&#x5546;&#x54C1;&#xFF1F;&#xFF1F;&#x8D2D;&#x7269;&#x8F66;&#xFF08;&#x7528;&#x6237;&#xFF09;card</p>
+<h2 id="&#x6C34;&#x5E73;">&#x6C34;&#x5E73;</h2>
+<p>&#x4EE5;&#x67D0;&#x4E2A;&#x5B57;&#x6BB5;&#x6309;&#x7167;&#x4E00;&#x5B9A;&#x7684;&#x89C4;&#x5F8B;&#xFF08;&#x53D6;&#x6A21;&#xFF09;&#x8BB2;&#x4E00;&#x4E2A;&#x8868;&#x7684;&#x6570;&#x636E;&#x5206;&#x5230;&#x591A;&#x4E2A;&#x5E93;&#x4E2D;</p>
+<p>&#x5185;&#x5BB9;&#x62C6;&#x5206;</p>
+<p><img src="https://gitee.com/liufeihua/images/raw/master/images/image-20210721170434032.png" alt="image-20210721170434032"></p>
+<h1 id="&#x5206;&#x5E93;&#x5206;&#x8868;&#x4E4B;&#x540E;&#x5E26;&#x6765;&#x7684;&#x95EE;&#x9898;&#xFF1A;">&#x5206;&#x5E93;&#x5206;&#x8868;&#x4E4B;&#x540E;&#x5E26;&#x6765;&#x7684;&#x95EE;&#x9898;&#xFF1A;</h1>
+<p><strong>&#x8BFB;&#x5199;&#x5206;&#x79BB;&#xFF1A;</strong>&#x4E3B;&#x4ECE;&#x540C;&#x6B65;&#x3001;&#x6570;&#x636E;&#x4E00;&#x81F4;&#x6027;&#x7684;&#x95EE;&#x9898;&#x3001;&#x7F51;&#x7EDC;&#x5EF6;&#x8FDF;&#x7684;&#x95EE;&#x9898;</p>
+<p><strong>&#x5206;&#x5E93;&#x5206;&#x8868;&#xFF1A;</strong></p>
+<p>&#x589E;&#x52A0;&#x4E86;&#x6211;&#x4EEC;&#x7EF4;&#x62A4;&#x6210;&#x672C;</p>
+<p>&#x5206;&#x5E03;&#x5F0F;&#x4E8B;&#x52A1;&#xFF08;&#x8DE8;&#x5E93;&#x4E8B;&#x52A1;&#xFF09;</p>
+<p>&#x8DE8;&#x5E93;join</p>
+<p>&#x5206;&#x5E03;&#x5F0F;&#x5168;&#x5C40;&#x552F;&#x4E00;ID&#xFF08;snowflake&#xFF09;</p>
+<h1 id="&#x5206;&#x5E93;&#x5206;&#x8868;&#x7B97;&#x6CD5;&#xFF1A;">&#x5206;&#x5E93;&#x5206;&#x8868;&#x7B97;&#x6CD5;&#xFF1A;</h1>
+<p> <strong>&#x53D6;&#x6A21;&#xFF08;Hash**</strong>&#xFF09;**&#x901A;&#x8FC7;userid&#x7528;&#x6237;&#x8868;&#x5B57;&#x6BB5;&#x503C;&#x8FDB;&#x884C;123%3=xxxx &#x6570;&#x636E;&#x5206;&#x6563;&#x5747;&#x8861;&#xFF0C;&#x907F;&#x514D;&#x6570;&#x636E;&#x70ED;&#x70B9; &#x4E00;&#x81F4;&#x6027;hash&#xFF08;&#x6269;&#x5BB9;&#x9700;&#x8981;O&#xFF08;N&#xFF09;&#xFF09;</p>
+<p> <strong>&#x8303;&#x56F4;&#x533A;&#x5206;&#xFF08;range**</strong>&#xFF09;**&#x6309;&#x6708; &#x6309;&#x7701; A&#xFF08;0-6&#xFF09;B&#xFF08;7-8&#xFF09;C&#xFF08;9 10&#xFF09;&#x70ED;&#x70B9;&#x6570;&#x636E; 11&#x90A3;&#x5929;</p>
+<p> <strong>&#x9884;&#x5B9A;&#x4E49;&#xFF08;list**</strong>&#xFF09;**&#xFF08;100w 1&#x4EBF;&#x6570;&#x636E; 10&#x5E93;&#xFF09;&#x98CE;&#x6295;</p>
+<h1 id="&#x5E38;&#x89C1;&#x7684;&#x4E2D;&#x95F4;&#x4EF6;&#xFF1A;">&#x5E38;&#x89C1;&#x7684;&#x4E2D;&#x95F4;&#x4EF6;&#xFF1A;</h1>
+<p>&#x5F00;&#x6E90;&#x4E2D;&#x95F4;&#x4EF6;&#xFF1A;sharding-sphere atlas &#x5F53;&#x5F53;&#x7F51; &#x5F20;&#x4EAE;&#x3001;&#x9AD8;&#x6D2A;&#x6D9B; sharding-jdbc 2018</p>
+<p><strong>&#x5206;&#x4E24;&#x79CD;&#x7C7B;&#x578B;&#xFF1A;</strong></p>
+<p><strong>Proxy**</strong>&#x4EE3;&#x7406;**&#xFF1A;mycat&#xFF08;&#x91CD;&#xFF09;&#x3001;mysql-proxy atlas&#x3001;sharding-proxy&#xFF08;sharding-sphere &#xFF09;</p>
+<p><strong>Jdbc**</strong>&#x76F4;&#x8FDE;&#xFF1A;**TDDL&#xFF08;&#x6DD8;&#x5B9D; &#x534A;&#x5F00;&#x6E90;&#xFF09; &#x3001;sharding-jdbc&#xFF08;sharding-sphere &#xFF09;&#x7F3A;&#x70B9; &#x8BB2;&#x6E05;&#x695A;</p>
+<p>&#x4E0D;&#x5206;&#x4E0A;&#x4E0B; </p>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; ohter.com 2021 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x8BE5;&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
-2021-04-19 15:36:24
+2021-07-21 17:04:38
 </span></footer>
 <script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
                                 
@@ -2224,12 +2244,12 @@
 
             
                 
-                <a href="./" class="navigation navigation-prev " aria-label="Previous page: kafka消息中间件">
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: shardingsphere中间件">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="kafka.html" class="navigation navigation-next " aria-label="Next page: 2.大数据技术之Kafka">
+                <a href="核心概念.html" class="navigation navigation-next " aria-label="Next page: 2.核心概念">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2240,7 +2260,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"1.集群启动停止脚本","level":"1.6.6.1","depth":3,"next":{"title":"2.大数据技术之Kafka","level":"1.6.6.2","depth":3,"path":"distributed/kafka/kafka.md","ref":"distributed/kafka/kafka.md","articles":[]},"previous":{"title":"kafka消息中间件","level":"1.6.6","depth":2,"path":"distributed/kafka/README.md","ref":"distributed/kafka/README.md","articles":[{"title":"1.集群启动停止脚本","level":"1.6.6.1","depth":3,"path":"distributed/kafka/shell.md","ref":"distributed/kafka/shell.md","articles":[]},{"title":"2.大数据技术之Kafka","level":"1.6.6.2","depth":3,"path":"distributed/kafka/kafka.md","ref":"distributed/kafka/kafka.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["chapter-fold","theme-comscore","back-to-top-button","code","tbfed-pagefooter","page-treeview","pageview-count","popup","prism","-highlight","hide-element","-lunr","-search","search-pro","page-toc-button"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy ohter.com 2021","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"page-treeview":{"collapsed":false,"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"search-pro":{},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"liufeihua","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"日常笔记","language":"zh-hans","gitbook":"*","description":"日常笔记"},"file":{"path":"distributed/kafka/shell.md","mtime":"2021-04-19T07:36:24.592Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-20T09:44:38.450Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"1.概述","level":"1.6.9.1","depth":3,"next":{"title":"2.核心概念","level":"1.6.9.2","depth":3,"path":"distributed/shardingsphere/核心概念.md","ref":"distributed/shardingsphere/核心概念.md","articles":[]},"previous":{"title":"shardingsphere中间件","level":"1.6.9","depth":2,"path":"distributed/shardingsphere/README.md","ref":"distributed/shardingsphere/README.md","articles":[{"title":"1.概述","level":"1.6.9.1","depth":3,"path":"distributed/shardingsphere/概述.md","ref":"distributed/shardingsphere/概述.md","articles":[]},{"title":"2.核心概念","level":"1.6.9.2","depth":3,"path":"distributed/shardingsphere/核心概念.md","ref":"distributed/shardingsphere/核心概念.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["chapter-fold","theme-comscore","back-to-top-button","code","tbfed-pagefooter","page-treeview","pageview-count","popup","prism","-highlight","hide-element","-lunr","-search","search-pro","page-toc-button"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy ohter.com 2021","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"page-treeview":{"collapsed":false,"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"search-pro":{},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"liufeihua","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"日常笔记","language":"zh-hans","gitbook":"*","description":"日常笔记"},"file":{"path":"distributed/shardingsphere/概述.md","mtime":"2021-07-21T09:04:38.396Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-21T09:12:42.347Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

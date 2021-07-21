@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>2.大数据技术之Kafka · 日常笔记</title>
+        <title>1.kafka消息中间件 · 日常笔记</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -92,7 +92,7 @@
     <link rel="next" href="../mongo/" />
     
     
-    <link rel="prev" href="shell.html" />
+    <link rel="prev" href="./" />
     
 
     </head>
@@ -1250,12 +1250,12 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.6.4.1" data-path="../rocketmq/shell.html">
+        <li class="chapter " data-level="1.6.4.1" data-path="../rocketmq/初识消息中间件.html">
             
-                <a href="../rocketmq/shell.html">
+                <a href="../rocketmq/初识消息中间件.html">
             
                     
-                    1.启停脚本
+                    1.初识消息中间件
             
                 </a>
             
@@ -1263,12 +1263,25 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.4.2" data-path="../rocketmq/rocketmq.html">
+        <li class="chapter " data-level="1.6.4.2" data-path="../rocketmq/特性详解&场景介绍.html">
             
-                <a href="../rocketmq/rocketmq.html">
+                <a href="../rocketmq/特性详解&场景介绍.html">
             
                     
-                    2.分布式之RockeqMq
+                    2.特性详解&场景介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4.3" data-path="../rocketmq/源码分析.html">
+            
+                <a href="../rocketmq/源码分析.html">
+            
+                    
+                    3.源码分析
             
                 </a>
             
@@ -1353,25 +1366,12 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.6.6.1" data-path="shell.html">
-            
-                <a href="shell.html">
-            
-                    
-                    1.集群启动停止脚本
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter active" data-level="1.6.6.2" data-path="kafka.html">
+        <li class="chapter active" data-level="1.6.6.1" data-path="kafka.html">
             
                 <a href="kafka.html">
             
                     
-                    2.大数据技术之Kafka
+                    1.kafka消息中间件
             
                 </a>
             
@@ -1531,7 +1531,7 @@
                 <a href="../shardingsphere/">
             
                     
-                    shardingsphere数据库中间件
+                    shardingsphere中间件
             
                 </a>
             
@@ -1540,12 +1540,12 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.6.9.1" data-path="../shardingsphere/1_JVM整体结构介绍.md">
+        <li class="chapter " data-level="1.6.9.1" data-path="../shardingsphere/概述.html">
             
-                <span>
+                <a href="../shardingsphere/概述.html">
             
                     
-                    1.JVM整体结构介绍
+                    1.概述
             
                 </a>
             
@@ -1553,25 +1553,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.9.2" data-path="../shardingsphere/2_JVM性能调优监控工具.md">
+        <li class="chapter " data-level="1.6.9.2" data-path="../shardingsphere/核心概念.html">
             
-                <span>
-            
-                    
-                    2.JVM性能调优监控工具
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.9.3" data-path="../shardingsphere/3_JVM垃圾回收与调优.md">
-            
-                <span>
+                <a href="../shardingsphere/核心概念.html">
             
                     
-                    3.JVM垃圾回收与调优
+                    2.核心概念
             
                 </a>
             
@@ -1598,25 +1585,12 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.6.10.1" data-path="../elk/shell.html">
-            
-                <a href="../elk/shell.html">
-            
-                    
-                    1.启停脚本
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.6.10.2" data-path="../elk/elk.html">
+        <li class="chapter " data-level="1.6.10.1" data-path="../elk/elk.html">
             
                 <a href="../elk/elk.html">
             
                     
-                    2.分布式之ELK
+                    1.分布式之ELK
             
                 </a>
             
@@ -2155,7 +2129,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >2.大数据技术之Kafka</a>
+        <a href="../.." >1.kafka消息中间件</a>
     </h1>
 </div>
 
@@ -2171,7 +2145,7 @@
                                 <section class="normal markdown-section">
                                 
                                 <div class="treeview__container"><div class="treeview__container-title"><span class="treeview__main-title">Treeview</span><span class="treeview__copyright">Copyright &#xA9; aleen42 all right reserved, powered by <a href="https://github.com/aleen42" target="_blank">aleen42</a></span></div><ul>
-<li><div><a href="#1&#x6982;&#x8FF0;">1.&#x6982;&#x8FF0;</a><i class="level__parent level__item level__parent--opened" state="opened" onclick="var curState = this.getAttribute(&apos;state&apos;);var nextState = curState === &apos;opened&apos; ? &apos;hidden&apos; : &apos;opened&apos;;this.setAttribute(&apos;state&apos;, nextState);this.className = this.className.split(curState).join(nextState);var list = this.parentNode.nextElementSibling;if (nextState === &apos;hidden&apos;) {    list.style.display = &apos;none&apos;;} else {    list.style.display = &apos;block&apos;;}"></i></div>
+<li> 
 <ul>
 <li><div><a href="#11-&#x7B80;&#x4ECB;">1.1 &#x7B80;&#x4ECB;</a><i></i></div></li>
 <li><div><a href="#12-&#x7279;&#x70B9;">1.2 &#x7279;&#x70B9;</a><i></i></div></li>
@@ -2255,7 +2229,7 @@
 </ul>
 </div>
 
-<h1 id="1&#x6982;&#x8FF0;">1.&#x6982;&#x8FF0;</h1>
+<p>1.&#x6982;&#x8FF0;</p>
 <h2 id="11-&#x7B80;&#x4ECB;">1.1 &#x7B80;&#x4ECB;</h2>
 <p>Apache Kafka &#x662F;&#x4E00;&#x4E2A;<strong>&#x5206;&#x5E03;&#x5F0F;&#x6D88;&#x606F;</strong>&#x7CFB;&#x7EDF;&#xFF0C;&#x7531;Scala&#x5199;&#x6210;&#x3002;&#x662F;&#x7531; Apache &#x8F6F;&#x4EF6;&#x57FA;&#x91D1;&#x4F1A;&#x5F00;&#x53D1;&#x7684;&#x4E00;&#x4E2A;&#x5F00;&#x6E90;&#x6D88;&#x606F;&#x7CFB;&#x7EDF;&#x9879;&#x76EE;</p>
 <h2 id="12-&#x7279;&#x70B9;">1.2 &#x7279;&#x70B9;</h2>
@@ -2266,8 +2240,6 @@
 <h2 id="13-&#x573A;&#x666F;">1.3 &#x573A;&#x666F;</h2>
 <p>&#x5927;&#x6570;&#x636E;&#x65E5;&#x5FD7;&#x6536;&#x96C6;&#x7F13;&#x5B58;</p>
 <h2 id="14-&#x67B6;&#x6784;">1.4 &#x67B6;&#x6784;</h2>
-<p><img src="https://uploader.shimo.im/f/7iilSCGZwR2yZRYQ.png!thumbnail?fileGuid=kcDQJ8PgC8thg6gD" alt="&#x56FE;&#x7247;"></p>
-<p><img src="https://uploader.shimo.im/f/Ifct6DMz4aUcF1Ug.png!thumbnail?fileGuid=kcDQJ8PgC8thg6gD" alt="&#x56FE;&#x7247;"></p>
 <h1 id="2kafka-&#x73AF;&#x5883;&#x642D;&#x5EFA;">2.kafka &#x73AF;&#x5883;&#x642D;&#x5EFA;</h1>
 <h2 id="1&#xFF09;&#x89E3;&#x538B;&#x5B89;&#x88C5;&#x5305;">1&#xFF09;&#x89E3;&#x538B;&#x5B89;&#x88C5;&#x5305;</h2>
 <pre class="language-"><code class="lang-shell"><span class="token function">tar</span> -zxvf kafka_2.12-2.6.0.tgz -C /usr/local/software
@@ -3294,7 +3266,7 @@ $ echo hello &gt; /opt/module/datas</p>
 <p>zookeeper.connection.timeout.ms    6000    The max time that the client waits while establishing a connection to zookeeper.</p>
 <p>zookeeper.sync.time.ms    2000    How far a ZK follower can be behind a ZK leader</p>
 <footer class="page-footer"><span class="copyright">Copyright &#xA9; ohter.com 2021 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x8BE5;&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
-2021-04-19 15:36:39
+2021-07-21 16:31:26
 </span></footer>
 <script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
                                 
@@ -3323,7 +3295,7 @@ $ echo hello &gt; /opt/module/datas</p>
 
             
                 
-                <a href="shell.html" class="navigation navigation-prev " aria-label="Previous page: 1.集群启动停止脚本">
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: kafka消息中间件">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -3339,7 +3311,7 @@ $ echo hello &gt; /opt/module/datas</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"2.大数据技术之Kafka","level":"1.6.6.2","depth":3,"next":{"title":"mongo文档数据库","level":"1.6.7","depth":2,"path":"distributed/mongo/README.md","ref":"distributed/mongo/README.md","articles":[{"title":"1.准备数据","level":"1.6.7.1","depth":3,"path":"distributed/mongo/mongoDb-data.md","ref":"distributed/mongo/mongoDb-data.md","articles":[]},{"title":"2.快速上手","level":"1.6.7.2","depth":3,"path":"distributed/mongo/mongoDb-quick-start.md","ref":"distributed/mongo/mongoDb-quick-start.md","articles":[]},{"title":"3.企业应用","level":"1.6.7.3","depth":3,"path":"distributed/mongo/mongoDb-enterprise.md","ref":"distributed/mongo/mongoDb-enterprise.md","articles":[]}]},"previous":{"title":"1.集群启动停止脚本","level":"1.6.6.1","depth":3,"path":"distributed/kafka/shell.md","ref":"distributed/kafka/shell.md","articles":[]},"dir":"ltr"},"config":{"plugins":["chapter-fold","theme-comscore","back-to-top-button","code","tbfed-pagefooter","page-treeview","pageview-count","popup","prism","-highlight","hide-element","-lunr","-search","search-pro","page-toc-button"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy ohter.com 2021","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"page-treeview":{"collapsed":false,"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"search-pro":{},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"liufeihua","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"日常笔记","language":"zh-hans","gitbook":"*","description":"日常笔记"},"file":{"path":"distributed/kafka/kafka.md","mtime":"2021-04-19T07:36:39.476Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-20T09:44:38.450Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"1.kafka消息中间件","level":"1.6.6.1","depth":3,"next":{"title":"mongo文档数据库","level":"1.6.7","depth":2,"path":"distributed/mongo/README.md","ref":"distributed/mongo/README.md","articles":[{"title":"1.准备数据","level":"1.6.7.1","depth":3,"path":"distributed/mongo/mongoDb-data.md","ref":"distributed/mongo/mongoDb-data.md","articles":[]},{"title":"2.快速上手","level":"1.6.7.2","depth":3,"path":"distributed/mongo/mongoDb-quick-start.md","ref":"distributed/mongo/mongoDb-quick-start.md","articles":[]},{"title":"3.企业应用","level":"1.6.7.3","depth":3,"path":"distributed/mongo/mongoDb-enterprise.md","ref":"distributed/mongo/mongoDb-enterprise.md","articles":[]}]},"previous":{"title":"kafka消息中间件","level":"1.6.6","depth":2,"path":"distributed/kafka/README.md","ref":"distributed/kafka/README.md","articles":[{"title":"1.kafka消息中间件","level":"1.6.6.1","depth":3,"path":"distributed/kafka/kafka.md","ref":"distributed/kafka/kafka.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["chapter-fold","theme-comscore","back-to-top-button","code","tbfed-pagefooter","page-treeview","pageview-count","popup","prism","-highlight","hide-element","-lunr","-search","search-pro","page-toc-button"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy ohter.com 2021","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"page-treeview":{"collapsed":false,"copyright":"Copyright © aleen42","minHeaderCount":"1","minHeaderDeep":"1"},"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"search-pro":{},"popup":{},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-comscore":{},"page-toc-button":{"maxTocDepth":2,"minTocSize":2},"back-to-top-button":{},"pageview-count":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"liufeihua","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"日常笔记","language":"zh-hans","gitbook":"*","description":"日常笔记"},"file":{"path":"distributed/kafka/kafka.md","mtime":"2021-07-21T08:31:26.490Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-21T09:12:42.347Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

@@ -1,4 +1,4 @@
-# 1.概述
+1.概述
 
 ## 1.1 简介
 
@@ -19,10 +19,6 @@ Apache Kafka 是一个**分布式消息**系统，由Scala写成。是由 Apache
 大数据日志收集缓存
 
 ## 1.4 架构
-
-![图片](https://uploader.shimo.im/f/7iilSCGZwR2yZRYQ.png!thumbnail?fileGuid=kcDQJ8PgC8thg6gD)
-
-![图片](https://uploader.shimo.im/f/Ifct6DMz4aUcF1Ug.png!thumbnail?fileGuid=kcDQJ8PgC8thg6gD)
 
 # 2.kafka 环境搭建
 
@@ -1545,5 +1541,4 @@ zookeeper.session.timeout.ms	6000	ZooKeeper session timeout. If the consumer fai
 zookeeper.connection.timeout.ms	6000	The max time that the client waits while establishing a connection to zookeeper.
 
 zookeeper.sync.time.ms	2000	How far a ZK follower can be behind a ZK leader
-
 

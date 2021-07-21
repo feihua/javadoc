@@ -154,7 +154,7 @@ db.emp.find().sort({"job":-1,"dep":1}).explain()
 3. 复制集群的选举配置
 
 ### 1.复制集群的架构
-![图片](https://uploader.shimo.im/f/vE8EWLnh5Hkwazap.png!thumbnail)
+![image-20210721151857861](https://gitee.com/liufeihua/images/raw/master/images/image-20210721151857861.png)
 
 ### 2.复制集群搭建基础示例
 主节点配置
@@ -271,7 +271,7 @@ rs.status()
 随着数据的增长，单机实例的瓶颈是很明显的。可以通过复制的机制应对压力，但mongodb中单个集群的 节点数量限制到了12个以内，所以需要通过分片进一步横向扩展。此外分片也可节约磁盘的存储。
 
 ### 1.mongodb 中的分片架构
- ![图片](https://uploader.shimo.im/f/B1mEW0GFMYwPAS47.png!thumbnail)
+![image-20210721152000933](https://gitee.com/liufeihua/images/raw/master/images/image-20210721152000933.png)
 
 **分片中的节点说明：**
 * 路由节点(mongos)：用于分发用户的请求，起到反向代理的作用。
@@ -296,7 +296,8 @@ rs.status()
 
 
 **配置 并启动config 节点集群**
-# 节点1 config1-37017.conf
+
+#### 2.1节点1 config1-37017.conf
 ```properties
 dbpath=/data/mongo/config1
 port=37017
@@ -306,7 +307,7 @@ replSet=configCluster
 configsvr=true
 ```
 
-# 节点2 config2-37018.conf
+#### 2.2节点2 config2-37018.conf
 ```properties
 dbpath=/data/mongo/config2
 port=37018
@@ -331,7 +332,7 @@ rs.initiate(cfg)
 
 
 
-# 配置 shard 节点集群==============
+#### 2.3配置 shard 节点集群
 ```properties
 # 节点1 shard1-47017.conf
 dbpath=/data/mongo/shard1
@@ -349,7 +350,7 @@ shardsvr=true
 ```
 
 配置 路由节点 mongos ==============
-# 节点 route-27017.conf
+#### 2.4节点 route-27017.conf
 ```properties
 port=27017
 bind_ip=0.0.0.0
