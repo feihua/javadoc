@@ -1,6 +1,5 @@
- ** 主讲**：鲁班 
- ** 时间**：2018/12/2  8:10
-**  地址**：腾讯课堂图灵学院
+ 时间**：2018/12/2  8:10
+**
 
 **课程概要：**
 1. RPC协议基本组成
@@ -13,9 +12,9 @@
 ### **RPC 协议名词解释**
 在一个典型RPC的使用场景中，包含了服务发现、负载、容错、网络传输、序列化等组件，其中RPC协议就指明了程序如何进行网络传输和序列化 。也就是说一个RPC协议的实现就等于一个非透明的远程调用实现，如何做到的的呢？
 
-![图片](https://images-cdn.shimo.im/nygYt7P9od0M3bLI/image.png!thumbnail)
+![image-20210722101915218](https://gitee.com/liufeihua/images/raw/master/images/image-20210722101915218.png)
 ### **协议基本组成：**
-![图片](https://images-cdn.shimo.im/5ACEVAse3eI0C36t/image.png!thumbnail)
+![image-20210722101926727](https://gitee.com/liufeihua/images/raw/master/images/image-20210722101926727.png)
 1. 地址：服务提供者地址
 2. 端口：协议指定开放的端口
 3. 报文编码：协议报文编码 ，分为请求头和请求体两部分。
@@ -118,9 +117,9 @@ tcp为提高性能，发送端会将需要发送的数据发送到缓冲区，�
 3. 使用带消息头的协议、消息头存储消息开始标识及消息长度信息，服务端获取消息头的时候解析出消息长度，然后向后读取该长度的内容。
 
 **比如：**Http协议 heade 中的 Content-Length 就表示消息体的大小。
-     
-![图片](https://images-cdn.shimo.im/pvz97MYiJ4QpJpT0/request_%E6%8A%A5%E6%96%87.png!thumbnail)
-      
+     
+![image-20210722102029786](https://gitee.com/liufeihua/images/raw/master/images/image-20210722102029786.png)
+      
 (注①：http 报文编码)
 
 ### Dubbo 协议报文编码：
@@ -142,14 +141,14 @@ tcp为提高性能，发送端会将需要发送的数据发送到缓冲区，�
 
 
 
-
-![图片](https://images-cdn.shimo.im/DvdIereMhsstrNLp/image.png!thumbnail)
-	*（注：相关源码参见 **c**om.alibaba.dubbo.rpc.protocol.dubbo.DubboCodec**）*
+![image-20210722102117907](https://gitee.com/liufeihua/images/raw/master/images/image-20210722102117907.png)
+	*（注：相关源码参见 **c**om.alibaba.dubbo.rpc.protocol.dubbo.DubboCodec**)*
 
 ### ***Dubbo协议的编解码过程：***
 
-![图片](https://images-cdn.shimo.im/N1Sk3JaDOmEIyxCG/image.png!thumbnail)
+![image-20210722102103509](https://gitee.com/liufeihua/images/raw/master/images/image-20210722102103509.png)
 **Dubbo 协议编解码实现过程** *(源码来源于**dubbo2.5.8  )*
+
 ```java
 1、DubboCodec.encodeRequestData() 116L // 编码request
 2、DecodeableRpcInvocation.decode()  89L   // 解码request
@@ -158,5 +157,4 @@ tcp为提高性能，发送端会将需要发送的数据发送到缓冲区，�
 ```
 
 ** **
-
 

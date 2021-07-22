@@ -7,7 +7,7 @@
 ### **Dubbo核心功能解释**
 	dubbo 阿里开源的一个SOA服务治理框架，从目前来看把它称作是一个RPC远程调用框架更为贴切。单从RPC框架来说，功能较完善，支持多种传输和序列化方案。所以想必大家已经知道他的核心功能了：就是远程调用。
 
-![图片](https://images-cdn.shimo.im/FMTFpoDqNNYJWhsP/image.png!thumbnail)	
+![image-20210722095855899](https://gitee.com/liufeihua/images/raw/master/images/image-20210722095855899.png)
 ### **快速演示Dubbo的远程调用**
 实现步骤
 - [ ] 创建服务端项目
@@ -26,7 +26,7 @@ dubbo 引入：
 </dependency>
 ```
 dubbo 默认依懒：
-![图片](https://images-cdn.shimo.im/VKqdCaJ0LZY3NwLJ/image.png!thumbnail)
+![image-20210722095924751](https://gitee.com/liufeihua/images/raw/master/images/image-20210722095924751.png)
 
 客户端代码：
 ```java
@@ -65,13 +65,16 @@ public void openServer(int port) {
 ### **基于Dubbo实现服务集群：**
 在上一个例子中如多个服务的集群？即当有多个服务同时提供的时候，客户端该调用哪个？以什么方式进行调用以实现负载均衡？
 一个简单的办法是将多个服务的URL同时设置到客户端并初始化对应的服务实例，然后以轮询的方式进行调用。
-![图片](https://images-cdn.shimo.im/Pyt2iFxChpwth38s/image.png!thumbnail)
+![image-20210722095940740](https://gitee.com/liufeihua/images/raw/master/images/image-20210722095940740.png)
 
 但如果访问增大，需要扩容服务器数量，那么就必须增加配置重启客户端实例。显然这不是我们愿意看到的。Dubbo引入了服务注册中的概念，可以解决动态扩容的问题。
 
-![图片](https://images-cdn.shimo.im/zPiAIuN3PMkwLNVD/image.png!thumbnail)
+
+
+![image-20210722100008254](https://gitee.com/liufeihua/images/raw/master/images/image-20210722100008254.png)
 
 演示基于注册中心实现服集群：
+
 - [ ] 修改服务端代码，添加multicast 注册中心。
 - [ ] 修改客户端代码，添加multicast 注册中心。
 - [ ] 观察 多个服务时，客户端如何调用。
@@ -161,7 +164,7 @@ System.out.println(u);
 
 配置关系图：
 
-![图片](https://images-cdn.shimo.im/3xdIwJ9pAi8RxcyL/image.png!thumbnail)
+![image-20210722100101204](https://gitee.com/liufeihua/images/raw/master/images/image-20210722100101204.png)
 
 **配置分类**
 所有配置项分为三大类。
@@ -172,12 +175,11 @@ System.out.println(u);
 先来看一个简单配置 
  <dubbo:service interface="tuling.dubbo.server.UserService"   **timeout**="2000">
 通过字面了解 timeout即服务的执行超时时间。但当服务执行真正超时的时候 报的错跟timeout并没有半毛钱的关系，其异常堆栈如下：
-![图片](https://images-cdn.shimo.im/oBluSDTPRy8hTJ10/image.png!thumbnail)
 
 可以看到错误表达的意思是 因为Channel 关闭导致 无法返回 Response 消息。
 出现这情况的原因在于 虽然timeout 配置在服务端去是用在客户端，其表示的是客户端调用超时间，而非服务端方法的执行超时。当我们去看客户端的日志时候就能看到timeout异常了
 
-![图片](https://images-cdn.shimo.im/krm9nmiGsEgojLPG/image.png!thumbnail)
+
 
 类似这种配在服务端用在客户端的配置还有很多，如retries/riː'traɪ/(重试次数)、async/əˈsɪŋk/（是否异步）、loadbalance(负载均衡)。。。等。
 **套路一：***服务端配置客户端来使用*。
@@ -194,7 +196,7 @@ System.out.println(u);
 
    在服务端配置timeout 之后 所有客户端都会采用该方超时时间，其客户端可以自定义超时时间吗？通过  <dubbo:reference timeout="2000"> 可以设定或者在<dubbo:consumer timeout="2000"> 也可以设定 甚至可以设定到方法级别 <dubbo:method name="getUser" timeout="2000"/>。加上服务端的配置，超时总共有6处可以配置。如果6处都配置了不同的值，最后肯定只会有一个超时值生效，其优先级如下：
 
-![图片](https://images-cdn.shimo.im/SwlDz0a4ZiM0xJh6/dubbo_config_override.jpg!thumbnail)
+![image-20210722100209274](https://gitee.com/liufeihua/images/raw/master/images/image-20210722100209274.png)
 
 小提示：通过DefaultFuture的get 方法就可观测到实际的超时设置。
 com.alibaba.dubbo.remoting.exchange.support.DefaultFuture
@@ -237,5 +239,4 @@ com.alibaba.dubbo.remoting.exchange.support.DefaultFuture
 ```
 
 ## 
-
 

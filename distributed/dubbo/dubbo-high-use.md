@@ -12,14 +12,14 @@
 **、模型信息**
 **、异常**
 
-
-![图片](https://images-cdn.shimo.im/nsvICKNyq687hiNs/image.png!thumbnail)
+![image-20210722100252114](https://gitee.com/liufeihua/images/raw/master/images/image-20210722100252114.png)
 暴露接口的通常做法是 接口与实现分离，服务端将 接口、模型、异常 等统一放置于一个模块，实现置于另一个模块。调用方通过Maven进行引用。
-![图片](https://images-cdn.shimo.im/JIxwaSLRiJ4NLuSQ/image.png!thumbnail)
+![image-20210722100303980](https://gitee.com/liufeihua/images/raw/master/images/image-20210722100303980.png)
+
 ### **自动化构建与协作**
 当项目越来越多，服务依懒关系越发复杂的时候，为了提高协作效率，必须采用自动化工具 完成 接口从编写到构建成JAR包，最后到引用的整个过程。
 
-![图片](https://images-cdn.shimo.im/0DHl4ab1PgopzJGV/image.png!thumbnail)
+![image-20210722100315724](https://gitee.com/liufeihua/images/raw/master/images/image-20210722100315724.png)
 
 流程描述：
 1. 服务提供者项目发人员编写Client 接口
@@ -30,7 +30,7 @@
 ### **接口平滑升级：**
 在项目迭代过程当中， 经常会有多个项目依懒同一个接口，如下图 项目B、C都依懒了项目A当中的接口1，此时项目B业务需要，需要接口1多增加一个参数，升级完成后。项目B能正确构建上线，项目C却不行。
 	
-![图片](https://images-cdn.shimo.im/dK7PhemwltoIHlkY/image.png!thumbnail)
+![image-20210722100330116](https://gitee.com/liufeihua/images/raw/master/images/image-20210722100330116.png)
 
 解决办法与原则：
 1. 接口要做到向下兼容：接口参数尽量以对象形式进行封装。Model属性只增不删，如果需要作废，可以添加@Deprecated  标识。
@@ -96,7 +96,7 @@ dubbo.registry.address=zookeeper://127.0.0.1:2181
 ---
 ### 注册中心的作用
 为了到达服务集群动态扩容的目的，注册中心存储了服务的地址信息与可用状态信息，并实时推送给订阅了相关服务的客户端。
-![图片](https://images-cdn.shimo.im/bkW47bqX26U4bGHv/image.png!thumbnail)
+![image-20210722100349399](https://gitee.com/liufeihua/images/raw/master/images/image-20210722100349399.png)
 
 **一个完整的注册中心需要实现以下功能：**
 1. 接收服务端的注册与客户端的引用，即将引用与消费建立关联，并支持多对多。
@@ -129,9 +129,12 @@ redis 注册中心配置：
 <dubbo:registry protocol="redis" address="192.168.0.147:6379"/>
 ```
 当我们启动两个服务端后发现，Reids中增加了一个Hash 类型的记录，其key为/dubbo/tuling.dubbo.server.UserService/providers。Value中分别存储了两个服务提供者的URL和有效期。
-![图片](https://images-cdn.shimo.im/68VyXno7jC83jiow/image.png!thumbnail)
+
+
+![image-20210722100520639](https://gitee.com/liufeihua/images/raw/master/images/image-20210722100520639.png)
 
 **同样消费者也是类似其整体结构如下：**
+
 ```xml
 //服务提供者注册信息 
 /dubbbo/com.tuling.teach.service.DemoService/providers
@@ -148,7 +151,7 @@ redis 注册中心配置：
 接下来回答第二个问题 **当提供者突然 宕机状态能即里变更吗**？
 这里Dubbo采用的是定时心跳的机制 来维护服务URL的有效期，默认每30秒更新一次有效期。即URL对应的毫秒值。具体代码参见：com.alibaba.dubbo.registry.redis.RedisRegistry#expireExecutor
 
-![图片](https://images-cdn.shimo.im/DtcacPmmUFU66d0P/image.png!thumbnail)
+![image-20210722100717969](https://gitee.com/liufeihua/images/raw/master/images/image-20210722100717969.png)
 
 com.alibaba.dubbo.registry.redis.RedisRegistry#deferExpired
 com.alibaba.dubbo.registry.integration.RegistryDirectory
@@ -166,9 +169,11 @@ com.alibaba.dubbo.registry.support.FailbackRegistry
 **提供者突然断开：**
 基于Zookeeper 临时节点机制实现，在客户端会话超时后 Zookeeper会自动删除所有临时节点，默认为40秒。 
 // 创建临时节点
-```java
-com.alibaba.dubbo.remoting.zookeeper.curator.CuratorZookeeperClient#createEphemeral
-```
+
+![image-20210722100627319](https://gitee.com/liufeihua/images/raw/master/images/image-20210722100627319.png)
+
+
+
 提问：
 在zookeeper 断开的40秒内 如果 有客户端加入 会调用 已失效的提供者连接吗？
 答：不会，提供者宕机后 ，其与客户端的链接也随即断开，客户端在调用前会检测长连接状态。
@@ -189,5 +194,5 @@ com.alibaba.dubbo.remoting.zookeeper.curator.CuratorZookeeperClient#createPersis
 com.alibaba.dubbo.registry.integration.RegistryDirectory
 ```
 源码解析：
-![图片](https://uploader.shimo.im/f/Os5phYmAnloi2v1O.png!thumbnail)
+![image-20210722100657512](https://gitee.com/liufeihua/images/raw/master/images/image-20210722100657512.png)
 com.alibaba.dubbo.registry.integration.RegistryDirectory

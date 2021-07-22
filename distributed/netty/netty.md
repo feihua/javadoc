@@ -4,43 +4,43 @@
 
 ### 1.1.1Linux I/O 流程
 
-![图片](https://uploader.shimo.im/f/tSYh1RPfmq1tm1N8.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD)
+![image-20210722135911109](https://gitee.com/liufeihua/images/raw/master/images/image-20210722135911109.png)
 
 ### 1.1.2 将 I/O 模型划分为以下五种类型：
 
 * 阻塞式 I/O 模型
 
-![图片](https://uploader.shimo.im/f/6L7VJKhdrRImo3Ij.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD)
+![image-20210722135944841](https://gitee.com/liufeihua/images/raw/master/images/image-20210722135944841.png)
 
 * 非阻塞式 I/O 模型
 
-![图片](https://uploader.shimo.im/f/KwjmsW0SBekQVkYe.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD)
+![image-20210722140000090](https://gitee.com/liufeihua/images/raw/master/images/image-20210722140000090.png)
 
 * I/O 复用
 
-![图片](https://uploader.shimo.im/f/Q5rDsOK4C6SDcYum.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD)
+![image-20210722140009925](https://gitee.com/liufeihua/images/raw/master/images/image-20210722140009925.png)
 
 * 信号驱动式 I/O
 
-![图片](https://uploader.shimo.im/f/rKyY5Um3BJdxL6i7.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD)
+![image-20210722140020566](https://gitee.com/liufeihua/images/raw/master/images/image-20210722140020566.png)
 
 * 异步 I/O
 
-![图片](https://uploader.shimo.im/f/7m1RVDrteNMVHiBe.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD)
+![image-20210722140033323](https://gitee.com/liufeihua/images/raw/master/images/image-20210722140033323.png)
 
 ### 1.1.3 各种 I/O 模型的比较
 
-![图片](https://uploader.shimo.im/f/AJJsv9QKGfTFi3hu.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD)
+![image-20210722140052957](https://gitee.com/liufeihua/images/raw/master/images/image-20210722140052957.png)
 
 ## 1.2Java I/O
 
-![图片](https://uploader.shimo.im/f/mGjmAUkCcFBw86H2.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD)
+![image-20210722140140592](https://gitee.com/liufeihua/images/raw/master/images/image-20210722140140592.png)
 
 ## 1.3Java NIO
 
 ### 1.3.1java io 和 java nio 对比
 
-![图片](https://uploader.shimo.im/f/TjmoanINTlsfo0YZ.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD)
+![image-20210722140947929](https://gitee.com/liufeihua/images/raw/master/images/image-20210722140947929.png)
 
 ### 1.3.2Java NIO 主要由3 部分核心组件组成
 
@@ -50,7 +50,7 @@ a. Buffer
 
 java.nio 定义了以下几个 Buffer 的实现
 
-![图片](https://uploader.shimo.im/f/KMizyslX0DYuCeB5.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD)
+![image-20210722141015585](https://gitee.com/liufeihua/images/raw/master/images/image-20210722141015585.png)
 
 Java NIO Buffer 三大核心概念：position、limit、capacity
 
@@ -58,13 +58,13 @@ Java NIO Buffer 三大核心概念：position、limit、capacity
 
 一旦 Buffer 的容量达到 capacity，需要清空 Buffer，才能重新写入值。
 
-![图片](https://uploader.shimo.im/f/McB2lr7g9Gld4m5i.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD)
+![image-20210722141026579](https://gitee.com/liufeihua/images/raw/master/images/image-20210722141026579.png)
 
 b. Channel
 
 所有的 NIO 操作始于通道，通道是数据来源或数据写入的目的地，主要地，java.nio 包中主要实现的以下几个 Channel：
 
-![图片](https://uploader.shimo.im/f/lnYqw380HOUDkLmP.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD)
+![image-20210722141036282](https://gitee.com/liufeihua/images/raw/master/images/image-20210722141036282.png)
 
 c. Selector
 
@@ -72,9 +72,7 @@ Selector 是 Java NIO 中的一个组件，用于检查一个或多个 NIO Chann
 
 如此可以实现单线程管理多个 channels,也就是可以管理多个网络链接
 
-![图片](https://uploader.shimo.im/f/5guZ2eLTAFP9FFou.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD)
-
-![图片](https://uploader.shimo.im/f/AncMHkVXuDQ4iYLP.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD)
+![image-20210722141141169](https://gitee.com/liufeihua/images/raw/master/images/image-20210722141141169.png)
 
 ### 1.3.3NIO 带来了什么
 
@@ -100,7 +98,7 @@ Selector 是 Java NIO 中的一个组件，用于检查一个或多个 NIO Chann
     1. 离散的事件驱动模型，编程困难
 # 2.Netty 编程实践
 
-![图片](https://uploader.shimo.im/f/vKbhcExH3zqYALDQ.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD)
+![image-20210722135758354](https://gitee.com/liufeihua/images/raw/master/images/image-20210722135758354.png)
 
 ## 2.1Netty 介绍
 
@@ -142,7 +140,7 @@ ACCEPT事件触发后，parentGroup中NioEventLoop会通过NioServerSocketChanne
 
 childGroup中的NioEventLoop不断检测自己管理的NioSocketChannel是否有读写事件准备好
 
-![图片](https://uploader.shimo.im/f/WNvpOKjGrSjcRzQb.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD)
+![image-20210722141839842](https://gitee.com/liufeihua/images/raw/master/images/image-20210722141839842.png)
 
 ### 2.2.2Transport Channel
 
@@ -197,7 +195,7 @@ ChannelHandlerContext表示 ChannelHandler 和ChannelPipeline 之间的关联
 
 ChannelHandlerContext表示 ChannelHandler 和ChannelPipeline 之间的关联
 
-![图片](https://uploader.shimo.im/f/lb3ZgWuQx7wTLZSr.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD)
+![image-20210722142122306](https://gitee.com/liufeihua/images/raw/master/images/image-20210722142122306.png)
 
 ### 2.2.5ByteBuf
 
@@ -216,15 +214,25 @@ ChannelHandlerContext表示 ChannelHandler 和ChannelPipeline 之间的关联
 
 ### 3.1.1单线程Reactor
 
+![image-20210722142443668](https://gitee.com/liufeihua/images/raw/master/images/image-20210722142443668.png)
+
 ### 3.1.2多线程Reactor
+
+![image-20210722142454347](https://gitee.com/liufeihua/images/raw/master/images/image-20210722142454347.png)
 
 ### 3.1.3Multiple Reactor
 
+![image-20210722142503038](https://gitee.com/liufeihua/images/raw/master/images/image-20210722142503038.png)
+
 ### 3.1.4主从Reactor
+
+![image-20210722142512262](https://gitee.com/liufeihua/images/raw/master/images/image-20210722142512262.png)
 
 ## 3.2Netty  EventLoop 源码解析
 
 ### 3.2.1NioEventLoopGroup整体结构
+
+![image-20210722142749472](https://gitee.com/liufeihua/images/raw/master/images/image-20210722142749472.png)
 
 ### 3.2.2NioEventLoop创建分析
 
@@ -272,15 +280,15 @@ ChannelHandlerContext表示 ChannelHandler 和ChannelPipeline 之间的关联
 
 业务架构
 
-![图片](https://uploader.shimo.im/f/RBePFluRYF0dk3Vk.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD)
+![image-20210722143112437](https://gitee.com/liufeihua/images/raw/master/images/image-20210722143112437.png)
 
 实现方案一
 
-![图片](https://uploader.shimo.im/f/18M9B3CKIcAoO6Da.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD)
+![image-20210722143126327](https://gitee.com/liufeihua/images/raw/master/images/image-20210722143126327.png)
 
 实现方案二
 
-![图片](https://uploader.shimo.im/f/8vUgmYmpe4nkXgE7.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD)
+![image-20210722143136114](https://gitee.com/liufeihua/images/raw/master/images/image-20210722143136114.png)
 
 
 
@@ -288,11 +296,11 @@ ChannelHandlerContext表示 ChannelHandler 和ChannelPipeline 之间的关联
 
 request 报文
 
-![图片](https://uploader.shimo.im/f/AXzG6kNqM15AhioD.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD)
+![image-20210722143156668](https://gitee.com/liufeihua/images/raw/master/images/image-20210722143156668.png)
 
 response 报文
 
-![图片](https://uploader.shimo.im/f/4VXZFhFteuqG7UO3.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD)
+![image-20210722143205201](https://gitee.com/liufeihua/images/raw/master/images/image-20210722143205201.png)
 
 ### 5.2.1http报文解析方案：
 
@@ -324,11 +332,11 @@ HttpRequest：主要包含对Request Line和Header的组合
 
 FullHttpRequest： 主要包含对HttpRequest和httpContent的组合
 
-![图片](https://uploader.shimo.im/f/dtqqtVJNlc7vhhqo.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD)
+![image-20210722143234250](https://gitee.com/liufeihua/images/raw/master/images/image-20210722143234250.png)
 
 ### 5.2.3Netty Http的请求处理流程
 
-![图片](https://uploader.shimo.im/f/dGpEHzOrq0nR26ut.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD)
+![image-20210722143243675](https://gitee.com/liufeihua/images/raw/master/images/image-20210722143243675.png)
 
 从图中可以看出做为服务端的Netty 就是在做 编码和解码操作。其分别通过以下两个ChannelHandler对象实现：
 
@@ -340,11 +348,11 @@ HttpResponseEncoder：用于将业务返回数据编码成 Response报文并发�
 
 Decoder 流程
 
-![图片](https://uploader.shimo.im/f/IDjRVjvWuDTYbD0X.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD)
+![image-20210722143255968](https://gitee.com/liufeihua/images/raw/master/images/image-20210722143255968.png)
 
 encode 流程
 
-![图片](https://uploader.shimo.im/f/WGaEhN6EqdbUbZ15.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD)
+![image-20210722143305129](https://gitee.com/liufeihua/images/raw/master/images/image-20210722143305129.png)
 
 ## 5.3WebScoket 协议解析实现
 
@@ -368,7 +376,7 @@ webSocket 是html5 开始提供的一种浏览器与服务器间进行全双工�
 
 我们知道，任何应用协议都有其特有的报文格式，比如Http协议通过 空格 换行组成其报文。如http 协议不同在于WebSocket属于二进制协议，通过规范进二进位来组成其报文。具体组成如下图：
 
-![图片](https://uploader.shimo.im/f/h4mjHsFyFdYRJfte.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD)
+![image-20210722143321865](https://gitee.com/liufeihua/images/raw/master/images/image-20210722143321865.png)
 
 ```javascript
 通过javaScript 中的API可以直接操作WebSocket 对象，其示例如下：
@@ -395,7 +403,7 @@ console.log(“WebSocketError!”); // 连接异常
 4. API容错、可伸缩性
 ## 6..1.2RPC框架
 
-![图片](https://uploader.shimo.im/f/N1iMOCRPQ2RZcFsK.png!thumbnail?fileGuid=wGC6xJkKc8qk3DgD)
+![image-20210722143437587](https://gitee.com/liufeihua/images/raw/master/images/image-20210722143437587.png)
 
 
 

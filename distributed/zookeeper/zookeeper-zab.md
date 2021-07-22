@@ -20,7 +20,7 @@
 * zookeeper-client: C语言客户端
 * zookeeper-server：主体源码
 ### **2.启动宏观流程图：**
-![图片](https://uploader.shimo.im/f/jMRsPEAEi4EeYUO4.png!thumbnail)
+![image-20210722095530813](https://gitee.com/liufeihua/images/raw/master/images/image-20210722095530813.png)
 
 - [ ] 启动示例演示：
 
@@ -86,7 +86,7 @@
 ### 4.netty 服务启动流程：
 服务UML类图
 
-![图片](https://uploader.shimo.im/f/EcKT09vDArApxofJ.png!thumbnail)
+![image-20210722095553079](https://gitee.com/liufeihua/images/raw/master/images/image-20210722095553079.png)
 
 设置netty启动参数
 
@@ -108,7 +108,7 @@ protected void initChannel(SocketChannel ch) throws Exception {
     pipeline.addLast("servercnxnfactory", channelHandler);
 }
 ```
-channelHandler 类结构![图片](https://uploader.shimo.im/f/gPK2V2aI7osRieAJ.png!thumbnail)
+![image-20210722095605670](https://gitee.com/liufeihua/images/raw/master/images/image-20210722095605670.png)
 
 
 执行堆栈：
@@ -155,11 +155,11 @@ ZK中所有的数据都是存储在内存中，即zkDataBase中。但同时所�
 ### **存储结构:**
 zkDdataBase 是zk数据库基类，所有节点都会保存在该类当中，而对Zk进行任何的数据变更都会基于该类进行。zk数据的存储是通过DataTree 对象进行，其用了一个map 来进行存储。
 
-![图片](https://uploader.shimo.im/f/BUY4rHoJl5MEyCuu.png!thumbnail)
+![image-20210722095624974](https://gitee.com/liufeihua/images/raw/master/images/image-20210722095624974.png)
 
 UML 类图：
 
-![图片](https://uploader.shimo.im/f/emgG6FGmkYM7Kb6i.png!thumbnail)
+![image-20210722095635846](https://gitee.com/liufeihua/images/raw/master/images/image-20210722095635846.png)
 
 读取快照日志：
 

@@ -14,7 +14,7 @@ dubbo调用模块核心功能是发起一个远程方法的调用并顺利拿到
 3. **容错机制：**当服务调用失败时采取的策略
 4. **调用方式：**支持同步调用、异步调用
 
-![图片](https://images-cdn.shimo.im/EKumlxdB8ygnUt0i/image.png!thumbnail)
+![image-20210722100904680](https://gitee.com/liufeihua/images/raw/master/images/image-20210722100904680.png)
 
 
 ### 透明代理：
@@ -51,7 +51,8 @@ Dubbo 目前官方支持以下负载均衡策略：
 - [ ] 发起远程调用
 
 一至性hash 算法详解：
-![图片](https://images-cdn.shimo.im/2ng2Z09XeC8W2znz/一至性啥希.png!thumbnail)
+![image-20210722101225693](https://gitee.com/liufeihua/images/raw/master/images/image-20210722101225693.png)
+
 ### **容错**
 Dubbo 官方目前支持以下容错策略：
 
@@ -83,7 +84,7 @@ Broadcast 广播调用
 3. 不需要返回结果
 
 Dubbo 中关于异步等待结果返回的实现流程如下图：
-![图片](https://images-cdn.shimo.im/OPdbf7GTUcs1Q9DQ/image.png!thumbnail)
+![image-20210722101331756](https://gitee.com/liufeihua/images/raw/master/images/image-20210722101331756.png)
 
 异步调用配置:
 ```xml
@@ -203,7 +204,7 @@ String index = RpcContext.getContext().getAttachment("index"); 
 ---
 
 ### **网络传输的实现组成**
-![图片](https://images-cdn.shimo.im/zcMTjcreyJ0T8Ucd/image.png!thumbnail)
+![image-20210722101516294](https://gitee.com/liufeihua/images/raw/master/images/image-20210722101516294.png)
 1. **IO模型：**
   1. BIO 同步阻塞
   2. NIO 同步非阻塞

@@ -147,14 +147,14 @@ server.3=zoo3:2888:3888
 **集群配置流程：**
 
 1. 分别创建3个data目录用于存储各节点数据
-```powershell
+```properties
 mkdir data
 mkdir data/1
 mkdir data/3
 mkdir data/3
 ```
 1. 编写myid文件
-```powershell
+```properties
 echo 1 > data/1/myid
 echo 3 > data/3/myid
 echo 2 > data/2/myid
@@ -202,14 +202,14 @@ server.3=127.0.0.1:2889:3889
 ```
 
 4.分别启动
-```powershell
+```properties
 ./bin/zkServer.sh start conf/zoo1.cfg
 ./bin/zkServer.sh start conf/zoo2.cfg
 ./bin/zkServer.sh start conf/zoo3.cfg
 ```
 
 5.分别查看状态
-```powershell
+```properties
 ./bin/zkServer.sh status conf/zoo1.cfg
 Mode: follower
 ./bin/zkServer.sh status conf/zoo2.cfg
@@ -221,7 +221,7 @@ Mode: follower
 **检查集群复制情况：**
 1、分别连接指定节点
 zkCli.sh 后加参数-server 表示连接指定IP与端口。
-```powershell
+```properties
 ./bin/zkCli.sh -server 127.0.0.1:2181
 ./bin/zkCli.sh -server 127.0.0.1:2182
 ./bin/zkCli.sh -server 127.0.0.1:2183
@@ -257,7 +257,7 @@ Mode: follower
 ```
 可以发现中间的2182 是leader状态.其选举机制如下图：
 
-![图片](https://uploader.shimo.im/f/ChMbWt0DhF4NL7nA.png!thumbnail)
+![image-20210722094649956](https://gitee.com/liufeihua/images/raw/master/images/image-20210722094649956.png)
 **投票机制说明：**
 第一轮投票全部投给自己
 第二轮投票给myid比自己大的相邻节点
@@ -278,9 +278,9 @@ zookeeper 的数据同步是为了保证各节点中数据的一至性，同步�
 **客户端写入请求：**
 
 写入请求的大至流程是，收leader接收客户端写请求，并同步给各个子节点。如下图：
-![图片](https://uploader.shimo.im/f/k2Dqe4W0OCoumzf3.png!thumbnail)
+![image-20210722094708702](https://gitee.com/liufeihua/images/raw/master/images/image-20210722094708702.png)
 但实际情况要复杂的多，比如client 它并不知道哪个节点是leader 有可能写的请求会发给follower ，由follower在转发给leader进行同步处理
-![图片](https://uploader.shimo.im/f/zQHJd478VV8GoCaK.png!thumbnail)
+![image-20210722094724948](https://gitee.com/liufeihua/images/raw/master/images/image-20210722094724948.png)
 
 客户端写入流程说明：
 1. client向zk中的server发送写请求，如果该server不是leader，则会将该写请求转发给leader server，leader将请求事务以proposal形式分发给follower；

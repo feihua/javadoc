@@ -14,8 +14,9 @@
 3. 服务离线通知
 4. 服务资源（CPU、内存、硬盘）超出阀值通知
 ### **架构设计：**
-![图片](https://uploader.shimo.im/f/5cdojbpemNQGhLaK.png!thumbnail)
+![image-20210722094756388](https://gitee.com/liufeihua/images/raw/master/images/image-20210722094756388.png)
 **节点结构：**
+
 1. tuling-manger // 根节点
   1. server00001 :<json> //服务节点 1
   2. server00002 :<json>//服务节点 2
@@ -162,13 +163,13 @@ public class Agent {
 ```
 
 实现效果图：
-![图片](https://uploader.shimo.im/f/X3VSNpo2iAorQA4n.png!thumbnail)
+![image-20210722094843423](https://gitee.com/liufeihua/images/raw/master/images/image-20210722094843423.png)
 
 ## 二 、分布式注册中心
 
 ---
 在单体式服务中，通常是由多个客户端去调用一个服务，只要在客户端中配置唯一服务节点地址即可，当升级到分布式后，服务节点变多，像阿里一线大厂服务节点更是上万之多，这么多节点不可能手动配置在客户端，这里就需要一个中间服务，专门用于帮助客户端发现服务节点，即许多技术书籍经常提到的**服务发现**。
-  ![图片](https://uploader.shimo.im/f/l1l3j9Jxt4AsAxTT.png!thumbnail)
+![image-20210722094904046](https://gitee.com/liufeihua/images/raw/master/images/image-20210722094904046.png)
 
 一个完整的注册中心涵盖以下功能特性：
 * **服务注册：**提供者上线时将自提供的服务提交给注册中心。
@@ -178,10 +179,10 @@ public class Agent {
 * **容错**：当服务提供者出现宕机，断电等极情况时，注册中心能够动态感知并通知客户端服务提供者的状态。
 ### **Dubbo 对zookeeper的使用**
 阿里著名的开源项目Dubbo 是一个基于JAVA的RCP框架，其中必不可少的注册中心可基于多种第三方组件实现，但其官方推荐的还是Zookeeper做为注册中心服务。
-![图片](https://uploader.shimo.im/f/fn7EPT7reCAxHBkx.png!thumbnail)
+![image-20210722094918929](https://gitee.com/liufeihua/images/raw/master/images/image-20210722094918929.png)
 
 ### **Dubbo Zookeeper注册中心存储结构：**
-![图片](https://uploader.shimo.im/f/inAfwBuh1eEEw1Dj.png!thumbnail)
+![image-20210722094931593](https://gitee.com/liufeihua/images/raw/master/images/image-20210722094931593.png)
 
 **节点说明：**
 | **类别**   | **属性**   | **说明**   |
@@ -315,8 +316,9 @@ public class Client {
 1. 多个服务节点只允许其中一个主节点运行JOB任务。
 2. 当主节点挂掉后能自动切换主节点，继续执行JOB任务。
 ### 架构设计：
-![图片](https://uploader.shimo.im/f/cGX66wOXVq0FAeqc.png!thumbnail)
+![image-20210722094955263](https://gitee.com/liufeihua/images/raw/master/images/image-20210722094955263.png)
 **node结构：**
+
 1. tuling-master
   1. server0001:master
   2. server0002:slave
@@ -345,7 +347,7 @@ public class Client {
 某银行帐户，可以同时进行帐户信息的读取，但读取其间不能修改帐户数据。其帐户ID为:888
 * 获得读锁流程：
 
-![图片](https://uploader.shimo.im/f/BFpx2XQYWf8ruFUt.png!thumbnail)
+![image-20210722095016847](https://gitee.com/liufeihua/images/raw/master/images/image-20210722095016847.png)
 1、基于资源ID创建临时序号读锁节点 
    /lock/888.R0000000002 Read 
 2、获取 /lock 下所有子节点，判断其最小的节点是否为读锁，如果是则获锁成功
@@ -353,7 +355,7 @@ public class Client {
 4、当节点变更监听触发，执行第2步
 
 **数据结构：**
-![图片](https://uploader.shimo.im/f/hgOxo7b5SPIdcXS1.png!thumbnail)
+![image-20210722095034713](https://gitee.com/liufeihua/images/raw/master/images/image-20210722095034713.png)
 
 * 获得写锁：
 
@@ -368,10 +370,10 @@ public class Client {
 ### **关于羊群效应：**
 在等待锁获得期间，所有等待节点都在监听 Lock节点，一但lock 节点变更所有等待节点都会被触发，然后在同时反查Lock 子节点。如果等待对例过大会使用Zookeeper承受非常大的流量压力。
 
-  ![图片](https://uploader.shimo.im/f/VsMAGsJSxhAOKnia.png!thumbnail)
+![image-20210722095049317](https://gitee.com/liufeihua/images/raw/master/images/image-20210722095049317.png)
 
 为了改善这种情况，可以采用监听链表的方式，每个等待对列只监听前一个节点，如果前一个节点释放锁的时候，才会被触发通知。这样就形成了一个监听链表。
- ![图片](https://uploader.shimo.im/f/JgVYw2L6xJcny6CN.png!thumbnail)
+ ![image-20210722095102156](https://gitee.com/liufeihua/images/raw/master/images/image-20210722095102156.png)
 
 ### **示例演示：**
 ```java
@@ -471,7 +473,6 @@ public class ZookeeperLock {
     }
 }
 ```
-
 
 
 
