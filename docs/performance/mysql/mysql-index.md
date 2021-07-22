@@ -19,7 +19,7 @@
 3. 叶节点的指针为空
 4. 节点中的数据key从左到右递增排列
 
-![图片](https://uploader.shimo.im/f/5lJe4S8OGFqbiZ7O.png!thumbnail?fileGuid=vx8JhkJcdXPQKHWG)
+![image-20210722230401904](https://gitee.com/liufeihua/images/raw/master/images/image-20210722230401904.png)
 
 ## 2.2B+Tree(B-Tree变种)
 
@@ -27,12 +27,19 @@
 2. 叶子节点不存储指针
 3. 顺序访问指针，提高区间访问的性能
 
-![图片](https://uploader.shimo.im/f/ctIyJ4Fj0aZu9dyF.png!thumbnail?fileGuid=vx8JhkJcdXPQKHWG)
+![image-20210722230433114](https://gitee.com/liufeihua/images/raw/master/images/image-20210722230433114.png)
 
+## 2.3MyISAM索引文件和数据文件是分离的(非聚集)
+
+![image-20210722230539701](https://gitee.com/liufeihua/images/raw/master/images/image-20210722230539701.png)
+
+## 2.4InnoDB索引实现(聚集)
+
+![image-20210722230726002](https://gitee.com/liufeihua/images/raw/master/images/image-20210722230726002.png)
 
 # 3.索引最左前缀原理
 
-![图片](https://uploader.shimo.im/f/NXtiNgD0p16dRWJ0.png!thumbnail?fileGuid=vx8JhkJcdXPQKHWG)
+![image-20210722230458268](https://gitee.com/liufeihua/images/raw/master/images/image-20210722230458268.png)
 
 
 
